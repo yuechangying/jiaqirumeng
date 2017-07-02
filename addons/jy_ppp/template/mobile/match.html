@@ -57,12 +57,13 @@
    </div>
    <div class="option_box" style="margin-top: 10px">
     <div class="top">
-     <h2>收入范围</h2>
-     <span class="unlimit"><span class="title pink">{if $match['income']==0}不限{/if}{if $match['income']==1}2000元以上{/if}{if $match['income']==2}5000元以上{/if}{if $match['income']==3}10000元以上{/if}</span><i class="bot_trg"></i></span>
+     <h2>收入范围(年万)</h2>
+     <span class="unlimit"><span class="title pink">{if $match['income']==0}不限{/if}{if $match['income']==1}0-6{/if}{if $match['income']==2}6-15{/if}{if $match['income']==3}15-30{/if}{if $match['income']==4}30-60{/if}{if $match['income']==5}60-100{/if}</span><i class="bot_trg"></i></span>
     </div> 
     <ul class="hidden" data-type="salary">
-     <li> <span data-value="0" {if $match['income']==0}class="pink"{/if}>不限</span> <span data-value="1" {if $match['income']==1}class="pink"{/if}>2000元以上</span> </li>
-     <li> <span data-value="2" {if $match['income']==2}class="pink"{/if}>5000元以上</span> <span data-value="3" {if $match['income']==3}class="pink"{/if}>10000元以上</span> </li>
+     <li> <span data-value="0" {if $match['income']==0}class="pink"{/if}>不限</span> <span data-value="1" {if $match['income']==1}class="pink"{/if}>0-6</span> </li>
+     <li> <span data-value="2" {if $match['income']==2}class="pink"{/if}>6-15</span> <span data-value="3" {if $match['income']==3}class="pink"{/if}>15-30</span> </li>
+     <li> <span data-value="4" {if $match['income']==4}class="pink"{/if}>30-60</span> <span data-value="5" {if $match['income']==5}class="pink"{/if}>60-100</span> </li>
     </ul>
    </div>
    <div class="option_box" style="margin-top: 10px">

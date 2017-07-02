@@ -1550,13 +1550,19 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 						{
 							if($match['income']==1)
 							{
-								$condition.=" AND ( b.income= '2000-5000' OR b.income= '5000-10000' OR b.income= '10000-20000' OR b.income= '20000以上' ) ";
+								$condition.=" AND ( b.income= '0-6' ) ";
 							}
 							elseif ($match['income']==2) {
-								$condition.=" AND ( b.income= '5000-10000' OR b.income= '10000-20000' OR b.income= '20000以上' ) ";
+								$condition.=" AND ( b.income= '6-15' ) ";
 							}
 							elseif ($match['income']==3) {
-								$condition.=" AND ( b.income= '10000-20000' OR b.income= '20000以上' ) ";
+								$condition.=" AND ( b.income= '15-30' ) ";
+							}
+							elseif ($match['income']==4) {
+								$condition.=" AND ( b.income= '30-60' ) ";
+							}
+							elseif ($match['income']==5) {
+								$condition.=" AND ( b.income= '60-100' ) ";
 							}
 
 						}
@@ -1908,13 +1914,19 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 						{
 							if($match['income']==1)
 							{
-								$condition.=" AND ( b.income= '2000-5000' OR b.income= '5000-10000' OR b.income= '10000-20000' OR b.income= '20000以上' ) ";
+								$condition.=" AND ( b.income= '0-6' ) ";
 							}
 							elseif ($match['income']==2) {
-								$condition.=" AND ( b.income= '5000-10000' OR b.income= '10000-20000' OR b.income= '20000以上' ) ";
+								$condition.=" AND ( b.income= '6-15' ) ";
 							}
 							elseif ($match['income']==3) {
-								$condition.=" AND ( b.income= '10000-20000' OR b.income= '20000以上' ) ";
+								$condition.=" AND ( b.income= '15-30' ) ";
+							}
+							elseif ($match['income']==4) {
+								$condition.=" AND ( b.income= '30-60' ) ";
+							}
+							elseif ($match['income']==5) {
+								$condition.=" AND ( b.income= '60-100' ) ";
 							}
 
 						}
