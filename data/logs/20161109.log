@@ -1,0 +1,391 @@
+2016-11-09 08:51:34 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_60c53c6273e4]]></ToUserName>
+<FromUserName><![CDATA[ozJkmt8uGzvAJzP06ZRANVnKDaZM]]></FromUserName>
+<CreateTime>1478653328</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[unsubscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+
+2016-11-09 12:32:53 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_60c53c6273e4]]></ToUserName>
+<FromUserName><![CDATA[ozJkmt57xPab757X5z0ysTqRvZm0]]></FromUserName>
+<CreateTime>1478666607</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[unsubscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+
+2016-11-09 14:38:40 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_60c53c6273e4]]></ToUserName>
+<FromUserName><![CDATA[ozJkmt2vhpBU3iGHlRwbq13XzXRY]]></FromUserName>
+<CreateTime>1478674154</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[unsubscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+
+2016-11-09 20:47:23 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_60c53c6273e4]]></ToUserName>
+<FromUserName><![CDATA[ozJkmt4Q-NeLELYkCz0-05Wxr4qQ]]></FromUserName>
+<CreateTime>1478696277</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[LOCATION]]></Event>
+<Latitude>27.817877</Latitude>
+<Longitude>113.096451</Longitude>
+<Precision>40.000000</Precision>
+</xml>
+
+2016-11-09 20:47:23 params :
+------------
+String:
+array (
+  'message' => 
+  array (
+    'tousername' => 'gh_60c53c6273e4',
+    'fromusername' => 'ozJkmt4Q-NeLELYkCz0-05Wxr4qQ',
+    'createtime' => '1478696277',
+    'msgtype' => 'event',
+    'event' => 'LOCATION',
+    'latitude' => '27.817877',
+    'longitude' => '113.096451',
+    'precision' => '40.000000',
+    'from' => 'ozJkmt4Q-NeLELYkCz0-05Wxr4qQ',
+    'to' => 'gh_60c53c6273e4',
+    'time' => '1478696277',
+    'type' => 'trace',
+    'location_x' => '27.817877',
+    'location_y' => '113.096451',
+  ),
+  'module' => 'default',
+  'rule' => '-1',
+)
+
+2016-11-09 20:47:23 response :
+------------
+Array:
+errno : -1 ;
+message : Invaild value ;
+
+2016-11-09 20:47:41 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_60c53c6273e4]]></ToUserName>
+<FromUserName><![CDATA[ozJkmt4Q-NeLELYkCz0-05Wxr4qQ]]></FromUserName>
+<CreateTime>1478696296</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.sktdi.com/index.php?s=/Home/Index/index/smappid/7da0c006d2e4d9805738f886ba144546.html]]></EventKey>
+<MenuId>407178882</MenuId>
+</xml>
+
+2016-11-09 20:47:41 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_60c53c6273e4',
+    'fromusername' => 'ozJkmt4Q-NeLELYkCz0-05Wxr4qQ',
+    'createtime' => '1478696296',
+    'msgtype' => 'event',
+    'event' => 'VIEW',
+    'eventkey' => 'http://www.sktdi.com/index.php?s=/Home/Index/index/smappid/7da0c006d2e4d9805738f886ba144546.html',
+    'menuid' => '407178882',
+    'from' => 'ozJkmt4Q-NeLELYkCz0-05Wxr4qQ',
+    'to' => 'gh_60c53c6273e4',
+    'time' => '1478696296',
+    'type' => 'text',
+    'content' => 'http://www.sktdi.com/index.php?s=/Home/Index/index/smappid/7da0c006d2e4d9805738f886ba144546.html',
+    'redirection' => true,
+    'source' => 'VIEW',
+  ),
+)
+
+2016-11-09 20:47:41 response :
+------------
+
+2016-11-09 20:50:04 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_60c53c6273e4]]></ToUserName>
+<FromUserName><![CDATA[ozJkmt4Q-NeLELYkCz0-05Wxr4qQ]]></FromUserName>
+<CreateTime>1478696438</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[LOCATION]]></Event>
+<Latitude>27.817860</Latitude>
+<Longitude>113.096436</Longitude>
+<Precision>40.000000</Precision>
+</xml>
+
+2016-11-09 20:50:04 params :
+------------
+String:
+array (
+  'message' => 
+  array (
+    'tousername' => 'gh_60c53c6273e4',
+    'fromusername' => 'ozJkmt4Q-NeLELYkCz0-05Wxr4qQ',
+    'createtime' => '1478696438',
+    'msgtype' => 'event',
+    'event' => 'LOCATION',
+    'latitude' => '27.817860',
+    'longitude' => '113.096436',
+    'precision' => '40.000000',
+    'from' => 'ozJkmt4Q-NeLELYkCz0-05Wxr4qQ',
+    'to' => 'gh_60c53c6273e4',
+    'time' => '1478696438',
+    'type' => 'trace',
+    'location_x' => '27.817860',
+    'location_y' => '113.096436',
+  ),
+  'module' => 'default',
+  'rule' => '-1',
+)
+
+2016-11-09 20:50:04 response :
+------------
+Array:
+errno : -1 ;
+message : Invaild value ;
+
+2016-11-09 20:50:04 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_60c53c6273e4]]></ToUserName>
+<FromUserName><![CDATA[ozJkmt4Q-NeLELYkCz0-05Wxr4qQ]]></FromUserName>
+<CreateTime>1478696439</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.sktdi.com/index.php?s=/Home/Nearby/index.html]]></EventKey>
+<MenuId>407178882</MenuId>
+</xml>
+
+2016-11-09 20:50:04 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_60c53c6273e4',
+    'fromusername' => 'ozJkmt4Q-NeLELYkCz0-05Wxr4qQ',
+    'createtime' => '1478696439',
+    'msgtype' => 'event',
+    'event' => 'VIEW',
+    'eventkey' => 'http://www.sktdi.com/index.php?s=/Home/Nearby/index.html',
+    'menuid' => '407178882',
+    'from' => 'ozJkmt4Q-NeLELYkCz0-05Wxr4qQ',
+    'to' => 'gh_60c53c6273e4',
+    'time' => '1478696439',
+    'type' => 'text',
+    'content' => 'http://www.sktdi.com/index.php?s=/Home/Nearby/index.html',
+    'redirection' => true,
+    'source' => 'VIEW',
+  ),
+)
+
+2016-11-09 20:50:04 response :
+------------
+
+2016-11-09 20:50:46 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_60c53c6273e4]]></ToUserName>
+<FromUserName><![CDATA[ozJkmt4Q-NeLELYkCz0-05Wxr4qQ]]></FromUserName>
+<CreateTime>1478696481</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[LOCATION]]></Event>
+<Latitude>27.817860</Latitude>
+<Longitude>113.096436</Longitude>
+<Precision>40.000000</Precision>
+</xml>
+
+2016-11-09 20:50:46 params :
+------------
+String:
+array (
+  'message' => 
+  array (
+    'tousername' => 'gh_60c53c6273e4',
+    'fromusername' => 'ozJkmt4Q-NeLELYkCz0-05Wxr4qQ',
+    'createtime' => '1478696481',
+    'msgtype' => 'event',
+    'event' => 'LOCATION',
+    'latitude' => '27.817860',
+    'longitude' => '113.096436',
+    'precision' => '40.000000',
+    'from' => 'ozJkmt4Q-NeLELYkCz0-05Wxr4qQ',
+    'to' => 'gh_60c53c6273e4',
+    'time' => '1478696481',
+    'type' => 'trace',
+    'location_x' => '27.817860',
+    'location_y' => '113.096436',
+  ),
+  'module' => 'default',
+  'rule' => '-1',
+)
+
+2016-11-09 20:50:46 response :
+------------
+Array:
+errno : -1 ;
+message : Invaild value ;
+
+2016-11-09 21:56:21 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_60c53c6273e4]]></ToUserName>
+<FromUserName><![CDATA[ozJkmtxFX1QjoyCCTL5znFmj4ti8]]></FromUserName>
+<CreateTime>1478700416</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.sktdi.com/index.php?s=/Home/Index/index/smappid/7da0c006d2e4d9805738f886ba144546.html]]></EventKey>
+<MenuId>407178882</MenuId>
+</xml>
+
+2016-11-09 21:56:21 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_60c53c6273e4',
+    'fromusername' => 'ozJkmtxFX1QjoyCCTL5znFmj4ti8',
+    'createtime' => '1478700416',
+    'msgtype' => 'event',
+    'event' => 'VIEW',
+    'eventkey' => 'http://www.sktdi.com/index.php?s=/Home/Index/index/smappid/7da0c006d2e4d9805738f886ba144546.html',
+    'menuid' => '407178882',
+    'from' => 'ozJkmtxFX1QjoyCCTL5znFmj4ti8',
+    'to' => 'gh_60c53c6273e4',
+    'time' => '1478700416',
+    'type' => 'text',
+    'content' => 'http://www.sktdi.com/index.php?s=/Home/Index/index/smappid/7da0c006d2e4d9805738f886ba144546.html',
+    'redirection' => true,
+    'source' => 'VIEW',
+  ),
+)
+
+2016-11-09 21:56:21 response :
+------------
+
+2016-11-09 21:56:31 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_60c53c6273e4]]></ToUserName>
+<FromUserName><![CDATA[ozJkmtxFX1QjoyCCTL5znFmj4ti8]]></FromUserName>
+<CreateTime>1478700425</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.sktdi.com/index.php?s=/Home/Nearby/index.html]]></EventKey>
+<MenuId>407178882</MenuId>
+</xml>
+
+2016-11-09 21:56:31 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_60c53c6273e4',
+    'fromusername' => 'ozJkmtxFX1QjoyCCTL5znFmj4ti8',
+    'createtime' => '1478700425',
+    'msgtype' => 'event',
+    'event' => 'VIEW',
+    'eventkey' => 'http://www.sktdi.com/index.php?s=/Home/Nearby/index.html',
+    'menuid' => '407178882',
+    'from' => 'ozJkmtxFX1QjoyCCTL5znFmj4ti8',
+    'to' => 'gh_60c53c6273e4',
+    'time' => '1478700425',
+    'type' => 'text',
+    'content' => 'http://www.sktdi.com/index.php?s=/Home/Nearby/index.html',
+    'redirection' => true,
+    'source' => 'VIEW',
+  ),
+)
+
+2016-11-09 21:56:31 response :
+------------
+
+2016-11-09 21:56:33 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_60c53c6273e4]]></ToUserName>
+<FromUserName><![CDATA[ozJkmtxFX1QjoyCCTL5znFmj4ti8]]></FromUserName>
+<CreateTime>1478700428</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[LOCATION]]></Event>
+<Latitude>30.193657</Latitude>
+<Longitude>120.295860</Longitude>
+<Precision>30.000000</Precision>
+</xml>
+
+2016-11-09 21:56:33 params :
+------------
+String:
+array (
+  'message' => 
+  array (
+    'tousername' => 'gh_60c53c6273e4',
+    'fromusername' => 'ozJkmtxFX1QjoyCCTL5znFmj4ti8',
+    'createtime' => '1478700428',
+    'msgtype' => 'event',
+    'event' => 'LOCATION',
+    'latitude' => '30.193657',
+    'longitude' => '120.295860',
+    'precision' => '30.000000',
+    'from' => 'ozJkmtxFX1QjoyCCTL5znFmj4ti8',
+    'to' => 'gh_60c53c6273e4',
+    'time' => '1478700428',
+    'type' => 'trace',
+    'location_x' => '30.193657',
+    'location_y' => '120.295860',
+  ),
+  'module' => 'default',
+  'rule' => '-1',
+)
+
+2016-11-09 21:56:33 response :
+------------
+Array:
+errno : -1 ;
+message : Invaild value ;
+
+2016-11-09 21:56:38 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_60c53c6273e4]]></ToUserName>
+<FromUserName><![CDATA[ozJkmtxFX1QjoyCCTL5znFmj4ti8]]></FromUserName>
+<CreateTime>1478700432</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[unsubscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+
+2016-11-09 22:56:08 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_60c53c6273e4]]></ToUserName>
+<FromUserName><![CDATA[ozJkmt4TSp23b9yEr7EL8ljB1D9o]]></FromUserName>
+<CreateTime>1478704003</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[unsubscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+

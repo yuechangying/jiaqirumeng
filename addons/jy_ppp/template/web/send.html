@@ -1,0 +1,127 @@
+{template 'common/header'}
+<ul class="nav nav-tabs">
+	<li{if empty($mid)} class="active"{/if}><a href="{php echo $this->createWebUrl('send');}">发送消息</a></li>
+	{if !empty($mid) }<li class="active"><a href="{php echo $this->createWebUrl('send',array('mid'=>$mid));}">给推广员<span>[{$member['username']}]</span>发送消息</a></li>{/if}
+</ul>
+
+<div class="main">
+	<div class="main">
+
+			<form action="" method="post" class="form-horizontal form" enctype="multipart/form-data">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					添加推广员消息
+				</div>
+				<div class="panel-body">
+					{if !empty($mid)}
+					<div class="form-group" >
+						<label class="col-xs-12 col-sm-3 col-md-2 control-label">收消息推广员ID</label>
+						<div class="col-sm-7 col-xs-12">
+							<label>{$mid}</label>
+						</div>
+					</div>
+					<div class="form-group" >
+						<label class="col-xs-12 col-sm-3 col-md-2 control-label">推广员姓名</label>
+						<div class="col-sm-7 col-xs-12">
+							<label>{$member['username']}</label>
+						</div>
+					</div>
+					<div class="form-group" >
+						<label class="col-xs-12 col-sm-3 col-md-2 control-label">推广员手机号</label>
+						<div class="col-sm-7 col-xs-12">
+							<label>{$member['mobile']}</label>
+						</div>
+					</div>
+
+					{if !empty($member['nickname'])}
+						<div class="form-group">
+							<label class="col-xs-12 col-sm-3 col-md-2 control-label">推广员微信昵称</label>
+							<div class="col-sm-7 col-xs-12">
+								<label for="">{$member['nickname']}</label>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-xs-12 col-sm-3 col-md-2 control-label">推广员微信昵称</label>
+							<div class="col-sm-7 col-xs-12">
+								<img style="width:100px" src="{$member['avatar']}"/>
+							</div>
+						</div>
+					{else}
+
+						<div class="form-group">
+							<label class="col-xs-12 col-sm-3 col-md-2 control-label">推广员绑定状态</label>
+							<div class="col-sm-7 col-xs-12">
+								<span class="btn btn-info btn-sm">未绑定</span>
+							</div>
+						</div>
+					{/if}
+
+					{else}
+						<div class="form-group">
+							<label class="col-xs-12 col-sm-3 col-md-2 control-label">请选择消息类型</label>
+							<div class="col-sm-7 col-xs-12">
+								<label for="enabled1" class="radio-inline"><input type="radio" name="type" value="1" id="enabled1" onclick="user_hide()" checked /> 群发</label>
+			                    &nbsp;&nbsp;&nbsp;
+			                    <label for="enabled2" class="radio-inline"><input type="radio" name="type" value="0" id="enabled2"  onclick="user_show()" /> 单用户</label>
+							</div>
+						</div>
+						<div class="form-group" id="qun">
+							<label class="col-xs-12 col-sm-3 col-md-2 control-label">请选择群发类型</label>
+							<div class="col-sm-7 col-xs-12">
+								<select class="form-control" name="qun">
+									<option value="0">请选择群发类型</option>
+									<option value="1">群发给所有一级推广用户</option>
+									<option value="2">群发给所有二级推广用户</option>
+									<option value="3">群发给平台所有推广用户</option>
+								</select>
+							</div>
+						</div>
+
+						<div id="user" class="form-group" style="display: none">
+							<label class="col-xs-12 col-sm-3 col-md-2 control-label">请输入推广用户的id</label>
+							<div class="col-sm-7 col-xs-12">
+								<input type="text" name="mid" class="form-control" placeholder="请输入推广用户的id" />
+							</div>
+						</div>
+					{/if}
+
+					<div class="form-group" >
+						<label class="col-xs-12 col-sm-3 col-md-2 control-label">消息标题</label>
+						<div class="col-sm-7 col-xs-12">
+							<input type="text" name="title" class="form-control" />
+						</div>
+					</div>
+
+					<div class="form-group">
+							<label class="col-xs-12 col-sm-3 col-md-2 control-label">消息详情</label>
+							<div class="col-sm-7 col-xs-12">
+								{php echo tpl_ueditor('content',$item['content'])}
+							</div>
+						</div>
+
+					<div class="form-group">
+						<label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+						<div class="col-sm-9 col-xs-12">
+							<input onclick="return confirm('确认要发送消息吗？此操作不可恢复，确认吗？'); return false;" name="submit" type="submit" value="发送消息" class="btn btn-primary span3">
+							<input type="hidden" name="token" value="{$_W['token']}" />
+						</div>
+					</div>
+
+				</div>
+			</div>
+			</form>
+		</div>
+		<script type="text/javascript">
+			function user_show()
+			{
+				$("#user").show();
+				$("#qun").hide();
+			}
+			function user_hide()
+			{
+				$("#user").hide();
+				$("#qun").show();
+			}
+		</script>
+</div>
+{template 'common/footer'}

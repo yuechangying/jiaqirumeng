@@ -1,0 +1,84 @@
+2016-11-05 00:48:58 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_60c53c6273e4]]></ToUserName>
+<FromUserName><![CDATA[ozJkmt4k3soznKFRnWIaOgxE0nKU]]></FromUserName>
+<CreateTime>1478278767</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.sktdi.com/index.php?s=/Home/Index/index/smappid/7da0c006d2e4d9805738f886ba144546.html]]></EventKey>
+<MenuId>407178882</MenuId>
+</xml>
+
+2016-11-05 00:48:58 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_60c53c6273e4',
+    'fromusername' => 'ozJkmt4k3soznKFRnWIaOgxE0nKU',
+    'createtime' => '1478278767',
+    'msgtype' => 'event',
+    'event' => 'VIEW',
+    'eventkey' => 'http://www.sktdi.com/index.php?s=/Home/Index/index/smappid/7da0c006d2e4d9805738f886ba144546.html',
+    'menuid' => '407178882',
+    'from' => 'ozJkmt4k3soznKFRnWIaOgxE0nKU',
+    'to' => 'gh_60c53c6273e4',
+    'time' => '1478278767',
+    'type' => 'text',
+    'content' => 'http://www.sktdi.com/index.php?s=/Home/Index/index/smappid/7da0c006d2e4d9805738f886ba144546.html',
+    'redirection' => true,
+    'source' => 'VIEW',
+  ),
+)
+
+2016-11-05 00:48:58 response :
+------------
+
+2016-11-05 09:33:41 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_60c53c6273e4]]></ToUserName>
+<FromUserName><![CDATA[ozJkmt_6KAz_ZeThZNXekT2m2fzg]]></FromUserName>
+<CreateTime>1478310250</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[unsubscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+
+2016-11-05 10:10:37 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_60c53c6273e4]]></ToUserName>
+<FromUserName><![CDATA[ozJkmtxdZTWBOGT1MbMye6UxW8V0]]></FromUserName>
+<CreateTime>1478312467</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[unsubscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+
+2016-11-05 15:50:04 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_60c53c6273e4]]></ToUserName>
+<FromUserName><![CDATA[ozJkmtzQb2TCezPol9pxUJZ5xm0A]]></FromUserName>
+<CreateTime>1478332833</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[unsubscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+
+2016-11-05 21:44:18 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_60c53c6273e4]]></ToUserName>
+<FromUserName><![CDATA[ozJkmt7UX8fUPv4i_oPrmRgAYo2k]]></FromUserName>
+<CreateTime>1478354088</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[unsubscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+

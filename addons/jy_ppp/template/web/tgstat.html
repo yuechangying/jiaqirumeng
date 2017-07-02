@@ -1,0 +1,566 @@
+{template 'common/header'}
+{template 'web/nav'}
+
+{if !empty($zhuce) || !empty($cz) || !empty($fc)}
+<div class="main">
+	<div class="panel panel-info">
+		<div class="panel-heading">筛选</div>
+
+		<div class="panel-body">
+
+			<form action="./index.php" method="get" class="form-horizontal" role="form">
+
+				<input type="hidden" name="c" value="site" />
+				<input type="hidden" name="a" value="entry" />
+	        	<input type="hidden" name="m" value="jy_ppp" />
+	        	<input type="hidden" name="do" value="tgstat" />
+	        	<input type="hidden" name="op" value="{$op}" />
+
+	        	<div class="form-group">
+					<label class="col-xs-12 col-sm-2 col-md-2 col-lg-1 control-label">推广员</label>
+					<div class="col-xs-12 col-sm-8 col-lg-9">
+						{php echo tpl_form_field_category_2level('tgid', $parent, $child,$_GPC['tgid']['parentid'],$_GPC['tgid']['childid']);}
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-xs-12 col-sm-2 col-md-2 col-lg-1 control-label">时间筛选</label>
+					<div class="col-xs-12 col-sm-8 col-lg-9">
+						{php echo tpl_form_field_daterange('time', $time);}
+					</div>
+				</div>
+
+				<div class="form-group">
+				 	<div class=" col-xs-12 col-sm-2 col-lg-2">
+
+						<button class="btn btn-default"><i class="fa fa-search"></i> 搜索</button>
+
+					</div>
+				</div>
+			</form>
+		</div>
+    </div>
+
+    	<div id="main" style="height:400px;width:98%;margin-left:1%;padding-top:50px"></div>
+    	<script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+    	<script type="text/javascript">
+        // 路径配置
+        require.config({
+            paths: {
+                echarts: 'http://echarts.baidu.com/build/dist'
+            }
+        });
+
+        // 使用
+        require(
+            [
+                'echarts',
+                'echarts/chart/bar', //
+                'echarts/chart/line',
+                'echarts/chart/pie', // 使用柱状图就加载pie模块，按需加载
+                'echarts/chart/funnel'
+            ],
+            function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('main'),'macarons');
+                option = {
+				    title : {
+				        text: '推广员统计报表',
+				        subtext: '{php echo date("Y-m-d",$starttime)}-{php echo date("Y-m-d",$endtime)}'
+				    },
+				    tooltip : {
+				        trigger: 'axis'
+				    },
+				    legend: {
+				        data:[
+				        	{if empty($op) || $op=='zhuce'}
+				        	'推广用户总数',
+				        	{/if}
+				        	{if empty($op) || $op=='cz'}
+				        	'充值金额',
+				        	{/if}
+				        	{if empty($op) || $op=='fc'}
+				        	'分成金额',
+				        	{/if}
+				        	]
+				    },
+				    toolbox: {
+				        show : true,
+				        feature : {
+				            mark : {show: false},
+				            dataView : {show: false, readOnly: false},
+				            magicType : {show: true, type: ['line', 'bar']},
+				            restore : {show: false},
+				            saveAsImage : {show: true}
+				        }
+				    },
+				    calculable : true,
+				    xAxis : [
+				        {
+				            type : 'category',
+				            data : [
+				            	{loop $riqi $row}
+				            		'{$row}',
+				            	{/loop}
+				            	]
+				        }
+				    ],
+				    yAxis : [
+				        {
+				            type : 'value'
+				        }
+				    ],
+				    series : [
+
+				        {if empty($op) || $op=='zhuce'}
+				        {
+				            name:'推广用户总数',
+				            type:'bar',
+				            data:[
+				            	{loop $riqi $row}
+				            		{$zhuce_tu[$row]},
+				            	{/loop}
+				            ],
+				            markPoint : {
+				                data : [
+				                    {type : 'max', name: '最大值'},
+				                    {type : 'min', name: '最小值'}
+				                ]
+				            },
+				            markLine : {
+				                data : [
+				                    {type : 'average', name: '平均值'}
+				                ]
+				            }
+				        },
+				        {/if}
+				        {if empty($op) || $op=='cz'}
+				        {
+				            name:'充值金额',
+				            type:'bar',
+				            data:[
+				            	{loop $riqi $row}
+				            		{$cz_tu[$row]},
+				            	{/loop}
+				            ],
+				            markPoint : {
+				                data : [
+				                    {type : 'max', name: '最大值'},
+				                    {type : 'min', name: '最小值'}
+				                ]
+				            },
+				            markLine : {
+				                data : [
+				                    {type : 'average', name: '平均值'}
+				                ]
+				            }
+				        },
+				        {/if}
+				        {if empty($op) || $op=='fc'}
+				        {
+				            name:'分成金额',
+				            type:'bar',
+				            data:[
+				            	{loop $riqi $row}
+				            		{$fc_tu[$row]},
+				            	{/loop}
+				            ],
+				            markPoint : {
+				                data : [
+				                    {type : 'max', name: '最大值'},
+				                    {type : 'min', name: '最小值'}
+				                ]
+				            },
+				            markLine : {
+				                data : [
+				                    {type : 'average', name: '平均值'}
+				                ]
+				            }
+				        },
+				        {/if}
+				    ]
+				};
+
+
+                // 为echarts对象加载数据
+                myChart.setOption(option);
+            }
+        );
+    </script>
+
+    <form action="" method="post" class="form-horizontal form"
+		enctype="multipart/form-data">
+    <div class="panel panel-default">
+		<div class="panel-heading">
+			推广员统计报表
+		</div>
+		<div class="panel-body">
+
+			<div class="form-group">
+				<label class="col-xs-12 col-sm-3 col-md-2 control-label">{if empty($time)}推广用户总数{else}新增推广用户{/if}</label>
+				<div class="col-sm-9 col-xs-12">
+					{$zhuce} 人
+					<a href="{php echo $this->createWebUrl('tgstat',array('op'=>'zhuce','time'=>$_GPC['time']));}" style="margin-left:100px"><div class="btn btn-info">详情</div></a>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-xs-12 col-sm-3 col-md-2 control-label">{if empty($time)}用户充值金额{else}新增用户充值金额{/if}</label>
+				<div class="col-sm-9 col-xs-12">
+					{$cz} 元
+					<a href="{php echo $this->createWebUrl('tgstat',array('op'=>'cz','time'=>$_GPC['time']));}" style="margin-left:100px"><div class="btn btn-info">详情</div></a>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-xs-12 col-sm-3 col-md-2 control-label">{if empty($time)}用户分成金额{else}新增用户分成金额{/if}</label>
+				<div class="col-sm-9 col-xs-12">
+					{$fc} 元
+					<a href="{php echo $this->createWebUrl('tgstat',array('op'=>'fc','time'=>$_GPC['time']));}" style="margin-left:100px"><div class="btn btn-info">详情</div></a>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	</form>
+
+	 <form action="" method="post" class="form-horizontal form"
+		enctype="multipart/form-data">
+    <div class="panel panel-success">
+		<div class="panel-heading">
+			推广员统计报表明细
+		</div>
+		<div class="panel-body">
+
+			<table class="table table-hover">
+
+				<thead class="navbar-inner">
+
+					<tr>
+
+						<th style="width:20%;" class="row-first">时间</td>
+
+						<th style="width:17%;">父级推广员</th>
+
+						<th style="width:17%;">子级推广员</th>
+
+						<th style="width:15%;">当日注册数(人)</th>
+
+						<th style="width:15%;">当日充值金额(元)</th>
+
+						<th style="width:15%">当日分成金额(元)</th>
+
+
+					</tr>
+
+				</thead>
+
+				<tbody id="main">
+
+					{loop $list $value}
+
+						{if !empty($value)}
+							{loop $value $row}
+
+								<tr>
+
+								    <td>{$row['logtime']}</td>
+
+								    <td>{if !empty($row['parentname'])}{$row['parentname']}{else}{$row['username']}{/if}</td>
+
+								    <td>{if !empty($row['parentname'])}{$row['username']}{else}<span style="color:red">自己</span>{/if}</td>
+
+									<td>{if !empty($row['zhuce'])}{$row['zhuce']}{else}0{/if}</td>
+
+									<td>{if !empty($row['cz'])}{$row['cz']}{else}0{/if}</td>
+
+									<td>{if !empty($row['fc'])}{$row['fc']}{else}0{/if}</td>
+
+
+								</tr>
+							{/loop}
+
+						{/if}
+
+					{/loop}
+
+				</tbody>
+
+			</table>
+
+		</div>
+	</div>
+	</form>
+
+	{if $op=='zhuce'}
+	<div class="panel panel-default">
+		<div class="panel-heading">推广用户详细数据  |  总数:{$zhuce}</div>
+		<div class="panel-body table-responsive">
+
+		    <form action="" method="post" onsubmit="">
+
+			<table class="table table-hover">
+
+				<thead class="navbar-inner">
+
+					<tr>
+						<th style="width:3%;" class="row-first"></td>
+
+						<th style="width:10%;">昵称</th>
+
+						<th style="width:10%;">账户</th>
+
+						<th style="width:15%;">绑定微信</th>
+
+						<th style="width:20%;">推广员</th>
+
+						<th style="width:10%;">注册时间</th>
+
+					</tr>
+
+				</thead>
+				<tbody id="main">
+					{loop $zhuce_list $row}
+
+					<tr>
+						<td></td>
+
+					    <td>{$row['nicheng']}</td>
+
+					    <td>{$row['mobile2']}{if !empty($row['mobile_auth'])}<span style="color:red">(认证)</span>{/if}</td>
+
+						<td><img style="width:70px" src="{$row['avatar']}">{$row['nickname']}</td>
+
+						<td>{$row['username']} {if !empty($row['username2'])}<span style="color:#F1668D;font-weight:bold">[{$row['username2']}]</span>{/if}</td>
+
+						<td>{php echo date('Y年n月j日 G:i', $row['createtime']);}</td>
+
+					</tr>
+					{/loop}
+				</tbody>
+			</table>
+			{$pager}
+			</form>
+	    </div>
+
+	</div>
+	{/if}
+
+	{if $op=='cz'}
+	<div class="panel panel-default">
+		<div class="panel-heading">充值记录详细数据  |  总数:{$cz}</div>
+		<div class="panel-body table-responsive">
+
+		    <form action="" method="post" onsubmit="">
+
+			<table class="table table-hover">
+
+				<thead class="navbar-inner">
+
+					<tr>
+						<th style="width:5%;" class="row-first"></td>
+
+						<th style="width:10%;">昵称</th>
+
+						<th style="width:10%;">账户</th>
+
+						<th style="width:15%;">绑定微信</th>
+
+						<th style="width:10%;">充值金额</th>
+
+						<th style="width:20%;">推广人员</th>
+
+						<th style="width:10%;">充值时间</th>
+
+					</tr>
+
+				</thead>
+				<tbody id="main">
+					{loop $cz_list $row}
+
+					<tr>
+						<td>{$row['id']}</td>
+
+					    <td>{$row['nicheng']} {if !empty($row['rulename'])}<span style="color:#F1668D;font-weight:bold">[{$row['rulename']}]</span>{/if}</td>
+
+					    <td>{$row['mobile2']}{if !empty($row['mobile_auth'])}<span style="color:red">(认证)</span>{/if}</td>
+
+						<td><img style="width:70px" src="{$row['avatar']}">{$row['nickname']}</td>
+
+						<td>{$row['fee']} 元</td>
+
+						<td>{$row['username']} {if !empty($row['username2'])}<span style="color:#F1668D;font-weight:bold">[{$row['username2']}]</span>{/if}</td>
+
+						<td>{php echo date('Y年n月j日 G:i', $row['createtime']);}</td>
+					</tr>
+					{/loop}
+				</tbody>
+			</table>
+			{$pager}
+			</form>
+	    </div>
+
+	</div>
+	{/if}
+	{if $op=='fc'}
+	<div class="panel panel-default">
+		<div class="panel-heading">分成记录详细数据  |  总数:{$fc}</div>
+		<div class="panel-body table-responsive">
+
+		    <form action="" method="post" onsubmit="">
+
+			<table class="table table-hover">
+
+				<thead class="navbar-inner">
+
+					<tr>
+						<th style="width:5%;" class="row-first"></td>
+
+						<th style="width:10%;">昵称</th>
+
+						<th style="width:10%;">账户</th>
+
+						<th style="width:15%;">绑定微信</th>
+
+						<th style="width:10%;">分成金额</th>
+
+						<th style="width:20%;">推广人员</th>
+
+						<th style="width:10%;">充值时间</th>
+
+					</tr>
+
+				</thead>
+				<tbody id="main">
+					{loop $fc_list $row}
+
+					<tr>
+						<td>{$row['id']}</td>
+
+					    <td>{$row['nicheng']} {if !empty($row['rulename'])}<span style="color:#F1668D;font-weight:bold">[{$row['rulename']}]</span>{/if}</td>
+
+					    <td>{$row['mobile2']}{if !empty($row['mobile_auth'])}<span style="color:red">(认证)</span>{/if}</td>
+
+						<td><img style="width:70px" src="{$row['avatar']}">{$row['nickname']}</td>
+
+						<td>{$row['credit']} 元</td>
+
+						<td>{$row['username']} {if !empty($row['username2'])}<span style="color:#F1668D;font-weight:bold">[{$row['username2']}]</span>{/if}</td>
+
+						<td>{php echo date('Y年n月j日 G:i', $row['createtime']);}</td>
+					</tr>
+					{/loop}
+				</tbody>
+			</table>
+			{$pager}
+			</form>
+	    </div>
+
+	</div>
+	{/if}
+	{if $op=='shouxin'}
+	<div class="panel panel-default">
+		<div class="panel-heading">收入详细数据  |  总数:{$shouxin}</div>
+		<div class="panel-body table-responsive">
+
+		    <form action="" method="post" onsubmit="">
+
+			<table class="table table-hover">
+
+				<thead class="navbar-inner">
+
+					<tr>
+						<th style="width:5%;" class="row-first">ID</td>
+
+						<th style="width:20%;">昵称</th>
+
+						<th style="width:10%;">账户</th>
+
+						<th style="width:15%;">绑定微信</th>
+
+						<th style="width:10%;">收入金额</th>
+
+						<th style="width:10%;">提交时间</th>
+
+						<th style="width:10%;">支付时间</th>
+
+					</tr>
+
+				</thead>
+				<tbody id="main">
+					{loop $shouxin_list $row}
+
+					<tr>
+						<td>{$row['id']}</td>
+
+					    <td>{$row['nicheng']} {if !empty($row['rulename'])}<span style="color:#F1668D;font-weight:bold">[{$row['rulename']}]</span>{/if}</td>
+
+					    <td>{$row['mobile2']}{if !empty($row['mobile_auth'])}<span style="color:red">(认证)</span>{/if}</td>
+
+						<td><img style="width:70px" src="{$row['avatar']}">{$row['nickname']}</td>
+
+						<td>{$row['fee']} 元</td>
+
+						<td>{php echo date('Y年n月j日 G:i', $row['createtime']);}</td>
+
+						<td>{php echo date('Y年n月j日 G:i', $row['paytime']);}</td>
+					</tr>
+					{/loop}
+				</tbody>
+			</table>
+			{$pager}
+			</form>
+	    </div>
+
+	</div>
+	{/if}
+
+
+</div>
+{else}
+<div class="main">
+	<div class="panel panel-info">
+		<div class="panel-heading">筛选</div>
+
+		<div class="panel-body">
+
+			<form action="./index.php" method="get" class="form-horizontal" role="form">
+
+				<input type="hidden" name="c" value="site" />
+				<input type="hidden" name="a" value="entry" />
+	        	<input type="hidden" name="m" value="jy_ppp" />
+	        	<input type="hidden" name="do" value="tgstat" />
+	        	<input type="hidden" name="op" value="{$op}" />
+
+	        	<div class="form-group">
+					<label class="col-xs-12 col-sm-2 col-md-2 col-lg-1 control-label">推广员</label>
+					<div class="col-xs-12 col-sm-8 col-lg-9">
+						{php echo tpl_form_field_category_2level('tgid', $parent, $child,$_GPC['tgid']['parentid'],$_GPC['tgid']['childid']);}
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-xs-12 col-sm-2 col-md-2 col-lg-1 control-label">时间筛选</label>
+					<div class="col-xs-12 col-sm-8 col-lg-9">
+						{php echo tpl_form_field_daterange('time', $time);}
+					</div>
+				</div>
+
+				<div class="form-group">
+				 	<div class=" col-xs-12 col-sm-2 col-lg-2">
+
+						<button class="btn btn-default"><i class="fa fa-search"></i> 搜索</button>
+
+					</div>
+				</div>
+			</form>
+		</div>
+    </div>
+	<div class="panel panel-danger">
+		<div class="panel-heading">很遗憾，您并没有任何收入</div>
+    </div>
+</div>
+{/if}
+
+
+
+{template 'common/footer'}

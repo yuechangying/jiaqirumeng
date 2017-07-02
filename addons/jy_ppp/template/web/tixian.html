@@ -1,0 +1,140 @@
+{template 'common/header'}
+{template 'web/nav'}
+<ul class="nav nav-tabs">
+	<li {if $status == '0'}class="active"{/if}><a href="{php echo $this->createWebUrl('tixian', array('status' => '0'))}">未处理</a></li>
+	<li {if $status == '2'}class="active"{/if}><a href="{php echo $this->createWebUrl('tixian', array('status' => '2'))}">处理中</a></li>
+	<li {if $status == '1'}class="active"{/if}><a href="{php echo $this->createWebUrl('tixian', array('status' => '1'))}">已完成</a></li>	
+	<li {if $status == '3'}class="active"{/if}><a href="{php echo $this->createWebUrl('tixian', array('status' => '3'))}">转账失败</a></li>
+	<li {if $status == '4'}class="active"{/if}><a href="{php echo $this->createWebUrl('tixian', array('status' => '4'))}">拒绝转账</a></li>	
+</ul>
+
+	<div class="panel panel-default">
+
+		<div class="panel-heading">提现用户详细数据  |  总数:{$total}  </div>
+
+		<div class="panel-body table-responsive">
+
+		    <form action="" method="post" onsubmit="">
+
+			<table class="table table-hover">
+
+				<thead class="navbar-inner">
+
+					<tr>
+
+						<th style="width:30px;" class="row-first">选择</td>
+
+						<th style="width:80px;">推广员</th>
+
+						<th style="width:100px;">头像</th>
+
+						<th style="width:100px;">手机</th>
+
+						<th style="width:100px;">提现金额</th>
+
+						<th style="width:100px;">提现方式</th>
+
+						<th style="width:80px;">状态</th>
+
+						<th style="width:100px;">姓名</th>
+
+						<th style="width:100px;">账号</th>
+
+						<th style="width:120px;">提现时间</th>
+
+					</tr>
+
+				</thead>
+
+				<tbody id="main">
+
+				{php $i=1;}
+
+					{loop $member $row}
+
+					<tr>
+
+					    <td><input class="cbox" type="checkbox" name="select[]" value="{$row['id']}" /></td>
+
+					    <td style="white-space:normal;word-break:break-all"><a target="_blank" href="{php echo $this->createWebUrl('tuiguang',array('op'=>'edit','id'=>$row['id']))}"> {$row['username']} </a></td>
+
+						<td><img style="width:70px" src="{$_W['attach_url']}{$row['avatar']}"></td>
+
+						<td>{$row['mobile']}</td>
+
+						<td>{$row['fee']}</td>
+
+						<td>支付宝</td>
+
+						<td>{if $row['status']==0}未处理{/if}{if $row['status']==2}处理中{/if}{if $row['status']==1}<font color=red>已完成</font>{/if}</td>
+
+						<td style="white-space:normal;word-break:break-all">{$row['realname']}</td>
+
+						<td><div style="white-space:normal;word-break:break-all">{$row['alipay']}</div></td>
+
+						<td>{php echo date('m-d H:i:s', $row['createtime']);}</td>
+
+					</tr>
+
+					{php $i++;}
+
+					{/loop}
+
+					{if $status==0}
+						<tr>
+							<td></td>
+							<td colspan="9">
+								<input name="submit" type="submit" class="btn btn-primary" value="导出数据">
+								<input type="hidden" name="token" value="{$_W['token']}" />
+							</td>
+						</tr>
+					{/if}
+					{if $status==2}
+						<tr>
+							<td colspan="2">
+								<input name="submit4" type="submit" class="btn btn-danger" value="拒绝转账">
+								<input type="hidden" name="token" value="{$_W['token']}" />
+							</td>
+							<td colspan="2">
+								<input name="submit3" type="submit" class="btn btn-danger" value="转账失败">
+								<input type="hidden" name="token" value="{$_W['token']}" />
+							</td>
+							<td colspan="2">
+								<input name="submit2" type="submit" class="btn btn-info" value="转账成功">
+								<input type="hidden" name="token" value="{$_W['token']}" />
+							</td>
+
+							<td colspan="4">
+							</td>
+						</tr>
+					{/if}
+
+				</tbody>
+
+			</table>
+
+
+			</form>
+
+	    </div>
+
+	</div>
+
+	{$pager}
+
+</div>
+
+
+<script>
+
+$(function(){   
+
+    $(".check_all").click(function(){
+       var checked = $(this).get(0).checked;
+       $("input[type=checkbox]").attr("checked",checked);
+    });
+
+});
+</script>
+
+{template 'common/footer'}

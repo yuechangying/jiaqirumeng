@@ -1,0 +1,487 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="format-detection" content="telephone=no">
+    <title>{if !empty($sitem['aname'])}{$sitem['aname']}{else}有缘网{/if}</title>
+    <link href="../addons/jy_ppp/css/public_reset2.css" rel="stylesheet" type="text/css">
+    <link href="../addons/jy_ppp/css/css.css" rel="stylesheet" type="text/css">
+    <link href="../addons/jy_ppp/css/chat.css" rel="stylesheet" type="text/css">
+
+    <script type="text/javascript" src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <style type="text/css">
+      .dialogback{
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+        z-index: 1;
+        opacity:1;
+      }
+      .dialogbox{
+          position: fixed;
+          z-index: 2;
+          width: 80%;
+          margin-left: 10%;
+          top: 25%;
+
+      }
+      .dialogbody{
+            width: 100%;
+            min-height: 250px;
+            background: #fff;
+            position: relative;
+            background: url(../addons/jy_ppp/images/czbg.png) no-repeat;
+            background-size: cover;
+          border-radius: 8px;
+      }
+      .head-img{
+        width: 80%;
+        padding: 0 25px;
+        margin-top: -10px;
+      }
+      .listbox{
+          width: 100%;
+          padding: 15px;
+      }
+      .listbox .box{
+        width: 42%;
+        background: #fff;
+        text-align: center;
+        float: left;
+        margin-top:15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        position: relative;
+        background-color: #F5F5F5;
+      }
+      .listbox .box:first-child{
+          margin-right: 4%;
+      }
+      .tips{
+         height: 15px;
+         font-size: 13px;
+             color: #F70606;
+             margin-top: 3px;
+             padding-bottom: 10px;
+      }
+      .listbox .box p:first-child{
+          font-weight: 600;
+          margin-bottom: 5px;
+          margin-top: 10px;
+      }
+
+      .listbox .box p:nth-child(2){
+            color: #F70606;
+      }
+      .listbox .box.active{
+         border-color: red;
+         background-color: #FFFAF0;
+      }
+      .hg,.vip{
+        position: absolute;
+            left: -13px;
+            top: -10px;
+            width: 29px;
+      }
+
+      .btbbox{text-align: center;}
+      .btnbox-btn{
+            border: none;
+            margin-top: 15px;
+            padding: 9px 0;
+            width: 90%;
+            background: #55B945;
+            font-size: 15px;
+            color: #fff;
+            border-radius: 4px;
+            margin-bottom: 13px;
+      }
+    </style>
+</head>
+
+<body>
+<div class="wap_box">
+    {if empty($sitem['czdh_style'])}
+    <div style="width:100%;height:100%;background: rgba(0, 0, 0, 0.3);position: fixed;display:none" id="moban" onclick="moban()"></div>
+    {/if}
+    <div class="top">
+        <div class="left"><i class="le_trg"><img src="../addons/jy_ppp/images/back_ico.png"></i><a style="color:#555" onclick="javascript:history.go(-1)">返回</a></div>
+        <h2>{$detail['nicheng']}</h2>
+        <div class="right" onclick="location.href = '{php echo $this->createMobileUrl('index')}';"><span class="seach_sure"><img src="../addons/jy_ppp/images/home.png"></span></div>
+    </div>
+
+    <div class="blank50"></div>
+
+    <div class="user_info">
+        <div class="u_head">
+          {if !empty($detail['avatar'])}
+              <img src="{php echo tomedia($detail['avatar'])}"/>
+          {else}
+              {if $detail['sex']==1}
+              <img src="../addons/jy_ppp/images/boy.png"/>
+              {else}
+              <img src="../addons/jy_ppp/images/girl.png"/>
+              {/if}
+          {/if}
+        </div>
+        <ul>
+            <li><span>ID：</span>{$detail['id']}</li>
+            <li><span>昵称：</span>{$detail['nicheng']}</li>
+            <li><span>所在地：</span>{if !empty($moni_province) && $detail['type2']==3}
+          {$moni_province}
+        {else}
+          {if empty($sitem['user_addr'])}
+              {if !empty($detail['city'])}
+                  {$province[$detail['province']]}{$sub_array[$detail['province']][$detail['city']]}
+              {else}
+                  {$province[$detail['province']]}
+              {/if}
+          {else}
+              {if $sitem['user_addr']==2}
+                  {if !empty($detail['city'])}
+                      {$sub_array[$detail['province']][$detail['city']]}
+                  {else}
+                      {$province[$detail['province']]}
+                  {/if}
+              {else}
+                  {$province[$detail['province']]}
+              {/if}
+          {/if}
+        {/if} <span style="font-size:15px; padding-top:3px;position: relative;color: #999;margin-left: 10px;"><img style="margin-bottom: -1%;width: 5%;max-width: 25px;" src="../addons/jy_ppp/images/location2.png">{php echo $this->xuniaddress($detail['id'])}km以内</span>
+            </li>
+        </ul>
+        <div class="clear"></div>
+    </div>
+    <div class="xgw">
+        <ul>
+            <li class="xiangce" onclick="window.location.href='{php echo $this->createMobileUrl('userthumb',array('id'=>$detail['id']))}'"><i><img src="../addons/jy_ppp/images/tupian.png"></i>相册<b>{php echo count($thumb)}</b></li>
+            <li class="guanzhu" onclick="attentionFunc(this)"><i><img src="../addons/jy_ppp/images/focus.png" ></i>关注<b id="attentid">{php echo $this->rand_love($id)}</b></li>
+            <li class="qqwei" onclick="location.href = '#lxfs';"><i><img src="../addons/jy_ppp/images/chat.png"></i>QQ微信</li>
+        </ul>
+    </div>
+
+    <div class="ziliao_box">
+        <h3>基本资料</h3>
+        <ul>
+            <li><span>{$detail['nicheng']}</span>昵称</li>
+            <li><span>{if $detail['sex']==1}男{else}女{/if}</span>性别</li>
+            <li><span>{php $now=time();}{if !empty($detail['brith'])}{php $birthday=$detail['brith'];$month=0;if(date('m', $now)>date('m', $birthday))$month=1;if(date('m', $now)==date('m', $birthday))if(date('d', $now)>=date('d', $birthday))$month=1;$nianlin=date('Y', $now)-date('Y', $birthday)+$month;}{$nianlin}岁{/if}</span>年龄</li>
+            {if !empty($detail['height'])}
+            <li><span>{if !empty($detail['height'])}{$detail['height']}cm{/if}</span>身高</li>
+            {/if}
+            <li id="qq">
+                <span>{if !empty($detail['income'])}{$detail['income']}{else}保密{/if}</span>
+                月收入
+            </li>
+            <li id="lxfs">
+                <span>{if !empty($detail['marriage'])}{$detail['marriage']}{else}保密{/if}</span>
+                婚姻状态
+            </li>
+        </ul>
+    </div>
+
+    {if $sitem['youhuo_pay']  && empty($baoyue)}
+    <div class="ziliao_box">
+        <h3>联系方式</h3>
+        <ul>
+            <li><span onclick="showPayTips()">查看QQ</span>QQ</li>
+            <li><span onclick="showPayTips()">查看手机</span>手机</li>
+            <li><span onclick="showPayTips()">查看微信</span>微信号</li>
+        </ul>
+    </div>
+    {else}
+        {if $sitem['youhuo_pay']}
+            <div class="ziliao_box">
+                <h3>联系方式</h3>
+                <ul>
+                    {if !empty($detail['qq'])}
+                    <li><span >{$detail['qq']}</span>QQ</li>
+                    {/if}
+                    {if !empty($detail['mobile'])}
+                    <li><span >{$detail['mobile']}</span>手机</li>
+                    {/if}
+                    {if !empty($detail['wechat'])}
+                    <li><span >{$detail['wechat']}</span>微信号</li>
+                    {/if}
+                </ul>
+            </div>
+        {/if}
+    {/if}
+
+    <div class="ziliao_box">
+        <h3>详细资料</h3>
+        <ul>
+            <li>
+                <span>{if !empty($detail['education'])}{$detail['education']}{else}保密{/if}</span>
+                学历
+            </li>
+            <li>
+                <span>{if !empty($detail['job'])}{$detail['job']}{else}保密{/if}</span>
+                职业
+            </li>
+            {if !empty($detail['brith'])}
+            <li><span>{php echo date('Y-m-d',$detail['brith'])}</span>生日</li>
+            {/if}
+            <li>
+                <span>{if !empty($detail['weight'])}{$detail['weight']}斤{else}保密{/if}</span>
+                体重
+            </li>
+        </ul>
+    </div>
+
+    <div class="ziliao_box">
+        <h3>征友条件</h3>
+        <ul>
+            <li><span>{if $detail['age2']==0}不限{/if}{if $detail['age2']==1}18-25岁{/if}{if $detail['age2']==2}26-35岁{/if}{if $detail['age2']==3}36-45岁{/if}{if $detail['age2']==4}46-55岁{/if}{if $detail['age2']==5}55岁以上{/if}</span>年龄</li>
+            <li><span>{$province[$detail['province2']]}</span>居住地</li>
+            <li><span>{if $detail['height2']==0}不限{/if}{if $detail['height2']==1}160cm以下{/if}{if $detail['height2']==2}161-165cm{/if}{if $detail['height2']==3}166-170cm{/if}{if $detail['height2']==4}170以上{/if}</span>身高</li>
+            <li><span>{if $detail['education2']==0}不限{/if}{if $detail['education2']==1}高中,中专及以上{/if}{if $detail['education2']==2}大专及以上{/if}{if $detail['education2']==3}本科及以上{/if}</span>学历</li>
+            <li><span>{if $detail['income2']==0}不限{/if}{if $detail['income2']==1}2000元以上{/if}{if $detail['income2']==2}5000元以上{/if}{if $detail['income2']==3}10000元以上{/if}</span>月收入</li>
+        </ul>
+    </div>
+
+    <div class="footer">
+        <center>
+            <a href="{php echo $this->createMobileUrl('index')}">缘分</a>
+            <a href="{php echo $this->createMobileUrl('mail')}">聊天</a>
+            <a href="{php echo $this->createMobileUrl('luck')}">附近</a>
+            <a href="{php echo $this->createMobileUrl('geren')}">我</a>
+            {if !empty($sitem['copyright'])}
+            <br><a style="color:#999" {if !empty($sitem['copyrighturl'])}href="{$sitem['copyrighturl']}" target='_blank' {else}href="javascript:void(0);" {/if}>© {$sitem['copyright']}</a>
+            {/if}
+        </center>
+    </div>
+
+    <div class="dibu_zh">
+        {if $ltlx==1}
+        <a href="javascript:;" onclick="sayHello(this)">
+            <i><img src="../addons/jy_ppp/images/chat_ico2.png"></i>打招呼
+        </a>
+        {/if}
+        {if $ltlx==2}
+        <a href="javascript:;" onclick="chat(this)">
+            <i><img src="../addons/jy_ppp/images/chat_ico2.png"></i>写信
+        </a>
+        {/if}
+        {if $ltlx==3}
+        <a href="javascript:;" onclick="huifu(this)">
+            <i><img src="../addons/jy_ppp/images/chat_ico2.png"></i>索要联系方式
+        </a>
+        {/if}
+    </div>
+</div>
+{if $sitem['youhuo_pay']  && empty($baoyue)}
+        {if empty($sitem['czdh_style'])}
+        <div class="dialogbox" id="dialogbox" style="display:none">
+                <div class="dialogbody">
+                   <img src="../addons/jy_ppp/images/cz1.png" alt="" class="head-img">
+                   <div class="listbox">
+                          {if empty($baoyue_cate)}
+                              <div class="box active" data-price='100'>
+                                  <p class="date">一季度</p>
+                                  <p class="money">￥100</p>
+                                  <p class="tips">(返还100元话费)</p>
+                             </div>
+                             <div class="box " data-price='50'>
+                                  <p class="date">30天</p>
+                                  <p class="money">￥50</p>
+                                  <p class="tips"></p>
+                             </div>
+                          {else}
+                              {php $bi=1;}
+                              {loop $baoyue_cate $b}
+                              <div class="box {if $bi==1} active {/if}" data-price="{$b['fee']}">
+                                  <p class="date">{$b['baoyue']}天</p>
+                                  <p class="money">￥{$b['fee']}</p>
+                                  <p class="tips">{if !empty($b['huafei'])}(送{$b['huafei']}元话费){/if}</p>
+                             </div>
+                              {php $bi++;}
+                              {/loop}
+                          {/if}
+                   </div>
+                   <div class="btbbox">
+                       <button class='btnbox-btn'>微信安全支付</button>
+                   </div>
+                </div>
+        </div>
+        
+      {else}
+        <div class="go_vip" id="go_vip" style="display:none">
+            <h3><a hidefocus="#" onclick="$('.go_vip').hide()"><img src="../addons/jy_ppp/images/closed.png" style="background:none;background-color:#fff"></a>非VIP包月用户不能聊天
+            </h3>
+
+            <div class="vip_tip">开通包月服务可无限制聊天</div>
+            <ul>
+                {if empty($baoyue_cate)}
+                    <li>90天<span>¥100</span><input name="baoyue_pay" checked="true" type="radio" value="100"></li>
+                    <li>30天<span>¥50</span><input name="baoyue_pay" type="radio" value="50"></li>
+                {else}
+                    {php $bi=1;}
+                    {loop $baoyue_cate $b}
+                    <li>{$b['baoyue']}天<span>¥{$b['fee']}</span><input name="baoyue_pay" {if $bi==1} checked="true" {/if} type="radio" value="{$b['fee']}"></li>
+                    {php $bi++;}
+                    {/loop}
+                {/if}
+            </ul>
+            <div class="pay_btn">
+                <a class="other_pay" style="background-color:#3dca23; color:white;" href="#">微信安全支付</a>
+            </div>
+        </div>
+    {/if}
+{/if}
+
+<!--消息提示开始-->
+<div class="message_tip" style="display: none;">招呼已发出，请耐心等待Ta的回复</div>
+<!--消息提示结束-->
+
+<script type="text/javascript" language="JavaScript">
+
+    $(function ($) {
+        {if !empty($sitem['czdh_style'])}
+          $('.other_pay').click(function () {
+
+              var select_fee = $("input[name='baoyue_pay']:checked").val();
+              {if $weixin==1}
+                  window.location.href = "{php echo $this->createMobileUrl('pay',array('op'=>'baoyue'))}"+"&fee="+select_fee;
+              {else}
+                  window.location.href = "{php echo $this->createMobileUrl('pcpay',array('op'=>'baoyue'))}"+"&fee="+select_fee;
+              {/if}
+          });
+        {else}
+          $('.btnbox-btn').click(function () {
+              var select_fee = $(".active").data('price');
+              
+              {if $weixin==1}
+                  window.location.href = "{php echo $this->createMobileUrl('pay',array('op'=>'baoyue'))}"+"&fee="+select_fee;
+              {else}
+                  window.location.href = "{php echo $this->createMobileUrl('pcpay',array('op'=>'baoyue'))}"+"&fee="+select_fee;
+              {/if}
+          });
+        {/if}        
+
+        $("#click").bind('click',function(){
+               $(".dialogbox").show();
+               $(".dialogback").show();
+         })
+         $(".dialogback").bind('click',function(){
+               $(this).hide();
+                $(".dialogbox").hide();
+         })
+         $(".box").bind('click',function(){
+              if(!$(this).hasClass('active')){
+                  $(this).addClass('active').siblings().removeClass('active');
+              }
+              var price =$(this).attr('data-price');
+              $(".pirce").val(price);
+         })
+    });
+
+    var wait = 2;
+
+
+      function sayHello(obj){
+        $.ajax({url: "{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('userthumb',array('op'=>'zhaohu','id'=>$id)),2);}", data: {}, dataType: 'text', type: 'post', success: function (re) {
+            if (re == 1) {
+                $(obj).html('<i><img src="../addons/jy_ppp/images/chat_ico2.png"></i>已打招呼');
+                $('.message_tip').html('招呼已发出，请耐心等待Ta的回复');
+                $('.message_tip').toggle(500);
+                time();
+            }else if (re == 2) {
+                $(obj).html('<i><img src="../addons/jy_ppp/images/chat_ico2.png"></i>已打招呼');
+                $('.message_tip').html('你今天已经向Ta打过招呼了。');
+                $('.message_tip').toggle(500);
+                time();
+            } else {
+                alert("网络问题,请稍后重试");
+            }
+        }, error: function () {
+            alert("网络问题,请稍后重试");
+        }
+        });
+      }
+      function huifu(obj){
+          $.ajax({url: "{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('userthumb',array('op'=>'huifu','id'=>$id)),2);}", data: {}, dataType: 'text', type: 'post', success: function (re) {
+              if (re == 1) {
+                  //window.location.href="{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('cz',array('id'=>$id)),2)}";
+                  showPayTips();
+              }else if (re == 2) {
+                  window.location.href="{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('xhdoubi',array('id'=>$id)),2)}";
+              }
+              else if (re == 3) {
+                  window.location.href="{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('chat',array('id'=>$id)),2)}";
+              } else {
+                  alert("网络问题,请稍后重试");
+              }
+          }, error: function () {
+              alert("网络问题,请稍后重试");
+          }
+          });
+      }
+      function chat(obj){
+          window.location.href="{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('chat',array('id'=>$id)),2)}";
+      }
+
+    function showPayTips() {
+        {if !empty($sitem['czdh_style'])}
+          $('.go_vip').show();
+        {else}
+          $('#dialogbox').show();
+          $('#moban').show();
+        {/if}
+    }
+
+    function moban()
+    {
+        $('#dialogbox').hide();
+        $('#moban').hide();
+    }
+    function attentionFunc(obj){
+        var attentid=parseInt($("#attentid").html());
+        $.ajax({url: "{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('detail',array('op'=>'attent','id'=>$id)),2);}", data: {}, dataType: 'text', type: 'post', success: function (re) {
+              if (re == 1) {
+                    $('.message_tip').html('你关注了Ta');
+                    $('.message_tip').toggle(500);
+                    time();
+                    attentid+=1;
+                    $("#attentid").html(attentid);
+              }else if (re == 2) {
+                    $('.message_tip').html('你取消了对Ta的关注');
+                    $('.message_tip').toggle(500);
+                    time();
+                    attentid-=1;
+                    $("#attentid").html(attentid);
+              } else {
+                  alert("删除失败");
+              }
+          }, error: function () {
+              alert("网络问题,请稍后重试");
+          }
+          });
+      }
+
+    //发信
+    function showDialogue(to_uid, avatar, nickname, kf) {
+        window.location.href = '/Index/letterShow?to_uid=' + to_uid + '&avatar=' + avatar + '&nickname=' + nickname + '&kf=' + kf;
+    }
+
+
+    //60秒倒计时
+    function time() {
+        if (wait == 0) {
+            $('.message_tip').toggle(500);
+            wait = 2;
+        } else {
+            wait--;
+            setTimeout(function () {
+                time()
+            }, 1000)
+        }
+    }
+</script>
+
+
+</body></html>

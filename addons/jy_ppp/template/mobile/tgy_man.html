@@ -1,0 +1,208 @@
+<!Doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<title>{if !empty($sitem['aname'])}{$sitem['aname']}{else}有缘网{/if}</title>
+<link rel="stylesheet" href="../addons/jy_ppp/css/common2.css">
+<link rel="stylesheet" href="../addons/jy_ppp/css/notice.css">
+<style>
+.conDiv{width: 100%;margin: 0 auto;max-width: 640px;background-color: #fff}
+.conLeft{padding: 10px}
+.leftDiv{width: 75%}
+.leftDiv>img{width: 30px;height: 30px;border-radius: 3px}
+.leftDiv>div{margin:5px 0}
+.rightDiv{width: 23%;margin-top: 20px}
+.rightDiv>a{padding: 5px 10px;border: 1px solid #f55a8e;color:#f55a8e;border-radius: 5px}
+.tipDiv{width: 100%;padding: 10px 0;background-color: #f8f6f7}
+.tipDiv>a{width: 49%;display: inline-block;color: #000}
+.tipDiv>a:first-child{border-right:1px solid #f55a8e}
+.addUser{position: fixed;bottom: 60px;width: 100%;text-align: center;max-width: 640px}
+.addUser>a{border: 1px solid #f55a8e;padding: 5px 15px;color: #fff;background-color: #f55a8e;border-radius: 15px}
+@media screen and (max-width: 320px){
+	.leftDiv>div{width: 80%}
+}
+@media screen and (min-width: 321px){
+	.leftDiv>div{width: 85%}
+}
+@media screen and (min-width: 500px){
+	.leftDiv>div{width: 90%}
+	.leftDiv{padding-left: 10px}
+}
+.surebtn{padding: 10px 0 10px 0}
+.surebtn>span{border: 1px solid #a3a3a3;padding: 5px 15px;border-radius: 3px;color: #a3a3a3;font-size: 12px}
+.surebtn>img{border-radius: 50%;height: 80px;width: 80px}
+.dateDiv{margin-bottom: 10px}
+.conDiv2{width: 90%;max-width: 500px;margin: 20px auto 10px auto}
+.conDiv2 span{vertical-align: middle;line-height: 30px;margin-left: 10px}
+.qiangLine{height: 30px;width: 8px;background-color: #f55a8e;float: left}
+.date{width: 70%;margin: 10px auto;padding: 5px;border:1px solid #d7d5d6;border-radius: 5px;max-width: 300px;overflow: hidden;cursor: pointer;color:#a3a3a3}
+.date>span{width: 85%;display: inline-block;height: 20px}
+.date>img{float: right;width: 20px;vertical-align:top}
+.timex{width: 70%;margin: 10px auto;max-width: 320px;color:#a3a3a3}
+.moreyh{margin-top: 20px;width: 100%;text-align: center;max-width: 640px}
+.moreyh>a{border: 1px solid #f55a8e;padding: 5px 15px;color: #fff;background-color: #f55a8e;border-radius: 15px}
+.selectDiv{width: 90%;margin: 0 auto}
+.selectDiv>select{background-color:transparent;-webkit-appearance: none;border:none;font-size: 16px;outline: none}
+.selectDiv>img{width: 17px;vertical-align: top;margin-top: 5px}
+.selectDiv{width: 90%;margin: 0 auto}
+.selectDiv>select{background-color:transparent;-webkit-appearance: none;border:none;font-size: 16px;outline: none}
+.selectDiv>img{width: 17px;vertical-align: top;margin-top: 5px}
+.arrow{
+    display: inline-block;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    height: 6px;
+    width: 6px;
+    border-width: 2px 2px 0 0;
+    border-color: #c8c8cd;
+    border-style: solid;
+    position: relative;
+    top: -30px;
+    margin-right: 1em;
+}
+</style>
+</head>
+
+<body>
+<div class="bodybox">
+    <div class="selectedDiv">
+        	<a href="{php echo $this->createMobileUrl('tgycenter')}" class="rBor black"><img style="width:22px" src="../addons/jy_ppp/images/main.png"><span>主页</span></a>
+	        <a href="{php echo $this->createMobileUrl('tgy_user')}" class="rBor black"><img src="../addons/jy_ppp/images/user.png"><span>用户</span></a>
+	        <a href="{php echo $this->createMobileUrl('tgy_msg')}" class="rBor black"><img src="../addons/jy_ppp/images/msg.png"><span>消息</span></a>
+	        <a href="{php echo $this->createMobileUrl('tgy_man')}" class="mainColor"><img src="../addons/jy_ppp/images/manager.png"><span>管理</span></a>
+    </div>
+
+    <div class="head mainBg">
+        <!-- <a href="javascript:history.go(-1)" class="bn pull-left"><img class="icon" src="../addons/jy_ppp/images/back.png"></a> -->
+        <div class="title">管理中心</div>
+        <!-- <a href="#" class="bn pull-right"><img class="icon" src="../addons/jy_ppp/images/ren.png"/></a> -->
+    </div>
+	<div class="topZhan"></div>
+
+    <div class="surebtn txtAC">{if !empty($member['avatar'])}<img src="{php echo $member['avatar']}">{else}<img src="../addons/jy_ppp/images/boy.png">{/if}</div>
+    <div class="surebtn txtAC"><div>{$member['username']}<br>{$member['mobile']}</div></div>
+
+    <div class="conDiv" onclick="window.location.href='{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('tgy_add',array('tgyid'=>$member['id'])),2)}'">
+        <div class="ovfl conLeft">
+            <div class="floL leftDiv">
+                <img class="floL" src="../addons/jy_ppp/images/tgy_icon1.png"/>
+
+                <div class="floR nowrap ">个人信息</div>
+            </div>
+        </div>
+        <div class="floR arrow "></div>
+        <div class="zhanCol"></div>
+    </div>
+
+    <div class="conDiv" onclick="window.location.href='{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('tgy_tj'),2)}'">
+        <div class="ovfl conLeft">
+            <div class="floL leftDiv">
+                <img class="floL" src="../addons/jy_ppp/images/tgy_icon2.png"/>
+
+                <div class="floR nowrap ">我要推广</div>
+            </div>
+        </div>
+        <div class="floR arrow "></div>
+        <div class="zhanCol"></div>
+    </div>
+
+    <div class="conDiv" onclick="window.location.href='{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('tgy_tx'),2)}'">
+        <div class="ovfl conLeft">
+            <div class="floL leftDiv">
+                <img class="floL" src="../addons/jy_ppp/images/tgy_icon3.png"/>
+
+                <div class="floR nowrap ">我要提现</div>
+            </div>
+        </div>
+        <div class="floR arrow "></div>
+        <div class="zhanCol"></div>
+    </div>
+
+    <div class="conDiv" onclick="window.location.href='{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('tgy_txrecord'),2)}'">
+        <div class="ovfl conLeft">
+            <div class="floL leftDiv">
+                <img class="floL" src="../addons/jy_ppp/images/tgy_icon4.png"/>
+
+                <div class="floR nowrap ">提现记录</div>
+            </div>
+        </div>
+        <div class="floR arrow "></div>
+        <div class="zhanCol"></div>
+    </div>
+
+    <div class="conDiv" onclick="window.location.href='{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('tgy_stat'),2)}'">
+        <div class="ovfl conLeft">
+            <div class="floL leftDiv">
+                <img class="floL" style="width:28px;height:28px" src="../addons/jy_ppp/images/tgy_icon5.png"/>
+
+                <div class="floR nowrap ">报表管理</div>
+            </div>
+        </div>
+        <div class="floR arrow "></div>
+        <div class="zhanCol"></div>
+    </div>
+
+    <div class="conDiv" onclick="window.location.href='{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('tgy_rule'),2)}'">
+        <div class="ovfl conLeft">
+            <div class="floL leftDiv">
+                <img class="floL" src="../addons/jy_ppp/images/tgy_icon6.png"/>
+
+                <div class="floR nowrap ">新手指南</div>
+            </div>
+        </div>
+        <div class="floR arrow "></div>
+        <div class="zhanCol"></div>
+    </div>
+
+    <div class="conDiv btn_logout1" >
+        <div class="ovfl conLeft">
+            <div class="floL leftDiv">
+                <img class="floL" style="width:28px;height:28px" src="../addons/jy_ppp/images/tgy_icon7.png"/>
+
+                <div class="floR nowrap ">退出登录</div>
+            </div>
+        </div>
+        <div class="floR arrow "></div>
+        <div class="zhanCol"></div>
+    </div>
+
+	<!-- end -->
+    <div class="zhanwei"></div>
+    
+</div>
+<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+<script src="../addons/jy_ppp/js/notice.js"></script>
+<script type="text/javascript">
+    $(".btn_logout1").bind("click",function(){
+        $.post("{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('tgy_logout'),2)}",function(data){
+            if(data==1)
+            {
+                showNoticeFunc("您已成功退出账号");
+                  setTimeout(function(){
+                        location.href = "{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('tgy_login'),2)}";
+                    }, 1200);
+            }else if (data==2)
+            {
+                showNoticeFunc("您已退出账号");
+                  setTimeout(function(){
+                        location.href = "{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('tgy_login'),2)}";
+                    }, 1200);
+            }
+            else if (data==3)
+            {
+                showNoticeFunc("请先设置账户信息，以便下次再次登陆");
+            }
+            else
+            {
+                showNoticeFunc("网络出错，请重试!");
+            }
+        });
+    });
+</script>
+</body>
+{template 'inc/footer'}
+</html>

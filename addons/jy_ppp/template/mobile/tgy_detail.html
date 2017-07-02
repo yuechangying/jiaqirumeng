@@ -1,0 +1,129 @@
+<!Doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<title>{if !empty($sitem['aname'])}{$sitem['aname']}{else}有缘网{/if}</title>
+<link rel="stylesheet" href="../addons/jy_ppp/css/common2.css">
+<link rel="stylesheet" href="../addons/jy_ppp/css/notice.css">
+<style>
+.test_box {
+    margin: 0;padding: 0
+}
+ol, ul {
+    list-style: none;
+}
+.test_box>li {
+    margin: 5px 20%;
+    width: 60%;
+    height: 30px;
+    line-height: 30px;
+    text-align: left;
+
+}
+.test_box>li>input {
+    width: 100%;
+    height: 28px;
+    line-height: 28px;
+    margin: 0;
+    border: none;
+    background: #fff;
+    color: #999;
+    overflow: hidden;
+    font-size: 14px;
+    outline: none;
+    padding:5px;
+}
+.register {
+    background: #e93593;
+    color: #fff;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+}
+.see_more {
+    line-height: 44px;
+    font-size: 16px;
+    display: block;
+    height: 42px;
+    line-height: 42px;
+    text-align: center;
+    margin: 30px 20%;
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    font-weight: bold;
+    width: 60%;
+}
+.age{width: 100%;height: 35px;border:none;outline: none}
+</style>
+</head>
+<body>
+    <div class="bodybox">
+        <div class="selectedDiv">
+            <a href="{php echo $this->createMobileUrl('tgycenter')}" class="rBor black"><img style="width:22px" src="../addons/jy_ppp/images/main.png"><span>主页</span></a>
+            <a href="{php echo $this->createMobileUrl('tgy_user')}" class="rBor mainColor"><img src="../addons/jy_ppp/images/user.png"><span>用户</span></a>
+            <a href="{php echo $this->createMobileUrl('tgy_msg')}" class="rBor black"><img src="../addons/jy_ppp/images/msg.png"><span>消息</span></a>
+            <a href="{php echo $this->createMobileUrl('tgy_man')}" class="black"><img src="../addons/jy_ppp/images/manager.png"><span>管理</span></a>
+        </div>
+        <div class="head mainBg">
+            <!-- <a href="javascript:history.go(-1)" class="bn pull-left"><img class="icon" src="../addons/jy_ppp/images/back.png"></a> -->
+            <div class="title">[{$detail['username']}]详情</div>
+            <!-- <a href="#" class="bn pull-right"><img class="icon" src="../addons/jy_ppp/images/ren.png"/></a> -->
+        </div>
+        <div class="topZhan"></div>
+        {if !empty($detail['avatar'])}
+            <div class="surebtn txtAC"><img src="{php echo tomedia($detail['avatar'])}" style="height:90px;border-radius:50%;margin-top:30px"></div>
+            <div class="surebtn txtAC">{$detail['nickname']}</div>
+            <div style="height:20px"></div>
+        {else}
+            <div class="surebtn txtAC" id="code"><img id="getImg"  style="height:90px;margin-top:30px"></div>
+            <div class="surebtn txtAC" style="font-size:13px;margin-top:10px">扫描上方二维码进行绑定</div>
+            <div style="height:20px"></div>
+        {/if}
+        
+        <ul class="test_box">
+            <li>
+                <span>姓名 ：{$detail['username']}</span>
+            </li>
+            <li>
+                <span>手机 ：{$detail['mobile']}</span>
+            </li>
+            <li>
+                <span>邮箱 ：{if !empty($detail['mail'])}{$detail['mail']}{else}未填写{/if}</span>
+            </li>
+            <li>
+                <span>QQ ：{if !empty($detail['QQ'])}{$detail['QQ']}{else}未填写{/if}</span>
+            </li>
+            <li>
+                <span>微信号 ：{if !empty($detail['wechat'])}{$detail['wechat']}{else}未填写{/if}</span>
+            </li>
+            <li>
+                <span>真实姓名 ：{if !empty($detail['realname'])}{$detail['realname']}{else}未填写{/if}</span>
+            </li>
+            <li>
+                <span>支付宝 ：{if !empty($detail['alipay'])}{$detail['alipay']}{else}未填写{/if}</span>
+            </li>
+        </ul>
+
+        <span class="see_more register" onclick="window.location.href='{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('tgy_add',array('tgyid'=>$detail['id'])),2)}'">立即编辑</span>
+    </div>
+
+<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+<script src="../addons/jy_ppp/js/notice.js"></script>
+<script type="text/javascript" src="../addons/jy_ppp/js/jquery.qrcode.js"></script>
+<script>
+    window.onload = function(){
+        jQuery(function(){
+            jQuery('#code').qrcode("{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('tgybind'),2).'&id='.$detail['id']}");
+            var can = document.getElementsByTagName("canvas")[0];
+            var getImage = can.toDataURL("images/jpg");
+            can.style.display = "none";
+            var getImg = document.getElementById("getImg");
+            getImg.src = getImage;
+        })
+    }
+</script>
+{template 'inc/footer'}
+</body>
+</html>

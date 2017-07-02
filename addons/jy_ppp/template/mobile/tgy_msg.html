@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<title>{if !empty($sitem['aname'])}{$sitem['aname']}{else}有缘网{/if}</title>
+<link rel="stylesheet" href="../addons/jy_ppp/css/common2.css">
+<style>
+
+.selBtn{margin: 10px auto;display: inline-block;border:1px solid #f55a8e;border-radius: 15px}
+.selBtn>a>span{padding:5px 10px;display:block}
+.con{width: 85%;margin: 10px auto;border-radius: 5px;overflow: hidden;padding: 10px;background-color: #fff}
+.con>div{width: 90%;float: right}
+.con>div>div{padding: 5px 0}
+.times{color: #828282;margin-right: 10px}
+.read{padding: 4px 10px;border-radius: 15px}
+.selectDiv{width: 90%;margin: 0 auto}
+.selectDiv>select{background-color:transparent;-webkit-appearance: none;border:none;font-size: 16px;outline: none}
+.selectDiv>img{width: 17px;vertical-align: top;margin-top: 5px}
+@media screen and (max-width: 320px){
+    .con>div{width: 90%}
+}
+@media screen and (min-width: 321px){
+    .con>div{width: 90%}
+}
+@media screen and (min-width: 500px){
+    .con>div{width: 95%}
+}
+.desc{display:none;width:95%;margin-right:2.5%;}
+</style>
+</head>
+<body>
+<div class="bodybox">
+    <div class="selectedDiv">
+        <a href="{php echo $this->createMobileUrl('tgycenter')}" class="rBor black"><img style="width:22px" src="../addons/jy_ppp/images/main.png"><span>主页</span></a>
+            <a href="{php echo $this->createMobileUrl('tgy_user')}" class="rBor black"><img src="../addons/jy_ppp/images/user.png"><span>用户</span></a>
+            <a href="{php echo $this->createMobileUrl('tgy_msg')}" class="rBor mainColor"><img src="../addons/jy_ppp/images/msg.png"><span>消息</span></a>
+            <a href="{php echo $this->createMobileUrl('tgy_man')}" class="black"><img src="../addons/jy_ppp/images/manager.png"><span>管理</span></a>
+    </div>
+
+    <div class="head mainBg">
+<!--         <a href="javascript:history.go(-1)" class="bn pull-left"><img class="icon" src="../addons/jy_ppp/images/back.png"></a> -->
+        <div class="title">推广员消息</div>
+<!--         <a href="#" class="bn pull-right"><img class="icon" src="../addons/jy_ppp/images/ren.png"/></a> -->
+    </div>
+    <div class="topZhan"></div>
+
+    <div class="txtAC">
+        <span class="selBtn ovfl">
+            <a href="{php echo $this->createMobileUrl('tgy_msg')}" class="topbtn">
+                {if $_GPC['msg']!='done'}
+                <span class="mainBg white borLTB mainBor floL ">
+                {else}
+                <span class="mainColor borRTB mainBor floL ">
+                {/if}
+                未读消息</span>
+            </a>
+            <a href="{php echo $this->createMobileUrl('tgy_msg',array('msg'=>'done'))}" class="topbtn">
+                {if $_GPC['msg']!='done'}
+                <span class="mainColor borRTB mainBor floL ">
+                {else}
+                <span class="mainBg white borLTB mainBor floL ">
+                {/if}
+                已读消息</span>
+            </a>
+        </span>
+    </div>
+
+    <div class="con-con">
+        <!-- begin -->
+        {php $now=time();}
+        {loop $msg $l}
+
+        
+        <div class="con" data-open="0" data-id="{$l['id']}">
+            <div>
+                <div>{$l['title']}<span class="times font13 floR">{php echo date("m-d G:i",$l['createtime'])}</span></div>
+            </div>
+            <div><div class="desc" >{php echo htmlspecialchars_decode($l['content']);}</div></div>
+        </div>
+        {/loop}
+        <!-- end -->
+        <div style="height: 40px"></div>
+    </div>
+
+</div>
+
+<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+<script>
+    $('.con').bind('click',function(){
+        var self = this;
+        if($(self).data("open") == "0"){
+            var id=$(self).data("id");
+            $.post("{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('tgy_msg',array('op'=>'yuedu')),2)}"+"&id="+id,function(data){
+                if (data == 1) {
+                    $(self).data("open","1");
+                }
+                else
+                {
+                    alert(data);
+                }
+            });
+            
+        }
+        $(self).find('.desc').slideToggle();
+    })
+</script>
+{template 'inc/footer'}
+</body>
+</html>

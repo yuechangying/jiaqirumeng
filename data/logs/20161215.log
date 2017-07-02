@@ -1,0 +1,362 @@
+2016-12-15 17:49:36 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_b1412554cddd]]></ToUserName>
+<FromUserName><![CDATA[o8cSQwGR4ZP_WVDr_cri6fTFvZPg]]></FromUserName>
+<CreateTime>1481795377</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.apwei.cn/app/index.php?i=1&c=entry&eid=1]]></EventKey>
+<MenuId>414286781</MenuId>
+</xml>
+
+2016-12-15 17:49:37 params :
+------------
+String:
+array (
+  'message' => 
+  array (
+    'tousername' => 'gh_b1412554cddd',
+    'fromusername' => 'o8cSQwGR4ZP_WVDr_cri6fTFvZPg',
+    'createtime' => '1481795377',
+    'msgtype' => 'event',
+    'event' => 'VIEW',
+    'eventkey' => 'http://www.apwei.cn/app/index.php?i=1&c=entry&eid=1',
+    'menuid' => '414286781',
+    'from' => 'o8cSQwGR4ZP_WVDr_cri6fTFvZPg',
+    'to' => 'gh_b1412554cddd',
+    'time' => '1481795377',
+    'type' => 'text',
+    'content' => '关注',
+    'redirection' => true,
+    'source' => 'default',
+    'original' => 'http://www.apwei.cn/app/index.php?i=1&c=entry&eid=1',
+  ),
+  'module' => 'news',
+  'rule' => '12',
+  'priority' => '0',
+  'keyword' => 
+  array (
+    'id' => '23',
+    'rid' => '12',
+    'uniacid' => '1',
+    'module' => 'news',
+    'content' => '关注',
+    'type' => '1',
+    'displayorder' => '0',
+    'status' => '1',
+  ),
+)
+
+2016-12-15 17:49:37 response :
+------------
+Array:
+FromUserName : gh_b1412554cddd ;
+ToUserName : o8cSQwGR4ZP_WVDr_cri6fTFvZPg ;
+MsgType : news ;
+ArticleCount : 6 ;
+Articles : Array ;
+
+2016-12-15 17:50:12 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_b1412554cddd]]></ToUserName>
+<FromUserName><![CDATA[o8cSQwGR4ZP_WVDr_cri6fTFvZPg]]></FromUserName>
+<CreateTime>1481795412</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.apwei.cn/app/index.php?i=1&c=entry&eid=5]]></EventKey>
+<MenuId>414286781</MenuId>
+</xml>
+
+2016-12-15 17:50:12 params :
+------------
+String:
+array (
+  'message' => 
+  array (
+    'tousername' => 'gh_b1412554cddd',
+    'fromusername' => 'o8cSQwGR4ZP_WVDr_cri6fTFvZPg',
+    'createtime' => '1481795412',
+    'msgtype' => 'event',
+    'event' => 'VIEW',
+    'eventkey' => 'http://www.apwei.cn/app/index.php?i=1&c=entry&eid=5',
+    'menuid' => '414286781',
+    'from' => 'o8cSQwGR4ZP_WVDr_cri6fTFvZPg',
+    'to' => 'gh_b1412554cddd',
+    'time' => '1481795412',
+    'type' => 'text',
+    'content' => '关注',
+    'redirection' => true,
+    'source' => 'default',
+    'original' => 'http://www.apwei.cn/app/index.php?i=1&c=entry&eid=5',
+  ),
+  'module' => 'news',
+  'rule' => '12',
+  'priority' => '0',
+  'keyword' => 
+  array (
+    'id' => '23',
+    'rid' => '12',
+    'uniacid' => '1',
+    'module' => 'news',
+    'content' => '关注',
+    'type' => '1',
+    'displayorder' => '0',
+    'status' => '1',
+  ),
+)
+
+2016-12-15 17:50:12 response :
+------------
+Array:
+FromUserName : gh_b1412554cddd ;
+ToUserName : o8cSQwGR4ZP_WVDr_cri6fTFvZPg ;
+MsgType : news ;
+ArticleCount : 6 ;
+Articles : Array ;
+
+2016-12-15 17:50:16 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_b1412554cddd]]></ToUserName>
+<FromUserName><![CDATA[o8cSQwGR4ZP_WVDr_cri6fTFvZPg]]></FromUserName>
+<CreateTime>1481795416</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.apwei.cn/app/index.php?i=1&c=entry&eid=7]]></EventKey>
+<MenuId>414286781</MenuId>
+</xml>
+
+2016-12-15 17:50:16 params :
+------------
+String:
+array (
+  'message' => 
+  array (
+    'tousername' => 'gh_b1412554cddd',
+    'fromusername' => 'o8cSQwGR4ZP_WVDr_cri6fTFvZPg',
+    'createtime' => '1481795416',
+    'msgtype' => 'event',
+    'event' => 'VIEW',
+    'eventkey' => 'http://www.apwei.cn/app/index.php?i=1&c=entry&eid=7',
+    'menuid' => '414286781',
+    'from' => 'o8cSQwGR4ZP_WVDr_cri6fTFvZPg',
+    'to' => 'gh_b1412554cddd',
+    'time' => '1481795416',
+    'type' => 'text',
+    'content' => '关注',
+    'redirection' => true,
+    'source' => 'default',
+    'original' => 'http://www.apwei.cn/app/index.php?i=1&c=entry&eid=7',
+  ),
+  'module' => 'news',
+  'rule' => '12',
+  'priority' => '0',
+  'keyword' => 
+  array (
+    'id' => '23',
+    'rid' => '12',
+    'uniacid' => '1',
+    'module' => 'news',
+    'content' => '关注',
+    'type' => '1',
+    'displayorder' => '0',
+    'status' => '1',
+  ),
+)
+
+2016-12-15 17:50:16 response :
+------------
+Array:
+FromUserName : gh_b1412554cddd ;
+ToUserName : o8cSQwGR4ZP_WVDr_cri6fTFvZPg ;
+MsgType : news ;
+ArticleCount : 6 ;
+Articles : Array ;
+
+2016-12-15 17:50:21 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_b1412554cddd]]></ToUserName>
+<FromUserName><![CDATA[o8cSQwGR4ZP_WVDr_cri6fTFvZPg]]></FromUserName>
+<CreateTime>1481795421</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.apwei.cn/app/index.php?i=1&c=entry&eid=8]]></EventKey>
+<MenuId>414286781</MenuId>
+</xml>
+
+2016-12-15 17:50:21 params :
+------------
+String:
+array (
+  'message' => 
+  array (
+    'tousername' => 'gh_b1412554cddd',
+    'fromusername' => 'o8cSQwGR4ZP_WVDr_cri6fTFvZPg',
+    'createtime' => '1481795421',
+    'msgtype' => 'event',
+    'event' => 'VIEW',
+    'eventkey' => 'http://www.apwei.cn/app/index.php?i=1&c=entry&eid=8',
+    'menuid' => '414286781',
+    'from' => 'o8cSQwGR4ZP_WVDr_cri6fTFvZPg',
+    'to' => 'gh_b1412554cddd',
+    'time' => '1481795421',
+    'type' => 'text',
+    'content' => '关注',
+    'redirection' => true,
+    'source' => 'default',
+    'original' => 'http://www.apwei.cn/app/index.php?i=1&c=entry&eid=8',
+  ),
+  'module' => 'news',
+  'rule' => '12',
+  'priority' => '0',
+  'keyword' => 
+  array (
+    'id' => '23',
+    'rid' => '12',
+    'uniacid' => '1',
+    'module' => 'news',
+    'content' => '关注',
+    'type' => '1',
+    'displayorder' => '0',
+    'status' => '1',
+  ),
+)
+
+2016-12-15 17:50:21 response :
+------------
+Array:
+FromUserName : gh_b1412554cddd ;
+ToUserName : o8cSQwGR4ZP_WVDr_cri6fTFvZPg ;
+MsgType : news ;
+ArticleCount : 6 ;
+Articles : Array ;
+
+2016-12-15 17:50:52 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_b1412554cddd]]></ToUserName>
+<FromUserName><![CDATA[o8cSQwGR4ZP_WVDr_cri6fTFvZPg]]></FromUserName>
+<CreateTime>1481795453</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[unsubscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+
+2016-12-15 17:51:01 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_b1412554cddd]]></ToUserName>
+<FromUserName><![CDATA[o8cSQwGR4ZP_WVDr_cri6fTFvZPg]]></FromUserName>
+<CreateTime>1481795461</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[subscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+
+2016-12-15 17:51:01 params :
+------------
+String:
+array (
+  'message' => 
+  array (
+    'tousername' => 'gh_b1412554cddd',
+    'fromusername' => 'o8cSQwGR4ZP_WVDr_cri6fTFvZPg',
+    'createtime' => '1481795461',
+    'msgtype' => 'event',
+    'event' => 'subscribe',
+    'eventkey' => '',
+    'from' => 'o8cSQwGR4ZP_WVDr_cri6fTFvZPg',
+    'to' => 'gh_b1412554cddd',
+    'time' => '1481795461',
+    'type' => 'text',
+    'redirection' => true,
+    'source' => 'subscribe',
+    'content' => '关注',
+  ),
+  'module' => 'news',
+  'rule' => '12',
+  'priority' => '0',
+  'keyword' => 
+  array (
+    'id' => '23',
+    'rid' => '12',
+    'uniacid' => '1',
+    'module' => 'news',
+    'content' => '关注',
+    'type' => '1',
+    'displayorder' => '0',
+    'status' => '1',
+  ),
+)
+
+2016-12-15 17:51:01 response :
+------------
+Array:
+FromUserName : gh_b1412554cddd ;
+ToUserName : o8cSQwGR4ZP_WVDr_cri6fTFvZPg ;
+MsgType : news ;
+ArticleCount : 6 ;
+Articles : Array ;
+
+2016-12-15 18:06:46 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_b1412554cddd]]></ToUserName>
+<FromUserName><![CDATA[o8cSQwGR4ZP_WVDr_cri6fTFvZPg]]></FromUserName>
+<CreateTime>1481796406</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.apwei.cn/app/index.php?i=1&c=entry&eid=2]]></EventKey>
+<MenuId>414286781</MenuId>
+</xml>
+
+2016-12-15 18:06:46 params :
+------------
+String:
+array (
+  'message' => 
+  array (
+    'tousername' => 'gh_b1412554cddd',
+    'fromusername' => 'o8cSQwGR4ZP_WVDr_cri6fTFvZPg',
+    'createtime' => '1481796406',
+    'msgtype' => 'event',
+    'event' => 'VIEW',
+    'eventkey' => 'http://www.apwei.cn/app/index.php?i=1&c=entry&eid=2',
+    'menuid' => '414286781',
+    'from' => 'o8cSQwGR4ZP_WVDr_cri6fTFvZPg',
+    'to' => 'gh_b1412554cddd',
+    'time' => '1481796406',
+    'type' => 'text',
+    'content' => '关注',
+    'redirection' => true,
+    'source' => 'default',
+    'original' => 'http://www.apwei.cn/app/index.php?i=1&c=entry&eid=2',
+  ),
+  'module' => 'news',
+  'rule' => '12',
+  'priority' => '0',
+  'keyword' => 
+  array (
+    'id' => '23',
+    'rid' => '12',
+    'uniacid' => '1',
+    'module' => 'news',
+    'content' => '关注',
+    'type' => '1',
+    'displayorder' => '0',
+    'status' => '1',
+  ),
+)
+
+2016-12-15 18:06:46 response :
+------------
+Array:
+FromUserName : gh_b1412554cddd ;
+ToUserName : o8cSQwGR4ZP_WVDr_cri6fTFvZPg ;
+MsgType : news ;
+ArticleCount : 6 ;
+Articles : Array ;
+

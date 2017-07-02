@@ -1,0 +1,67 @@
+<!Doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<title>{if !empty($sitem['aname'])}{$sitem['aname']}{else}有缘网{/if}</title>
+<link rel="stylesheet" href="../addons/jy_ppp/css/common2.css">
+<link rel="stylesheet" href="../addons/jy_ppp/css/notice.css">
+<style>
+.conDiv{width: 90%;margin: 5px auto;max-width: 640px;background-color: #fff}
+.conLeft{padding: 10px}
+.leftDiv{width: 75%}
+.leftDiv>img{width: 30px;height: 30px;border-radius: 3px}
+.leftDiv>div{margin:5px 0}
+.rightDiv{width: 23%;margin-top: 20px}
+.rightDiv>a{padding: 5px 10px;border: 1px solid #f55a8e;color:#f55a8e;border-radius: 5px}
+.tipDiv{width: 100%;padding: 10px 0;background-color: #f8f6f7}
+.tipDiv>a{width: 49%;display: inline-block;color: #000}
+.tipDiv>a:first-child{border-right:1px solid #f55a8e}
+.addUser{position: fixed;bottom: 60px;width: 100%;text-align: center;max-width: 640px}
+.addUser>a{border: 1px solid #f55a8e;padding: 5px 15px;color: #fff;background-color: #f55a8e;border-radius: 15px}
+@media screen and (max-width: 320px){
+	.leftDiv>div{width: 80%}
+}
+@media screen and (min-width: 321px){
+	.leftDiv>div{width: 85%}
+}
+@media screen and (min-width: 500px){
+	.leftDiv>div{width: 90%}
+	.leftDiv{padding-left: 10px}
+}
+
+</style>
+</head>
+
+<body>
+<div class="bodybox">
+    <div class="selectedDiv">
+        	<a href="{php echo $this->createMobileUrl('tgycenter')}" class="rBor black"><img style="width:22px" src="../addons/jy_ppp/images/main.png"><span>主页</span></a>
+	        <a href="{php echo $this->createMobileUrl('tgy_user')}" class="rBor black"><img src="../addons/jy_ppp/images/user.png"><span>用户</span></a>
+	        <a href="{php echo $this->createMobileUrl('tgy_msg')}" class="rBor black"><img src="../addons/jy_ppp/images/msg.png"><span>消息</span></a>
+	        <a href="{php echo $this->createMobileUrl('tgy_man')}" class="mainColor"><img src="../addons/jy_ppp/images/manager.png"><span>管理</span></a>
+    </div>
+
+    <div class="head mainBg">
+        <!-- <a href="javascript:history.go(-1)" class="bn pull-left"><img class="icon" src="../addons/jy_ppp/images/back.png"></a> -->
+        <div class="title">新手指南</div>
+        <!-- <a href="#" class="bn pull-right"><img class="icon" src="../addons/jy_ppp/images/ren.png"/></a> -->
+    </div>
+	<div class="topZhan"></div>
+
+    <div class="conDiv">
+        {php echo htmlspecialchars_decode($tgy_rule['content']);}
+    </div>
+
+
+	<!-- end -->
+    <div class="zhanwei"></div>
+    
+</div>
+<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+</body>
+{template 'inc/footer'}
+</html>

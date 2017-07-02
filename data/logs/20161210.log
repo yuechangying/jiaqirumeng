@@ -1,0 +1,180 @@
+2016-12-10 00:02:06 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_60c53c6273e4]]></ToUserName>
+<FromUserName><![CDATA[ozJkmt4EVRLFlD56N48B8gfNyaLw]]></FromUserName>
+<CreateTime>1481299411</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[LOCATION]]></Event>
+<Latitude>23.347565</Latitude>
+<Longitude>113.286766</Longitude>
+<Precision>65.000000</Precision>
+</xml>
+
+2016-12-10 00:02:06 params :
+------------
+String:
+array (
+  'message' => 
+  array (
+    'tousername' => 'gh_60c53c6273e4',
+    'fromusername' => 'ozJkmt4EVRLFlD56N48B8gfNyaLw',
+    'createtime' => '1481299411',
+    'msgtype' => 'event',
+    'event' => 'LOCATION',
+    'latitude' => '23.347565',
+    'longitude' => '113.286766',
+    'precision' => '65.000000',
+    'from' => 'ozJkmt4EVRLFlD56N48B8gfNyaLw',
+    'to' => 'gh_60c53c6273e4',
+    'time' => '1481299411',
+    'type' => 'trace',
+    'location_x' => '23.347565',
+    'location_y' => '113.286766',
+  ),
+  'module' => 'default',
+  'rule' => '-1',
+)
+
+2016-12-10 00:02:06 response :
+------------
+Array:
+errno : -1 ;
+message : Invaild value ;
+
+2016-12-10 00:08:19 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_60c53c6273e4]]></ToUserName>
+<FromUserName><![CDATA[ozJkmt4EVRLFlD56N48B8gfNyaLw]]></FromUserName>
+<CreateTime>1481299775</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[LOCATION]]></Event>
+<Latitude>23.347536</Latitude>
+<Longitude>113.286781</Longitude>
+<Precision>65.000000</Precision>
+</xml>
+
+2016-12-10 00:08:19 params :
+------------
+String:
+array (
+  'message' => 
+  array (
+    'tousername' => 'gh_60c53c6273e4',
+    'fromusername' => 'ozJkmt4EVRLFlD56N48B8gfNyaLw',
+    'createtime' => '1481299775',
+    'msgtype' => 'event',
+    'event' => 'LOCATION',
+    'latitude' => '23.347536',
+    'longitude' => '113.286781',
+    'precision' => '65.000000',
+    'from' => 'ozJkmt4EVRLFlD56N48B8gfNyaLw',
+    'to' => 'gh_60c53c6273e4',
+    'time' => '1481299775',
+    'type' => 'trace',
+    'location_x' => '23.347536',
+    'location_y' => '113.286781',
+  ),
+  'module' => 'default',
+  'rule' => '-1',
+)
+
+2016-12-10 00:08:19 response :
+------------
+Array:
+errno : -1 ;
+message : Invaild value ;
+
+2016-12-10 00:09:25 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_60c53c6273e4]]></ToUserName>
+<FromUserName><![CDATA[ozJkmt4EVRLFlD56N48B8gfNyaLw]]></FromUserName>
+<CreateTime>1481299839</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[LOCATION]]></Event>
+<Latitude>23.347532</Latitude>
+<Longitude>113.286751</Longitude>
+<Precision>65.000000</Precision>
+</xml>
+
+2016-12-10 00:09:25 params :
+------------
+String:
+array (
+  'message' => 
+  array (
+    'tousername' => 'gh_60c53c6273e4',
+    'fromusername' => 'ozJkmt4EVRLFlD56N48B8gfNyaLw',
+    'createtime' => '1481299839',
+    'msgtype' => 'event',
+    'event' => 'LOCATION',
+    'latitude' => '23.347532',
+    'longitude' => '113.286751',
+    'precision' => '65.000000',
+    'from' => 'ozJkmt4EVRLFlD56N48B8gfNyaLw',
+    'to' => 'gh_60c53c6273e4',
+    'time' => '1481299839',
+    'type' => 'trace',
+    'location_x' => '23.347532',
+    'location_y' => '113.286751',
+  ),
+  'module' => 'default',
+  'rule' => '-1',
+)
+
+2016-12-10 00:09:25 response :
+------------
+Array:
+errno : -1 ;
+message : Invaild value ;
+
+2016-12-10 06:15:56 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_60c53c6273e4]]></ToUserName>
+<FromUserName><![CDATA[ozJkmt4Yl8FVV6X7tM5B28_t8GGo]]></FromUserName>
+<CreateTime>1481321890</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[subscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+
+2016-12-10 06:15:57 params :
+------------
+String:
+array (
+  'rule' => -2,
+  'module' => '',
+  'message' => 
+  array (
+    'tousername' => 'gh_60c53c6273e4',
+    'fromusername' => 'ozJkmt4Yl8FVV6X7tM5B28_t8GGo',
+    'createtime' => '1481321890',
+    'msgtype' => 'event',
+    'event' => 'subscribe',
+    'eventkey' => '',
+    'from' => 'ozJkmt4Yl8FVV6X7tM5B28_t8GGo',
+    'to' => 'gh_60c53c6273e4',
+    'time' => '1481321890',
+    'type' => 'text',
+    'redirection' => true,
+    'source' => 'subscribe',
+  ),
+)
+
+2016-12-10 06:15:57 response :
+------------
+
+2016-12-10 13:10:29 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_60c53c6273e4]]></ToUserName>
+<FromUserName><![CDATA[ozJkmtwiV9MOAf8fb79e7amcH550]]></FromUserName>
+<CreateTime>1481346709</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[unsubscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+

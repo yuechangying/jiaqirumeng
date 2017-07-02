@@ -1,0 +1,198 @@
+<!Doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<title>{if !empty($sitem['aname'])}{$sitem['aname']}{else}有缘网{/if}</title>
+<link rel="stylesheet" href="../addons/jy_ppp/css/common2.css">
+<link rel="stylesheet" href="../addons/jy_ppp/css/notice.css">
+<style>
+.conDiv{width: 100%;margin: 0 auto;max-width: 640px;background-color: #fff}
+.conLeft{padding: 10px}
+.leftDiv{width: 75%}
+.leftDiv>img{width: 60px;height: 60px;border-radius: 5px}
+.leftDiv>div{margin:5px 0}
+.rightDiv{width: 23%;margin-top: 20px}
+.rightDiv>a{padding: 5px 10px;border: 1px solid #f55a8e;color:#f55a8e;border-radius: 5px}
+.tipDiv{width: 100%;padding: 10px 0;background-color: #f8f6f7}
+.tipDiv>a{width: 49%;display: inline-block;color: #000}
+.tipDiv>a:first-child{border-right:1px solid #f55a8e}
+.addUser{position: fixed;bottom: 60px;width: 100%;text-align: center;max-width: 640px}
+.addUser>a{border: 1px solid #f55a8e;padding: 5px 15px;color: #fff;background-color: #f55a8e;border-radius: 15px}
+@media screen and (max-width: 320px){
+	.leftDiv>div{width: 60%}
+}
+@media screen and (min-width: 321px){
+	.leftDiv>div{width: 70%}
+}
+@media screen and (min-width: 500px){
+	.leftDiv>div{width: 80%}
+	.leftDiv{padding-left: 10px}
+}
+.surebtn{padding: 10px 0 20px 0}
+.surebtn>span{border: 1px solid #a3a3a3;padding: 5px 15px;border-radius: 3px;color: #a3a3a3}
+.dateDiv{margin-bottom: 10px}
+.conDiv2{width: 90%;max-width: 500px;margin: 20px auto 10px auto}
+.conDiv2 span{vertical-align: middle;line-height: 30px;margin-left: 10px}
+.qiangLine{height: 30px;width: 8px;background-color: #f55a8e;float: left}
+.date{width: 70%;margin: 10px auto;padding: 5px;border:1px solid #d7d5d6;border-radius: 5px;max-width: 300px;overflow: hidden;cursor: pointer;color:#a3a3a3}
+.date>span{width: 85%;display: inline-block;height: 20px}
+.date>img{float: right;width: 20px;vertical-align:top}
+.timex{width: 70%;margin: 10px auto;max-width: 320px;color:#a3a3a3}
+.moreyh{margin-top: 20px;width: 100%;text-align: center;max-width: 640px}
+.moreyh>a{border: 1px solid #f55a8e;padding: 5px 15px;color: #fff;background-color: #f55a8e;border-radius: 15px}
+.selectDiv{width: 90%;margin: 0 auto}
+.selectDiv>select{background-color:transparent;-webkit-appearance: none;border:none;font-size: 16px;outline: none}
+.selectDiv>img{width: 17px;vertical-align: top;margin-top: 5px}
+.selectDiv{width: 90%;margin: 0 auto}
+.selectDiv>select{background-color:transparent;-webkit-appearance: none;border:none;font-size: 16px;outline: none}
+.selectDiv>img{width: 17px;vertical-align: top;margin-top: 5px}
+</style>
+</head>
+
+<body>
+<div class="bodybox">
+    <div class="selectedDiv">
+        	<a href="{php echo $this->createMobileUrl('tgycenter')}" class="rBor black"><img style="width:22px" src="../addons/jy_ppp/images/main.png"><span>主页</span></a>
+	        <a href="{php echo $this->createMobileUrl('tgy_user')}" class="rBor black"><img src="../addons/jy_ppp/images/user.png"><span>用户</span></a>
+	        <a href="{php echo $this->createMobileUrl('tgy_msg')}" class="rBor black"><img src="../addons/jy_ppp/images/msg.png"><span>消息</span></a>
+	        <a href="{php echo $this->createMobileUrl('tgy_man')}" class="mainColor"><img src="../addons/jy_ppp/images/manager.png"><span>管理</span></a>
+    </div>
+
+    <div class="head mainBg">
+        <!-- <a href="javascript:history.go(-1)" class="bn pull-left"><img class="icon" src="../addons/jy_ppp/images/back.png"></a> -->
+        <div class="title">新增充值记录{if $day==1}(今天){/if}{if $day==2}(昨天){/if}{if !empty($tgyid_member['username'])}({$tgyid_member['username']}){/if}</div>
+        <!-- <a href="#" class="bn pull-right"><img class="icon" src="../addons/jy_ppp/images/ren.png"/></a> -->
+    </div>
+	<div class="topZhan"></div>
+	<!-- begin -->
+	<div class="conDiv2 ovfl">
+        <div class="qiangLine"></div>
+        <span>时间筛选</span>
+    </div>
+    <div class="timex">开始时间:</div>
+    <div class="date">
+        <span id="startTime" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">{$starttime}</span>
+        <img src="../addons/jy_ppp/images/date.png"/>
+    </div>
+    <div class="timex">结束时间:</div>
+    <div class="date">
+        <span id="endTime" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">{$endtime}</span>
+        <img src="../addons/jy_ppp/images/date.png"/>
+    </div>
+    {if empty($member['parentid'])}
+    <div class="selectDiv">
+        <select class="mainColor" id="tgyid" >
+        	<option value="all" {if empty($_GPC['tgyid']) && $foo=='all'}selected{/if}>全部下级</option>
+            <option value="0" {if empty($_GPC['tgyid']) && empty($foo)}selected{/if}>自己</option>
+            {loop $child $x}
+                <option value="{$x['id']}" {if $x['id']==$_GPC['tgyid']}selected{/if}>{$x['username']}</option>
+            {/loop}
+        </select>
+        <img src="../addons/jy_ppp/images/arrowdown.png"/>
+    </div>
+    {/if}
+    <div class="surebtn txtAC"><span class="curP" id="dateSel">确定</span></div>
+	{php $now=time();}
+	{loop $list $x}
+		<div class="conDiv" data-id="{$x['id']}">
+			<div class="ovfl conLeft">
+				<div class="floL leftDiv">
+					{if !empty($x['avatar'])}
+                        <img class="floL" src="{php echo tomedia($x['avatar'])}"/>
+                    {else}
+                        <img class="floL" src="../addons/jy_ppp/images/boy.png"/>
+                    {/if}
+					<div class="floR nowrap mainColor">{$x['nicheng']}</div>
+					<div class="floR nowrap " style="font-size:12px">金额：{$x['fee']}元{if $x['log']==1} ( 豆币服务 ){/if}{if $x['log']==2} ( 包月服务 ){/if}{if $x['log']==3} ( 收信宝服务 ){/if}{if $x['type']==0}【直接推广】{/if}{if $x['type']==1}【上级抽佣】{/if}</div>
+				</div>
+				<div class="floR rightDiv txtAC">{php echo date('m-d H:i',$x['createtime'])}</div>
+			</div>
+			<div class="zhanCol"></div>
+		</div>
+	{/loop}
+	<!-- end -->
+	{if count($list)>9}
+    <div class="moreyh" id="moreyh"><a href="javascript:void(0)" onclick="more()">加载更多</a></div>
+    {/if}
+    <div class="zhanwei"></div>
+    
+</div>
+<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+<script src="../addons/jy_ppp/js/notice.js"></script>
+<script src="../addons/jy_ppp/js/laydate.js"></script>
+<script>
+function more()
+{
+	var str = "";
+    for(var i=0;i<$(".conDiv").length;++i){
+        str += $(".conDiv").eq(i).data("id")+",";
+    }
+
+
+    $.post("{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('tgy_czlog',array('op'=>'more','day'=>$_GPC['day'],'tgyid'=>$_GPC['tgyid'],'starttime'=>$_GPC['starttime'],'endtime'=>$_GPC['endtime'],'foo'=>'all')),2)}"+"&str="+str,function(data){
+        if(data.status==1)
+        {
+            $("#moreyh").prev().after(data.log);
+        }else if(data.status==2)
+        {
+            $("#moreyh").prev().after(data.log);
+            $(".moreyh").html('没有更多了！');
+        }
+        else
+        {
+            alert("网络出错，请重试!");
+        }
+    },'json');
+}
+!function(){
+    laydate.skin('qianhuang');//切换皮肤，请查看skins下面皮肤库
+    laydate({elem: '#startTime'});//绑定元素
+    laydate({elem: '#endTime'});//绑定元素
+}();
+// 获取时间
+$("#dateSel").bind("click",function(){
+    var startTime = $("#startTime").text();
+    var endTime = $("#endTime").text();
+
+    if(!startTime){
+    	showNoticeFunc("请选择开始时间！");
+    	return false;
+    }
+    if(!endTime){
+    	showNoticeFunc("请选择结束时间！");
+    	return false;
+    }
+    if(CompareDate(startTime,endTime)){
+    	showNoticeFunc("开始时间不能大于结束时间！");
+    	return false;
+    }
+    else
+    {
+    	{if empty($member['parentid'])}
+    		var tgyid = $('#tgyid').val();
+    		if(tgyid=='all')
+    		{
+    			window.location.href="{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('tgy_czlog',array('day'=>$_GPC['day'])),2)}"+"&starttime="+startTime+"&endtime="+endTime+"&foo=all";
+    		}
+    		else
+    		{
+    			window.location.href="{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('tgy_czlog',array('day'=>$_GPC['day'])),2)}"+"&starttime="+startTime+"&endtime="+endTime+"&tgyid="+tgyid;
+    		}
+    	{else}
+    		window.location.href="{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('tgy_czlog',array('day'=>$_GPC['day'],'tgyid'=>$_GPC['tgyid'])),2)}"+"&starttime="+startTime+"&endtime="+endTime;
+    	{/if}
+    }
+    //ajax
+});
+function CompareDate(d1,d2){
+  return ((new Date(d1.replace(/-/g,"\/"))) > (new Date(d2.replace(/-/g,"\/"))));
+}
+</script>
+</body>
+{template 'inc/footer'}
+</html>
