@@ -173,9 +173,12 @@
             {if !empty($detail['height'])}
             <li><span>{if !empty($detail['height'])}{$detail['height']}cm{/if}</span>身高</li>
             {/if}
+            {if !empty($detail['weight'])}
+            <li><span>{if !empty($detail['weight'])}{$detail['weight']}cm{/if}</span>体重</li>
+            {/if}
             <li id="qq">
                 <span>{if !empty($detail['income'])}{$detail['income']}{else}保密{/if}</span>
-                月收入
+                年收入(万)
             </li>
             <li id="lxfs">
                 <span>{if !empty($detail['marriage'])}{$detail['marriage']}{else}保密{/if}</span>
@@ -188,8 +191,8 @@
     <div class="ziliao_box">
         <h3>联系方式</h3>
         <ul>
-            <li><span onclick="showPayTips()">查看QQ</span>QQ</li>
-            <li><span onclick="showPayTips()">查看手机</span>手机</li>
+            <!--li><span onclick="showPayTips()">查看QQ</span>QQ</li-->
+            <!--li><span onclick="showPayTips()">查看手机</span>手机</li-->
             <li><span onclick="showPayTips()">查看微信</span>微信号</li>
         </ul>
     </div>
