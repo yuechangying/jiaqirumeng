@@ -173,20 +173,38 @@
             {if !empty($detail['height'])}
             <li><span>{if !empty($detail['height'])}{$detail['height']}cm{/if}</span>身高</li>
             {/if}
-            {if !empty($detail['weight'])}
-            <li><span>{if !empty($detail['weight'])}{$detail['weight']}cm{/if}</span>体重</li>
-            {/if}
-            <li id="qq">
+            <li id="weight">
+                <span>{if !empty($detail['weight'])}{$detail['weight']}{else}保密{/if}</span>
+                体重
+            </li>
+            <li id="blood">
+                <span>{if !empty($detail['blood'])}{$detail['blood']}{else}保密{/if}</span>
+                血型
+            </li>
+            <li id="education">
+                <span>{if !empty($detail['education'])}{$detail['education']}{else}保密{/if}</span>
+                学历
+            </li>
+            <li>
+                <span>{if !empty($detail['job'])}{$detail['job']}{else}保密{/if}</span>
+                职业
+            </li>
+            <li id="income">
                 <span>{if !empty($detail['income'])}{$detail['income']}{else}保密{/if}</span>
                 年收入(万)
             </li>
             <li id="lxfs">
                 <span>{if !empty($detail['marriage'])}{$detail['marriage']}{else}保密{/if}</span>
-                婚姻状态
+                婚姻状况
+            </li>
+            <li id="house">
+                <span>{if !empty($detail['house'])}{$detail['house']}{else}保密{/if}</span>
+                是否有房
             </li>
         </ul>
     </div>
 
+    
     {if $sitem['youhuo_pay']  && empty($baoyue)}
     <div class="ziliao_box">
         <h3>联系方式</h3>
@@ -219,19 +237,8 @@
         <h3>详细资料</h3>
         <ul>
             <li>
-                <span>{if !empty($detail['education'])}{$detail['education']}{else}保密{/if}</span>
-                学历
-            </li>
-            <li>
-                <span>{if !empty($detail['job'])}{$detail['job']}{else}保密{/if}</span>
-                职业
-            </li>
-            {if !empty($detail['brith'])}
-            <li><span>{php echo date('Y-m-d',$detail['brith'])}</span>生日</li>
-            {/if}
-            <li>
-                <span>{if !empty($detail['weight'])}{$detail['weight']}斤{else}保密{/if}</span>
-                体重
+                <span>{if !empty($detail['leixin'])}{$detail['leixin']}{else}保密{/if}</span>
+                类型
             </li>
         </ul>
     </div>

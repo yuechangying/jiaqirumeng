@@ -36,12 +36,12 @@ CREATE TABLE IF NOT EXISTS `ims_jy_ppp_basic` (
   `mid` int(10) NOT NULL,
   `height` int(10) NOT NULL,
   `weight` int(10) NOT NULL,
-  `blood` varchar(50) NOT NULL,
-  `education` varchar(50) NOT NULL,
-  `job` varchar(200) NOT NULL,
-  `income` varchar(200) NOT NULL,
-  `marriage` varchar(200) NOT NULL,
-  `house` varchar(200) NOT NULL,
+  `blood` varchar(8) NOT NULL,
+  `education` varchar(40) NOT NULL,
+  `job` varchar(40) NOT NULL,
+  `income` varchar(20) NOT NULL,
+  `marriage` varchar(20) NOT NULL,
+  `house` varchar(20) NOT NULL,
   `blank` int(10) NOT NULL COMMENT \'未填写的字段个数\',
   `createtime` int(10) NOT NULL,
   PRIMARY KEY (`id`),
@@ -92,12 +92,12 @@ CREATE TABLE IF NOT EXISTS `ims_jy_ppp_desc` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `weid` int(10) NOT NULL,
   `mid` int(10) NOT NULL,
-  `child` varchar(200) NOT NULL,
-  `yidi` varchar(200) NOT NULL,
-  `leixin` varchar(200) NOT NULL,
-  `sex` varchar(200) NOT NULL,
-  `fumu` varchar(200) NOT NULL,
-  `meili` varchar(200) NOT NULL,
+  `child` varchar(10) NOT NULL,
+  `yidi` varchar(10) NOT NULL,
+  `leixin` varchar(10) NOT NULL,
+  `sex` varchar(10) NOT NULL,
+  `fumu` varchar(10) NOT NULL,
+  `meili` varchar(10) NOT NULL,
   `blank` int(10) NOT NULL COMMENT \'未填写的字段个数\',
   `createtime` int(10) NOT NULL,
   PRIMARY KEY (`id`),
@@ -731,32 +731,32 @@ if (pdo_tableexists('jy_ppp_basic')) {
 }
 if (pdo_tableexists('jy_ppp_basic')) {
     if (!pdo_fieldexists('jy_ppp_basic', 'blood')) {
-        pdo_query('ALTER TABLE ' . tablename('jy_ppp_basic') . ' ADD `blood` varchar(50) NOT NULL   COMMENT \'\';');
+        pdo_query('ALTER TABLE ' . tablename('jy_ppp_basic') . ' ADD `blood` varchar(8) NOT NULL   COMMENT \'\';');
     }
 }
 if (pdo_tableexists('jy_ppp_basic')) {
     if (!pdo_fieldexists('jy_ppp_basic', 'education')) {
-        pdo_query('ALTER TABLE ' . tablename('jy_ppp_basic') . ' ADD `education` varchar(50) NOT NULL   COMMENT \'\';');
+        pdo_query('ALTER TABLE ' . tablename('jy_ppp_basic') . ' ADD `education` varchar(40) NOT NULL   COMMENT \'\';');
     }
 }
 if (pdo_tableexists('jy_ppp_basic')) {
     if (!pdo_fieldexists('jy_ppp_basic', 'job')) {
-        pdo_query('ALTER TABLE ' . tablename('jy_ppp_basic') . ' ADD `job` varchar(200) NOT NULL   COMMENT \'\';');
+        pdo_query('ALTER TABLE ' . tablename('jy_ppp_basic') . ' ADD `job` varchar(40) NOT NULL   COMMENT \'\';');
     }
 }
 if (pdo_tableexists('jy_ppp_basic')) {
     if (!pdo_fieldexists('jy_ppp_basic', 'income')) {
-        pdo_query('ALTER TABLE ' . tablename('jy_ppp_basic') . ' ADD `income` varchar(200) NOT NULL   COMMENT \'\';');
+        pdo_query('ALTER TABLE ' . tablename('jy_ppp_basic') . ' ADD `income` varchar(20) NOT NULL   COMMENT \'\';');
     }
 }
 if (pdo_tableexists('jy_ppp_basic')) {
     if (!pdo_fieldexists('jy_ppp_basic', 'marriage')) {
-        pdo_query('ALTER TABLE ' . tablename('jy_ppp_basic') . ' ADD `marriage` varchar(200) NOT NULL   COMMENT \'\';');
+        pdo_query('ALTER TABLE ' . tablename('jy_ppp_basic') . ' ADD `marriage` varchar(20) NOT NULL   COMMENT \'\';');
     }
 }
 if (pdo_tableexists('jy_ppp_basic')) {
     if (!pdo_fieldexists('jy_ppp_basic', 'house')) {
-        pdo_query('ALTER TABLE ' . tablename('jy_ppp_basic') . ' ADD `house` varchar(200) NOT NULL   COMMENT \'\';');
+        pdo_query('ALTER TABLE ' . tablename('jy_ppp_basic') . ' ADD `house` varchar(20) NOT NULL   COMMENT \'\';');
     }
 }
 if (pdo_tableexists('jy_ppp_basic')) {
@@ -906,32 +906,32 @@ if (pdo_tableexists('jy_ppp_desc')) {
 }
 if (pdo_tableexists('jy_ppp_desc')) {
     if (!pdo_fieldexists('jy_ppp_desc', 'child')) {
-        pdo_query('ALTER TABLE ' . tablename('jy_ppp_desc') . ' ADD `child` varchar(200) NOT NULL   COMMENT \'\';');
+        pdo_query('ALTER TABLE ' . tablename('jy_ppp_desc') . ' ADD `child` varchar(10) NOT NULL   COMMENT \'\';');
     }
 }
 if (pdo_tableexists('jy_ppp_desc')) {
     if (!pdo_fieldexists('jy_ppp_desc', 'yidi')) {
-        pdo_query('ALTER TABLE ' . tablename('jy_ppp_desc') . ' ADD `yidi` varchar(200) NOT NULL   COMMENT \'\';');
+        pdo_query('ALTER TABLE ' . tablename('jy_ppp_desc') . ' ADD `yidi` varchar(10) NOT NULL   COMMENT \'\';');
     }
 }
 if (pdo_tableexists('jy_ppp_desc')) {
     if (!pdo_fieldexists('jy_ppp_desc', 'leixin')) {
-        pdo_query('ALTER TABLE ' . tablename('jy_ppp_desc') . ' ADD `leixin` varchar(200) NOT NULL   COMMENT \'\';');
+        pdo_query('ALTER TABLE ' . tablename('jy_ppp_desc') . ' ADD `leixin` varchar(10) NOT NULL   COMMENT \'\';');
     }
 }
 if (pdo_tableexists('jy_ppp_desc')) {
     if (!pdo_fieldexists('jy_ppp_desc', 'sex')) {
-        pdo_query('ALTER TABLE ' . tablename('jy_ppp_desc') . ' ADD `sex` varchar(200) NOT NULL   COMMENT \'\';');
+        pdo_query('ALTER TABLE ' . tablename('jy_ppp_desc') . ' ADD `sex` varchar(10) NOT NULL   COMMENT \'\';');
     }
 }
 if (pdo_tableexists('jy_ppp_desc')) {
     if (!pdo_fieldexists('jy_ppp_desc', 'fumu')) {
-        pdo_query('ALTER TABLE ' . tablename('jy_ppp_desc') . ' ADD `fumu` varchar(200) NOT NULL   COMMENT \'\';');
+        pdo_query('ALTER TABLE ' . tablename('jy_ppp_desc') . ' ADD `fumu` varchar(10) NOT NULL   COMMENT \'\';');
     }
 }
 if (pdo_tableexists('jy_ppp_desc')) {
     if (!pdo_fieldexists('jy_ppp_desc', 'meili')) {
-        pdo_query('ALTER TABLE ' . tablename('jy_ppp_desc') . ' ADD `meili` varchar(200) NOT NULL   COMMENT \'\';');
+        pdo_query('ALTER TABLE ' . tablename('jy_ppp_desc') . ' ADD `meili` varchar(10) NOT NULL   COMMENT \'\';');
     }
 }
 if (pdo_tableexists('jy_ppp_desc')) {

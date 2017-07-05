@@ -141,6 +141,21 @@
                     <option value="AB" {if $basic['blood']=='AB'} selected="selected" {/if}>AB</option>
                     <option value="O" {if $basic['blood']=='O'} selected="selected" {/if}>O</option>
                 </select>
+                <!--select id="constellation" class="value_select">
+                    <option value="0" style="display:none">请选择</option>
+                    <option value="白羊座" {if $basic['constellation']=='白羊座'} selected="selected" {/if}>白羊座</option>
+                    <option value="金牛座" {if $basic['constellation']=='金牛座'} selected="selected" {/if}>金牛座</option>
+                    <option value="双子座" {if $basic['constellation']=='双子座'} selected="selected" {/if}>双子座</option>
+                    <option value="巨蟹座" {if $basic['constellation']=='巨蟹座'} selected="selected" {/if}>巨蟹座</option>
+                    <option value="狮子座" {if $basic['constellation']=='狮子座'} selected="selected" {/if}>狮子座</option>
+                    <option value="处女座" {if $basic['constellation']=='处女座'} selected="selected" {/if}>处女座</option>
+                    <option value="天秤座" {if $basic['constellation']=='天秤座'} selected="selected" {/if}>天秤座</option>
+                    <option value="天蝎座" {if $basic['constellation']=='天蝎座'} selected="selected" {/if}>天蝎座</option>
+                    <option value="射手座" {if $basic['constellation']=='射手座'} selected="selected" {/if}>射手座</option>
+                    <option value="摩羯座" {if $basic['constellation']=='摩羯座'} selected="selected" {/if}>摩羯座</option>
+                    <option value="水瓶座" {if $basic['constellation']=='水瓶座'} selected="selected" {/if}>水瓶座</option>
+                    <option value="双鱼座" {if $basic['constellation']=='双鱼座'} selected="selected" {/if}>双鱼座</option>
+                </select-->
             </div>
         </div>
         </li>
@@ -336,6 +351,7 @@ $(function () {
         var basic_height=$("#basic_height").val();
         var basic_weight=$("#basic_weight").val();
         var basic_blood=$("#bloodType").val();
+        //var basic_constellation=$("#constellation").val();
         var basic_edu=$("#education").val();
         var basic_work=$("#vocation").val();
         var basic_income=$("#income").val();
