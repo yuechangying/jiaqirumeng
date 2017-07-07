@@ -124,24 +124,24 @@
         </div>
         </li>
         <li class="user_mession">
-        <label class="left">血型</label>
+        <label class="left">星座</label>
         <div class="right">
             <div class="select">
                 <span class="value">
-                {if empty($basic['blood'])}
+                {if empty($basic['constellation'])}
                     <span class="pink">请选择</span></span>
                 {else}
-                    {$basic['blood']}</span>
+                    {$basic['constellation']}</span>
                 {/if}
                 <i class="bot_trged"></i>
-                <select id="bloodType" class="value_select">
+                <!--select id="bloodType" class="value_select">
                     <option value="0" style="display:none">请选择</option>
                     <option value="A" {if $basic['blood']=='A'} selected="selected" {/if}>A</option>
                     <option value="B" {if $basic['blood']=='B'} selected="selected" {/if}>B</option>
                     <option value="AB" {if $basic['blood']=='AB'} selected="selected" {/if}>AB</option>
                     <option value="O" {if $basic['blood']=='O'} selected="selected" {/if}>O</option>
-                </select>
-                <!--select id="constellation" class="value_select">
+                </select-->
+                <select id="constellation" class="value_select">
                     <option value="0" style="display:none">请选择</option>
                     <option value="白羊座" {if $basic['constellation']=='白羊座'} selected="selected" {/if}>白羊座</option>
                     <option value="金牛座" {if $basic['constellation']=='金牛座'} selected="selected" {/if}>金牛座</option>
@@ -155,7 +155,7 @@
                     <option value="摩羯座" {if $basic['constellation']=='摩羯座'} selected="selected" {/if}>摩羯座</option>
                     <option value="水瓶座" {if $basic['constellation']=='水瓶座'} selected="selected" {/if}>水瓶座</option>
                     <option value="双鱼座" {if $basic['constellation']=='双鱼座'} selected="selected" {/if}>双鱼座</option>
-                </select-->
+                </select>
             </div>
         </div>
         </li>
@@ -350,8 +350,8 @@ $(function () {
         var city=$("#live select").eq(1).val();
         var basic_height=$("#basic_height").val();
         var basic_weight=$("#basic_weight").val();
-        var basic_blood=$("#bloodType").val();
-        //var basic_constellation=$("#constellation").val();
+        //var basic_blood=$("#bloodType").val();
+        var basic_constellation=$("#constellation").val();
         var basic_edu=$("#education").val();
         var basic_work=$("#vocation").val();
         var basic_income=$("#income").val();
@@ -359,7 +359,7 @@ $(function () {
         var basic_have=$("#haveHouse").val();
         // ajax-----
 
-        var param={nicheng: nickname, year:year, month:month, day:day, province:province, city:city, height:basic_height, weight:basic_weight, blood:basic_blood, education:basic_edu, job:basic_work, income:basic_income, marriage:basic_marry, house:basic_have };
+        var param={nicheng: nickname, year:year, month:month, day:day, province:province, city:city, height:basic_height, weight:basic_weight, constellation:basic_constellation, education:basic_edu, job:basic_work, income:basic_income, marriage:basic_marry, house:basic_have };
         {if empty($_GPC['xuniid']) || $member['type']!=3}
             $.ajax({url: "{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('basic',array('op'=>'add')),2);}", data: param, dataType: 'text', type: 'post', success: function (text) {
                 if(text==1){

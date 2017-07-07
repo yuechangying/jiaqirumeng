@@ -526,9 +526,9 @@
 						</div>
 
 						<div class="form-group">
-							<label class="col-xs-12 col-sm-3 col-md-2 control-label">血型</label>
+							<label class="col-xs-12 col-sm-3 col-md-2 control-label">星座</label>
 							<div class="col-sm-7 col-xs-12">
-								<label><?php  if(empty($basic['blood'])) { ?>未填写<?php  } else { ?><?php  echo $basic['blood'];?> <?php  } ?></label>
+								<label><?php  if(empty($basic['constellation'])) { ?>未填写<?php  } else { ?><?php  echo $basic['constellation'];?> <?php  } ?></label>
 							</div>
 						</div>
 

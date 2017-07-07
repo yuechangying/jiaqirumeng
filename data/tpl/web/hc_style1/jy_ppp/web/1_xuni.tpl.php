@@ -131,15 +131,15 @@
 				</div>
 
 				<div class="form-group">
-					<label class="col-xs-12 col-sm-3 col-md-2 control-label">用户血型</label>
+					<label class="col-xs-12 col-sm-3 col-md-2 control-label">用户星座</label>
 					<div class="col-sm-7 col-xs-12">
-						<label for="enabled6" class="checkbox-inline"><input type="checkbox" name="blood[]" value="A" id="enabled6"  checked="true" /> A</label>
+						<label for="enabled6" class="checkbox-inline"><input type="checkbox" name="constellation[]" value="金牛座" id="enabled6"  checked="true" /> A</label>
 	                    &nbsp;&nbsp;&nbsp;
-	                    <label for="enabled7" class="checkbox-inline"><input type="checkbox" name="blood[]" value="B" id="enabled7"  checked="true" /> B</label>
+	                    <label for="enabled7" class="checkbox-inline"><input type="checkbox" name="constellation[]" value="双子座" id="enabled7"  checked="true" /> B</label>
 	                    &nbsp;&nbsp;&nbsp;
-	                    <label for="enabled8" class="checkbox-inline"><input type="checkbox" name="blood[]" value="AB" id="enabled8"  checked="true" /> AB</label>
+	                    <label for="enabled8" class="checkbox-inline"><input type="checkbox" name="constellation[]" value="巨蟹座" id="enabled8"  checked="true" /> AB</label>
 	                    &nbsp;&nbsp;&nbsp;
-	                    <label for="enabled9" class="checkbox-inline"><input type="checkbox" name="blood[]" value="O" id="enabled9"  checked="true" /> O</label>
+	                    <label for="enabled9" class="checkbox-inline"><input type="checkbox" name="constellation[]" value="狮子座" id="enabled9"  checked="true" /> O</label>
 					</div>
 				</div>
 

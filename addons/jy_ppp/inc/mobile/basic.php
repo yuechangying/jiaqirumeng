@@ -178,8 +178,10 @@ global $_W,$_GPC;
 			  	{
 			  		$data['blank']++;
 			  	}
-			  	$data['blood']=$_GPC['blood'];
-			  	if(empty($data['blood']))
+			  	//$data['blood']=$_GPC['blood'];
+                $data['constellation']=$_GPC['constellation'];
+			  	
+			  	if(empty($data['constellation']))
 			  	{
 			  		$data['blank']++;
 			  	}

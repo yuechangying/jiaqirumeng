@@ -166,7 +166,7 @@ global $_W,$_GPC;
 							array_push($temp_wt, '5');
 						}
 					}
-					if(!empty($basic['blood']))
+					if(!empty($basic['constellation']))
 					{
 						array_push($temp_wt, '8');
 					}
@@ -239,7 +239,7 @@ global $_W,$_GPC;
 									$data['content']="嗨！我是来自".$province[$member['province']]."的年轻人，希望你会记得我哈~";
 									break;
 								case 8:
-									$data['content']="嗨！我是".$basic['blood']."血型的,不知道你是不是也是这样的呢？";
+									$data['content']="嗨！我是".$basic['constellation']."血型的,不知道你是不是也是这样的呢？";
 									break;
 								case 9:
 									$data['content']="哈喽！我喜欢".$basic['leixin']."的女生,不知道你是不是也是这样的呢？";
@@ -407,7 +407,7 @@ global $_W,$_GPC;
 								array_push($temp_wt, '5');
 							}
 						}
-						if(!empty($basic['blood']))
+						if(!empty($basic['constellation']))
 						{
 							array_push($temp_wt, '8');
 						}
@@ -450,7 +450,7 @@ global $_W,$_GPC;
 								$data['content']="嗨！我是来自".$province[$member['province']]."的年轻人，希望你会记得我哈~";
 								break;
 							case 8:
-								$data['content']="嗨！我是".$basic['blood']."血型的,不知道你是不是也是这样的呢？";
+								$data['content']="嗨！我是".$basic['constellation']."血型的,不知道你是不是也是这样的呢？";
 								break;
 							case 9:
 								$data['content']="哈喽！我喜欢".$basic['leixin']."的女生,不知道你是不是也是这样的呢？";

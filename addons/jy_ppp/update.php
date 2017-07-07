@@ -36,12 +36,12 @@ CREATE TABLE IF NOT EXISTS `ims_jy_ppp_basic` (
   `mid` int(10) NOT NULL,
   `height` int(10) NOT NULL,
   `weight` int(10) NOT NULL,
-  `blood` varchar(8) NOT NULL,
-  `education` varchar(40) NOT NULL,
-  `job` varchar(40) NOT NULL,
-  `income` varchar(20) NOT NULL,
-  `marriage` varchar(20) NOT NULL,
-  `house` varchar(20) NOT NULL,
+  `constellation` varchar(8) NOT NULL,
+  `education` varchar(16) NOT NULL,
+  `job` varchar(16) NOT NULL,
+  `income` varchar(16) NOT NULL,
+  `marriage` varchar(10) NOT NULL,
+  `house` varchar(16) NOT NULL,
   `blank` int(10) NOT NULL COMMENT \'未填写的字段个数\',
   `createtime` int(10) NOT NULL,
   PRIMARY KEY (`id`),
@@ -730,8 +730,10 @@ if (pdo_tableexists('jy_ppp_basic')) {
     }
 }
 if (pdo_tableexists('jy_ppp_basic')) {
-    if (!pdo_fieldexists('jy_ppp_basic', 'blood')) {
-        pdo_query('ALTER TABLE ' . tablename('jy_ppp_basic') . ' ADD `blood` varchar(8) NOT NULL   COMMENT \'\';');
+    //if (!pdo_fieldexists('jy_ppp_basic', 'blood')) {
+    if (!pdo_fieldexists('jy_ppp_basic', 'constellation')) {
+    
+        pdo_query('ALTER TABLE ' . tablename('jy_ppp_basic') . ' ADD `constellation` varchar(8) NOT NULL   COMMENT \'\';');
     }
 }
 if (pdo_tableexists('jy_ppp_basic')) {

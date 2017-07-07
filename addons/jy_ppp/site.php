@@ -495,7 +495,8 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 							array_push($temp_wt, '5');
 						}
 					}
-					if(!empty($basic['blood']))
+					//if(!empty($basic['blood']))
+					if(!empty($basic['constellation']))
 					{
 						array_push($temp_wt, '8');
 					}
@@ -570,7 +571,7 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 									$data['content']="嗨！我是来自".$province[$member['province']]."的年轻人，希望你会记得我哈~";
 									break;
 								case 8:
-									$data['content']="嗨！我是".$basic['blood']."血型的,不知道你是不是也是这样的呢？";
+									$data['content']="嗨！我是".$basic['constellation']."血型的,不知道你是不是也是这样的呢？";
 									break;
 								case 9:
 									$data['content']="哈喽！我喜欢".$basic['leixin']."的女生,不知道你是不是也是这样的呢？";
@@ -1331,7 +1332,7 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 									array_push($temp_wt, '5');
 								}
 							}
-							if(!empty($basic['blood']))
+							if(!empty($basic['constellation']))
 							{
 								array_push($temp_wt, '8');
 							}
@@ -1374,7 +1375,7 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 									$data['content']="嗨！我是来自".$province[$member['province']]."的年轻人，希望你会记得我哈~";
 									break;
 								case 8:
-									$data['content']="嗨！我是".$basic['blood']."血型的,不知道你是不是也是这样的呢？";
+									$data['content']="嗨！我是".$basic['constellation']."血型的,不知道你是不是也是这样的呢？";
 									break;
 								case 9:
 									$data['content']="哈喽！我喜欢".$basic['leixin']."的女生,不知道你是不是也是这样的呢？";
@@ -3031,7 +3032,7 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 									array_push($temp_wt, '5');
 								}
 							}
-							if(!empty($basic['blood']))
+							if(!empty($basic['constellation']))
 							{
 								array_push($temp_wt, '8');
 							}
@@ -3074,7 +3075,7 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 									$data['content']="嗨！我是来自".$province[$member['province']]."的年轻人，希望你会记得我哈~";
 									break;
 								case 8:
-									$data['content']="嗨！我是".$basic['blood']."血型的,不知道你是不是也是这样的呢？";
+									$data['content']="嗨！我是".$basic['constellation']."血型的,不知道你是不是也是这样的呢？";
 									break;
 								case 9:
 									$data['content']="哈喽！我喜欢".$basic['leixin']."的女生,不知道你是不是也是这样的呢？";
@@ -3221,7 +3222,7 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 								array_push($temp_wt, '5');
 							}
 						}
-						if(!empty($basic['blood']))
+						if(!empty($basic['constellation']))
 						{
 							array_push($temp_wt, '8');
 						}
@@ -3295,7 +3296,7 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 										$data['content']="嗨！我是来自".$province[$member['province']]."的年轻人，希望你会记得我哈~";
 										break;
 									case 8:
-										$data['content']="嗨！我是".$basic['blood']."血型的,不知道你是不是也是这样的呢？";
+										$data['content']="嗨！我是".$basic['constellation']."血型的,不知道你是不是也是这样的呢？";
 										break;
 									case 9:
 										$data['content']="哈喽！我喜欢".$basic['leixin']."的女生,不知道你是不是也是这样的呢？";
@@ -4374,7 +4375,7 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 					}
 					else
 					{
-						$detail=pdo_fetch("SELECT a.id,a.nicheng,a.avatar,a.beizhu,a.sex,a.brith,a.province,a.city,a.type as type2,a.baoyue,a.mobile,a.mobile_auth,a.card_auth,b.height,b.weight,b.blood,b.education,b.job,b.income,b.marriage,b.house,c.child,c.yidi,c.leixin,c.sex as sex2,c.fumu,c.meili,d.age as age2,d.height as height2,d.education as education2,d.income as income2,d.province as province2 FROM ".tablename('jy_ppp_member')." as a left join ".tablename('jy_ppp_basic')." as b on a.id=b.mid left join ".tablename('jy_ppp_desc')." as c on a.id=c.mid left join ".tablename('jy_ppp_match')." as d on a.id=d.mid WHERE a.weid=".$weid." AND a.id= ".$id);
+						$detail=pdo_fetch("SELECT a.id,a.nicheng,a.avatar,a.beizhu,a.sex,a.brith,a.province,a.city,a.type as type2,a.baoyue,a.mobile,a.mobile_auth,a.card_auth,b.height,b.weight,b.constellation,b.education,b.job,b.income,b.marriage,b.house,c.child,c.yidi,c.leixin,c.sex as sex2,c.fumu,c.meili,d.age as age2,d.height as height2,d.education as education2,d.income as income2,d.province as province2 FROM ".tablename('jy_ppp_member')." as a left join ".tablename('jy_ppp_basic')." as b on a.id=b.mid left join ".tablename('jy_ppp_desc')." as c on a.id=c.mid left join ".tablename('jy_ppp_match')." as d on a.id=d.mid WHERE a.weid=".$weid." AND a.id= ".$id);
 						$thumb=pdo_fetchall("SELECT * FROM ".tablename('jy_ppp_thumb')." WHERE weid=".$weid." AND mid=".$id." AND ( type=1 OR type=2 )");
 						$aihao=pdo_fetchall("SELECT * FROM ".tablename('jy_ppp_aihao')." WHERE weid=".$weid." AND mid=".$id." LIMIT 3");
 						$tezheng=pdo_fetchall("SELECT * FROM ".tablename('jy_ppp_tezheng')." WHERE weid=".$weid." AND mid=".$id." LIMIT 3");
