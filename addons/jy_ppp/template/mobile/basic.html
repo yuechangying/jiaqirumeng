@@ -270,7 +270,7 @@
         </div>
         </li>
         <li class="user_mession">
-        <label class="left">是否有房</label>
+        <label class="left">居住情况</label>
         <div class="right">
             <div class="select">
                 <span class="value">
@@ -286,7 +286,9 @@
                     <option value="需要时购置" {if $basic['house']=='需要时购置'} selected="selected" {/if}>需要时购置</option>
                     <option value="与父母同住" {if $basic['house']=='与父母同住'} selected="selected" {/if}>与父母同住</option>
                     <option value="租房" {if $basic['house']=='租房'} selected="selected" {/if}>租房</option>
-                    <option value="其他" {if $basic['house']=='其他'} selected="selected" {/if}>其他</option>
+                    <option value="住单位房" {if $basic['house']=='住单位房'} selected="selected" {/if}>住单位房</option>
+                    <option value="住亲朋家" {if $basic['house']=='住亲朋家'} selected="selected" {/if}>住亲朋家</option>
+                    <option value="以后再告诉你" {if $basic['house']=='以后再告诉你'} selected="selected" {/if}>以后再告诉你</option>
                 </select>
             </div>
         </div>
