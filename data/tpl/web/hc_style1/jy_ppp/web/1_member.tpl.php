@@ -518,12 +518,12 @@
 							</div>
 						</div>
 
-						<div class="form-group">
+						<!--div class="form-group">
 							<label class="col-xs-12 col-sm-3 col-md-2 control-label">体重</label>
 							<div class="col-sm-7 col-xs-12">
-								<label><?php  if(empty($basic['weight'])) { ?>未填写<?php  } else { ?><?php  echo $basic['weight'];?> 斤<?php  } ?></label>
+								<label><?php /* if(empty($basic['weight'])) { ?>未填写<?php  } else { ?><?php  echo $basic['weight'];?> 斤<?php  */} ?></label>
 							</div>
-						</div>
+						</div-->
 
 						<div class="form-group">
 							<label class="col-xs-12 col-sm-3 col-md-2 control-label">星座</label>
@@ -561,12 +561,18 @@
 						</div>
 
 						<div class="form-group">
-							<label class="col-xs-12 col-sm-3 col-md-2 control-label">是否有房</label>
+							<label class="col-xs-12 col-sm-3 col-md-2 control-label">居住情况</label>
 							<div class="col-sm-7 col-xs-12">
 								<label><?php  if(empty($basic['house'])) { ?>未填写<?php  } else { ?><?php  echo $basic['house'];?> <?php  } ?></label>
 							</div>
 						</div>
 
+                        <div class="form-group">
+							<label class="col-xs-12 col-sm-3 col-md-2 control-label">购车情况</label>
+							<div class="col-sm-7 col-xs-12">
+								<label><?php  if(empty($basic['car'])) { ?>未填写<?php  } else { ?><?php  echo $basic['car'];?> <?php  } ?></label>
+							</div>
+						</div>
 
 					</div>
 				</div>

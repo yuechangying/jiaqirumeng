@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `ims_jy_ppp_basic` (
   `weid` int(10) NOT NULL,
   `mid` int(10) NOT NULL,
   `height` int(10) NOT NULL,
-  `weight` int(10) NOT NULL,
+  `car` varchar(16) NOT NULL,
   `constellation` varchar(8) NOT NULL,
   `education` varchar(16) NOT NULL,
   `job` varchar(16) NOT NULL,

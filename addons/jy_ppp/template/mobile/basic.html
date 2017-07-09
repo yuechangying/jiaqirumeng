@@ -104,26 +104,6 @@
         </div>
         </li>
         <li class="user_mession">
-        <label class="left">体重</label>
-        <div class="right">
-            <div class="select">
-                <span class="value">
-                {if empty($basic['weight'])}
-                    <span class="pink">请选择</span></span>
-                {else}
-                    {$basic['weight']}斤</span>
-                {/if}
-                <i class="bot_trged"></i>
-                <select id="basic_weight" class="value_select">
-                        <option value="0" style="display:none">请选择</option>
-                        <?php for ($i=60; $i <301 ; $i++) {
-                            ?> <option value="{$i}" {if $basic['weight']==$i} selected="selected" {/if}>{$i}斤 </option><?php
-                        } ?>
-                </select>
-            </div>
-        </div>
-        </li>
-        <li class="user_mession">
         <label class="left">星座</label>
         <div class="right">
             <div class="select">
@@ -293,6 +273,27 @@
             </div>
         </div>
         </li>
+        <li class="user_mession">
+        <label class="left">购车情况</label>
+        <div class="right">
+            <div class="select">
+                <span class="value">
+                {if empty($basic['car'])}
+                    <span class="pink">请选择</span></span>
+                {else}
+                    {$basic['car']}</span>
+                {/if}
+                <i class="bot_trged"></i>
+                <select id="basic_car" class="value_select">
+                    <option value="0" style="display:none">请选择</option>
+                    <option value="暂未购车" {if $basic['car']=='暂未购车'} selected="selected" {/if}>暂未购车</option>
+                    <option value="已购车" {if $basic['car']=='已购车'} selected="selected" {/if}>已购车</option>
+                    <option value="单位用车" {if $basic['car']=='单位用车'} selected="selected" {/if}>单位用车</option>
+                    <option value="需要时购置" {if $basic['car']=='需要时购置'} selected="selected" {/if}>需要时购置</option>
+                </select>
+            </div>
+        </div>
+        </li>
     </ul>
 </div>
 </body>
@@ -351,7 +352,7 @@ $(function () {
         var province=$("#live select").eq(0).val();
         var city=$("#live select").eq(1).val();
         var basic_height=$("#basic_height").val();
-        var basic_weight=$("#basic_weight").val();
+        var basic_car=$("#basic_car").val();
         //var basic_blood=$("#bloodType").val();
         var basic_constellation=$("#constellation").val();
         var basic_edu=$("#education").val();
@@ -361,7 +362,7 @@ $(function () {
         var basic_have=$("#haveHouse").val();
         // ajax-----
 
-        var param={nicheng: nickname, year:year, month:month, day:day, province:province, city:city, height:basic_height, weight:basic_weight, constellation:basic_constellation, education:basic_edu, job:basic_work, income:basic_income, marriage:basic_marry, house:basic_have };
+        var param={nicheng: nickname, year:year, month:month, day:day, province:province, city:city, height:basic_height, car:basic_car, constellation:basic_constellation, education:basic_edu, job:basic_work, income:basic_income, marriage:basic_marry, house:basic_have };
         {if empty($_GPC['xuniid']) || $member['type']!=3}
             $.ajax({url: "{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('basic',array('op'=>'add')),2);}", data: param, dataType: 'text', type: 'post', success: function (text) {
                 if(text==1){

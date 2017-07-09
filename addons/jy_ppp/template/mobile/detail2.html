@@ -173,11 +173,6 @@
             {if !empty($detail['height'])}
             <li><span>{if !empty($detail['height'])}{$detail['height']}cm{/if}</span>身高</li>
             {/if}
-            <li id="weight">
-                <span>{if !empty($detail['weight'])}{$detail['weight']}{else}保密{/if}</span>
-                体重
-            </li>
-            <!--li id="blood"-->
             <li id="constellation">
                <span>{if !empty($detail['constellation'])}{$detail['constellation']}{else}保密{/if}</span>
                 星座
@@ -201,6 +196,10 @@
             <li id="house">
                 <span>{if !empty($detail['house'])}{$detail['house']}{else}保密{/if}</span>
                 居住情况
+            </li>
+            <li id="car">
+                <span>{if !empty($detail['car'])}{$detail['car']}{else}保密{/if}</span>
+                购车情况
             </li>
         </ul>
     </div>

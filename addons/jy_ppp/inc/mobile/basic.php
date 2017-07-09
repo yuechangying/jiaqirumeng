@@ -173,8 +173,8 @@ global $_W,$_GPC;
 			  	{
 			  		$data['blank']++;
 			  	}
-			  	$data['weight']=$_GPC['weight'];
-			  	if(empty($data['weight']))
+			  	$data['car']=$_GPC['car'];
+			  	if(empty($data['car']))
 			  	{
 			  		$data['blank']++;
 			  	}

@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `ims_jy_ppp_basic` (
   `weid` int(10) NOT NULL,
   `mid` int(10) NOT NULL,
   `height` int(10) NOT NULL,
-  `weight` int(10) NOT NULL,
+  `car` varchar(16) NOT NULL,
   `constellation` varchar(8) NOT NULL,
   `education` varchar(16) NOT NULL,
   `job` varchar(16) NOT NULL,
@@ -725,8 +725,8 @@ if (pdo_tableexists('jy_ppp_basic')) {
     }
 }
 if (pdo_tableexists('jy_ppp_basic')) {
-    if (!pdo_fieldexists('jy_ppp_basic', 'weight')) {
-        pdo_query('ALTER TABLE ' . tablename('jy_ppp_basic') . ' ADD `weight` int(10) NOT NULL   COMMENT \'\';');
+    if (!pdo_fieldexists('jy_ppp_basic', 'car')) {
+        pdo_query('ALTER TABLE ' . tablename('jy_ppp_basic') . ' ADD `car` varchar(16) NOT NULL   COMMENT \'\';');
     }
 }
 if (pdo_tableexists('jy_ppp_basic')) {
