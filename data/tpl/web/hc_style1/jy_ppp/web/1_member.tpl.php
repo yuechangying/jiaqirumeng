@@ -593,44 +593,44 @@
 					<div class="panel-body">
 
 						<div class="form-group">
-							<label class="col-xs-12 col-sm-3 col-md-2 control-label">是否想要小孩</label>
+							<label class="col-xs-12 col-sm-3 col-md-2 control-label">生活作息</label>
 							<div class="col-sm-7 col-xs-12">
-								<label><?php  if(empty($desc['child'])) { ?>未填写<?php  } else { ?><?php  echo $desc['child'];?><?php  } ?></label>
+								<label><?php  if(empty($desc['lifestatus'])) { ?>未填写<?php  } else { ?><?php  echo $desc['lifestatus'];?><?php  } ?></label>
 							</div>
 						</div>
 
 						<div class="form-group">
-							<label class="col-xs-12 col-sm-3 col-md-2 control-label">能否接受异地恋</label>
+							<label class="col-xs-12 col-sm-3 col-md-2 control-label">工作状态</label>
 							<div class="col-sm-7 col-xs-12">
-								<label><?php  if(empty($desc['yidi'])) { ?>未填写<?php  } else { ?><?php  echo $desc['yidi'];?><?php  } ?></label>
+								<label><?php  if(empty($desc['jobstatus'])) { ?>未填写<?php  } else { ?><?php  echo $desc['jobstatus'];?><?php  } ?></label>
 							</div>
 						</div>
 
 						<div class="form-group">
-							<label class="col-xs-12 col-sm-3 col-md-2 control-label">喜欢的异性类型</label>
+							<label class="col-xs-12 col-sm-3 col-md-2 control-label">公司类型</label>
 							<div class="col-sm-7 col-xs-12">
-								<label><?php  if(empty($desc['leixin'])) { ?>未填写<?php  } else { ?><?php  echo $desc['leixin'];?><?php  } ?></label>
+								<label><?php  if(empty($desc['companytype'])) { ?>未填写<?php  } else { ?><?php  echo $desc['companytype'];?><?php  } ?></label>
 							</div>
 						</div>
 
 						<div class="form-group">
-							<label class="col-xs-12 col-sm-3 col-md-2 control-label">能否接受婚前性行为</label>
+							<label class="col-xs-12 col-sm-3 col-md-2 control-label">是否吸烟</label>
 							<div class="col-sm-7 col-xs-12">
-								<label><?php  if(empty($desc['sex'])) { ?>未填写<?php  } else { ?><?php  echo $desc['sex'];?><?php  } ?></label>
+								<label><?php  if(empty($desc['smoke'])) { ?>未填写<?php  } else { ?><?php  echo $desc['smoke'];?><?php  } ?></label>
 							</div>
 						</div>
 
 						<div class="form-group">
-							<label class="col-xs-12 col-sm-3 col-md-2 control-label">是否愿意与父母同住</label>
+							<label class="col-xs-12 col-sm-3 col-md-2 control-label">父母情况</label>
 							<div class="col-sm-7 col-xs-12">
-								<label><?php  if(empty($desc['fumu'])) { ?>未填写<?php  } else { ?><?php  echo $desc['fumu'];?><?php  } ?></label>
+								<label><?php  if(empty($desc['parentstatus'])) { ?>未填写<?php  } else { ?><?php  echo $desc['parentstatus'];?><?php  } ?></label>
 							</div>
 						</div>
 
 						<div class="form-group">
-							<label class="col-xs-12 col-sm-3 col-md-2 control-label">魅力部位</label>
+							<label class="col-xs-12 col-sm-3 col-md-2 control-label">厨艺状况</label>
 							<div class="col-sm-7 col-xs-12">
-								<label><?php  if(empty($desc['meili'])) { ?>未填写<?php  } else { ?><?php  echo $desc['meili'];?><?php  } ?></label>
+								<label><?php  if(empty($desc['chuyi'])) { ?>未填写<?php  } else { ?><?php  echo $desc['chuyi'];?><?php  } ?></label>
 							</div>
 						</div>
 

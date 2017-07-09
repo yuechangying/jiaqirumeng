@@ -149,33 +149,33 @@ global $_W,$_GPC;
 				$data['mid']=$mid;
 				$data['blank']=0;
 
-			  	$data['child']=$_GPC['child'];
-			  	if(empty($data['child']))
+			  	$data['lifestatus']=$_GPC['lifestatus'];
+			  	if(empty($data['lifestatus']))
 			  	{
 			  		$data['blank']++;
 			  	}
-			  	$data['yidi']=$_GPC['yidi'];
-			  	if(empty($data['yidi']))
+			  	$data['jobstatus']=$_GPC['jobstatus'];
+			  	if(empty($data['jobstatus']))
 			  	{
 			  		$data['blank']++;
 			  	}
-			  	$data['leixin']=$_GPC['leixin'];
-			  	if(empty($data['leixin']))
+			  	$data['companytype']=$_GPC['companytype'];
+			  	if(empty($data['companytype']))
 			  	{
 			  		$data['blank']++;
 			  	}
-			  	$data['sex']=$_GPC['sex'];
-			  	if(empty($data['sex']))
+			  	$data['smoke']=$_GPC['smoke'];
+			  	if(empty($data['smoke']))
 			  	{
 			  		$data['blank']++;
 			  	}
-			  	$data['fumu']=$_GPC['fumu'];
-			  	if(empty($data['fumu']))
+			  	$data['parentstatus']=$_GPC['parentstatus'];
+			  	if(empty($data['parentstatus']))
 			  	{
 			  		$data['blank']++;
 			  	}
-			  	$data['meili']=$_GPC['meili'];
-			  	if(empty($data['meili']))
+			  	$data['chuyi']=$_GPC['chuyi'];
+			  	if(empty($data['chuyi']))
 			  	{
 			  		$data['blank']++;
 			  	}

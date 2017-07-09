@@ -237,8 +237,28 @@
         <h3>详细资料</h3>
         <ul>
             <li>
-                <span>{if !empty($detail['leixin'])}{$detail['leixin']}{else}保密{/if}</span>
-                类型
+                <span>{if !empty($detail['lifestatus'])}{$detail['lifestatus']}{else}{/if}</span>
+                生活作息
+            </li>
+            <li>
+                <span>{if !empty($detail['jobstatus'])}{$detail['jobstatus']}{else}保密{/if}</span>
+                工作状态
+            </li>
+            <li>
+                <span>{if !empty($detail['companytype'])}{$detail['companytype']}{else}保密{/if}</span>
+                公司类型
+            </li>
+            <li>
+                <span>{if !empty($detail['smoke'])}{$detail['smoke']}{else}保密{/if}</span>
+                是否吸烟
+            </li>
+            <li>
+                <span>{if !empty($detail['parentstatus'])}{$detail['parentstatus']}{else}保密{/if}</span>
+                父母情况
+            </li>
+            <li>
+                <span>{if !empty($detail['chuyi'])}{$detail['chuyi']}{else}保密{/if}</span>
+                厨艺状况
             </li>
         </ul>
     </div>
