@@ -74,9 +74,11 @@ global $_W,$_GPC;
 					}
 					else
 					{
+					    // 给对方发信息需要的红豆
 						if(empty($sitem['chat']))
 						{
-							$sitem['chat']=20;
+							//$sitem['chat']=20;
+							$sitem['chat']=3;
 						}
 						$temp=pdo_fetch("SELECT * FROM ".tablename('jy_ppp_member')." WHERE weid=".$weid." AND id=".$mid);
 						if($temp['credit']>$sitem['chat'])

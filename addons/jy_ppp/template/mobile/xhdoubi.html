@@ -16,7 +16,7 @@
 <body>
 <div class="top_blank"></div>
 <nav class="nav" style="position: absolute;">
-    <h2>开通永久畅聊</h2>
+    <h2>开通写信权限</h2>
     <a class="left" onclick="history.go(-1)">
         <i class="le_trg"></i>返回
     </a>
@@ -40,9 +40,10 @@
             <div>{$province[$temp['province']]} {$nianlin}岁</div>
         </dd>
         {if empty($sitem['unit'])}{php $sitem['unit']=='豆'}{/if}
-        <dd class="txtAC">是否要用{$sitem['chat']}个{$sitem['unit']}与她开通聊天</dd>
+        <!--dd class="txtAC">是否要用{$sitem['chat']}个{$sitem['unit']}与她开通聊天</dd-->
+        <dd class="txtAC">缘分来了，花{$sitem['chat']}个红豆与心爱的人聊起来吧</dd>
     </dl>
-    <span class="report_btn blue" onclick="toUseBi()">知道了，我要用{$sitem['unit']}</span>
+    <span class="report_btn blue" onclick="toUseBi()">没问题，在爱情面前，啥啥都不是个儿事</span>
 </section>
 <script src="../addons/jy_ppp/js/zepto.min.js"></script>
 <script src="../addons/jy_ppp/js/public.js"></script>
@@ -51,22 +52,25 @@
 function toUseBi(){
     $.ajax({url: "{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('xhdoubi',array('op'=>'xh','id'=>$id)),2);}", data: {}, dataType: 'text', type: 'post', success: function (re) {
         if (re == 1) {
-            $.tips("你成功开通了与该用户的永久畅聊");
-            setTimeout(function(){
+            //$.tips("您成功开通了与该用户的永久畅聊");
+			$.tips("终于等到这一刻了，赶紧给心爱的人写信吧");
+			setTimeout(function(){
                         window.location.href="{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('chat',array('id'=>$id)),2)}";
                     }, 1500);
         }else if (re == 2) {
-            $.tips("你已经开通了与该用户的永久畅聊");
+            //$.tips("你已经开通了与该用户的永久畅聊");
+            $.tips("让我们继续聊聊人生，谈谈理想");
             setTimeout(function(){
                         window.location.href="{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('chat',array('id'=>$id)),2)}";
                     }, 1500);
         }else if (re == 3) {
-            $.tips("你余额不足，无法开通永久畅聊");
+            //$.tips("你余额不足，无法开通永久畅聊");
+            $.tips("亲，您的余额不足，没法给心上人写信，赶紧去充值吧");
         } else {
-            $.tips("网络问题,请稍后重试"+re);
+            $.tips("您的爱情不在服务区,请稍后重试"+re);
         }
     }, error: function () {
-        $.tips("网络问题,请稍后重试");
+		$.tips("您的爱情不在服务区,请稍后重试");
     }
     });
 }

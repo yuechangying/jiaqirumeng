@@ -288,20 +288,24 @@
 
     <div class="dibu_zh">
         {if $ltlx==1}
-        <a href="javascript:;" onclick="sayHello(this)">
+        <!--a href="javascript:;" onclick="sayHello(this)">
             <i><img src="../addons/jy_ppp/images/chat_ico2.png"></i>打招呼
-        </a>
+        </a-->
         {/if}
         {if $ltlx==2}
-        <a href="javascript:;" onclick="chat(this)">
+        <!--a href="javascript:;" onclick="chat(this)">
             <i><img src="../addons/jy_ppp/images/chat_ico2.png"></i>写信
-        </a>
+        </a-->
         {/if}
         {if $ltlx==3}
-        <a href="javascript:;" onclick="huifu(this)">
+        <!--a href="javascript:;" onclick="huifu(this)">
             <i><img src="../addons/jy_ppp/images/chat_ico2.png"></i>索要联系方式
-        </a>
+        </a-->
         {/if}
+        
+        <a href="javascript:;" onclick="huifu(this)">
+            <i><img src="../addons/jy_ppp/images/chat_ico2.png"></i>写信
+        </a>
     </div>
 </div>
 {if $sitem['youhuo_pay']  && empty($baoyue)}
@@ -434,20 +438,24 @@
         });
       }
       function huifu(obj){
+          // 发消息到 userthumb.php
           $.ajax({url: "{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('userthumb',array('op'=>'huifu','id'=>$id)),2);}", data: {}, dataType: 'text', type: 'post', success: function (re) {
-              if (re == 1) {
+              // 用户没有红豆,提示用户充值     
+			  if (re == 1) {
+                  alert("您的红豆不够，请充值。表烦，有老岳，有红豆。。。");
                   //window.location.href="{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('cz',array('id'=>$id)),2)}";
                   showPayTips();
               }else if (re == 2) {
                   window.location.href="{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('xhdoubi',array('id'=>$id)),2)}";
               }
+			  // 跳转到发信息页面
               else if (re == 3) {
                   window.location.href="{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('chat',array('id'=>$id)),2)}";
               } else {
-                  alert("网络问题,请稍后重试");
+                  alert("您的爱情不在服务区,请稍后重试");
               }
           }, error: function () {
-              alert("网络问题,请稍后重试");
+              alert("您的爱情不在服务区,请稍后重试");
           }
           });
       }

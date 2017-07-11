@@ -99,12 +99,12 @@ global $_W,$_GPC;
 			}
 			elseif ($op=='huifu') {
 				$id=$_GPC['id'];
-				if($member['sex']==2)
+				/*if($member['sex']==2)
 				{
 					echo 3;
 					exit;
 				}
-				else
+				else */
 				{
 					if(empty($member['baoyue']))
 					{
