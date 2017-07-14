@@ -31,8 +31,7 @@
         {php $now=time();}
         {loop $lianxi $l}                                                                     
             <!--a href="{php echo $this->createMobileUrl('chat',array('id'=>$l['mid']))}"-->
-        <!--<a href="javascript:;" onclick="huifu({$l['mid']})" >-->
-        <a href="javascript:;" data-url="{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('userthumb',array('op'=>'huifu','id'=>$l['mid'])),2);}" onclick="huifu({$l['mid']},this)" >
+        <a href="javascript:;" onclick="huifu({$l['mid']})" >
             <ul class="disbox-hor user-list"  data-id="{$l['id']}">
                 <li class="foot-icon disbox-center">
                     {if !empty($l['avatar'])}
@@ -88,7 +87,7 @@
             },'json');
         }
 
-		function huifu(tmpmid,e){
+		function huifu(tmpmid){
 //		  alert(tmpmid);
 
 		  //$mid2 = array('op'=>'huifu','id'=>tmpmid));
@@ -96,12 +95,11 @@
             var id = tmpmid;
             var url = "{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('userthumb',array('op'=>'huifu','id'=>tmpmid)),2);}";
 
-            alert($(this));
             if(id){
-                var _url = $(e.currentTarget).attr('data-url');
-                alert('_url: ' + _url);
+                url = url.replace('tmpmid',id);
+                alert('_url: ' + url);
             }
-            alert(id);
+
             alert(url);
 
 
