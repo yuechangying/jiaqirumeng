@@ -105,7 +105,7 @@ global $_W,$_GPC;
 					exit;
 				}
 				else */
-//				{
+				{
 					if(empty($member['baoyue']))
 					{
 						$baoyue=0;
@@ -150,7 +150,7 @@ global $_W,$_GPC;
 							}
 						}
 					}
-//				}
+				}
 			}
 			else
 			{

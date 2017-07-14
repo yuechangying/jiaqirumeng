@@ -96,9 +96,10 @@
             var id = tmpmid;
             var url = "{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('userthumb',array('op'=>'huifu','id'=>tmpmid)),2);}";
 
+            alert($(this));
             if(id){
                 var _url = $(this).attr('data-url');
-                alert(_url);
+                alert('_url: ' + _url);
             }
             alert(id);
             alert(url);
