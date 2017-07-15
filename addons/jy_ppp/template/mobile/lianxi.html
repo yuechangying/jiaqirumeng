@@ -52,7 +52,6 @@
                         {if !empty($l['brith'])}
                         {php $birthday=$l['brith'];$month=0;if(date('m', $now)>date('m', $birthday))$month=1;if(date('m', $now)==date('m', $birthday))if(date('d', $now)>=date('d', $birthday))$month=1;$nianlin=date('Y', $now)-date('Y', $birthday)+$month;}
                         {$nianlin}岁·{/if}{$province[$l['province']]}{if !empty($l['height'])}·{$l['height']}cm{/if} 
-                        mid={$l['mid']}, id={$l['id']}
                     </p>
                 </li>
                 <div class="right"><span class="hello">聊天</span></div>
