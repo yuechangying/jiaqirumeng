@@ -2,15 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cbfe911e-f887-452b-9ea3-c528e3075589" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/addons/jy_ppp/inc/mobile/userthumb.php" afterPath="$PROJECT_DIR$/addons/jy_ppp/inc/mobile/userthumb.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/addons/jy_ppp/inc/web/member.php" afterPath="$PROJECT_DIR$/addons/jy_ppp/inc/web/member.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/addons/jy_ppp/template/mobile/chat.html" afterPath="$PROJECT_DIR$/addons/jy_ppp/template/mobile/chat.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/addons/jy_ppp/template/mobile/detail2.html" afterPath="$PROJECT_DIR$/addons/jy_ppp/template/mobile/detail2.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/addons/jy_ppp/template/mobile/lianxi.html" afterPath="$PROJECT_DIR$/addons/jy_ppp/template/mobile/lianxi.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/addons/jy_ppp/template/mobile/mail.html" afterPath="$PROJECT_DIR$/addons/jy_ppp/template/mobile/mail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/addons/jy_ppp/template/mobile/xhdoubi.html" afterPath="$PROJECT_DIR$/addons/jy_ppp/template/mobile/xhdoubi.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/addons/jy_ppp/template/web/member.html" afterPath="$PROJECT_DIR$/addons/jy_ppp/template/web/member.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -34,7 +29,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="mail.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="mail.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/addons/jy_ppp/template/mobile/mail.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="174">
@@ -64,11 +59,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="lianxi.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="lianxi.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/addons/jy_ppp/template/mobile/lianxi.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="454">
-              <caret line="123" column="22" lean-forward="true" selection-start-line="123" selection-start-column="22" selection-end-line="123" selection-end-column="22" />
+            <state relative-caret-position="94">
+              <caret line="121" column="7" lean-forward="false" selection-start-line="121" selection-start-column="7" selection-end-line="121" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -139,8 +134,8 @@
         <option value="$PROJECT_DIR$/addons/jy_ppp/template/web/member.html" />
         <option value="$PROJECT_DIR$/addons/jy_ppp/template/mobile/detail2.html" />
         <option value="$PROJECT_DIR$/addons/jy_ppp/template/mobile/xhdoubi.html" />
-        <option value="$PROJECT_DIR$/addons/jy_ppp/template/mobile/lianxi.html" />
         <option value="$PROJECT_DIR$/addons/jy_ppp/template/mobile/mail.html" />
+        <option value="$PROJECT_DIR$/addons/jy_ppp/template/mobile/lianxi.html" />
       </list>
     </option>
   </component>
@@ -292,12 +287,12 @@
       <updated>1500044552812</updated>
       <workItem from="1500044555672" duration="4911000" />
       <workItem from="1500084842344" duration="4694000" />
-      <workItem from="1500118812272" duration="1814000" />
+      <workItem from="1500118812272" duration="2740000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11419000" />
+    <option name="totallyTimeSpent" value="12345000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -309,10 +304,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1456" height="876" extended-state="7" />
+    <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18611111" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -476,18 +471,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/addons/jy_ppp/template/mobile/lianxi.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="454">
-          <caret line="123" column="22" lean-forward="true" selection-start-line="123" selection-start-column="22" selection-end-line="123" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/addons/jy_ppp/template/mobile/mail.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="174">
           <caret line="233" column="32" lean-forward="true" selection-start-line="233" selection-start-column="32" selection-end-line="233" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/addons/jy_ppp/template/mobile/lianxi.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="94">
+          <caret line="121" column="7" lean-forward="false" selection-start-line="121" selection-start-column="7" selection-end-line="121" selection-end-column="7" />
           <folding />
         </state>
       </provider>

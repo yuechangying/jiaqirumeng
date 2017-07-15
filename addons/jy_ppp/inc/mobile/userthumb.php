@@ -131,6 +131,7 @@ global $_W,$_GPC;
 					else
 					{
 						$temp=pdo_fetch("SELECT id FROM ".tablename('jy_ppp_chat_doubi')." WHERE weid=".$weid." AND mid=".$mid." AND chatid=".$id);
+
 						if(!empty($temp))
 						{
 							echo 3;
