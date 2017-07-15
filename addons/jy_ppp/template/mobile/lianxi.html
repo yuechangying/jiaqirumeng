@@ -99,8 +99,6 @@
                 url = url.replace('tmpmid',id);
             }
 
-		  //alert($mid2['id'])
-		  
           // 发消息到 userthumb.php
            $.ajax({url: url, data: {}, dataType: 'text', type: 'post', success: function (re) {
           //   $.ajax({url: "{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('userthumb',$mid2),2);}", data: {}, dataType: 'text', type: 'post', success: function (re) { 
@@ -112,16 +110,29 @@
                   //window.location.href="{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('cz',array('id'=>$id)),2)}";
                   showPayTips();
               }else if (re == 2) {
-			  	  alert("goto付款页面"); 
-                  window.location.href="{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('xhdoubi',array('id'=>268)),2)}";
+                  alert("go to 付款");
+                  var id2 = tmpmid;
+                  alert(id2);
+                  var url2 = "{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('xhdoubi',array('id'=>tmpmid)),2)}";;
+                  if(id2){
+                      url2 = url2.replace('tmpmid',id2);
+                  }
+                  window.location.href=url2;
+			  	  //window.location.href="{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('xhdoubi',array('id'=>268)),2)}";
               }
 			  // 跳转到发信息页面
               else if (re == 3) {
-                  alert("goto char"); 
-                  window.location.href="{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('chat',array('id'=>268)),2)}";
+                  alert("goto char");
+                  var id3 = tmpmid;
+                  alert(id3);
+                  var url3 = "{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('chat',array('id'=>tmpmid)),2)}";;
+                  if(id3){
+                      url3 = url3.replace('tmpmid',id3);
+                  }
+                  window.location.href = url3;
+                  //window.location.href="{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('chat',array('id'=>268)),2)}";
               } else {
-			  	  alert(re)
-                 // alert("您的爱情不在服务区,请稍后重试1");
+                 alert("您的爱情不在服务区,请稍后重试1");
               }
           }, error: function () {
               alert("您的爱情不在服务区,请稍后重试2");
