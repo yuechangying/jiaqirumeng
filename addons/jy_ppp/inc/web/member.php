@@ -139,6 +139,7 @@ global $_W,$_GPC;
 				message("更新数据成功！",$this->createWebUrl('member',array('id'=>$id,'op'=>'mingxi')),'success');
 			}
 			if(checksubmit('submit3')) {
+			    // $_GPC['credit']表示界面显示的金额，$row['credit']表示数据库查询的金额
 				if($row['credit']>$_GPC['credit'])
 				{
 					$credit=$row['credit']-$_GPC['credit'];
@@ -170,6 +171,13 @@ global $_W,$_GPC;
 				pdo_update("jy_ppp_member",array('credit'=>$_GPC['credit']),array('id'=>$id));
 				message("更新积分成功！",$this->createWebUrl('member',array('id'=>$id,'op'=>'mingxi')),'success');
 			}
+
+            /*if(checksubmit('submit4')) {
+
+                pdo_update("jy_ppp_member",array('card_auth'=>$_GPC['card_auth']),array('id'=>$id));
+                message("身份验证成功！",$this->createWebUrl('member',array('id'=>$id,'op'=>'mingxi')),'success');
+            } */
+
 			$item['feedback']=pdo_fetchall("SELECT a.*,b.nicheng,b.sex,b.mobile,b.avatar,c.nickname,c.avatar as avatar2 FROM ".tablename('jy_ppp_feedback')." as a left join ".tablename('jy_ppp_member')." as b on a.mid=b.id left join ".tablename('mc_members')." as c on b.uid=c.uid WHERE a.mid=".$row['id']);
 
 			$year=date('Y',$row['brith']);

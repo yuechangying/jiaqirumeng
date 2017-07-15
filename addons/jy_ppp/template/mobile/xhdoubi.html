@@ -64,8 +64,7 @@ function toUseBi(){
                         window.location.href="{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('chat',array('id'=>$id)),2)}";
                     }, 1500);
         }else if (re == 3) {
-            //$.tips("你余额不足，无法开通永久畅聊");
-            $.tips("亲，您的余额不足，没法给心上人写信，赶紧去充值吧");
+            $.tips("亲，您的红豆余额不足，没法给心上人写信，表烦，有老岳，明天有红豆了。。。");
         } else {
             $.tips("您的爱情不在服务区,请稍后重试"+re);
         }

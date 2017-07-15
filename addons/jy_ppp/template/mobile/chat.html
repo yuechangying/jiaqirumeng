@@ -384,19 +384,19 @@
 <!-- 1.-- 不是会员时的按钮 -->
 {if !empty($id)}
 <!-- <a href="../addons/jy_ppp/pay_intercept.html"><div class="but_send"><div>回复并索要联系方式</div></div></a> -->
-  <div class="bottomNext"><div>
+  <!--div class="bottomNext"><div>
     {if $ltlx==1 && empty($wt)}
     <div><span onclick="sayHello(this)"><i class="icon-bt-hello"></i>打招呼</span></div>
     {/if}
     {if $ltlx==3}
     <div><span onclick="showPayTips(this)"><i class="icon-bt-hello"></i>回复并索要联系方式</span></div>
     {/if}
-  </div></div>
+  </div></div-->
 {/if}
 <!--sp 遮罩层-->
 <div class="mask" id="mask">
 </div>
-<div class="alert-tphone " id="alert-tphone">
+<!--div class="alert-tphone " id="alert-tphone">
 	<p>
 		请填写您的手机号码进行验证
 	</p>
@@ -404,9 +404,9 @@
 	<span id="errorMsg"></span>
 	<a id="check_phone" class="btn">下一步</a>
 	<span id="closed" class="closed"></span>
-</div>
+</div-->
 {if $sitem['youhuo_pay']  && empty($baoyue)}
-<div class="go_vip" id="go_vip" style="display:none">
+<!--div class="go_vip" id="go_vip" style="display:none">
     <h3><a hidefocus="#" onclick="$('.go_vip').hide()"><img src="../addons/jy_ppp/images/closed.png" style="background:none;background-color:#fff"></a>非VIP包月用户不能聊天
     </h3>
 
@@ -426,22 +426,31 @@
     <div class="pay_btn">
         <a class="other_pay" style="background-color:#3dca23; color:white;" href="#">微信安全支付</a>
     </div>
-</div>
+</div-->
 {/if}
 <!-- 2.-- 选项回答部分-->
 {if $member['sex']==1 && !empty($wt) && $ltlx==1}
-<div class="answer">
+<!--div class="answer">
 	<p class="main_tit">回答她的问题:</p>
 	<ol>
 		{loop $wt $w}
 		<li class="selAns" data-id="{$w['id']}">{$w['name']}</li>
 		{/loop}
 	</ol>
-</div>
+</div-->
 {/if}
 <div style="height:80px"></div>
 <!-- 3.-- 输入框回答部分 -->
 {if $ltlx==2}
+<!--div class="send_out" id="sendbtn"><div>
+    <ul>
+        <li><textarea type="text" id="talk_area2"></textarea>
+            <span class="provide hidden">0/240字</span></li>
+        <li><button id="sendbtn2" style="transform-origin: 0px 0px 0px; opacity: 1; transform: scale(1, 1);">发送</button></li>
+    </ul>
+</div></div-->
+{/if}
+
 <div class="send_out" id="sendbtn"><div>
     <ul>
         <li><textarea type="text" id="talk_area2"></textarea>
@@ -449,7 +458,7 @@
         <li><button id="sendbtn2" style="transform-origin: 0px 0px 0px; opacity: 1; transform: scale(1, 1);">发送</button></li>
     </ul>
 </div></div>
-{/if}
+
 <div id="send_nav" class="nav hidden" style="z-index: 9999">
     <h2 class="title">发消息</h2>
     <div class="left" id="send_cancel">取消</div>

@@ -206,17 +206,17 @@
 
     
     {if $sitem['youhuo_pay']  && empty($baoyue)}
-    <div class="ziliao_box">
+    <!--div class="ziliao_box">
         <h3>联系方式</h3>
         <ul>
-            <!--li><span onclick="showPayTips()">查看QQ</span>QQ</li-->
-            <!--li><span onclick="showPayTips()">查看手机</span>手机</li-->
+            <li><span onclick="showPayTips()">查看QQ</span>QQ</li>
+            <li><span onclick="showPayTips()">查看手机</span>手机</li>
             <li><span onclick="showPayTips()">查看微信</span>微信号</li>
         </ul>
-    </div>
+    </div-->
     {else}
         {if $sitem['youhuo_pay']}
-            <div class="ziliao_box">
+            <!--div class="ziliao_box">
                 <h3>联系方式</h3>
                 <ul>
                     {if !empty($detail['qq'])}
@@ -229,7 +229,7 @@
                     <li><span >{$detail['wechat']}</span>微信号</li>
                     {/if}
                 </ul>
-            </div>
+            </div-->
         {/if}
     {/if}
 
@@ -442,7 +442,7 @@
           $.ajax({url: "{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('userthumb',array('op'=>'huifu','id'=>$id)),2);}", data: {}, dataType: 'text', type: 'post', success: function (re) {
               // 用户没有红豆,提示用户充值     
 			  if (re == 1) {
-                  alert("您的红豆不够，请充值。表烦，有老岳，有红豆。。。");
+                  alert("您的红豆不够，请充值。表烦，有老岳，明天有红豆了。。。");
                   //window.location.href="{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('cz',array('id'=>$id)),2)}";
                   showPayTips();
               }else if (re == 2) {

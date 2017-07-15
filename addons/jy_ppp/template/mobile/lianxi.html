@@ -29,8 +29,10 @@
 <div class="content">
     <div id="visitor_list">
         {php $now=time();}
-        {loop $lianxi $l}
-            <a href="{php echo $this->createMobileUrl('chat',array('id'=>$l['mid']))}"><ul class="disbox-hor user-list"  data-id="{$l['id']}">
+        {loop $lianxi $l}                                                                     
+            <!--a href="{php echo $this->createMobileUrl('chat',array('id'=>$l['mid']))}"-->
+        <a href="javascript:;" onclick="huifu({$l['mid']})">
+            <ul class="disbox-hor user-list"  data-id="{$l['id']}">
                 <li class="foot-icon disbox-center">
                     {if !empty($l['avatar'])}
                         <img src="{php echo tomedia($l['avatar'])}">
@@ -47,7 +49,8 @@
                     <p class="bot">
                         {if !empty($l['brith'])}
                         {php $birthday=$l['brith'];$month=0;if(date('m', $now)>date('m', $birthday))$month=1;if(date('m', $now)==date('m', $birthday))if(date('d', $now)>=date('d', $birthday))$month=1;$nianlin=date('Y', $now)-date('Y', $birthday)+$month;}
-                        {$nianlin}岁·{/if}{$province[$l['province']]}{if !empty($l['height'])}·{$l['height']}cm{/if}
+                        {$nianlin}岁·{/if}{$province[$l['province']]}{if !empty($l['height'])}·{$l['height']}cm{/if} 
+                        mid={$l['mid']}, id={$l['id']}
                     </p>
                 </li>
                 <div class="right"><span class="hello">聊天</span></div>
@@ -83,6 +86,50 @@
                 }
             },'json');
         }
+
+		function huifu(tmpmid){
+		    var id = tmpmid;
+            var url = "{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('userthumb',array('op'=>'huifu','id'=>tmpmid)),2);}";
+            if(id){
+                url = url.replace('tmpmid',id);
+            }
+
+          // 发消息到 userthumb.php
+           $.ajax({url: url, data: {}, dataType: 'text', type: 'post', success: function (re) {
+          //   $.ajax({url: "{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('userthumb',$mid2),2);}", data: {}, dataType: 'text', type: 'post', success: function (re) { 
+
+              // 用户没有红豆,提示用户充值     
+			  if (re == 1) {
+			      alert("您的红豆不够，请充值。表烦，有老岳，有红豆。。。");
+                  //window.location.href="{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('cz',array('id'=>$id)),2)}";
+                  showPayTips();
+              }else if (re == 2) {
+                  var id2 = tmpmid;
+                  var url2 = "{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('xhdoubi',array('id'=>tmpmid)),2)}";;
+                  if(id2){
+                      url2 = url2.replace('tmpmid',id2);
+                  }
+                  window.location.href=url2;
+			  	  //window.location.href="{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('xhdoubi',array('id'=>268)),2)}";
+              }
+			  // 跳转到发信息页面
+              else if (re == 3) {
+                  var id3 = tmpmid;
+                  var url3 = "{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('chat',array('id'=>tmpmid)),2)}";;
+                  if(id3){
+                      url3 = url3.replace('tmpmid',id3);
+                  }
+                  window.location.href = url3;
+                  //window.location.href="{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('chat',array('id'=>268)),2)}";
+              } else {
+                 alert("您的爱情不在服务区,请稍后重试1");
+              }
+          }, error: function () {
+              alert("您的爱情不在服务区,请稍后重试2");
+          }
+          });
+        }
+
     </script>
 </body>
 {template 'inc/footer'}

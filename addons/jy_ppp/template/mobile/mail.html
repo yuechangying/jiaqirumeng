@@ -73,7 +73,7 @@ a>.user-list>li.foot-icon>img{width: 50px;max-height: 61px;border-radius: 3px;}
             {/if}
             {php $now=time();}
             {loop $list $l}
-            <a href="{php echo $this->createMobileUrl('chat',array('id'=>$l['mid']))}"><ul class="disbox-hor user-list mailid" data-id="{$l['mid']}">
+            <!--a href="{php echo $this->createMobileUrl('chat',array('id'=>$l['mid']))}"--><a href="javascript:;" onclick="huifu({$l['mid']})"> <ul class="disbox-hor user-list mailid" data-id="{$l['mid']}">
                 <li class="foot-icon disbox-center">
                     {if $l['type']!=3}
                         {if !empty($l['avatar'])}
@@ -95,7 +95,7 @@ a>.user-list>li.foot-icon>img{width: 50px;max-height: 61px;border-radius: 3px;}
                 </li>
                 <li class="disbox-flex user_mession">
                 {if $l['type']!=3}
-                <b class="tit">{$l['nicheng']}<span class="pink">{if empty($l['yuedu'])}{if $l['type']==1}[会员推荐]{/if}{if $l['type']==2}[最新回信]{/if}{/if}</span>
+                <b class="tit">{$l['nicheng']} {$l['mid']}<span class="pink">{if empty($l['yuedu'])}{if $l['type']==1}[会员推荐]{/if}{if $l['type']==2}[最新回信]{/if}{/if}</span>
                 {else}
                 <b class="tit">管理员<span class="pink"></span>
                 {/if}
@@ -193,27 +193,72 @@ a>.user-list>li.foot-icon>img{width: 50px;max-height: 61px;border-radius: 3px;}
 <script src="../addons/jy_ppp/js/public.js"></script>
 <script src="../addons/jy_ppp/js/waiting.js"></script>
 <script>
-function moreMsg(obj){
-    var str = "";
-    for(var i=0;i<$(".mailid").length;++i){
-        str += $(".mailid").eq(i).data("id")+",";
+    function moreMsg(obj){
+        var str = "";
+        for(var i=0;i<$(".mailid").length;++i){
+            str += $(".mailid").eq(i).data("id")+",";
+        }
+        $.post("{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('mail',array('op'=>'more')),2)}"+"&str="+str,function(data){
+            if(data.status==1)
+            {
+                $("#mail_list").append(data.log);
+            }else if(data.status==2)
+            {
+                $("#mail_list").append(data.log);
+                $(".see_more").hide();
+                $(".loading").show();
+            }
+            else
+            {
+                alert("网络出错，请重试!"+data);
+            }
+        },'json');
     }
-    $.post("{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('mail',array('op'=>'more')),2)}"+"&str="+str,function(data){
-        if(data.status==1)
-        {
-            $("#mail_list").append(data.log);
-        }else if(data.status==2)
-        {
-            $("#mail_list").append(data.log);
-            $(".see_more").hide();
-            $(".loading").show();
+
+    function huifu(tmpmid){
+
+        var id = tmpmid;
+        var url = "{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('userthumb',array('op'=>'huifu','id'=>tmpmid)),2);}";
+        if(id){
+            url = url.replace('tmpmid',id);
         }
-        else
-        {
-            alert("网络出错，请重试!"+data);
+
+        // 发消息到 userthumb.php
+        $.ajax({url: url, data: {}, dataType: 'text', type: 'post', success: function (re) {
+            //   $.ajax({url: "{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('userthumb',$mid2),2);}", data: {}, dataType: 'text', type: 'post', success: function (re) {
+            // 用户没有红豆,提示用户充值
+            if (re == 1) {
+                alert("亲，您的红豆余额不够，请充值。表烦，有老岳，明天就有红豆了。。。");
+                //window.location.href="{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('cz',array('id'=>$id)),2)}";
+                showPayTips();
+            }else if (re == 2) {
+                var id2 = tmpmid;
+                var url2 = "{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('xhdoubi',array('id'=>tmpmid)),2)}";;
+                if(id2){
+                    url2 = url2.replace('tmpmid',id2);
+                }
+                window.location.href=url2;
+                //window.location.href="{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('xhdoubi',array('id'=>268)),2)}";
+            }
+            // 跳转到发信息页面
+            else if (re == 3) {
+                var id3 = tmpmid;
+                var url3 = "{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('chat',array('id'=>tmpmid)),2)}";;
+                if(id3){
+                    url3 = url3.replace('tmpmid',id3);
+                }
+                window.location.href = url3;
+                //window.location.href="{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('chat',array('id'=>268)),2)}";
+            } else {
+                alert("您的爱情不在服务区,请稍后重试1");
+            }
+        }, error: function () {
+            alert("您的爱情不在服务区,请稍后重试2");
         }
-    },'json');
-}
+        });
+    }
+
+
 </script>
 
 {template 'inc/footer'}

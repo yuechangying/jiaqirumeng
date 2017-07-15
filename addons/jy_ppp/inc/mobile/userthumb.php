@@ -106,6 +106,7 @@ global $_W,$_GPC;
 				}
 				else */
 				{
+				
 					if(empty($member['baoyue']))
 					{
 						$baoyue=0;
