@@ -47,9 +47,8 @@
                 <span class="pink">
                     {if empty($match['height'])}
                         不限
-                    {/if}
-                    {if $match['height']}
-                        $match['height']cm
+                    {else}
+                        {$match['height']}cm
                     {/if}
                 </span>
                 <span class="value_select">
