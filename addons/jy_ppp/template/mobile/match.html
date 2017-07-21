@@ -223,7 +223,8 @@ $("[data-value]").bind("click",function(){
 
   function match_height_change(val) {
       document.getElementById("con_height").value = val;
-      $('.J_selected').html = val + 'cm';
+      var _html = val + 'cm';
+      $('.J_selected').html(_html);
  }
 
   </script>
