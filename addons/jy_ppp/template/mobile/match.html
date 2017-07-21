@@ -28,7 +28,7 @@
       <div class="option_box">
         <div class="top">
              <h2>年龄范围</h2>
-             <span class="unlimit"><span class="title pink">{if $match['age']==5}55岁以上{/if}</span><i class="top_trg" style="margin-top: 3px;"></i></span>
+             <span class="unlimit"><span class="title pink">{if $match['age']==5}55岁以上{elseif( $match['age']==0)}不限 {/if}</span><i class="top_trg" style="margin-top: 3px;"></i></span>
         </div>
        <ul data-type="age">
         <li> <span data-value="0" {if $match['age']==0}class="pink"{/if}>不限</span> <span data-value="1" {if $match['age']==1}class="pink"{/if}>18-25岁</span> </li>
