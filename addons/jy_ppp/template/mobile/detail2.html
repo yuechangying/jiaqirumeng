@@ -153,7 +153,7 @@
           {/if}
         {/if} <span style="font-size:15px; padding-top:3px;position: relative;color: #999;margin-left: 10px;"><img style="margin-bottom: -1%;width: 5%;max-width: 25px;" src="../addons/jy_ppp/images/location2.png"></span>
             </li>
-            <li class="xiangce" onclick="window.location.href='{php echo $this->createMobileUrl('userthumb',array('id'=>$detail['id']))}'"><i><img src="../addons/jy_ppp/images/tupian.png"></i>相册<b>{php echo count($thumb)}</b></li>
+            <li class="xiangce" onclick="window.location.href='{php echo $this->createMobileUrl('userthumb',array('id'=>$detail['id']))}'"><i style="display: inline-block;"><img src="../addons/jy_ppp/images/tupian.png"></i><b style="display: inline-block;">相册{php echo count($thumb)}</b></li>
         </ul>
         <div class="clear"></div>
     </div>
@@ -168,7 +168,7 @@
     <div class="ziliao_box">
         <h3>内心独白</h3>
         <!--<textarea disabled="true" maxlength="500" id="textBox" class="desc_textarea">{$detail['beizhu']}</textarea>-->
-        <div style="font-size: 12px; color: #fd7a9a;">
+        <div style="font-size: 12px; color: #fd7a9a;padding: 0 1% 2% 2%; line-height: 1.8;">
             {$detail['beizhu']}
         </div>
        
