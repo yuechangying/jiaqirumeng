@@ -41,7 +41,7 @@
     <div class="top">
      <h2>身高范围</h2>
      <!--span class="unlimit"><span class="title pink">{if $match['height']==0}不限{/if}{if $match['height']==1}160cm以下{/if}{if $match['height']==2}161-165cm{/if}{if $match['height']==3}166-170cm{/if}{if $match['height']==4}170以上{/if}</span><i class="bot_trg"></i></span-->
-        <div class="unlimit">
+        <div class="unlimit new_select">
             <div class="select">
                 <span class="title">
                 <span class="pink">
@@ -53,7 +53,7 @@
                 </span>
                 <span class="value_select">
                     <select id="match_height"  onchange="match_height_change(this.value)" class="value_select">
-                       <option value="0" >不限</option>
+                       <option value="0" style="display:none">不限</option>
                         <?php for ($i=140; $i <221 ; $i++) {
                         ?> <option value="{$i}" {if $match['height']==$i} selected="selected" {/if}>{$i}cm </option><?php
                     } ?>
