@@ -128,8 +128,8 @@
 <div>
     <div class="loading"><i></i>加载中...</div>
     <div>
-        {if !empty($sitem['mail_float'])}
-            {if empty($sitem['mail_style'])}
+        {if 0 /*!empty($sitem['mail_float'])*/ }
+           {if empty($sitem['mail_style'])}
                 <div class="mess_fixed">
                     <!-- 消息开始 -->
                     <div class="top_mess">
@@ -201,7 +201,7 @@
                 </dd>
             </dl>
         </div>
-        {if empty($_GPC['xuniid']) || $member['type']!=3}
+        {if 0 /* empty($_GPC['xuniid']) || $member['type']!=3 */}
         <div class="btn">
             <a href="{php echo $this->createMobileUrl('mylove')}" class="disbox-center">我关注的</a>
             <a href="{php echo $this->createMobileUrl('loveme')}" class="disbox-center">关注我的</a>

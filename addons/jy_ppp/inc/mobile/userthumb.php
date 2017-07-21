@@ -8,6 +8,7 @@ global $_W,$_GPC;
 			$mid=$_SESSION['mid'];
 			if(!empty($mid))
 			{
+
 				$member=pdo_fetch("SELECT * FROM ".tablename('jy_ppp_member')." WHERE weid=".$weid." AND id=".$mid." AND status=1");
 			}
 		}
@@ -26,7 +27,7 @@ global $_W,$_GPC;
 			}
 			else
 			{
-				$member_temp=pdo_fetch("SELECT uid,nickname,follow FROM ".tablename('mc_mapping_fans')." WHERE openid='$from_user' AND uniacid=".$weid);
+             	$member_temp=pdo_fetch("SELECT uid,nickname,follow FROM ".tablename('mc_mapping_fans')." WHERE openid='$from_user' AND uniacid=".$weid);
 				if(empty($member_temp['nickname']) || $member_temp['uid']==0)
 				{
 					unset($uid);
@@ -52,7 +53,7 @@ global $_W,$_GPC;
 
 		if(!empty($member))
 		{
-			$province=array('11'=>'北京市','12'=>'天津市','13'=>'河北省','14'=>'山西省','15'=>'内蒙古','21'=>'辽宁省','22'=>'吉林省','23'=>'黑龙江省','31'=>'上海市','32'=>'江苏省','33'=>'浙江省','34'=>'安徽省','35'=>'福建省','36'=>'江西省','37'=>'山东省','41'=>'河南省','42'=>'湖北省','43'=>'湖南省','44'=>'广东省','45'=>'广西','46'=>'海南省','50'=>'重庆市','51'=>'四川省','52'=>'贵州省','53'=>'云南省','54'=>'西藏','61'=>'陕西省','62'=>'甘肃省','63'=>'青海省','64'=>'宁夏','65'=>'新疆','71'=>'台湾省','81'=>'香港','82'=>'澳门');
+         	$province=array('11'=>'北京市','12'=>'天津市','13'=>'河北省','14'=>'山西省','15'=>'内蒙古','21'=>'辽宁省','22'=>'吉林省','23'=>'黑龙江省','31'=>'上海市','32'=>'江苏省','33'=>'浙江省','34'=>'安徽省','35'=>'福建省','36'=>'江西省','37'=>'山东省','41'=>'河南省','42'=>'湖北省','43'=>'湖南省','44'=>'广东省','45'=>'广西','46'=>'海南省','50'=>'重庆市','51'=>'四川省','52'=>'贵州省','53'=>'云南省','54'=>'西藏','61'=>'陕西省','62'=>'甘肃省','63'=>'青海省','64'=>'宁夏','65'=>'新疆','71'=>'台湾省','81'=>'香港','82'=>'澳门');
 			$op=$_GPC['op'];
 			if($op=='zhaohu')
 			{
@@ -99,59 +100,59 @@ global $_W,$_GPC;
 			}
 			elseif ($op=='huifu') {
 				$id=$_GPC['id'];
-				/*if($member['sex']==2)
-				{
-					echo 3;
-					exit;
-				}
-				else */
-				{
-				
-					if(empty($member['baoyue']))
-					{
-						$baoyue=0;
-					}
-					else
-					{
-						$baoyue=$member['baoyue']-time();
-						if($baoyue<=0)
-						{
-							$baoyue=0;
-						}
-						else
-						{
-							$baoyue=1;
-						}
-					}
-					if(!empty($baoyue))
-					{
-						echo 3;
-						exit;
-					}
-					else
-					{
-						$temp=pdo_fetch("SELECT id FROM ".tablename('jy_ppp_chat_doubi')." WHERE weid=".$weid." AND mid=".$mid." AND chatid=".$id);
 
-						if(!empty($temp))
-						{
-							echo 3;
-							exit;
-						}
-						else
-						{
-							if(empty($member['credit']))
-							{
-								echo 1;
-								exit;
-							}
-							else
-							{
-								echo 2;
-								exit;
-							}
-						}
-					}
-				}
+				// 身份认证没有完成的用户，无法查看和回复信息
+				if (0 == $member['card_auth'])
+                {
+                    echo 4;
+                    exit;
+                }
+
+                if(empty($member['baoyue']))
+                {
+                    $baoyue=0;
+                }
+                else
+                {
+                    $baoyue=$member['baoyue']-time();
+                    if($baoyue<=0)
+                    {
+                        $baoyue=0;
+                    }
+                    else
+                    {
+                        $baoyue=1;
+                    }
+                }
+
+                if(!empty($baoyue))
+                {
+                    echo 3;
+                    exit;
+                }
+                else
+                {
+                    $temp=pdo_fetch("SELECT id FROM ".tablename('jy_ppp_chat_doubi')." WHERE weid=".$weid." AND mid=".$mid." AND chatid=".$id);
+
+                    if(!empty($temp))
+                    {
+                        echo 3;
+                        exit;
+                    }
+                    else
+                    {
+                        if(empty($member['credit']))
+                        {
+                            echo 1;
+                            exit;
+                        }
+                        else
+                        {
+                            echo 2;
+                            exit;
+                        }
+                    }
+                }
 			}
 			else
 			{

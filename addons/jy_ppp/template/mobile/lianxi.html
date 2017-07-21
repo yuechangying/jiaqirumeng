@@ -31,7 +31,9 @@
         {php $now=time();}
         {loop $lianxi $l}                                                                     
             <!--a href="{php echo $this->createMobileUrl('chat',array('id'=>$l['mid']))}"-->
-        <a href="javascript:;" onclick="huifu({$l['mid']})" >
+
+        <a href="javascript:;" onclick="huifu({$l['mid']})">
+
             <ul class="disbox-hor user-list"  data-id="{$l['id']}">
                 <li class="foot-icon disbox-center">
                     {if !empty($l['avatar'])}
@@ -98,6 +100,7 @@
            $.ajax({url: url, data: {}, dataType: 'text', type: 'post', success: function (re) {
           //   $.ajax({url: "{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('userthumb',$mid2),2);}", data: {}, dataType: 'text', type: 'post', success: function (re) { 
 
+
               // 用户没有红豆,提示用户充值     
 			  if (re == 1) {
 			      alert("您的红豆不够，请充值。表烦，有老岳，有红豆。。。");
@@ -105,6 +108,7 @@
                   showPayTips();
               }else if (re == 2) {
                   var id2 = tmpmid;
+
                   var url2 = "{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('xhdoubi',array('id'=>tmpmid)),2)}";;
                   if(id2){
                       url2 = url2.replace('tmpmid',id2);
@@ -114,21 +118,29 @@
               }
 			  // 跳转到发信息页面
               else if (re == 3) {
+
                   var id3 = tmpmid;
+
                   var url3 = "{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('chat',array('id'=>tmpmid)),2)}";;
                   if(id3){
                       url3 = url3.replace('tmpmid',id3);
                   }
                   window.location.href = url3;
                   //window.location.href="{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('chat',array('id'=>268)),2)}";
-              } else {
+              }
+              else if (re == 4) {
+                  alert("亲，您还没有完成身份认证，无法看信哦，请到设置中心完成身份认证，谢谢！");
+              }
+              else {
                  alert("您的爱情不在服务区,请稍后重试1");
               }
           }, error: function () {
               alert("您的爱情不在服务区,请稍后重试2");
           }
           });
-      }
+
+        }
+
 
     </script>
 </body>

@@ -22,29 +22,47 @@
     <span id="save_btn" class="seach_sure">确定</span>
    </div>
   </nav>
+
   <div class="content">
    <div class="option_box">
     <div class="top">
      <h2>年龄范围</h2>
-     <span class="unlimit"><span class="title pink">{if $match['age']==0}不限{/if}{if $match['age']==1}18-25岁{/if}{if $match['age']==2}26-35岁{/if}{if $match['age']==3}36-45岁{/if}{if $match['age']==4}46-55岁{/if}{if $match['age']==5}55岁以上{/if}</span><i class="top_trg"></i></span>
+     <span class="unlimit"><span class="title pink">{if $match['age']==5}55岁以上{/if}</span><i class="top_trg"></i></span>
     </div>
-    <ul data-type="age">
-     <li> <span data-value="0" {if $match['age']==0}class="pink"{/if}>不限</span> <span data-value="1" {if $match['age']==1}class="pink"{/if}>18-25岁</span> </li>
-     <li> <span data-value="2" {if $match['age']==2}class="pink"{/if}>26-35岁</span> <span data-value="3" {if $match['age']==3}class="pink"{/if}>36-45岁</span> </li>
-     <li> <span data-value="4" {if $match['age']==4}class="pink"{/if}>46-55岁</span> <span data-value="5" {if $match['age']==5}class="pink"{/if}>55岁以上</span> </li>
-    </ul>
+       <ul data-type="age">
+        <li> <span data-value="0" {if $match['age']==0}class="pink"{/if}>不限</span> <span data-value="1" {if $match['age']==1}class="pink"{/if}>18-25岁</span> </li>
+        <li> <span data-value="2" {if $match['age']==2}class="pink"{/if}>26-35岁</span> <span data-value="3" {if $match['age']==3}class="pink"{/if}>36-45岁</span> </li>
+        <li> <span data-value="4" {if $match['age']==4}class="pink"{/if}>46-55岁</span> <span data-value="5" {if $match['age']==5}class="pink"{/if}>55岁以上</span> </li>
+       </ul>
    </div>
+
    <div class="option_box" style="margin-top: 10px">
     <div class="top">
      <h2>身高范围</h2>
-     <span class="unlimit"><span class="title pink">{if $match['height']==0}不限{/if}{if $match['height']==1}160cm以下{/if}{if $match['height']==2}161-165cm{/if}{if $match['height']==3}166-170cm{/if}{if $match['height']==4}170以上{/if}</span><i class="bot_trg"></i></span>
+     <!--span class="unlimit"><span class="title pink">{if $match['height']==0}不限{/if}{if $match['height']==1}160cm以下{/if}{if $match['height']==2}161-165cm{/if}{if $match['height']==3}166-170cm{/if}{if $match['height']==4}170以上{/if}</span><i class="bot_trg"></i></span-->
     </div>
-    <ul class="hidden" data-type="height">
+
+       <li class="user_mession">
+           <div class="right" data-type="height">
+               <div class="select">
+                <span class="value">
+                    <select id="match_height"  onchange="match_height_change(this.value)" class="value_select">
+                       <option value="0" style="display:none">请选择</option>
+                       <?php for ($i=140; $i <221 ; $i++) {
+                        ?> <option value="{$i}" {if $match['height']==$i} selected="selected" {/if}>{$i}cm </option><?php
+                    } ?>
+                   </select>
+               </div>
+           </div>
+       </li>
+       <!--ul class="hidden" data-type="height">
      <li> <span data-value="0" {if $match['height']==0}class="pink"{/if}>不限</span> <span data-value="1" {if $match['height']==1}class="pink"{/if}>160cm以下</span> </li>
      <li> <span data-value="2" {if $match['height']==2}class="pink"{/if}>161-165cm</span> <span data-value="3" {if $match['height']==3}class="pink"{/if}>166-170cm</span> </li>
      <li> <span data-value="4" {if $match['height']==4}class="pink"{/if}>170以上</span> <span></span> </li>
-    </ul>
+       </ul-->
+
    </div>
+
    <div class="option_box" style="margin-top: 10px">
     <div class="top">
      <h2>最低学历</h2>
@@ -127,7 +145,7 @@
    </div>
   </div>
   <input type="hidden" id="con_age" value="{$match['age']}" />
-  <input type="hidden" id="con_height" value="{$match['height']}" />
+  <input type="hidden" id="con_height"  value="{$match['height']}"/>
   <input type="hidden" id="con_income" value="{$match['income']}" />
   <input type="hidden" id="con_province" value="{$province}" />
   <input type="hidden" id="con_edu" value="{$match['education']}" />
@@ -142,8 +160,18 @@
   $("#province").html(area_array[{$province}]);
 
 $("#save_btn").bind("click",function(){
+
+    var con_ageVal=$("#con_age").val();
+    var con_heightVal=$("#con_height").val();
+    var con_incomeVal=$("#con_income").val();
+    var con_provinceVal=$("#con_province").val();
+    var con_eduVal=$("#con_edu").val();
+    var con_girlCareIdVal=$("#con_girlCareId").val();
+
+    var param = {con_age: con_ageVal, con_height:con_heightVal, con_income:con_incomeVal, con_province:con_provinceVal, con_edu:con_eduVal, con_girlCareId:con_girlCareIdVal };
+
     // ajax-----
-    $.ajax({url: "{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('match',array('op'=>'add')),2);}", data: Match.param, dataType: 'text', type: 'post', success: function (data) {
+    $.ajax({url: "{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('match',array('op'=>'add')),2);}", data: param, dataType: 'text', type: 'post', success: function (data) {
         if (data==1) {
             $.tips("保存成功");
             location.href="{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('geren'),2)}"
@@ -179,6 +207,12 @@ $("[data-value]").bind("click",function(){
     }
     Match.changeEvent($this);
 });
+
+
+  function match_height_change(val) {
+      document.getElementById("con_height").value = val;
+ }
+
   </script>
 
 {template 'inc/footer'}

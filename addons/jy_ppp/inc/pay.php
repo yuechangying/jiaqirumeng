@@ -1,30 +1,5 @@
 <?php
 global $_W,$_GPC;
-	$weid=$_W['uniacid'];
-
-
-
-	if($_GPC['done']==1){
-		$trade_no =  $_GPC['tid'];
-		 $sql = 'SELECT * FROM ' . tablename('core_paylog') . " WHERE `uniacid`=".$weid." AND `module`='".$this->module['name']."' AND `tid`='".$trade_no."'";
-
-		$log = pdo_fetch($sql);
-
-		$data = array(
-			'weid'=>$weid,
-			'uniacid'=>$weid,
-			'from'=>'return',
-			'tid'=>$trade_no,
-			'uniontid'=>'',
-			'user'=>$openid,
-			'fee'=>$log['fee'],
-			'result'=>'success',
-			'from'=>'notify'
-		);
-		// var_dump($data);
-		$this->payResult($data);
-		exit;
-	}
 		if ( strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') == false ) {
 			$weixin=0;
 
@@ -33,8 +8,7 @@ global $_W,$_GPC;
 		}
 		else
 		{
-			 $weixin=1;
-
+			$weixin=1;
 
 			$weid=$_W['uniacid'];
 			$id=$_GPC['id'];
@@ -56,7 +30,6 @@ global $_W,$_GPC;
 					}
 					else
 					{
-
 						$member_temp=pdo_fetch("SELECT uid,nickname,follow FROM ".tablename('mc_mapping_fans')." WHERE openid='$from_user' AND uniacid=".$weid);
 						if(empty($member_temp['nickname']) || $member_temp['uid']==0)
 						{
@@ -82,14 +55,12 @@ global $_W,$_GPC;
 
 					if(!empty($member))
 					{
-
 						$sitem=pdo_fetch("SELECT * FROM ".tablename('jy_ppp_setting')." WHERE weid=".$weid);
 						if(!empty($from_user))
 						{
 
 							if(!empty($op) )
 							{
-
 								if($op=='doubi')
 								{
 									$log=1;
@@ -122,8 +93,6 @@ global $_W,$_GPC;
 								}
 								if($op=='baoyue')
 								{
-
-
 									$now=time();
 									$log=2;
 									$category = pdo_fetchall ( "SELECT * FROM " . tablename ( 'jy_ppp_price' ) . " WHERE weid = ".$weid." AND log=2 ORDER BY displayorder DESC,id ASC" );
@@ -212,7 +181,6 @@ global $_W,$_GPC;
 										'status'=>0,
 										'createtime'=>TIMESTAMP,
 									);
-
 								if(empty($fee))
 								{
 									$data['status']=1;
@@ -284,9 +252,6 @@ global $_W,$_GPC;
 									}
 									if($op=='baoyue')
 									{
-										echo $op;
-										echo 2;
-										exit;
 										$data2=array(
 											'weid'=>$weid,
 											'mid'=>$mid,
@@ -405,7 +370,6 @@ global $_W,$_GPC;
 								}
 								else
 								{
-
 									pdo_insert("jy_ppp_pay_log",$data);
 									$id=pdo_insertid();
 
@@ -453,17 +417,9 @@ global $_W,$_GPC;
 									if(!is_array($setting['payment'])) {
 										message('没有有效的支付方式, 请联系网站管理员.');
 									}
-
-
-
-									 $dw_yunpay=pdo_fetchcolumn("SELECT dw_yunpay FROM ".tablename('jy_ppp_setting')." WHERE weid=".$weid);
-									if($dw_yunpay==1){
-									  include IA_ROOT."/addons/jy_ppp/yunpay/yunpay.php";
-									   exit;
-									}
 									$params=base64_encode(json_encode($params));
 									echo "<script>
-											window.location.href = '".url('mc/cash/wechat')."&params=".$params."';
+											window.location.href = '".url('mc/cash/shanpay')."&params=".$params."';
 										</script>";
 								}
 
@@ -524,8 +480,6 @@ global $_W,$_GPC;
 						}
 						if($op=='baoyue')
 						{
-							echo 3;
-							exit;
 							$now=time();
 							$log=2;
 							$category = pdo_fetchall ( "SELECT * FROM " . tablename ( 'jy_ppp_price' ) . " WHERE weid = ".$weid." AND log=2 ORDER BY displayorder DESC,id ASC" );
@@ -664,8 +618,6 @@ global $_W,$_GPC;
 							}
 							if($op=='baoyue')
 							{
-								echo 4;
-								exit;
 								$data2=array(
 									'weid'=>$weid,
 									'mid'=>$mid,
@@ -797,15 +749,9 @@ global $_W,$_GPC;
 							        );
 							        pdo_insert('core_paylog', $log);
 								}
-								$dw_yunpay=pdo_fetchcolumn("SELECT dw_yunpay FROM ".tablename('jy_ppp_setting')." WHERE weid=".$weid);
-							 if($dw_yunpay==1){
-								 	$sitem=pdo_fetch("SELECT * FROM ".tablename('jy_ppp_setting')." WHERE weid=".$weid);
-								 include IA_ROOT."/addons/jy_ppp/yunpay/yunpay.php";
-									exit;
-							 }
 								$params=base64_encode(json_encode($params));
 								echo "<script>
-										window.location.href = '".url('mc/cash/wechat')."&params=".$params."';
+										window.location.href = '".url('mc/cash/shanpay')."&params=".$params."';
 									</script>";
 							}
 						}
@@ -881,7 +827,7 @@ global $_W,$_GPC;
 						}
 						$params=base64_encode(json_encode($params));
 						echo "<script>
-								window.location.href = '".url('mc/cash/wechat')."&params=".$params."';
+								window.location.href = '".url('mc/cash/shanpay')."&params=".$params."';
 							</script>";
 					}
 				}

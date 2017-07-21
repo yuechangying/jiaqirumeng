@@ -95,7 +95,7 @@ a>.user-list>li.foot-icon>img{width: 50px;max-height: 61px;border-radius: 3px;}
                 </li>
                 <li class="disbox-flex user_mession">
                 {if $l['type']!=3}
-                <b class="tit">{$l['nicheng']} {$l['mid']}<span class="pink">{if empty($l['yuedu'])}{if $l['type']==1}[会员推荐]{/if}{if $l['type']==2}[最新回信]{/if}{/if}</span>
+                <b class="tit">{$l['nicheng']} <span class="pink">{if empty($l['yuedu'])}{if $l['type']==1}[会员推荐]{/if}{if $l['type']==2}[最新回信]{/if}{/if}</span>
                 {else}
                 <b class="tit">管理员<span class="pink"></span>
                 {/if}
@@ -249,7 +249,11 @@ a>.user-list>li.foot-icon>img{width: 50px;max-height: 61px;border-radius: 3px;}
                 }
                 window.location.href = url3;
                 //window.location.href="{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('chat',array('id'=>268)),2)}";
-            } else {
+            }
+            else if (re == 4) {
+                alert("亲，您还没有完成身份认证，无法看信哦，请到设置中心完成身份认证，谢谢！");
+            }
+            else {
                 alert("您的爱情不在服务区,请稍后重试1");
             }
         }, error: function () {

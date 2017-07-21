@@ -3,7 +3,7 @@ var Match = (function () {
     return {
         param: {
             con_age: $('#con_age').val(),
-            con_height: $('#con_height').val(),
+            con_height: 0,
             con_income: $('#con_income').val(),
             con_province: $('#con_province').val(),
             con_edu: $('#con_edu').val(),
@@ -23,7 +23,7 @@ var Match = (function () {
             Match.param.con_age = age;
         },
         changeHeight: function (height) {
-            Match.param.con_height = height;
+            con_height = height;
         },
         changeSalary: function (salary) {
             Match.param.con_income = salary;

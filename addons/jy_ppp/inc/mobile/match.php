@@ -58,6 +58,7 @@ global $_W,$_GPC;
 			$op=$_GPC['op'];
 			if($op=='add')
 			{
+                printLog("match.php add");
 
 				$data=array();
 				$data['weid']=$weid;
@@ -74,6 +75,9 @@ global $_W,$_GPC;
 			  	{
 			  		$data['blank']++;
 			  	}
+
+                printLog("match.php height=" . $data['height']);
+
 			  	$data['education']=$_GPC['con_edu'];
 			  	if(empty($data['education']))
 			  	{

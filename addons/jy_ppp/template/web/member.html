@@ -481,11 +481,10 @@
 
 			</form>
 		</div>
-	{/if}
 
-	<!--div class="main">
+		<div class="main">
 			<form action="" method="post" class="form-horizontal form"
-				enctype="multipart/form-data">
+				  enctype="multipart/form-data">
 				<input type="hidden" name="id" value="{$row['id']}" />
 				<div class="panel panel-default">
 					<div class="panel-heading">
@@ -493,26 +492,29 @@
 					</div>
 					<div class="panel-body">
 
-						<div class="form-group"  id="showcredit" style="display:none">
+						<div class="form-group"  id="showcard_auth">
 							<label class="col-xs-12 col-sm-3 col-md-2 control-label" >身份认证</label>
 							<div class="col-sm-7 col-xs-12">
 								<input type="text" name="card_auth" class="form-control" value="{$row['card_auth']}" />
 							</div>
 						</div>
 
-						<div class="form-group" id="submit4" style="display:none">
+						<div class="form-group" id="submit4">
 							<label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
 							<div class="col-sm-9 col-xs-12">
-								<input onclick="return confirm('此操作不可恢复22222，确认吗？'); return false;" name="submit4" type="submit" value="身份认证" class="btn btn-primary span3">
-								<input  name="token" value="{$_W['token']}" />
+								<input onclick="return confirm('此操作不可恢复，确认吗？'); return false;" name="submit4" type="submit" value="提交身份认证" class="btn btn-primary span3">
+								<input type="hidden" name="token" value="{$_W['token']}" />
 							</div>
 						</div>
 
 					</div>
 				</div>
-
 			</form>
-	</div-->
+		</div>
+
+	{/if}
+
+
 
 	<h4 style="text-align:center;font-weight:bold">{$row['nicheng']}的详细数据</h4>
 

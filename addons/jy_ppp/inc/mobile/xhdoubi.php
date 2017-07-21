@@ -81,7 +81,7 @@ global $_W,$_GPC;
 							$sitem['chat']=3;
 						}
 						$temp=pdo_fetch("SELECT * FROM ".tablename('jy_ppp_member')." WHERE weid=".$weid." AND id=".$mid);
-						if($temp['credit']>$sitem['chat'])
+						if($temp['credit']>=$sitem['chat'])
 						{
 							$data=array(
 								'weid'=>$weid,

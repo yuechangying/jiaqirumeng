@@ -151,19 +151,25 @@
                   {$province[$detail['province']]}
               {/if}
           {/if}
-        {/if} <span style="font-size:15px; padding-top:3px;position: relative;color: #999;margin-left: 10px;"><img style="margin-bottom: -1%;width: 5%;max-width: 25px;" src="../addons/jy_ppp/images/location2.png">{php echo $this->xuniaddress($detail['id'])}km以内</span>
+        {/if} <span style="font-size:15px; padding-top:3px;position: relative;color: #999;margin-left: 10px;"><img style="margin-bottom: -1%;width: 5%;max-width: 25px;" src="../addons/jy_ppp/images/location2.png"></span>
             </li>
+            <li class="xiangce" onclick="window.location.href='{php echo $this->createMobileUrl('userthumb',array('id'=>$detail['id']))}'"><i><img src="../addons/jy_ppp/images/tupian.png"></i>相册<b>{php echo count($thumb)}</b></li>
         </ul>
         <div class="clear"></div>
     </div>
-    <div class="xgw">
+    <!--div class="xgw">
         <ul>
             <li class="xiangce" onclick="window.location.href='{php echo $this->createMobileUrl('userthumb',array('id'=>$detail['id']))}'"><i><img src="../addons/jy_ppp/images/tupian.png"></i>相册<b>{php echo count($thumb)}</b></li>
             <li class="guanzhu" onclick="attentionFunc(this)"><i><img src="../addons/jy_ppp/images/focus.png" ></i>关注<b id="attentid">{php echo $this->rand_love($id)}</b></li>
             <li class="qqwei" onclick="location.href = '#lxfs';"><i><img src="../addons/jy_ppp/images/chat.png"></i>QQ微信</li>
         </ul>
-    </div>
+    </div-->
 
+    <div class="ziliao_box">
+        <h3>内心独白</h3>
+        <textarea disabled="true" maxlength="500" id="textBox" class="desc_textarea">{$detail['beizhu']}</textarea>
+       
+    </div>
     <div class="ziliao_box">
         <h3>基本资料</h3>
         <ul>
@@ -278,7 +284,7 @@
         <center>
             <a href="{php echo $this->createMobileUrl('index')}">缘分</a>
             <a href="{php echo $this->createMobileUrl('mail')}">聊天</a>
-            <a href="{php echo $this->createMobileUrl('luck')}">附近</a>
+            <!--a href="{php echo $this->createMobileUrl('luck')}">附近</a-->
             <a href="{php echo $this->createMobileUrl('geren')}">我</a>
             {if !empty($sitem['copyright'])}
             <br><a style="color:#999" {if !empty($sitem['copyrighturl'])}href="{$sitem['copyrighturl']}" target='_blank' {else}href="javascript:void(0);" {/if}>© {$sitem['copyright']}</a>
@@ -451,7 +457,11 @@
 			  // 跳转到发信息页面
               else if (re == 3) {
                   window.location.href="{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('chat',array('id'=>$id)),2)}";
-              } else {
+              }
+              else if (re == 4) {
+                  alert("亲，您还没有完成身份认证，无法写信哦，请到设置中心完成身份认证，谢谢！");
+              }
+              else {
                   alert("您的爱情不在服务区,请稍后重试");
               }
           }, error: function () {
