@@ -58,7 +58,7 @@ global $_W,$_GPC;
 			$op=$_GPC['op'];
 			if($op=='add')
 			{
-                printLog("match.php add");
+                printLog("match.php add6666");
 
 				$data=array();
 				$data['weid']=$weid;
