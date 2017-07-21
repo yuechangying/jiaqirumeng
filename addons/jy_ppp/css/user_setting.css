@@ -28,13 +28,13 @@
 .new_select .select{
 
     position: relative;
-    height: 37px;
+    height: 22px;
 }
 .new_select .select .value_select{
 
     width: 90%;
-    height: 37px;
-    line-height: 37px;
+    height: 22px;
+    line-height: 22px;
     position: absolute;
     right: 0px;
     top: 0;

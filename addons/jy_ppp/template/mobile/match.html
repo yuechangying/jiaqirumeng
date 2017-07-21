@@ -44,7 +44,7 @@
         <div class="unlimit new_select">
             <div class="select">
                 <span class="title">
-                <span class="pink">
+                <span class="pink J_selected">
                     {if empty($match['height'])}
                         不限
                     {else}
@@ -223,6 +223,7 @@ $("[data-value]").bind("click",function(){
 
   function match_height_change(val) {
       document.getElementById("con_height").value = val;
+      $('.J_selected').html = val + 'cm';
  }
 
   </script>
