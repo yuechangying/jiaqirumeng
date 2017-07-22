@@ -92,6 +92,13 @@ global $_W,$_GPC;
 			  	{
 			  		$data['blank']++;
 			  	}
+
+                $data['incomemax']=$_GPC['con_incomemax'];
+                if(empty($data['incomemax']))
+                {
+                    $data['blank']++;
+                }
+
 			  	$data['province']=$_GPC['con_province'];
 			  	if(empty($data['province']))
 			  	{

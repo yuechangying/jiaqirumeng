@@ -253,6 +253,7 @@ CREATE TABLE IF NOT EXISTS `ims_jy_ppp_match` (
   `heightmax` int(10) DEFAULT '0',
   `education` int(10) DEFAULT '0' COMMENT '0为不限,1为高中,中专及以上,2为大专及以上,3为本科及以上',
   `income` int(10) DEFAULT '0' COMMENT '0为不限,1为2000元以上,2为5000元以上,3为10000元以上',
+  `incomemax` int(10) DEFAULT '0',
   `province` int(10) NOT NULL,
   `blank` int(10) NOT NULL COMMENT '未填写的字段个数',
   `createtime` int(10) NOT NULL,
