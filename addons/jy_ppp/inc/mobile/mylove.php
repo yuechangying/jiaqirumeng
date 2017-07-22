@@ -284,6 +284,7 @@ global $_W,$_GPC;
 				{
 					$condition.=" AND sex=1 ";
 				}
+
 				$match=pdo_fetch("SELECT * FROM ".tablename('jy_ppp_match')." WHERE weid=".$weid." AND mid=".$mid);
 				if(!empty($match))
 				{
@@ -304,6 +305,7 @@ global $_W,$_GPC;
 					}
 					$condition.=" AND province= ".$temp_province;
 				}
+
 				$tuijian=pdo_fetchall("SELECT id,avatar,sex,nicheng,province,brith FROM ".tablename('jy_ppp_member')." WHERE weid=".$weid.$condition." AND id >= (SELECT FLOOR( MAX(id) * RAND()) FROM ".tablename('jy_ppp_member')." ) ORDER BY id LIMIT 4");
 				if(!empty($tuijian))
 				{
@@ -518,6 +520,7 @@ global $_W,$_GPC;
 					{
 						$condition.=" AND sex=1 ";
 					}
+
 					$match=pdo_fetch("SELECT * FROM ".tablename('jy_ppp_match')." WHERE weid=".$weid." AND mid=".$mid);
 					if(!empty($match))
 					{
@@ -538,6 +541,7 @@ global $_W,$_GPC;
 						}
 						$condition.=" AND province= ".$temp_province;
 					}
+
 					$tuijian=pdo_fetchall("SELECT id,avatar,sex,nicheng,province,brith FROM ".tablename('jy_ppp_member')." WHERE weid=".$weid.$condition." AND id >= (SELECT FLOOR( MAX(id) * RAND()) FROM ".tablename('jy_ppp_member')." ) ORDER BY id LIMIT 4");
 					if(!empty($tuijian))
 					{

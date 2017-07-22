@@ -52,14 +52,14 @@ global $_W,$_GPC;
 
 		if(!empty($member))
 		{
+            printLog(basename(__FILE__) . ",line=" . __LINE__);
+
 			$sitem=pdo_fetch("SELECT * FROM ".tablename('jy_ppp_setting')." WHERE weid=".$weid);
 			$match=pdo_fetch("SELECT * FROM ".tablename('jy_ppp_match')." WHERE weid=".$weid." AND mid=".$mid);
 
 			$op=$_GPC['op'];
 			if($op=='add')
 			{
-                printLog("match.php add6666");
-
 				$data=array();
 				$data['weid']=$weid;
 				$data['mid']=$mid;
@@ -76,7 +76,11 @@ global $_W,$_GPC;
 			  		$data['blank']++;
 			  	}
 
-                printLog("match.php height=" . $data['height']);
+                $data['heightmax']=$_GPC['con_heightmax'];
+                if(empty($data['heightmax']))
+                {
+                    $data['blank']++;
+                }
 
 			  	$data['education']=$_GPC['con_edu'];
 			  	if(empty($data['education']))

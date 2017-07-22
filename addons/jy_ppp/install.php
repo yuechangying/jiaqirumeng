@@ -250,6 +250,7 @@ CREATE TABLE IF NOT EXISTS `ims_jy_ppp_match` (
   `mid` int(10) NOT NULL,
   `age` int(10) DEFAULT '0' COMMENT '0为不限,1为18-25,2为26-35,3为36-45,4为46-55,5为55以上',
   `height` int(10) DEFAULT '0' COMMENT '0为不限,1为160以下,2为161-165,3为166-170,4为170以上',
+  `heightmax` int(10) DEFAULT '0',
   `education` int(10) DEFAULT '0' COMMENT '0为不限,1为高中,中专及以上,2为大专及以上,3为本科及以上',
   `income` int(10) DEFAULT '0' COMMENT '0为不限,1为2000元以上,2为5000元以上,3为10000元以上',
   `province` int(10) NOT NULL,

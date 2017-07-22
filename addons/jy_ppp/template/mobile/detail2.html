@@ -277,7 +277,7 @@
         <ul>
             <li><span>{if $detail['age2']==0}不限{/if}{if $detail['age2']==1}18-25岁{/if}{if $detail['age2']==2}26-35岁{/if}{if $detail['age2']==3}36-45岁{/if}{if $detail['age2']==4}46-55岁{/if}{if $detail['age2']==5}55岁以上{/if}</span>年龄</li>
             <li><span>{$province[$detail['province2']]}</span>居住地</li>
-            <li><span>{if $detail['height2']==0}不限{/if}{if $detail['height2']==1}160cm以下{/if}{if $detail['height2']==2}161-165cm{/if}{if $detail['height2']==3}166-170cm{/if}{if $detail['height2']==4}170以上{/if}</span>身高</li>
+            <li><span>{if $detail['height2']==0}不限{/if}{if $detail['height2']!=0}{$detail['height2']}{/if} -- {if $detail['heightmax']==0}不限{/if}{if $detail['heightmax']!=0}{$detail['heightmax']}CM{/if}</span>身高</li>
             <li><span>{if $detail['education2']==0}不限{/if}{if $detail['education2']==1}高中,中专及以上{/if}{if $detail['education2']==2}大专及以上{/if}{if $detail['education2']==3}本科及以上{/if}</span>学历</li>
             <li><span>{if $detail['income2']==0}不限{/if}{if $detail['income2']==1}0-6万{/if}{if $detail['income2']==2}6万-15万{/if}{if $detail['income2']==3}15万-30万{/if}{if $detail['income2']==4}30万-60万{/if}{if $detail['income2']==5}60万-100万{/if}</span>年收入(万)</li>
         </ul>

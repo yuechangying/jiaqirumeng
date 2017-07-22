@@ -41,16 +41,17 @@
     <div class="top">
      <h2>身高范围</h2>
      <!--span class="unlimit"><span class="title pink">{if $match['height']==0}不限{/if}{if $match['height']==1}160cm以下{/if}{if $match['height']==2}161-165cm{/if}{if $match['height']==3}166-170cm{/if}{if $match['height']==4}170以上{/if}</span><i class="bot_trg"></i></span-->
-        <div class="unlimit new_select">
+        <!--div class="unlimit new_select"-->
+        <div>
             <div class="select">
                 <span class="title">
-                <span class="pink J_selected">
+                <!--span class="pink J_selected">
                     {if empty($match['height'])}
                         不限
                     {else}
                         {$match['height']}cm
                     {/if}
-                </span>
+                </span-->
                 <span class="value_select">
                     <select id="match_height"  onchange="match_height_change(this.value)" class="value_select">
                        <option value="0" style="display:none">不限</option>
@@ -59,10 +60,28 @@
                     } ?>
                    </select>
                 </span>
-
                 </span>
             </div>
 
+            <div class="select">
+                <span class="title">
+                <!--span class="pink J_selected">
+                    {if empty($match['heightmax'])}
+                        不限
+                    {else}
+                        {$match['heightmax']}cm
+                    {/if}
+                </span-->
+                <span class="value_select">
+                    <select id="match_heightmax"  onchange="match_heightmax_change(this.value)" class="value_select">
+                       <option value="0" style="display:none">不限</option>
+                        <?php for ($k=140; $k <221 ; $k++) {
+                        ?> <option value="{$k}" {if $match['heightmax']==$k} selected="selected" {/if}>{$k}cm </option><?php
+                    } ?>
+                   </select>
+                </span>
+                </span>
+            </div>
         </div>
     </div>
 
@@ -158,6 +177,7 @@
   </div>
   <input type="hidden" id="con_age" value="{$match['age']}" />
   <input type="hidden" id="con_height"  value="{$match['height']}"/>
+  <input type="hidden" id="con_heightmax"  value="{$match['heightmax']}"/>
   <input type="hidden" id="con_income" value="{$match['income']}" />
   <input type="hidden" id="con_province" value="{$province}" />
   <input type="hidden" id="con_edu" value="{$match['education']}" />
@@ -172,15 +192,18 @@
   $("#province").html(area_array[{$province}]);
 
 $("#save_btn").bind("click",function(){
-
     var con_ageVal=$("#con_age").val();
     var con_heightVal=$("#con_height").val();
+    var con_heightmaxVal=$("#con_heightmax").val();
     var con_incomeVal=$("#con_income").val();
     var con_provinceVal=$("#con_province").val();
     var con_eduVal=$("#con_edu").val();
     var con_girlCareIdVal=$("#con_girlCareId").val();
 
-    var param = {con_age: con_ageVal, con_height:con_heightVal, con_income:con_incomeVal, con_province:con_provinceVal, con_edu:con_eduVal, con_girlCareId:con_girlCareIdVal };
+    if (con_heightVal > con_heightmaxVal) {
+        alert("亲，身高的下拉框范围选择错误");
+    }
+    var param = {con_age: con_ageVal, con_height:con_heightVal, con_heightmax:con_heightmaxVal, con_income:con_incomeVal, con_province:con_provinceVal, con_edu:con_eduVal, con_girlCareId:con_girlCareIdVal };
 
     // ajax-----
     $.ajax({url: "{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('match',array('op'=>'add')),2);}", data: param, dataType: 'text', type: 'post', success: function (data) {
@@ -204,6 +227,7 @@ $(".top").bind("click",function(event){
 });
 $("[data-value]").bind("click",function(){
   var $this = $(this),type=$this.closest("[data-type]").data("type"),value=$this.data('value');
+
     if(type=='age'){
         Match.changeAge(value);
     }else if(type=='height'){
@@ -225,7 +249,13 @@ $("[data-value]").bind("click",function(){
       document.getElementById("con_height").value = val;
       var _html = val + 'cm';
       $('.J_selected').html(_html);
- }
+  }
+
+  function match_heightmax_change(val) {
+      document.getElementById("con_heightmax").value = val;
+      var _html = val + 'cm';
+      $('.J_selected').html(_html);
+  }
 
   </script>
 
