@@ -228,6 +228,7 @@ CREATE TABLE IF NOT EXISTS `ims_jy_ppp_match` (
   `weid` int(10) NOT NULL,
   `mid` int(10) NOT NULL,
   `age` int(10) DEFAULT \'0\' COMMENT \'0为不限,1为18-25,2为26-35,3为36-45,4为46-55,5为55以上\',
+  `agemax` int(10) DEFAULT \'0\',
   `height` int(10) DEFAULT \'0\' COMMENT \'0为不限,1为160以下,2为161-165,3为166-170,4为170以上\',
   `heightmax` int(10) DEFAULT \'0\' ,
   `education` int(10) DEFAULT \'0\' COMMENT \'0为不限,1为高中,中专及以上,2为大专及以上,3为本科及以上\',
@@ -1394,6 +1395,11 @@ if (pdo_tableexists('jy_ppp_match')) {
     }
 }
 if (pdo_tableexists('jy_ppp_match')) {
+    if (!pdo_fieldexists('jy_ppp_match', 'agemax')) {
+        pdo_query('ALTER TABLE ' . tablename('jy_ppp_match') . ' ADD `agemax` int(10)   DEFAULT 0 ;');
+    }
+}
+if (pdo_tableexists('jy_ppp_match')) {
     if (!pdo_fieldexists('jy_ppp_match', 'height')) {
         pdo_query('ALTER TABLE ' . tablename('jy_ppp_match') . ' ADD `height` int(10)   DEFAULT 0 COMMENT \'0为不限,1为160以下,2为161-165,3为166-170,4为170以上\';');
     }
@@ -1415,7 +1421,7 @@ if (pdo_tableexists('jy_ppp_match')) {
 }
 if (pdo_tableexists('jy_ppp_match')) {
     if (!pdo_fieldexists('jy_ppp_match', 'incomemax')) {
-        pdo_query('ALTER TABLE ' . tablename('jy_ppp_match') . ' ADD `incomemax` int(10)   DEFAULT 0 COMMENT \'0为不限,1为2000元以上,2为5000元以上,3为10000元以上\';');
+        pdo_query('ALTER TABLE ' . tablename('jy_ppp_match') . ' ADD `incomemax` int(10)   DEFAULT 0 ;');
     }
 }
 if (pdo_tableexists('jy_ppp_match')) {

@@ -70,6 +70,12 @@ global $_W,$_GPC;
 			  	{
 			  		$data['blank']++;
 			  	}
+                $data['agemax']=$_GPC['con_agemax'];
+                if(empty($data['agemax']))
+                {
+                    $data['blank']++;
+                }
+
 			  	$data['height']=$_GPC['con_height'];
 			  	if(empty($data['height']))
 			  	{
