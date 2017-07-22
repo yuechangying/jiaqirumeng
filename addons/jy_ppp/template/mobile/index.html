@@ -183,14 +183,17 @@
                 <b class="tit">{$t['nicheng']} </b>
                 <p>
                     {if !empty($t['brith'])}
-                {php $birthday=$t['brith'];$month=0;if(date('m', $now)>date('m', $birthday))$month=1;if(date('m', $now)==date('m', $birthday))if(date('d', $now)>=date('d', $birthday))$month=1;$nianlin=date('Y', $now)-date('Y', $birthday)+$month;}{$nianlin}岁{/if} | {$t['province']} | {$t['thumb']}张照片
+                {php $birthday=$t['brith'];$month=0;if(date('m', $now)>date('m', $birthday))$month=1;if(date('m', $now)==date('m', $birthday))if(date('d', $now)>=date('d', $birthday))$month=1;$nianlin=date('Y', $now)-date('Y', $birthday)+$month;}{$nianlin}岁{/if} | {$t['province']} | {$t['height']}CM
                 </p>
                 <p class="feature">
+                    {if !empty($t['education'])}{$t['education']} | {/if}{if !empty($t['marriage'])}{$t['marriage']} | {/if}{if !empty($t['card_auth'])}<span>身份认证</span>{/if}{if !empty($t['mobile_auth'])}<span>手机认证</span>{/if}
+                </p-->
+                <!--p class="feature">
                     {if !empty($t['tezheng'])}<span>{$t['tezheng']}</span>{/if}{if !empty($t['aihao'])}<span>{$t['aihao']}</span>{/if}{if !empty($t['mobile_auth']) && !empty($t['card_auth']) && $t['thumb']>2}<span>诚信认证</span>{else}{if !empty($t['card_auth'])}<span>身份认证</span>{else}{if !empty($t['mobile_auth'])}<span>手机认证</span>{/if}{/if}{/if}
-                </p>
-                <p class="recite">
+                </p-->
+                <!--p class="recite">
                     {if !empty($t['beizhu'])}{$t['beizhu']}{else}{if !empty($t['province2'])}寻找{$province[$t['province2']]}{if !empty($t['age'])}{$match_age[$t['age']]}{/if}{if !empty($t['height2'])} {$match_height[$t['height2']]}cm{/if}的{$xz_sex}{else}寻找{if !empty($t['province'])}{$t['province']}{else}北京市{/if}的{$xz_sex}{/if}{/if}
-                </p>
+                </p-->
                 </li>
             </ul></a>
             <div class="bot_btn">
