@@ -258,7 +258,7 @@
                     {if !empty($detail['height'])}·{$detail['height']}cm{/if}
 			</p>
 			<p class="info">
-				{if !empty($detail['marriage'])}{$detail['marriage']}{/if} {if !empty($detail['income'])}{$detail['income']}{/if}
+				{if !empty($detail['marriage'])}{$detail['marriage']}{/if}
 			</p>
 			<p>
 			{if empty($sitem['chatui_style'])}
@@ -272,11 +272,11 @@
 				{else}
 				<span data-value="identity" class="identity noCheck">身份认证</span>
 				{/if}
-				{if $sitem['youhuo_pay'] && empty($baoyue)}
+				{if 0 /*$sitem['youhuo_pay'] && empty($baoyue)*/}
 				<span data-value="phone" class="phone " style="background-color:rgba(236,32,88,0.75)" onclick="lookwechat()">查看微信</span>
 				{/if}
 			{else}
-				{if $sitem['youhuo_pay'] && empty($baoyue)}
+				{if 0 /* $sitem['youhuo_pay'] && empty($baoyue)*/ }
 				<p class="info" >
 					<a href="javascript:void(0)" onclick="lookwechat()" style="color:#999">微信号：查看微信</a>
 				</p>

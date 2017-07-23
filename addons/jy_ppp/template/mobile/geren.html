@@ -176,7 +176,7 @@
                 <dd><b class="name">{$member['nicheng']}</b>
                 <p id="desc"></p>
                 <p>
-                    {if $member['sex']==1 && $member['type']!=3}
+                    {if 0 /* $member['sex']==1 && $member['type']!=3 */}
                     {if empty($baoyue)}
                     <a href="{php echo $this->createMobileUrl('baoyue')}" class="vip noCheck">VIP</a>
                     {else}
