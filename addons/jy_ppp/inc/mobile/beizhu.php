@@ -128,6 +128,8 @@ global $_W,$_GPC;
 		}
 	}
 
+    printLog(basename(__FILE__) . ",line=" . __LINE__ . " beizhu=" . $member['beizhu']);
+
 	$sitem=pdo_fetch("SELECT * FROM ".tablename('jy_ppp_setting')." WHERE weid=".$weid);
 	if(empty($member) && $weixin==1 && !empty($sitem['unzhuce']) )
 	{

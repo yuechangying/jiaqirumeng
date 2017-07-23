@@ -23,7 +23,7 @@
 </div>
 </nav>
 <div class="content">
-    <textarea autofocus="autofocus" maxlength="120" id="textBox" class="desc_textarea" placeholder="请输入内心独白,内容不少于10字！">{$member['beizhu']}</textarea>
+    <textarea autofocus="autofocus" maxlength="200" id="textBox" class="desc_textarea" placeholder="请输入内心独白,内容不少于10字！">{$member['beizhu']}</textarea>
     <p class="limit"></p>
 </div>
 </body>
@@ -35,7 +35,7 @@
 $(function () {
 	$("#textBox").bind("change keyup",function(){
 		var len = $(this).val().length;
-        $('.limit').text("还可输入"+(120 - len)+"字");
+        $('.limit').text("还可输入"+(200 - len)+"字");
 	});
 	$("#des_sure").bind("click",function(){
 		var tex = $("#textBox").val();
@@ -47,8 +47,8 @@ $(function () {
             $.tips("内心独白最少输入10字");
             return;
         }
-        if (tex.length > 120) {
-            $.tips("内容长度限定在120字内哦！");
+        if (tex.length > 200) {
+            $.tips("内容长度限定在200字内哦！");
             return;
         }
         // ajax-----

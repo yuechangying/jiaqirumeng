@@ -4140,6 +4140,8 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 			$temp_log=pdo_fetch("SELECT * FROM ".tablename('jy_ppp_login_log')." WHERE weid=".$weid." AND mid=".$mid." ORDER BY createtime DESC LIMIT 1 ");
 			$today=strtotime("today");
 
+            printLog(basename(__FILE__) . ",line=" . __LINE__ . " doMobileDetail(), mid=" . $member['id']);
+
 			if($temp_log['createtime']<$today)
 			{
 				$data=array(
@@ -4343,6 +4345,8 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 						$thumb=pdo_fetchall("SELECT * FROM ".tablename('jy_ppp_thumb')." WHERE weid=".$weid." AND mid=".$id." AND ( type=1 OR type=2 )");
 						$aihao=pdo_fetchall("SELECT * FROM ".tablename('jy_ppp_aihao')." WHERE weid=".$weid." AND mid=".$id." LIMIT 3");
 						$tezheng=pdo_fetchall("SELECT * FROM ".tablename('jy_ppp_tezheng')." WHERE weid=".$weid." AND mid=".$id." LIMIT 3");
+
+                        printLog(basename(__FILE__) . ",line=" . __LINE__ . " doMobileDetail(), beizhu=" . $detail['beizhu']);
 
                         if(!empty($detail['createtime']))
                         {
