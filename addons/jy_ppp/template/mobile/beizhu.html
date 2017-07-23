@@ -23,7 +23,10 @@
 </div>
 </nav>
 <div class="content">
-    <textarea autofocus="autofocus" maxlength="200" id="textBox" class="desc_textarea" placeholder="请输入内心独白,内容不少于10字！">{$member['beizhu']}</textarea>
+    <!--<textarea autofocus="autofocus" maxlength="200" id="textBox" class="desc_textarea" placeholder="请输入内心独白,内容不少于10字！">{$member['beizhu']}</textarea>-->
+    <div id="textBox" class="love_log" contenteditable="true">
+        {$member['beizhu']}
+    </div>
     <p class="limit"></p>
 </div>
 </body>
@@ -34,11 +37,13 @@
 //内心独白
 $(function () {
 	$("#textBox").bind("change keyup",function(){
-		var len = $(this).val().length;
+//		var len = $(this).val().length;
+		var len = $(this).html().length;
         $('.limit').text("还可输入"+(200 - len)+"字");
 	});
 	$("#des_sure").bind("click",function(){
-		var tex = $("#textBox").val();
+//		var tex = $("#textBox").val();
+		var tex = $("#textBox").html();
         if (tex.length == 0) {
             $.tips("请输入内心独白");
             return;

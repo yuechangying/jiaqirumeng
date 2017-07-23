@@ -42,3 +42,20 @@
     margin: 0;
     padding: 0;
 }
+
+
+
+.love_log{
+    width: 100%;
+    min-height: 150px;
+    padding: 5px;
+    border:1px #ccc solid;
+    font-size: 16px;
+    line-height: 20px;
+    color: #333;
+    word-wrap: break-word;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border-color: rgba(82, 168, 236, 0.8);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
+}
