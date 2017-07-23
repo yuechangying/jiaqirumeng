@@ -4408,6 +4408,7 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 						$aihao=pdo_fetchall("SELECT * FROM ".tablename('jy_ppp_aihao')." WHERE weid=".$weid." AND mid=".$id." LIMIT 3");
 						$tezheng=pdo_fetchall("SELECT * FROM ".tablename('jy_ppp_tezheng')." WHERE weid=".$weid." AND mid=".$id." LIMIT 3");
 
+
                       	if(!empty($aihao))
 						{
 							foreach ($aihao as $key => $value) {

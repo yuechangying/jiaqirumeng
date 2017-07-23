@@ -1,0 +1,51 @@
+[1mdiff --git a/addons/jy_ppp/site.php b/addons/jy_ppp/site.php[m
+[1mindex 3196368..3a70b65 100644[m
+[1m--- a/addons/jy_ppp/site.php[m
+[1m+++ b/addons/jy_ppp/site.php[m
+[36m@@ -4407,11 +4407,13 @@[m [minclude IA_ROOT."/addons/jy_ppp/upgrade.php";[m
+ 						$thumb=pdo_fetchall("SELECT * FROM ".tablename('jy_ppp_thumb')." WHERE weid=".$weid." AND mid=".$id." AND ( type=1 OR type=2 )");[m
+ 						$aihao=pdo_fetchall("SELECT * FROM ".tablename('jy_ppp_aihao')." WHERE weid=".$weid." AND mid=".$id." LIMIT 3");[m
+ 						$tezheng=pdo_fetchall("SELECT * FROM ".tablename('jy_ppp_tezheng')." WHERE weid=".$weid." AND mid=".$id." LIMIT 3");[m
+[31m-						if(!empty($aihao))[m
+[32m+[m
+[32m+[m[41m                      [m	[32mif(!empty($aihao))[m
+ 						{[m
+ 							foreach ($aihao as $key => $value) {[m
+ 								$detail['aihao'].=$value['aihao'].",";[m
+ 							}[m
+[32m+[m
+ 							$detail['aihao']=substr($detail['aihao'], 0,-1);[m
+ 						}[m
+ 						if(!empty($tezheng))[m
+[1mdiff --git a/addons/jy_ppp/template/mobile/detail2.html b/addons/jy_ppp/template/mobile/detail2.html[m
+[1mindex 61f601c..99e4131 100644[m
+[1m--- a/addons/jy_ppp/template/mobile/detail2.html[m
+[1m+++ b/addons/jy_ppp/template/mobile/detail2.html[m
+[36m@@ -269,6 +269,14 @@[m
+                 <span>{if !empty($detail['chuyi'])}{$detail['chuyi']}{else}保密{/if}</span>[m
+                 厨艺状况[m
+             </li>[m
+[32m+[m[32m            <li>[m
+[32m+[m[32m                <span>{if !empty($detail['aihao'])}{$detail['aihao']}{else}保密{/if}</span>[m
+[32m+[m[32m                爱好[m
+[32m+[m[32m            </li>[m
+[32m+[m[32m            <li>[m
+[32m+[m[32m                <span>{if !empty($detail['tezheng'])}{$detail['tezheng']}{else}保密{/if}</span>[m
+[32m+[m[32m                特征[m
+[32m+[m[32m            </li>[m
+         </ul>[m
+     </div>[m
+ [m
+[1mdiff --git a/addons/jy_ppp/template/mobile/match.html b/addons/jy_ppp/template/mobile/match.html[m
+[1mindex afb3d6a..e311a86 100644[m
+[1m--- a/addons/jy_ppp/template/mobile/match.html[m
+[1m+++ b/addons/jy_ppp/template/mobile/match.html[m
+[36m@@ -224,7 +224,7 @@[m
+    </div>[m
+   </div>[m
+   <input type="hidden" id="con_age" value="{$match['age']}" />[m
+[31m-  <input id="con_agemax" value="{$match['agemax']}" />[m
+[32m+[m[32m  <input type="hidden" id="con_agemax" value="{$match['agemax']}" />[m
+   <input type="hidden" id="con_height"  value="{$match['height']}"/>[m
+   <input type="hidden" id="con_heightmax"  value="{$match['heightmax']}"/>[m
+   <input type="hidden" id="con_income" value="{$match['income']}" />[m
