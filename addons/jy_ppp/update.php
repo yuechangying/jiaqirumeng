@@ -34,15 +34,15 @@ CREATE TABLE IF NOT EXISTS `ims_jy_ppp_basic` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `weid` int(10) NOT NULL,
   `mid` int(10) NOT NULL,
-  `height` int(10) NOT NULL,
-  `car` varchar(16) NOT NULL,
-  `constellation` varchar(8) NOT NULL,
-  `education` varchar(16) NOT NULL,
-  `job` varchar(16) NOT NULL,
-  `income` varchar(16) NOT NULL,
-  `marriage` varchar(10) NOT NULL,
-  `house` varchar(16) NOT NULL,
-  `blank` int(10) NOT NULL COMMENT \'未填写的字段个数\',
+  `height` int(1) NOT NULL,
+  `car` varchar(6) NOT NULL,
+  `constellation` varchar(4) NOT NULL,
+  `education` varchar(6) NOT NULL,
+  `job` varchar(10) NOT NULL,
+  `income` varchar(1) NOT NULL,
+  `marriage` varchar(5) NOT NULL,
+  `house` varchar(7) NOT NULL,
+  `blank` int(1) NOT NULL COMMENT \'未填写的字段个数\',
   `createtime` int(10) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `mid` (`mid`)
@@ -245,22 +245,22 @@ CREATE TABLE IF NOT EXISTS `ims_jy_ppp_member` (
   `weid` int(10) NOT NULL,
   `uid` int(10) NOT NULL,
   `from_user` varchar(50) NOT NULL,
-  `nicheng` varchar(255) NOT NULL,
+  `nicheng` varchar(30) NOT NULL,
   `avatar` varchar(255) DEFAULT NULL,
   `mobile` varchar(11) NOT NULL,
-  `pwd` varchar(200) NOT NULL,
-  `beizhu` varchar(255) NOT NULL,
-  `sex` int(2) NOT NULL COMMENT \'1为男,2为女\',
-  `status` int(2) NOT NULL COMMENT \'封号与否\',
+  `pwd` varchar(20) NOT NULL,
+  `beizhu` varchar(205) NOT NULL,
+  `sex` int(1) NOT NULL COMMENT \'1为男,2为女\',
+  `status` int(1) NOT NULL COMMENT \'封号与否\',
   `brith` int(10) NOT NULL,
-  `province` int(10) NOT NULL,
-  `city` int(10) NOT NULL,
-  `credit` int(10) DEFAULT \'0\' COMMENT \'金币\',
+  `province` int(2) NOT NULL,
+  `city` int(2) NOT NULL,
+  `credit` int(2) DEFAULT \'0\' COMMENT \'金币\',
   `baoyue` int(10) DEFAULT NULL COMMENT \'包月过期时间\',
   `shouxin` int(10) DEFAULT NULL COMMENT \'收信宝过期时间\',
-  `type` int(2) NOT NULL COMMENT \'3为工作人员虚拟用户,,1为微信,0为账户\',
-  `mobile_auth` int(2) DEFAULT \'0\' COMMENT \'1为认证,0为未认证\',
-  `card_auth` int(2) DEFAULT \'0\' COMMENT \'1为认证,0为未认证\',
+  `type` int(1) NOT NULL COMMENT \'3为工作人员虚拟用户,,1为微信,0为账户\',
+  `mobile_auth` int(1) DEFAULT \'0\' COMMENT \'1为认证,0为未认证\',
+  `card_auth` int(1) DEFAULT \'0\' COMMENT \'1为认证,0为未认证\',
   `qrcode_id` int(10) DEFAULT \'0\',
   `parentid` int(10) DEFAULT \'0\',
   `createtime` int(10) NOT NULL,
@@ -724,49 +724,49 @@ if (pdo_tableexists('jy_ppp_basic')) {
 }
 if (pdo_tableexists('jy_ppp_basic')) {
     if (!pdo_fieldexists('jy_ppp_basic', 'height')) {
-        pdo_query('ALTER TABLE ' . tablename('jy_ppp_basic') . ' ADD `height` int(10) NOT NULL   COMMENT \'\';');
+        pdo_query('ALTER TABLE ' . tablename('jy_ppp_basic') . ' ADD `height` int(1) NOT NULL   COMMENT \'\';');
     }
 }
 if (pdo_tableexists('jy_ppp_basic')) {
     if (!pdo_fieldexists('jy_ppp_basic', 'car')) {
-        pdo_query('ALTER TABLE ' . tablename('jy_ppp_basic') . ' ADD `car` varchar(16) NOT NULL   COMMENT \'\';');
+        pdo_query('ALTER TABLE ' . tablename('jy_ppp_basic') . ' ADD `car` varchar(6) NOT NULL   COMMENT \'\';');
     }
 }
 if (pdo_tableexists('jy_ppp_basic')) {
     //if (!pdo_fieldexists('jy_ppp_basic', 'blood')) {
     if (!pdo_fieldexists('jy_ppp_basic', 'constellation')) {
     
-        pdo_query('ALTER TABLE ' . tablename('jy_ppp_basic') . ' ADD `constellation` varchar(8) NOT NULL   COMMENT \'\';');
+        pdo_query('ALTER TABLE ' . tablename('jy_ppp_basic') . ' ADD `constellation` varchar(4) NOT NULL   COMMENT \'\';');
     }
 }
 if (pdo_tableexists('jy_ppp_basic')) {
     if (!pdo_fieldexists('jy_ppp_basic', 'education')) {
-        pdo_query('ALTER TABLE ' . tablename('jy_ppp_basic') . ' ADD `education` varchar(40) NOT NULL   COMMENT \'\';');
+        pdo_query('ALTER TABLE ' . tablename('jy_ppp_basic') . ' ADD `education` varchar(6) NOT NULL   COMMENT \'\';');
     }
 }
 if (pdo_tableexists('jy_ppp_basic')) {
     if (!pdo_fieldexists('jy_ppp_basic', 'job')) {
-        pdo_query('ALTER TABLE ' . tablename('jy_ppp_basic') . ' ADD `job` varchar(40) NOT NULL   COMMENT \'\';');
+        pdo_query('ALTER TABLE ' . tablename('jy_ppp_basic') . ' ADD `job` varchar(10) NOT NULL   COMMENT \'\';');
     }
 }
 if (pdo_tableexists('jy_ppp_basic')) {
     if (!pdo_fieldexists('jy_ppp_basic', 'income')) {
-        pdo_query('ALTER TABLE ' . tablename('jy_ppp_basic') . ' ADD `income` varchar(20) NOT NULL   COMMENT \'\';');
+        pdo_query('ALTER TABLE ' . tablename('jy_ppp_basic') . ' ADD `income` int(1) NOT NULL   COMMENT \'\';');
     }
 }
 if (pdo_tableexists('jy_ppp_basic')) {
     if (!pdo_fieldexists('jy_ppp_basic', 'marriage')) {
-        pdo_query('ALTER TABLE ' . tablename('jy_ppp_basic') . ' ADD `marriage` varchar(20) NOT NULL   COMMENT \'\';');
+        pdo_query('ALTER TABLE ' . tablename('jy_ppp_basic') . ' ADD `marriage` varchar(5) NOT NULL   COMMENT \'\';');
     }
 }
 if (pdo_tableexists('jy_ppp_basic')) {
     if (!pdo_fieldexists('jy_ppp_basic', 'house')) {
-        pdo_query('ALTER TABLE ' . tablename('jy_ppp_basic') . ' ADD `house` varchar(20) NOT NULL   COMMENT \'\';');
+        pdo_query('ALTER TABLE ' . tablename('jy_ppp_basic') . ' ADD `house` varchar(7) NOT NULL   COMMENT \'\';');
     }
 }
 if (pdo_tableexists('jy_ppp_basic')) {
     if (!pdo_fieldexists('jy_ppp_basic', 'blank')) {
-        pdo_query('ALTER TABLE ' . tablename('jy_ppp_basic') . ' ADD `blank` int(10) NOT NULL   COMMENT \'未填写的字段个数\';');
+        pdo_query('ALTER TABLE ' . tablename('jy_ppp_basic') . ' ADD `blank` int(1) NOT NULL   COMMENT \'未填写的字段个数\';');
     }
 }
 if (pdo_tableexists('jy_ppp_basic')) {
@@ -1461,7 +1461,7 @@ if (pdo_tableexists('jy_ppp_member')) {
 }
 if (pdo_tableexists('jy_ppp_member')) {
     if (!pdo_fieldexists('jy_ppp_member', 'nicheng')) {
-        pdo_query('ALTER TABLE ' . tablename('jy_ppp_member') . ' ADD `nicheng` varchar(255) NOT NULL   COMMENT \'\';');
+        pdo_query('ALTER TABLE ' . tablename('jy_ppp_member') . ' ADD `nicheng` varchar(30) NOT NULL   COMMENT \'\';');
     }
 }
 if (pdo_tableexists('jy_ppp_member')) {
@@ -1476,22 +1476,22 @@ if (pdo_tableexists('jy_ppp_member')) {
 }
 if (pdo_tableexists('jy_ppp_member')) {
     if (!pdo_fieldexists('jy_ppp_member', 'pwd')) {
-        pdo_query('ALTER TABLE ' . tablename('jy_ppp_member') . ' ADD `pwd` varchar(200) NOT NULL   COMMENT \'\';');
+        pdo_query('ALTER TABLE ' . tablename('jy_ppp_member') . ' ADD `pwd` varchar(20) NOT NULL   COMMENT \'\';');
     }
 }
 if (pdo_tableexists('jy_ppp_member')) {
     if (!pdo_fieldexists('jy_ppp_member', 'beizhu')) {
-        pdo_query('ALTER TABLE ' . tablename('jy_ppp_member') . ' ADD `beizhu` varchar(255) NOT NULL   COMMENT \'\';');
+        pdo_query('ALTER TABLE ' . tablename('jy_ppp_member') . ' ADD `beizhu` varchar(205) NOT NULL   COMMENT \'\';');
     }
 }
 if (pdo_tableexists('jy_ppp_member')) {
     if (!pdo_fieldexists('jy_ppp_member', 'sex')) {
-        pdo_query('ALTER TABLE ' . tablename('jy_ppp_member') . ' ADD `sex` int(2) NOT NULL   COMMENT \'1为男,2为女\';');
+        pdo_query('ALTER TABLE ' . tablename('jy_ppp_member') . ' ADD `sex` int(1) NOT NULL   COMMENT \'1为男,2为女\';');
     }
 }
 if (pdo_tableexists('jy_ppp_member')) {
     if (!pdo_fieldexists('jy_ppp_member', 'status')) {
-        pdo_query('ALTER TABLE ' . tablename('jy_ppp_member') . ' ADD `status` int(2) NOT NULL   COMMENT \'封号与否\';');
+        pdo_query('ALTER TABLE ' . tablename('jy_ppp_member') . ' ADD `status` int(1) NOT NULL   COMMENT \'封号与否\';');
     }
 }
 if (pdo_tableexists('jy_ppp_member')) {
@@ -1506,12 +1506,12 @@ if (pdo_tableexists('jy_ppp_member')) {
 }
 if (pdo_tableexists('jy_ppp_member')) {
     if (!pdo_fieldexists('jy_ppp_member', 'city')) {
-        pdo_query('ALTER TABLE ' . tablename('jy_ppp_member') . ' ADD `city` int(10) NOT NULL   COMMENT \'\';');
+        pdo_query('ALTER TABLE ' . tablename('jy_ppp_member') . ' ADD `city` int(2) NOT NULL   COMMENT \'\';');
     }
 }
 if (pdo_tableexists('jy_ppp_member')) {
     if (!pdo_fieldexists('jy_ppp_member', 'credit')) {
-        pdo_query('ALTER TABLE ' . tablename('jy_ppp_member') . ' ADD `credit` int(10)   DEFAULT 0 COMMENT \'金币\';');
+        pdo_query('ALTER TABLE ' . tablename('jy_ppp_member') . ' ADD `credit` int(2)   DEFAULT 0 COMMENT \'金币\';');
     }
 }
 if (pdo_tableexists('jy_ppp_member')) {
@@ -1526,17 +1526,17 @@ if (pdo_tableexists('jy_ppp_member')) {
 }
 if (pdo_tableexists('jy_ppp_member')) {
     if (!pdo_fieldexists('jy_ppp_member', 'type')) {
-        pdo_query('ALTER TABLE ' . tablename('jy_ppp_member') . ' ADD `type` int(2) NOT NULL   COMMENT \'3为工作人员虚拟用户,,1为微信,0为账户\';');
+        pdo_query('ALTER TABLE ' . tablename('jy_ppp_member') . ' ADD `type` int(1) NOT NULL   COMMENT \'3为工作人员虚拟用户,,1为微信,0为账户\';');
     }
 }
 if (pdo_tableexists('jy_ppp_member')) {
     if (!pdo_fieldexists('jy_ppp_member', 'mobile_auth')) {
-        pdo_query('ALTER TABLE ' . tablename('jy_ppp_member') . ' ADD `mobile_auth` int(2)   DEFAULT 0 COMMENT \'1为认证,0为未认证\';');
+        pdo_query('ALTER TABLE ' . tablename('jy_ppp_member') . ' ADD `mobile_auth` int(1)   DEFAULT 0 COMMENT \'1为认证,0为未认证\';');
     }
 }
 if (pdo_tableexists('jy_ppp_member')) {
     if (!pdo_fieldexists('jy_ppp_member', 'card_auth')) {
-        pdo_query('ALTER TABLE ' . tablename('jy_ppp_member') . ' ADD `card_auth` int(2)   DEFAULT 0 COMMENT \'1为认证,0为未认证\';');
+        pdo_query('ALTER TABLE ' . tablename('jy_ppp_member') . ' ADD `card_auth` int(1)   DEFAULT 0 COMMENT \'1为认证,0为未认证\';');
     }
 }
 if (pdo_tableexists('jy_ppp_member')) {
