@@ -670,7 +670,7 @@
 			enctype="multipart/form-data">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						用户征友条件
+						用户择偶条件
 					</div>
 					<div class="panel-body">
 
