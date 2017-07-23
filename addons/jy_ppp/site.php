@@ -620,7 +620,6 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 			}
 			else
 			{
-
 				$sitem=pdo_fetch("SELECT * FROM ".tablename('jy_ppp_setting')." WHERE weid=".$weid);
 
 				if($member['sex']==1)
@@ -631,8 +630,6 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 				{
 					$condition.=" AND sex=1 ";
 				}
-
-                printLog(basename(__FILE__) . ",line=" . __LINE__);
 
 				$match=pdo_fetch("SELECT * FROM ".tablename('jy_ppp_match')." WHERE weid=".$weid." AND mid=".$mid);
 				if(!empty($match))
@@ -698,8 +695,6 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 						$tuijian_temp[]=$tuijian[$value];
 					}
 					$tuijian=$tuijian_temp;
-
-                    printLog(basename(__FILE__) . ",line=" . __LINE__);
 				}
 				if(!empty($tuijian))
 				{
@@ -1273,6 +1268,11 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 			}
 			else
 			{
+			    // 把用户当前时间写到 ims_jy_ppp_basic.createtime
+                $databasic = array();
+                $databasic['createtime']=TIMESTAMP;
+                pdo_update("jy_ppp_basic",$databasic,array('mid'=>$mid));
+
 				$province=array('11'=>'北京市','12'=>'天津市','13'=>'河北省','14'=>'山西省','15'=>'内蒙古','21'=>'辽宁省','22'=>'吉林省','23'=>'黑龙江省','31'=>'上海市','32'=>'江苏省','33'=>'浙江省','34'=>'安徽省','35'=>'福建省','36'=>'江西省','37'=>'山东省','41'=>'河南省','42'=>'湖北省','43'=>'湖南省','44'=>'广东省','45'=>'广西','46'=>'海南省','50'=>'重庆市','51'=>'四川省','52'=>'贵州省','53'=>'云南省','54'=>'西藏','61'=>'陕西省','62'=>'甘肃省','63'=>'青海省','64'=>'宁夏','65'=>'新疆','71'=>'台湾省','81'=>'香港','82'=>'澳门');
 				$match_age=array('0'=>'不限','1'=>'18-25岁','2'=>'26-35岁','3'=>'36-45岁','4'=>'46-55岁','5'=>'55岁以上');
 				$match_height=array('0'=>'不限','1'=>'160cm以下','2'=>'161-165cm','3'=>'166-170cm','4'=>'170以上');
@@ -1540,43 +1540,17 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 						{
 							$condition.=" AND a.province= ".$temp_province;
 						}
-						if(!empty($match['height']))
-						{
-							if($match['height']==1)
-							{
-								$condition.=" AND b.height<= 160 ";
-							}
-							elseif ($match['height']==2) {
-								$condition.=" AND b.height> 160 AND b.height<=165 ";
-							}
-							elseif ($match['height']==3) {
-								$condition.=" AND b.height> 165 AND b.height<=170 ";
-							}
-							else
-							{
-								$condition.=" AND b.height> 170 ";
-							}
-						}
-						if(!empty($match['income']))
-						{
-							if($match['income']==1)
-							{
-								$condition.=" AND ( b.income= '0-6' ) ";
-							}
-							elseif ($match['income']==2) {
-								$condition.=" AND ( b.income= '6-15' ) ";
-							}
-							elseif ($match['income']==3) {
-								$condition.=" AND ( b.income= '15-30' ) ";
-							}
-							elseif ($match['income']==4) {
-								$condition.=" AND ( b.income= '30-60' ) ";
-							}
-							elseif ($match['income']==5) {
-								$condition.=" AND ( b.income= '60-100' ) ";
-							}
 
-						}
+                        if(!empty($match['height']) and !empty($match['heightmax']))
+                        {
+                            $condition.=" AND b.height>= " . $match['height'] . " AND b.height<=" . $match['heightmax'] . " ";
+                        }
+
+                        if(!empty($match['income']) and !empty($match['incomemax']))
+                        {
+                            $condition.=" AND b.income>= " . $match['income'] . " AND b.income<=" . $match['incomemax'] . " ";
+                        }
+
 						if(!empty($match['education']))
 						{
 							if($match['education']==1)
@@ -1598,49 +1572,13 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 							$m=date('m',$now);
 							$d=date('d',$now);
 
-							if($match['age']==1)
-							{
-								$temp_y=$y-18;
-								$temp_y2=$y-25;
-								$temp_y=''.$temp_y.$m.$d;
-								$temp_y2=''.$temp_y2.$m.$d;
-								$temp_brith=strtotime($temp_y);
-								$temp_brith2=strtotime($temp_y2);
-								$condition.=" AND ( a.brith> ".$temp_brith2." && a.brith< ".$temp_brith." ) ";
-							}
-							elseif ($match['age']==2) {
-								$temp_y=$y-25;
-								$temp_y2=$y-35;
-								$temp_y=''.$temp_y.$m.$d;
-								$temp_y2=''.$temp_y2.$m.$d;
-								$temp_brith=strtotime($temp_y);
-								$temp_brith2=strtotime($temp_y2);
-								$condition.=" AND ( a.brith> ".$temp_brith2." && a.brith< ".$temp_brith." ) ";
-							}
-							elseif ($match['age']==3) {
-								$temp_y=$y-35;
-								$temp_y2=$y-45;
-								$temp_y=''.$temp_y.$m.$d;
-								$temp_y2=''.$temp_y2.$m.$d;
-								$temp_brith=strtotime($temp_y);
-								$temp_brith2=strtotime($temp_y2);
-								$condition.=" AND ( a.brith> ".$temp_brith2." && a.brith< ".$temp_brith." ) ";
-							}
-							elseif ($match['age']==4) {
-								$temp_y=$y-45;
-								$temp_y2=$y-55;
-								$temp_y=''.$temp_y.$m.$d;
-								$temp_y2=''.$temp_y2.$m.$d;
-								$temp_brith=strtotime($temp_y);
-								$temp_brith2=strtotime($temp_y2);
-								$condition.=" AND ( a.brith> ".$temp_brith2." && a.brith< ".$temp_brith." ) ";
-							}
-							else {
-								$temp_y=$y-55;
-								$temp_y=''.$temp_y.$m.$d;
-								$temp_brith=strtotime($temp_y);
-								$condition.=" AND ( a.brith< ".$temp_brith." ) ";
-							}
+                            $temp_y=$y-$match['age'];
+                            $temp_y2=$y-$match['agemax'];
+                            $temp_y=''.$temp_y.$m.$d;
+                            $temp_y2=''.$temp_y2.$m.$d;
+                            $temp_brith=strtotime($temp_y);
+                            $temp_brith2=strtotime($temp_y2);
+                            $condition.=" AND ( a.brith> ".$temp_brith2." && a.brith< ".$temp_brith." ) ";
 
 						}
 					}
@@ -2056,7 +1994,11 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 						include "../addons/jy_ppp/inc/mobile/area.php";
 					}
 
-					printLog(basename(__FILE__) . ",line=" . __LINE__);
+                    $tempUser=pdo_fetch("SELECT createtime  FROM ".tablename('jy_ppp_basic')." WHERE weid=".$weid." AND mid=". 238 ." LIMIT 1 ");
+
+                    $year=date("Y-m-d H:i",$tempUser['createtime']);
+
+					printLog(basename(__FILE__) . ",line=" . __LINE__ . ", createtime=" . $year);
 
 					// 查找被推荐人的其他信息
 					foreach ($tuijian as $key => $value) {
@@ -4001,8 +3943,6 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 					}
 				}
 
-                printLog(basename(__FILE__) . ",line=" . __LINE__);
-
 				$basic=pdo_fetch("SELECT blank FROM ".tablename('jy_ppp_basic')." WHERE weid=".$weid." AND mid=".$mid);
 				$desc=pdo_fetch("SELECT blank FROM ".tablename('jy_ppp_desc')." WHERE weid=".$weid." AND mid=".$mid);
 				$match=pdo_fetch("SELECT * FROM ".tablename('jy_ppp_match')." WHERE weid=".$weid." AND mid=".$mid);
@@ -4342,8 +4282,6 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 							$condition2.=" AND sex=1 ";
 						}
 
-                        printLog(basename(__FILE__) . ",line=" . __LINE__);
-
 						$match=pdo_fetch("SELECT * FROM ".tablename('jy_ppp_match')." WHERE weid=".$weid." AND mid=".$mid);
 						if(!empty($match))
 						{
@@ -4401,13 +4339,16 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 					}
 					else
 					{
-                        printLog(basename(__FILE__) . ",line=" . __LINE__);
-
-						$detail=pdo_fetch("SELECT a.id,a.nicheng,a.avatar,a.beizhu,a.sex,a.brith,a.province,a.city,a.type as type2,a.baoyue,a.mobile,a.mobile_auth,a.card_auth,b.height,b.car,b.constellation,b.education,b.job,b.income,b.marriage,b.house,c.lifestatus,c.jobstatus,c.companytype,c.smoke,c.parentstatus,c.chuyi,d.age as age2, d.agemax as agemax, d.height as height2, d.heightmax as heightmax, d.education as education2,d.income as income2, d.incomemax as incomemax, d.province as province2 FROM ".tablename('jy_ppp_member')." as a left join ".tablename('jy_ppp_basic')." as b on a.id=b.mid left join ".tablename('jy_ppp_desc')." as c on a.id=c.mid left join ".tablename('jy_ppp_match')." as d on a.id=d.mid WHERE a.weid=".$weid." AND a.id= ".$id);
+                      	$detail=pdo_fetch("SELECT a.id,a.nicheng,a.avatar,a.beizhu,a.sex,a.brith,a.province,a.city,a.type as type2,a.baoyue,a.mobile,a.mobile_auth,a.card_auth,b.height,b.car,b.constellation,b.education,b.job,b.income,b.marriage,b.house, b.createtime, c.lifestatus,c.jobstatus,c.companytype,c.smoke,c.parentstatus,c.chuyi,d.age as age2, d.agemax as agemax, d.height as height2, d.heightmax as heightmax, d.education as education2,d.income as income2, d.incomemax as incomemax, d.province as province2 FROM ".tablename('jy_ppp_member')." as a left join ".tablename('jy_ppp_basic')." as b on a.id=b.mid left join ".tablename('jy_ppp_desc')." as c on a.id=c.mid left join ".tablename('jy_ppp_match')." as d on a.id=d.mid WHERE a.weid=".$weid." AND a.id= ".$id);
 						$thumb=pdo_fetchall("SELECT * FROM ".tablename('jy_ppp_thumb')." WHERE weid=".$weid." AND mid=".$id." AND ( type=1 OR type=2 )");
 						$aihao=pdo_fetchall("SELECT * FROM ".tablename('jy_ppp_aihao')." WHERE weid=".$weid." AND mid=".$id." LIMIT 3");
 						$tezheng=pdo_fetchall("SELECT * FROM ".tablename('jy_ppp_tezheng')." WHERE weid=".$weid." AND mid=".$id." LIMIT 3");
 
+                        if(!empty($detail['createtime']))
+                        {
+                            $lastLogTime = date("Y-m-d H:i",$detail['createtime']);
+                            $detail['createtime'] = $lastLogTime;
+                        }
 
                       	if(!empty($aihao))
 						{
