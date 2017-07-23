@@ -4407,11 +4407,13 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 						$thumb=pdo_fetchall("SELECT * FROM ".tablename('jy_ppp_thumb')." WHERE weid=".$weid." AND mid=".$id." AND ( type=1 OR type=2 )");
 						$aihao=pdo_fetchall("SELECT * FROM ".tablename('jy_ppp_aihao')." WHERE weid=".$weid." AND mid=".$id." LIMIT 3");
 						$tezheng=pdo_fetchall("SELECT * FROM ".tablename('jy_ppp_tezheng')." WHERE weid=".$weid." AND mid=".$id." LIMIT 3");
-						if(!empty($aihao))
+
+                      	if(!empty($aihao))
 						{
 							foreach ($aihao as $key => $value) {
 								$detail['aihao'].=$value['aihao'].",";
 							}
+
 							$detail['aihao']=substr($detail['aihao'], 0,-1);
 						}
 						if(!empty($tezheng))
