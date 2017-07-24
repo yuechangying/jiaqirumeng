@@ -330,8 +330,14 @@ $("[data-value]").bind("click",function(){
 $('.J_selectItem').on('change',function (e) {
     var _value = $(e.currentTarget).val();
     var _unit  = $(e.currentTarget).attr('data-flage');
-    console.log(_value);
+
     var J_value = $(e.currentTarget).closest('.J_select').find('.J_selected');
+
+    if(_unit == '万' && !_value){
+        _value = '不限';
+        _unit = '';
+    }
+
     J_value.html(_value + _unit);
 })
 
