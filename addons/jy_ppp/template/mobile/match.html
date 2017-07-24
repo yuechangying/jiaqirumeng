@@ -333,7 +333,7 @@ $('.J_selectItem').on('change',function (e) {
 
     var J_value = $(e.currentTarget).closest('.J_select').find('.J_selected');
 
-    if(_unit == '万' && !_value){
+    if(_unit == '万' && !Number(_value)){
         _value = '不限';
         _unit = '';
     }
