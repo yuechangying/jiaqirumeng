@@ -131,8 +131,8 @@ body {
 	height: 130px;
 	overflow: hidden;
 	background-repeat: no-repeat;
-	-webkit-background-size: contain;
-	background-size: contain;
+	background-size: cover;
+	background-position: 50% 50%;
 
 }
 .user_info .u_head img {
