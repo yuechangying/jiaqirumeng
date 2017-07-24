@@ -157,7 +157,7 @@
         {/if} <span style="font-size:15px; padding-top:3px;position: relative;color: #999;margin-left: 10px;"><img style="margin-bottom: -1%;width: 5%;max-width: 25px;" src="../addons/jy_ppp/images/location2.png"></span>
             </li>
             <li><span>最近登录时间：</span>{$detail['createtime']}</li>
-            <li class="xiangce" onclick="window.location.href='{php echo $this->createMobileUrl('userthumb',array('id'=>$detail['id']))}'"><i style="display: inline-block;"><img src="../addons/jy_ppp/images/tupian.png"></i><b style="display: inline-block;vertical-align: top;font-size: 12px;padding-left: 1%;line-height: 40px;">相册{php echo count($thumb)}</b></li>
+            <li class="xiangce" onclick="window.location.href='{php echo $this->createMobileUrl('userthumb',array('id'=>$detail['id']))}'"><i style="display: inline-block;"><img src="../addons/jy_ppp/images/tupian.png"></i><b style="display: inline-block;vertical-align: top;font-size: 12px;padding-left: 1%;line-height: 40px;">相册有{php echo count($thumb)}张照片</b></li>
         </ul>
         <div class="clear"></div>
     </div>
@@ -172,7 +172,7 @@
     <div class="ziliao_box">
         <h3>内心独白</h3>
         <!--<textarea disabled="true" maxlength="500" id="textBox" class="desc_textarea">{$detail['beizhu']}</textarea>-->
-        <div style="font-size: 12px; color: #fd7a9a;padding: 0 1% 2% 2%; line-height: 1.8;">
+        <div style="font-size: 13px; padding: 0 1% 2% 2%; line-height: 1.8;">
             {$detail['beizhu']}
         </div>
        

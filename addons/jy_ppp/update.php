@@ -4,7 +4,7 @@ pdo_query('CREATE TABLE IF NOT EXISTS `ims_jy_ppp_aihao` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `weid` int(10) NOT NULL,
   `mid` int(10) NOT NULL,
-  `aihao` varchar(200) NOT NULL,
+  `aihao` varchar(6) NOT NULL,
   `createtime` int(10) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `mid` (`mid`)
@@ -80,9 +80,9 @@ CREATE TABLE IF NOT EXISTS `ims_jy_ppp_credit_log` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `weid` int(10) unsigned NOT NULL,
   `mid` int(10) NOT NULL,
-  `credit` int(10) NOT NULL,
-  `type` varchar(255) NOT NULL COMMENT \'add,reduce\',
-  `log` int(10) NOT NULL COMMENT \'1为身份认证消耗积分,2为积分兑换聊天机会,3为系统变更积分,4为用户充值积分\',
+  `credit` int(2) NOT NULL,
+  `type` varchar(10) NOT NULL COMMENT \'add,reduce\',
+  `log` int(1) NOT NULL COMMENT \'1为身份认证消耗积分,2为积分兑换聊天机会,3为系统变更积分,4为用户充值积分\',
   `logid` int(10) NOT NULL COMMENT \'对方用户的id或充值记录id\',
   `createtime` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
@@ -92,13 +92,13 @@ CREATE TABLE IF NOT EXISTS `ims_jy_ppp_desc` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `weid` int(10) NOT NULL,
   `mid` int(10) NOT NULL,
-  `lifestatus` varchar(12) NOT NULL,
-  `jobstatus` varchar(16) NOT NULL,
-  `companytype` varchar(16) NOT NULL,
-  `smoke` varchar(16) NOT NULL,
-  `parentstatus` varchar(12) NOT NULL,
-  `chuyi` varchar(28) NOT NULL,  
-  `blank` int(10) NOT NULL COMMENT \'未填写的字段个数\',
+  `lifestatus` varchar(5) NOT NULL,
+  `jobstatus` varchar(8) NOT NULL,
+  `companytype` varchar(6) NOT NULL,
+  `smoke` varchar(8) NOT NULL,
+  `parentstatus` varchar(6) NOT NULL,
+  `chuyi` varchar(13) NOT NULL,
+  `blank` int(1) NOT NULL COMMENT \'未填写的字段个数\',
   `createtime` int(10) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `mid` (`mid`)
@@ -319,7 +319,7 @@ CREATE TABLE IF NOT EXISTS `ims_jy_ppp_pay_log` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `weid` int(10) unsigned NOT NULL,
   `mid` int(10) NOT NULL,
-  `from_user` varchar(250) DEFAULT NULL COMMENT \'付款的from_user,为空时代表自己付的款\',
+  `from_user` varchar(20) DEFAULT NULL COMMENT \'付款的from_user,为空时代表自己付的款\',
   `fee` int(10) NOT NULL,
   `log` int(10) NOT NULL COMMENT \'1为购买豆币,2为购买包月服务,3为购买收信宝\',
   `status` int(10) NOT NULL COMMENT \'付款状态\',
@@ -451,7 +451,7 @@ CREATE TABLE IF NOT EXISTS `ims_jy_ppp_tezheng` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `weid` int(10) NOT NULL,
   `mid` int(10) NOT NULL,
-  `tezheng` varchar(200) NOT NULL,
+  `tezheng` varchar(6) NOT NULL,
   `createtime` int(10) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `mid` (`mid`)
@@ -639,7 +639,7 @@ if (pdo_tableexists('jy_ppp_aihao')) {
 }
 if (pdo_tableexists('jy_ppp_aihao')) {
     if (!pdo_fieldexists('jy_ppp_aihao', 'aihao')) {
-        pdo_query('ALTER TABLE ' . tablename('jy_ppp_aihao') . ' ADD `aihao` varchar(200) NOT NULL   COMMENT \'\';');
+        pdo_query('ALTER TABLE ' . tablename('jy_ppp_aihao') . ' ADD `aihao` varchar(6) NOT NULL   COMMENT \'\';');
     }
 }
 if (pdo_tableexists('jy_ppp_aihao')) {
@@ -871,17 +871,17 @@ if (pdo_tableexists('jy_ppp_credit_log')) {
 }
 if (pdo_tableexists('jy_ppp_credit_log')) {
     if (!pdo_fieldexists('jy_ppp_credit_log', 'credit')) {
-        pdo_query('ALTER TABLE ' . tablename('jy_ppp_credit_log') . ' ADD `credit` int(10) NOT NULL   COMMENT \'\';');
+        pdo_query('ALTER TABLE ' . tablename('jy_ppp_credit_log') . ' ADD `credit` int(2) NOT NULL   COMMENT \'\';');
     }
 }
 if (pdo_tableexists('jy_ppp_credit_log')) {
     if (!pdo_fieldexists('jy_ppp_credit_log', 'type')) {
-        pdo_query('ALTER TABLE ' . tablename('jy_ppp_credit_log') . ' ADD `type` varchar(255) NOT NULL   COMMENT \'add,reduce\';');
+        pdo_query('ALTER TABLE ' . tablename('jy_ppp_credit_log') . ' ADD `type` varchar(10) NOT NULL   COMMENT \'add,reduce\';');
     }
 }
 if (pdo_tableexists('jy_ppp_credit_log')) {
     if (!pdo_fieldexists('jy_ppp_credit_log', 'log')) {
-        pdo_query('ALTER TABLE ' . tablename('jy_ppp_credit_log') . ' ADD `log` int(10) NOT NULL   COMMENT \'1为身份认证消耗积分,2为积分兑换聊天机会,3为系统变更积分,4为用户充值积分\';');
+        pdo_query('ALTER TABLE ' . tablename('jy_ppp_credit_log') . ' ADD `log` int(1) NOT NULL   COMMENT \'1为身份认证消耗积分,2为积分兑换聊天机会,3为系统变更积分,4为用户充值积分\';');
     }
 }
 if (pdo_tableexists('jy_ppp_credit_log')) {
@@ -911,37 +911,37 @@ if (pdo_tableexists('jy_ppp_desc')) {
 }
 if (pdo_tableexists('jy_ppp_desc')) {
     if (!pdo_fieldexists('jy_ppp_desc', 'lifestatus')) {
-        pdo_query('ALTER TABLE ' . tablename('jy_ppp_desc') . ' ADD `lifestatus` varchar(12) NOT NULL   COMMENT \'\';');
+        pdo_query('ALTER TABLE ' . tablename('jy_ppp_desc') . ' ADD `lifestatus` varchar(5) NOT NULL   COMMENT \'\';');
     }
 }
 if (pdo_tableexists('jy_ppp_desc')) {
     if (!pdo_fieldexists('jy_ppp_desc', 'jobstatus')) {
-        pdo_query('ALTER TABLE ' . tablename('jy_ppp_desc') . ' ADD `jobstatus` varchar(16) NOT NULL   COMMENT \'\';');
+        pdo_query('ALTER TABLE ' . tablename('jy_ppp_desc') . ' ADD `jobstatus` varchar(8) NOT NULL   COMMENT \'\';');
     }
 }
 if (pdo_tableexists('jy_ppp_desc')) {
     if (!pdo_fieldexists('jy_ppp_desc', 'companytype')) {
-        pdo_query('ALTER TABLE ' . tablename('jy_ppp_desc') . ' ADD `companytype` varchar(16) NOT NULL   COMMENT \'\';');
+        pdo_query('ALTER TABLE ' . tablename('jy_ppp_desc') . ' ADD `companytype` varchar(6) NOT NULL   COMMENT \'\';');
     }
 }
 if (pdo_tableexists('jy_ppp_desc')) {
     if (!pdo_fieldexists('jy_ppp_desc', 'smoke')) {
-        pdo_query('ALTER TABLE ' . tablename('jy_ppp_desc') . ' ADD `smoke` varchar(16) NOT NULL   COMMENT \'\';');
+        pdo_query('ALTER TABLE ' . tablename('jy_ppp_desc') . ' ADD `smoke` varchar(8) NOT NULL   COMMENT \'\';');
     }
 }
 if (pdo_tableexists('jy_ppp_desc')) {
     if (!pdo_fieldexists('jy_ppp_desc', 'parentstatus')) {
-        pdo_query('ALTER TABLE ' . tablename('jy_ppp_desc') . ' ADD `parentstatus` varchar(12) NOT NULL   COMMENT \'\';');
+        pdo_query('ALTER TABLE ' . tablename('jy_ppp_desc') . ' ADD `parentstatus` varchar(6) NOT NULL   COMMENT \'\';');
     }
 }
 if (pdo_tableexists('jy_ppp_desc')) {
     if (!pdo_fieldexists('jy_ppp_desc', 'chuyi')) {
-        pdo_query('ALTER TABLE ' . tablename('jy_ppp_desc') . ' ADD `chuyi` varchar(28) NOT NULL   COMMENT \'\';');
+        pdo_query('ALTER TABLE ' . tablename('jy_ppp_desc') . ' ADD `chuyi` varchar(13) NOT NULL   COMMENT \'\';');
     }
 }
 if (pdo_tableexists('jy_ppp_desc')) {
     if (!pdo_fieldexists('jy_ppp_desc', 'blank')) {
-        pdo_query('ALTER TABLE ' . tablename('jy_ppp_desc') . ' ADD `blank` int(10) NOT NULL   COMMENT \'未填写的字段个数\';');
+        pdo_query('ALTER TABLE ' . tablename('jy_ppp_desc') . ' ADD `blank` int(1) NOT NULL   COMMENT \'未填写的字段个数\';');
     }
 }
 if (pdo_tableexists('jy_ppp_desc')) {
@@ -1731,7 +1731,7 @@ if (pdo_tableexists('jy_ppp_pay_log')) {
 }
 if (pdo_tableexists('jy_ppp_pay_log')) {
     if (!pdo_fieldexists('jy_ppp_pay_log', 'from_user')) {
-        pdo_query('ALTER TABLE ' . tablename('jy_ppp_pay_log') . ' ADD `from_user` varchar(250)    COMMENT \'付款的from_user,为空时代表自己付的款\';');
+        pdo_query('ALTER TABLE ' . tablename('jy_ppp_pay_log') . ' ADD `from_user` varchar(20)    COMMENT \'付款的from_user,为空时代表自己付的款\';');
     }
 }
 if (pdo_tableexists('jy_ppp_pay_log')) {
@@ -2271,7 +2271,7 @@ if (pdo_tableexists('jy_ppp_tezheng')) {
 }
 if (pdo_tableexists('jy_ppp_tezheng')) {
     if (!pdo_fieldexists('jy_ppp_tezheng', 'tezheng')) {
-        pdo_query('ALTER TABLE ' . tablename('jy_ppp_tezheng') . ' ADD `tezheng` varchar(200) NOT NULL   COMMENT \'\';');
+        pdo_query('ALTER TABLE ' . tablename('jy_ppp_tezheng') . ' ADD `tezheng` varchar(6) NOT NULL   COMMENT \'\';');
     }
 }
 if (pdo_tableexists('jy_ppp_tezheng')) {
