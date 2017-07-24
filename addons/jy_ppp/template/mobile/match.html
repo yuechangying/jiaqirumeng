@@ -76,7 +76,7 @@
      <!--span class="unlimit"><span class="title pink">{if $match['height']==0}不限{/if}{if $match['height']==1}160cm以下{/if}{if $match['height']==2}161-165cm{/if}{if $match['height']==3}166-170cm{/if}{if $match['height']==4}170以上{/if}</span><i class="bot_trg"></i></span-->
         <!--div class="unlimit new_select"-->
         <div class="new_select select_multiple J_selectMultiple">
-            <div class="select">
+            <div class="J_select select">
                 <span class="title">
                 <span class="pink J_selected">
                     {if empty($match['height'])}
@@ -86,7 +86,8 @@
                     {/if}
                 </span>
                 <span class="value_select">
-                    <select id="match_height"  onchange="match_height_change(this.value)" class="value_select">
+                    <!--<select id="match_height"  onchange="match_height_change(this.value)" class="J_selectItem value_select">-->
+                    <select id="match_height"  class="J_selectItem value_select">
                        <option value="0" style="display:none">不限</option>
                         <?php for ($i=140; $i <221 ; $i++) {
                         ?> <option value="{$i}" {if $match['height']==$i} selected="selected" {/if}>{$i}cm </option><?php
@@ -106,7 +107,7 @@
                     {/if}
                 </span>
                 <span class="value_select">
-                    <select id="match_heightmax"  onchange="match_heightmax_change(this.value)" class="value_select">
+                    <select id="match_heightmax"  onchange="match_heightmax_change(this.value)" class="J_selectItem value_select">
                        <option value="0" style="display:none">不限</option>
                         <?php for ($k=140; $k <221 ; $k++) {
                         ?> <option value="{$k}" {if $match['heightmax']==$k} selected="selected" {/if}>{$k}cm </option><?php
@@ -295,6 +296,14 @@ $("[data-value]").bind("click",function(){
     }
     Match.changeEvent($this);
 });
+
+
+$('.J_selectItem').on('change',function (e) {
+    var _value = $(e.currentTarget).value;
+    console.log(_value);
+    var J_value = $(e.currentTarget).closest('.J_select').find('.J_selected');
+    J_value.html(_value + 'cm');
+})
 
   function match_age_change(val) {
       document.getElementById("con_age").value = val;

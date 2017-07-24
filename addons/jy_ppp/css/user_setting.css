@@ -34,9 +34,10 @@
 .new_select .range_flage{
     display: inline-block;
     height: 22px;
-    line-height: 22;
+    line-height: 22px;
     color: #919191;
     font-size: 12px;
+    padding: 0 1% 0 1%;
 }
 .new_select .select .value_select{
 
