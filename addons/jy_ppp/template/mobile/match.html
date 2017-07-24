@@ -256,10 +256,11 @@
   <!--<input type="hidden" id="con_age" value="{$match['age']}" />-->
   <!--<input type="hidden" id="con_agemax" value="{$match['agemax']}" />-->
   <input type="hidden" id="con_age" value="{$match['age']},{$match['agemax']}">
-  <input type="hidden" id="con_height"  value="{$match['height']}"/>
-  <input type="hidden" id="con_heightmax"  value="{$match['heightmax']}"/>
-  <input type="hidden" id="con_income" value="{$match['income']}" />
-  <input type="hidden" id="con_incomemax" value="{$match['incomemax']}" />
+  <input type="hidden" id="con_height"  value="{$match['height']},{$match['heightmax']}"/>
+  <!--<input type="hidden" id="con_height"  value="{$match['height']}"/>-->
+  <!--<input type="hidden" id="con_heightmax"  value="{$match['heightmax']}"/>-->
+  <input type="hidden" id="con_income" value="{$match['income']},{$match['incomemax']}" />
+  <!--<input type="hidden" id="con_incomemax" value="{$match['incomemax']}" />-->
   <input type="hidden" id="con_province" value="{$province}" />
   <input type="hidden" id="con_edu" value="{$match['education']}" />
   <input type="hidden" id="con_girlCareId" value="" />
@@ -276,10 +277,10 @@
 $("#save_btn").bind("click",function(){
     var con_ageVal=$("#con_age").val().split(',')[0];
     var con_agemaxVal=$("#con_age").val().split(',')[1];
-    var con_heightVal=$("#con_height").val();
-    var con_heightmaxVal=$("#con_heightmax").val();
-    var con_incomeVal=$("#con_income").val();
-    var con_incomemaxVal=$("#con_incomemax").val();
+    var con_heightVal=$("#con_height").val().split(',')[0];
+    var con_heightmaxVal=$("#con_height").val().split(',')[1];
+    var con_incomeVal=$("#con_income").val().split(',')[0];
+    var con_incomemaxVal=$("#con_income").val().split(',')[1];
     var con_provinceVal=$("#con_province").val();
     var con_eduVal=$("#con_edu").val();
     var con_girlCareIdVal=$("#con_girlCareId").val();
@@ -352,10 +353,12 @@ $('.J_selectItem').on('change',function (e) {
             $('#con_age').val(formatVal(e.currentTarget));
             break;
         case 'cm':
-
+            $('#con_height').val(formatVal(e.currentTarget));
             break;
         case '万':
+            var _valArr = formatVal(e.currentTarget).split(',');
 
+            $('#con_income').val(formatVal(e.currentTarget));
             break;
     }
 
