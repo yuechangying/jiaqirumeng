@@ -38,10 +38,11 @@
 $(function () {
 	$("#textBox").bind("change keyup",function(){
 //		var len = $(this).val().length;
-		var len = $(this).html().length;
+        var _text = $.trim($(this).html());
+		var len = _text.length;
 		var _str = '';
-		if(len >200){
-		    _str = $(this).html().slice(0,200);
+		if(len >= 200){
+		    _str = _text.slice(0,200);
 		    $(this).html(_str);
 		}
 
@@ -49,7 +50,7 @@ $(function () {
 	});
 	$("#des_sure").bind("click",function(){
 //		var tex = $("#textBox").val();
-		var tex = $("#textBox").html();
+		var tex = $.trim($(this).html());
         if (tex.length == 0) {
             $.tips("请输入内心独白");
             return;
