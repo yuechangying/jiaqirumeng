@@ -180,7 +180,7 @@
                             {/if}
                         </span>
                     <span class="value_select">
-                        <select id="match_incomemax"  data-flage="万" onchange="match_incomemax_change(this.value)" class="J_selectItem value_select">
+                        <select id="match_incomemax"  data-flage="万" class="J_selectItem value_select">
                            <option value="0" style="display:none">不限</option>
                             <?php for ($incomemaxLoop=0; $incomemaxLoop <=100 ; $incomemaxLoop++) {
                             ?> <option value="{$incomemaxLoop}" {if $match['incomemax']==$incomemaxLoop} selected="selected" {/if}>{$incomemaxLoop}万 </option><?php
