@@ -23,12 +23,19 @@
 }
 
 .new_select{
-    float: left;
+    float: right;
 }
 .new_select .select{
 
     position: relative;
     height: 22px;
+    display: inline-block;
+}
+.new_select .range_flage{
+    display: inline-block;
+    height: 22px;
+    line-height: 22;
+    color: #919191;
 }
 .new_select .select .value_select{
 
