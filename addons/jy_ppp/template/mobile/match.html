@@ -51,7 +51,7 @@
                         {/if}
                         </span>
                     <span class="value_select">
-                        <select id="match_age"   class="J_selectItem value_select">
+                        <select id="match_age" data-flage="岁"   class="J_selectItem value_select">
                            <option value="0" style="display:none">不限</option>
                             <?php for ($ageLoop=20; $ageLoop <= 50 ; $ageLoop++) {
                             ?> <option value="{$ageLoop}" {if $match['age']==$ageLoop} selected="selected" {/if}>{$ageLoop}岁 </option><?php
@@ -72,7 +72,7 @@
                         {/if}
                         </span>
                     <span class="value_select">
-                        <select id="match_agemax"  class="J_selectItem value_select">
+                        <select id="match_agemax" data-flage="岁" class="J_selectItem value_select">
                            <option value="0" style="display:none">不限</option>
                             <?php for ($agemaxLoop=20; $agemaxLoop <=50 ; $agemaxLoop++) {
                             ?> <option value="{$agemaxLoop}" {if $match['agemax']==$agemaxLoop} selected="selected" {/if}>{$agemaxLoop}岁 </option><?php
@@ -102,7 +102,7 @@
                     </span>
                     <span class="value_select">
                         <!--<select id="match_height"  onchange="match_height_change(this.value)" class="J_selectItem value_select">-->
-                        <select id="match_height"  class="J_selectItem value_select">
+                        <select id="match_height" data-flage="cm" class="J_selectItem value_select">
                            <option value="0" style="display:none">不限</option>
                             <?php for ($i=140; $i <221 ; $i++) {
                             ?> <option value="{$i}" {if $match['height']==$i} selected="selected" {/if}>{$i}cm </option><?php
@@ -122,7 +122,7 @@
                     {/if}
                 </span>
                 <span class="value_select">
-                    <select id="match_heightmax"   class="J_selectItem value_select">
+                    <select id="match_heightmax" data-flage="cm"  class="J_selectItem value_select">
                        <option value="0" style="display:none">不限</option>
                         <?php for ($k=140; $k <221 ; $k++) {
                         ?> <option value="{$k}" {if $match['heightmax']==$k} selected="selected" {/if}>{$k}cm </option><?php
@@ -315,9 +315,10 @@ $("[data-value]").bind("click",function(){
 
 $('.J_selectItem').on('change',function (e) {
     var _value = $(e.currentTarget).val();
+    var _unit  = $(e.currentTarget).attr('data-flage');
     console.log(_value);
     var J_value = $(e.currentTarget).closest('.J_select').find('.J_selected');
-    J_value.html(_value + 'cm');
+    J_value.html(_value + _unit);
 })
 
   function match_age_change(val) {
