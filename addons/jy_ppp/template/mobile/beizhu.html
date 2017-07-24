@@ -39,6 +39,12 @@ $(function () {
 	$("#textBox").bind("change keyup",function(){
 //		var len = $(this).val().length;
 		var len = $(this).html().length;
+		var _str = '';
+		if(len >200){
+		    _str = $(this).html().slice(0,200);
+		    $(this).html(_str);
+		}
+    }
         $('.limit').text("还可输入"+(200 - len)+"字");
 	});
 	$("#des_sure").bind("click",function(){
