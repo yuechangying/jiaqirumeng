@@ -43,6 +43,13 @@
               <div class="new_select select_multiple J_selectMultiple">
                   <div class="J_select select">
                     <span class="title">
+                        <span class="pink J_selected">
+                        {if empty($match['age'])}
+                            不限
+                        {else}
+                            {$match['age']}岁
+                        {/if}
+                        </span>
                     <span class="value_select">
                         <select id="match_age"   class="J_selectItem value_select">
                            <option value="0" style="display:none">不限</option>
@@ -56,6 +63,13 @@
 
                   <div class="J_select select">
                     <span class="title">
+                        <span class="pink J_selected">
+                        {if empty($match['agemax'])}
+                            不限
+                        {else}
+                            {$match['agemax']}岁
+                        {/if}
+                        </span>
                     <span class="value_select">
                         <select id="match_agemax"  class="J_selectItem value_select">
                            <option value="0" style="display:none">不限</option>
