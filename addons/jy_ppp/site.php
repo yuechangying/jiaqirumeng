@@ -1231,12 +1231,8 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 								$moni_province=$province[$member['province']];
 							}
 						}
-
-
-
 				}
 			}
-
 		}
 
 		if(empty($member['province']))
@@ -1551,20 +1547,26 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
                             $condition.=" AND b.income>= " . $match['income'] . " AND b.income<=" . $match['incomemax'] . " ";
                         }
 
-						if(!empty($match['education']))
-						{
-							if($match['education']==1)
-							{
-								$condition.=" AND ( b.education= '大专' OR b.education= '本科' OR b.education= '硕士及以上' ) ";
-							}
-							elseif ($match['education']==2) {
-								$condition.=" AND ( b.education= '本科' OR b.education= '硕士及以上' ) ";
-							}
-							elseif ($match['education']==3) {
-								$condition.=" AND ( b.education= '硕士及以上' ) ";
-							}
+                        if(!empty($match['education']))
+                        {
+                            if($match['education']==1)
+                            {
+                                $condition.=" AND ( b.education = '中专' OR b.education= '大专' OR b.education= '本科' OR b.education= '硕士' OR b.education= '博士' ) ";
+                            }
+                            elseif ($match['education']==2) {
+                                $condition.=" AND ( b.education = '大专' OR b.education= '本科' OR b.education= '硕士' OR b.education= '博士' ) ";
+                            }
+                            elseif ($match['income']==3) {
+                                $condition.=" AND ( b.education = '本科' OR b.education= '硕士' OR b.education= '博士' ) ";
+                            }
+                            elseif ($match['income']==4) {
+                                $condition.=" AND ( b.education = '硕士' OR b.education= '博士' ) ";
+                            }
+                            elseif ($match['income']==5) {
+                                $condition.=" AND ( b.education = '博士' ) ";
+                            }
+                        }
 
-						}
 						if(!empty($match['age']))
 						{
 							$now=time();
@@ -1866,14 +1868,20 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 						{
 							if($match['education']==1)
 							{
-								$condition.=" AND ( b.education= '大专' OR b.education= '本科' OR b.education= '硕士及以上' ) ";
+								$condition.=" AND ( b.education = '中专' OR b.education= '大专' OR b.education= '本科' OR b.education= '硕士' OR b.education= '博士' ) ";
 							}
 							elseif ($match['education']==2) {
-								$condition.=" AND ( b.education= '本科' OR b.education= '硕士及以上' ) ";
+								$condition.=" AND ( b.education = '大专' OR b.education= '本科' OR b.education= '硕士' OR b.education= '博士' ) ";
 							}
 							elseif ($match['income']==3) {
-								$condition.=" AND ( b.education= '硕士及以上' ) ";
+								$condition.=" AND ( b.education = '本科' OR b.education= '硕士' OR b.education= '博士' ) ";
 							}
+                            elseif ($match['income']==4) {
+                                $condition.=" AND ( b.education = '硕士' OR b.education= '博士' ) ";
+                            }
+                            elseif ($match['income']==5) {
+                                $condition.=" AND ( b.education = '博士' ) ";
+                            }
 						}
 
 						// 被查找的人员都经过身份验证
@@ -4345,8 +4353,6 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 						$thumb=pdo_fetchall("SELECT * FROM ".tablename('jy_ppp_thumb')." WHERE weid=".$weid." AND mid=".$id." AND ( type=1 OR type=2 )");
 						$aihao=pdo_fetchall("SELECT * FROM ".tablename('jy_ppp_aihao')." WHERE weid=".$weid." AND mid=".$id." LIMIT 3");
 						$tezheng=pdo_fetchall("SELECT * FROM ".tablename('jy_ppp_tezheng')." WHERE weid=".$weid." AND mid=".$id." LIMIT 3");
-
-                        printLog(basename(__FILE__) . ",line=" . __LINE__ . " doMobileDetail(), beizhu=" . $detail['beizhu']);
 
                         if(!empty($detail['createtime']))
                         {
