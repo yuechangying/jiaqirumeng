@@ -25,6 +25,7 @@
 .new_select{
     float: right;
     display: inline-block;
+    height: 22px;
 }
 .new_select .select{
 
@@ -41,7 +42,7 @@
     padding: 0 1% 0 1%;
 }
 .new_select .select .value_select{
-
+    display: inline-block;
     width: 90%;
     height: 22px;
     line-height: 22px;
