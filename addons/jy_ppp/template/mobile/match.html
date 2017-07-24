@@ -138,7 +138,7 @@
        <div class="option_box" style="margin-top: 10px">
         <div class="top">
          <h2>最低学历</h2>
-         <span class="unlimit"><span class="title pink">{if $match['education']==0}不限{/if}{if $match['education']==1}大专及以上{/if}{if $match['education']==2}本科及以上{/if}{if $match['education']==3}硕士及以上{/if}</span><i class="bot_trg"></i></span>
+         <span class="unlimit"><span class="title pink" style="font-size: 14px;">{if $match['education']==0}不限{/if}{if $match['education']==1}大专及以上{/if}{if $match['education']==2}本科及以上{/if}{if $match['education']==3}硕士及以上{/if}</span><i class="bot_trg"></i></span>
         </div>
         <ul class="hidden" data-type="edu">
          <li> <span data-value="0" {if $match['education']==0}class="pink"{/if}>不限</span> <span data-value="1" {if $match['education']==1}class="pink"{/if}>大专及以上</span> </li>
@@ -196,7 +196,7 @@
    <div class="option_box" style="margin-top: 10px">
     <div class="top">
      <h2>居住地</h2>
-     <span class="unlimit"><span class="title pink" id="province"></span><i class="bot_trg"></i></span>
+     <span class="unlimit"><span class="title pink" id="province" style="font-size: 14px;"></span><i class="bot_trg"></i></span>
     </div>
     <ul class="four_list hidden" data-type="province" >
       <li>
