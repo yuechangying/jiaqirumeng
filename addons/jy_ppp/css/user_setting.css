@@ -24,6 +24,7 @@
 
 .new_select{
     float: right;
+    display: inline-block;
 }
 .new_select .select{
 
