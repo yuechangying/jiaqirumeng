@@ -107,7 +107,7 @@
                     {/if}
                 </span>
                 <span class="value_select">
-                    <select id="match_heightmax"  onchange="match_heightmax_change(this.value)" class="J_selectItem value_select">
+                    <select id="match_heightmax"   class="J_selectItem value_select">
                        <option value="0" style="display:none">不限</option>
                         <?php for ($k=140; $k <221 ; $k++) {
                         ?> <option value="{$k}" {if $match['heightmax']==$k} selected="selected" {/if}>{$k}cm </option><?php
@@ -299,7 +299,7 @@ $("[data-value]").bind("click",function(){
 
 
 $('.J_selectItem').on('change',function (e) {
-    var _value = $(e.currentTarget).value;
+    var _value = $(e.currentTarget).val();
     console.log(_value);
     var J_value = $(e.currentTarget).closest('.J_select').find('.J_selected');
     J_value.html(_value + 'cm');
