@@ -26,6 +26,8 @@
     float: right;
     display: inline-block;
     height: 22px;
+    width: 60%;
+    text-align: right;
 }
 .new_select .select{
 
