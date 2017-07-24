@@ -347,7 +347,6 @@ $('.J_selectItem').on('change',function (e) {
 
     var J_value = $(e.currentTarget).closest('.J_select').find('.J_selected');
 
-
     switch(_unit){
         case '岁':
             $('#con_age').val(formatVal(e.currentTarget));
@@ -356,8 +355,6 @@ $('.J_selectItem').on('change',function (e) {
             $('#con_height').val(formatVal(e.currentTarget));
             break;
         case '万':
-            var _valArr = formatVal(e.currentTarget).split(',');
-
             $('#con_income').val(formatVal(e.currentTarget));
             break;
     }
