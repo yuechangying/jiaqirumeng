@@ -56,6 +56,7 @@ $(function () {
 	$("#des_sure").bind("click",function(){
 //		var tex = $("#textBox").val();
 		var tex = $.trim($('#textBox').html());
+
         if (tex.length == 0) {
             $.tips("请输入内心独白");
             return;
