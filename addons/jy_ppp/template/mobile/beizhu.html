@@ -44,9 +44,14 @@ $(function () {
 		if(len >= 200){
 		    _str = _text.slice(0,200);
 		    $(this).html(_str);
+            $('.limit').text("还可输入"+(200 - $.trim($(this).html()).length)+"字");
+		}else{
+            $('.limit').text("还可输入"+(200 - len)+"字");
+
 		}
 
-        $('.limit').text("还可输入"+(200 - len)+"字");
+
+
 	});
 	$("#des_sure").bind("click",function(){
 //		var tex = $("#textBox").val();
