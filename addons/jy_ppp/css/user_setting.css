@@ -35,6 +35,9 @@
     height: 22px;
     display: inline-block;
 }
+.new_select .title .pink{
+    font-size: 14px;
+}
 .new_select .range_flage{
     display: inline-block;
     height: 22px;
