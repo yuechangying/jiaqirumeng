@@ -253,8 +253,9 @@
     </ul>
    </div>
   </div>
-  <input type="hidden" id="con_age" value="{$match['age']}" />
-  <input type="hidden" id="con_agemax" value="{$match['agemax']}" />
+  <!--<input type="hidden" id="con_age" value="{$match['age']}" />-->
+  <!--<input type="hidden" id="con_agemax" value="{$match['agemax']}" />-->
+  <input type="hidden" id="con_age" value="{$match['age']},{$match['agemax']}">
   <input type="hidden" id="con_height"  value="{$match['height']}"/>
   <input type="hidden" id="con_heightmax"  value="{$match['heightmax']}"/>
   <input type="hidden" id="con_income" value="{$match['income']}" />
@@ -262,6 +263,7 @@
   <input type="hidden" id="con_province" value="{$province}" />
   <input type="hidden" id="con_edu" value="{$match['education']}" />
   <input type="hidden" id="con_girlCareId" value="" />
+
   <script src="../addons/jy_ppp/js/zepto.min.js"></script>
   <script src="../addons/jy_ppp/js/public.js"></script>
   <script src="../addons/jy_ppp/js/waiting.js"></script>
@@ -272,8 +274,8 @@
   $("#province").html(area_array[{$province}]);
 
 $("#save_btn").bind("click",function(){
-    var con_ageVal=$("#con_age").val();
-    var con_agemaxVal=$("#con_agemax").val();
+    var con_ageVal=$("#con_age").val().split(',')[0];
+    var con_agemaxVal=$("#con_agemax").val().split(',')[1];
     var con_heightVal=$("#con_height").val();
     var con_heightmaxVal=$("#con_heightmax").val();
     var con_incomeVal=$("#con_income").val();
@@ -326,6 +328,17 @@ $("[data-value]").bind("click",function(){
     Match.changeEvent($this);
 });
 
+function formatVal(ele){
+
+    var _value = $(ele).val();
+    var _array = [];
+    _array.push(_value);
+    var J_sibling = $(ele).closest('.J_select').siblings('.J_select');
+    var _sibVal = J_sibling.find('.J_selectItem').val();
+    _array.push(_sibVal);
+    var _valStr = Math.min.apply(null,_array) + ',' +  Math.max.apply(null,_array);
+    return _valStr;
+}
 
 $('.J_selectItem').on('change',function (e) {
     var _value = $(e.currentTarget).val();
@@ -333,10 +346,24 @@ $('.J_selectItem').on('change',function (e) {
 
     var J_value = $(e.currentTarget).closest('.J_select').find('.J_selected');
 
+
+    switch(_unit){
+        case '岁':
+            $('#con_age').val(formatVal(e.currentTarget));
+            break;
+        case 'cm':
+
+            break;
+        case '万':
+
+            break;
+    }
+
     if(_unit == '万' && !Number(_value)){
         _value = '不限';
         _unit = '';
     }
+
 
     J_value.html(_value + _unit);
 })
