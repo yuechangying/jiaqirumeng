@@ -118,7 +118,9 @@ body {
 	background-color:white; padding:2%;
 }
 .user_info .u_head {
-	width:30%; float:left; margin-right:4%;
+	width:30%;
+	float:left;
+	margin-right:4%;
 	height: 130px;
 	overflow: hidden;
 	line-height: 130px;
@@ -133,6 +135,8 @@ body {
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: 50% 50%;
+	font-size:0;
+
 
 }
 .user_info .u_head img {
