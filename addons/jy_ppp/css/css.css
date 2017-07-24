@@ -119,9 +119,17 @@ body {
 }
 .user_info .u_head {
 	width:30%; float:left; margin-right:4%;
+	height: 130px;
+	overflow: hidden;
+	line-height: 130px;
+	text-align: center;
+	border-radius:3px;
+	background: #efefef;
 }
 .user_info .u_head img {
-	width:100%;  border-radius:3px;
+	width:100%; 
+	vertical-align: middle;
+	
 }
 .user_info ul li {
 	line-height:200%;
