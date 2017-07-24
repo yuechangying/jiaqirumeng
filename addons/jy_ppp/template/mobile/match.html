@@ -41,10 +41,10 @@
           <div class="top">
               <h2>年龄范围</h2>
               <div class="new_select select_multiple J_selectMultiple">
-                  <div class="select">
+                  <div class="J_select select">
                     <span class="title">
                     <span class="value_select">
-                        <select id="match_age"  onchange="match_age_change(this.value)" class="value_select">
+                        <select id="match_age"   class="J_selectItem value_select">
                            <option value="0" style="display:none">不限</option>
                             <?php for ($ageLoop=20; $ageLoop <= 50 ; $ageLoop++) {
                             ?> <option value="{$ageLoop}" {if $match['age']==$ageLoop} selected="selected" {/if}>{$ageLoop}岁 </option><?php
@@ -54,10 +54,10 @@
                     </span>
                   </div>
 
-                  <div class="select">
+                  <div class="J_select select">
                     <span class="title">
                     <span class="value_select">
-                        <select id="match_agemax"  onchange="match_agemax_change(this.value)" class="value_select">
+                        <select id="match_agemax"  class="J_selectItem value_select">
                            <option value="0" style="display:none">不限</option>
                             <?php for ($agemaxLoop=20; $agemaxLoop <=50 ; $agemaxLoop++) {
                             ?> <option value="{$agemaxLoop}" {if $match['agemax']==$agemaxLoop} selected="selected" {/if}>{$agemaxLoop}岁 </option><?php
