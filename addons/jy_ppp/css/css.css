@@ -126,6 +126,15 @@ body {
 	border-radius:3px;
 	background: #efefef;
 }
+.user_info.u_head .avatr_pic{
+	width: 100%;
+	height: 130px;
+	overflow: hidden;
+	background-repeat: no-repeat;
+	-webkit-background-size: contain;
+	background-size: contain;
+
+}
 .user_info .u_head img {
 	width:100%; 
 	vertical-align: middle;

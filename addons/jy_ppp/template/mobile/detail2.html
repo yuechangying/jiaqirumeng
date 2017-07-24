@@ -119,7 +119,10 @@
     <div class="user_info">
         <div class="u_head">
           {if !empty($detail['avatar'])}
-              <img src="{php echo tomedia($detail['avatar'])}"/>
+              <!--<img src="{php echo tomedia($detail['avatar'])}"/>-->
+                <div class="avatr_pic" style="background-img:url({php echo tomedia($detail['avatar'])})">
+
+                </div>
           {else}
               {if $detail['sex']==1}
               <img src="../addons/jy_ppp/images/boy.png"/>
