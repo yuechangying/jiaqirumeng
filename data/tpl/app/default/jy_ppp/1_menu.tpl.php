@@ -25,7 +25,7 @@
         <div class="icon_">
         </div>
         <div class="txt_">
-            消息
+            信箱
         </div>
         </a>
         <?php  if(!empty($weidu_num)) { ?>
@@ -55,7 +55,7 @@
         <div class="icon_">
         </div>
         <div class="txt_">
-            我
+            个人中心
         </div>
         </a>
     </div></div>
