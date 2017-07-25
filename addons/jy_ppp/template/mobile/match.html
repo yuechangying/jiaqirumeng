@@ -184,9 +184,26 @@
    <div class="option_box" style="margin-top: 10px">
     <div class="top">
      <h2>居住地</h2>
-     <span class="unlimit"><span class="title pink" id="province" style="font-size: 14px;"></span><i class="bot_trg"></i></span>
+     <!--span class="unlimit"><span class="title pink" id="province" style="font-size: 14px;"></span><i class="bot_trg"></i></span-->
     </div>
-    <ul class="four_list hidden" data-type="province" >
+       <div id="live" class="right">
+           <div class="select">
+                <span class="value" id="province">
+                </span>
+               <i class="bot_trged"></i>
+               <select id="live_province" class="value_select">
+               </select>
+           </div>
+           <div class="select fixed_width">
+                <span class="value" id="city">
+                </span>
+               <i class="bot_trged"></i>
+               <select id="live_city" class="value_select">
+               </select>
+           </div>
+       </div>
+
+    <!--ul class="four_list hidden" data-type="province" >
       <li>
         <span data-value="11" {if $province==11}class="pink"{/if} >北京市</span>
         <span data-value="12" {if $province==12}class="pink"{/if} >天津市</span>
@@ -238,7 +255,7 @@
       <li>
         <span data-value="81" {if $province==81}class="pink"{/if} >香港</span>
         <span data-value="82" {if $province==82}class="pink"{/if} >澳门</span><span></span><span></span> </li>
-    </ul>
+    </ul-->
    </div>
   </div>
   <!--<input type="hidden" id="con_age" value="{$match['age']}" />-->
@@ -260,7 +277,47 @@
   <script src="../addons/jy_ppp/js/area_id.js"></script>
   <script>
 
-  $("#province").html(area_array[{$province}]);
+     $("#province").html(area_array[{$member['province']}]);
+     $("#city").html(sub_array[{$member['province']}][{$member['city']}]);
+
+     $("#live_province").empty();
+     {if empty($member['province'])}
+         for(var i in area_array){
+             $("#live_province").append('<option value="'+ i+'">'+ area_array[i]+'</option>');
+         }
+     {else}
+         for(var i in area_array){
+
+             if({$member['province']}==i)
+             {
+                 $("#live_province").append('<option value="'+ i+'" selected>'+ area_array[i]+'</option>');
+             }
+             else
+             {
+                 $("#live_province").append('<option value="'+ i+'">'+ area_array[i]+'</option>');
+             }
+         }
+     {/if}
+
+     $("#live_city").empty();
+     {if empty($member['city'])}
+         for(var k in sub_array[{$member['province']}]){
+             $("#live_city").append('<option value="'+ k+'">'+ sub_array[{$member['province']}][k]+'</option>');
+         }
+     {else}
+         for(var k in sub_array[{$member['province']}]){
+             if({$member['city']}==i)
+             {
+                 $("#live_city").append('<option value="'+ k+'" selected>'+ sub_array[{$member['province']}][k]+'</option>');
+             }
+             else
+             {
+                 $("#live_city").append('<option value="'+ k+'">'+ sub_array[{$member['province']}][k]+'</option>');
+             }
+         }
+     {/if}
+
+
 
 $("#save_btn").bind("click",function(){
     var con_ageVal=$("#con_age").val().split(',')[0];
