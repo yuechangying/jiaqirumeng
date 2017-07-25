@@ -141,6 +141,8 @@ global $_W,$_GPC;
 		{
 			$basic=pdo_fetch("SELECT * FROM ".tablename('jy_ppp_basic')." WHERE weid=".$weid." AND mid=".$mid);
 
+            printLog(basename(__FILE__) . ",line=" . __LINE__ . " update jy_ppp_member ");
+
 			$op=$_GPC['op'];
 			if($op=='add')
 			{

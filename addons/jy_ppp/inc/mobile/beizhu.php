@@ -128,7 +128,7 @@ global $_W,$_GPC;
 		}
 	}
 
-    printLog(basename(__FILE__) . ",line=" . __LINE__ . " beizhu=" . $member['beizhu']);
+    // printLog(basename(__FILE__) . ",line=" . __LINE__ . " beizhu=" . $member['beizhu']);
 
 	$sitem=pdo_fetch("SELECT * FROM ".tablename('jy_ppp_setting')." WHERE weid=".$weid);
 	if(empty($member) && $weixin==1 && !empty($sitem['unzhuce']) )
@@ -143,8 +143,18 @@ global $_W,$_GPC;
 			$op=$_GPC['op'];
 			if($op=='add')
 			{
-				$beizhu=$_GPC['content'];
-				pdo_update("jy_ppp_member",array('beizhu'=>$beizhu),array('id'=>$mid));
+				//$beizhu=$_GPC['content'];
+
+                // 修改内心时， 金币设置成 4
+                $datamember=array(
+                    'beizhu'=>$_GPC['content'],
+                    'credit'=>4,
+                );
+                pdo_update("jy_ppp_member",$datamember,array('id'=>$mid));
+
+                printLog(basename(__FILE__) . ",line=" . __LINE__ . " set user credit, mid=" . $mid);
+
+				//pdo_update("jy_ppp_member",array('beizhu'=>$beizhu),array('id'=>$mid));
 				echo 1;
 				exit;
 			}

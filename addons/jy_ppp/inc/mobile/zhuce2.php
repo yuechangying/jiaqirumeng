@@ -1,6 +1,7 @@
 <?php
 global $_W,$_GPC;
 
+
 		if ( strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') == false ) {
 			$weixin=0;
 
@@ -168,6 +169,7 @@ global $_W,$_GPC;
 							'nicheng'=>$nicheng,
 							'province'=>$province,
 							'city'=>$city,
+							'credit'=>4,
 							'brith'=>662659200,
 							'status'=>1,
 							'createtime'=>TIMESTAMP,
@@ -197,6 +199,9 @@ global $_W,$_GPC;
 						}
 					}
 					pdo_insert('jy_ppp_member',$data);
+
+                    printLog(basename(__FILE__) . ",line=" . __LINE__ . " , nicheng=" . $data['nicheng']);
+
 					$mid=pdo_insertid();
 					if(empty($weixin))
 					{
@@ -522,6 +527,7 @@ global $_W,$_GPC;
 							'nicheng'=>$nicheng,
 							'province'=>$province,
 							'city'=>$city,
+							'credit'=>4,
 							'brith'=>662659200,
 							'status'=>1,
 							'type'=>1,
@@ -545,6 +551,9 @@ global $_W,$_GPC;
 						}
 
 						pdo_insert('jy_ppp_member',$data);
+
+                        printLog(basename(__FILE__) . ",line=" . __LINE__ . " , nicheng=" . $data['nicheng']);
+
 						$mid=pdo_insertid();
 						$dianyuan=pdo_fetchall("SELECT * FROM ".tablename('jy_ppp_dianyuan')." WHERE weid=".$weid." AND uid>0 AND status=1 ");
 						load()->func('communication');
