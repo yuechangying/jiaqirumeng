@@ -1,5 +1,6 @@
 .h5menu {
-    height: 70px;
+    /*height: 70px;*/
+    height: 50px;
     width: 100%;
     position: fixed;
     z-index: 500
@@ -13,13 +14,19 @@
 }
 
 .h5menu .myy {
-    width: 33.33%;
-    height: 70px;
+    width: 33.1%;
+    height: 50px;
     float: left;
     color: #838383;
     font-size: 14px;
     text-align: center;
+
     font-family: "微软雅黑", helvetica, arial;
+
+}
+.h5menu .myy:nth-child(2){
+    border-left:1px solid #eaeaea;
+    border-right:1px solid #eaeaea;
 }
 
 .h5menu .myy a {
@@ -32,12 +39,16 @@
 
 .h5menu .myy a .icon_ {
     z-index: 102;
-    width: 30px;
-    height: 30px;
+    /*width: 30px;*/
+    width: 18px;
+    height: 18px;
     margin: 12px auto 0px auto;
     background-size: 95%;
     background-repeat: no-repeat;
     background-position: center 100%
+}
+.h5menu .myy a .txt_{
+    font-size: 90%;
 }
 
 .h5menu .myy1 a .icon_ {
