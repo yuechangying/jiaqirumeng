@@ -7,7 +7,8 @@
  * @url http://www.ncwxyx.com/
  */
 include '../debug/chromephp/ChromePhp.php';
-//ChromePhp::log(1);
+ChromePhp::log('Hello console!');
+
 defined('IN_IA') or exit('Access Denied');
 
 class Jy_pppModuleSite extends WeModuleSite {
