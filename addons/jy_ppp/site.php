@@ -8,7 +8,7 @@
  */
 //include '../debug/chromephp/ChromePhp.php';
 include ("inc/ChromePhp.php");
-ChromePhp::log(1);
+//ChromePhp::log(1);
 defined('IN_IA') or exit('Access Denied');
 
 class Jy_pppModuleSite extends WeModuleSite {
