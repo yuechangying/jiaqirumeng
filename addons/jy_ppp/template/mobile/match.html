@@ -188,6 +188,11 @@
         <div id="live" class="live_island" >
             <div class="J_liveSelect select">
                 <span class="value" id="province">
+                    {if empty($match['provice'])}
+                            江苏
+                        {else}
+                            {$match['provice']}
+                        {/if}
                 </span>
                 <i class="bot_trged"></i>
                 <select id="live_province" class="value_select">
@@ -304,11 +309,14 @@ $("#save_btn").bind("click",function(){
     var con_eduVal=$("#con_edu").val();
     var con_girlCareIdVal=$("#con_girlCareId").val();
 
-    var province=$("#live select").eq(0).val();
-    var city=$("#live select").eq(1).val();
+    var con_provinceVal=$("#live select").eq(0).val();
+    var con_cityVal=$("#live select").eq(1).val();
+
+    //alert(province);
+    //alert(city);
 
     if (con_heightVal > con_heightmaxVal) {
-        alert("亲，身高的下拉框范围选择错误");
+        alert("亲，身高的范围选择错误");
     }
     var param = {
         con_age: con_ageVal,
@@ -317,7 +325,8 @@ $("#save_btn").bind("click",function(){
         con_heightmax:con_heightmaxVal,
         con_income:con_incomeVal,
         con_incomemax:con_incomemaxVal,
-//        con_province:con_provinceVal,
+        con_province:con_provinceVal,
+        con_city:con_cityVal,
         con_edu:con_eduVal,
         con_girlCareId:con_girlCareIdVal
     };
