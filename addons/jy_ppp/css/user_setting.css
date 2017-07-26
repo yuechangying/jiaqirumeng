@@ -84,10 +84,10 @@
     float: right;
 }
 .live_island .select{
-    float: left;
     margin: 0;
     position: relative;
     height: 22px;
+    display: inline-block;
 }
 .live_island .select .value{
     color: #555;
