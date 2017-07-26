@@ -198,7 +198,7 @@
 .home_page .inflo .home-user-list li p.recite {
     /*height:20px; padding:14px 0 0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;*/
     height: 20px;
-    padding: 10px 0 0 0;
+    padding: 8px 0 0 0;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
