@@ -186,7 +186,7 @@
      <h2>居住地</h2>
      <!--span class="unlimit"><span class="title pink" id="province" style="font-size: 14px;"></span><i class="bot_trg"></i></span-->
     </div>
-       <div id="live" class="right">
+       <!--<div id="live" class="right">
            <div class="select">
                 <span class="value" id="province">
                 </span>
@@ -201,7 +201,7 @@
                <select id="live_city" class="value_select">
                </select>
            </div>
-       </div>
+       </div>-->
 
     <!--ul class="four_list hidden" data-type="province" >
       <li>
@@ -275,47 +275,10 @@
   <script src="../addons/jy_ppp/js/waiting.js"></script>
   <script src="../addons/jy_ppp/js/set_match.js"></script>
   <script src="../addons/jy_ppp/js/area_id.js"></script>
+
   <script>
 
-     $("#province").html(area_array[{$member['province']}]);
-     $("#city").html(sub_array[{$member['province']}][{$member['city']}]);
 
-     $("#live_province").empty();
-     {if empty($member['province'])}
-         for(var i in area_array){
-             $("#live_province").append('<option value="'+ i+'">'+ area_array[i]+'</option>');
-         }
-     {else}
-         for(var i in area_array){
-
-             if({$member['province']}==i)
-             {
-                 $("#live_province").append('<option value="'+ i+'" selected>'+ area_array[i]+'</option>');
-             }
-             else
-             {
-                 $("#live_province").append('<option value="'+ i+'">'+ area_array[i]+'</option>');
-             }
-         }
-     {/if}
-
-     $("#live_city").empty();
-     {if empty($member['city'])}
-         for(var k in sub_array[{$member['province']}]){
-             $("#live_city").append('<option value="'+ k+'">'+ sub_array[{$member['province']}][k]+'</option>');
-         }
-     {else}
-         for(var k in sub_array[{$member['province']}]){
-             if({$member['city']}==i)
-             {
-                 $("#live_city").append('<option value="'+ k+'" selected>'+ sub_array[{$member['province']}][k]+'</option>');
-             }
-             else
-             {
-                 $("#live_city").append('<option value="'+ k+'">'+ sub_array[{$member['province']}][k]+'</option>');
-             }
-         }
-     {/if}
 
 
 
@@ -413,38 +376,6 @@ $('.J_selectItem').on('change',function (e) {
     J_value.html(_value + _unit);
 })
 
-  function match_age_change(val) {
-      document.getElementById("con_age").value = val;
-      var _html = val + '岁';
-      $('.J_selected').html(_html);
-  }
-  function match_agemax_change(val) {
-      document.getElementById("con_agemax").value = val;
-      var _html = val + '岁';
-      $('.J_selected').html(_html);
-  }
-
-  function match_height_change(val) {
-      document.getElementById("con_height").value = val;
-      var _html = val + 'cm';
-      $('.J_selected').html(_html);
-  }
-  function match_heightmax_change(val) {
-      document.getElementById("con_heightmax").value = val;
-      var _html = val + 'cm';
-      $('.J_selected').html(_html);
-  }
-
-  function match_income_change(val) {
-      document.getElementById("con_income").value = val;
-      var _html = val + '万';
-      $('.J_selected').html(_html);
-  }
-  function match_incomemax_change(val) {
-      document.getElementById("con_incomemax").value = val;
-      var _html = val + '万';
-      $('.J_selected').html(_html);
-  }
 
 
 
