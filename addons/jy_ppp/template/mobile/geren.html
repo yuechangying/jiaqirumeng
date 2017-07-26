@@ -214,6 +214,7 @@
             {if empty($sitem['unit'])}{php $sitem['unit']='豆'}{/if}
             <div class="section_1">
                 {if !empty($doubi_list) || empty($sitem['cz_style'])}
+                <!--a href="javascript:;" onclick="chongzhi()"-->
                 <a href="{php echo $this->createMobileUrl('doubi')}"><ul class="disbox-hor user-list">
                     <li class="disbox-flex">{$sitem['doubi']}账户</li>
                     {if empty($member['credit'])}
@@ -421,11 +422,8 @@
 
 
     function chongzhi() {
-        document.getElementById("con_incomemax").value = val;
-        var _html = val + '万';
-        $('.J_selected').html(_html);
 
-        alert("亲，别急，老岳周一就给你充值。。。");
+        alert("亲，别急，老岳周一就给您充值。。。");
     }
 
     if ($(".top_mess").length > 0) {
