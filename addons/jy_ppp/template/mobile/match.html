@@ -186,14 +186,14 @@
      <h2>居住地</h2>
      <!--span class="unlimit"><span class="title pink" id="province" style="font-size: 14px;"></span><i class="bot_trg"></i></span-->
         <div id="live" class="live_island" >
-            <div class="select">
+            <div class="J_liveSelect select">
                 <span class="value" id="province">
                 </span>
                 <i class="bot_trged"></i>
                 <select id="live_province" class="value_select">
                 </select>
             </div>
-            <div class="select fixed_width">
+            <div class="J_liveSelect select fixed_width">
                 <span class="value" id="city">
                 </span>
                 <i class="bot_trged"></i>
@@ -320,7 +320,7 @@ $(function () {
     {/if}
 
 
-    $(".select select").bind("change",function(){
+    $(".J_liveSelect select").bind("change",function(){
         var self = this;
         if ($(self).val() != 0) {
             var str = $(self).find("option:selected").text();
