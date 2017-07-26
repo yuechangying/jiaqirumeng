@@ -163,14 +163,14 @@
     display: block;
     color: #555;
     font-size: 16px;
-    margin: 0 0 10px 0;
+    margin: 0 0 8px 0;
     padding: 0;
 }
 
 .home_page .inflo .home-user-list li p.feature {
     /*margin:14px 0 0;*/
-    margin: 10px 0 0 0;
-    height: 23px;
+    margin: 8px 0 0 0;
+    height: 18px;
 }
 
 .home_page .inflo .home-user-list li p.feature span {
@@ -202,6 +202,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    line-height: 20px;
 }
 
 /*按钮打招呼*/
