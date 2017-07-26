@@ -103,6 +103,7 @@
     right: 0;
     top: 50%;
     margin: -3px 0px 0 0;
+    transform: rotate(0deg);
 }
 .live_island .select .value_select{
     width: 90%;
