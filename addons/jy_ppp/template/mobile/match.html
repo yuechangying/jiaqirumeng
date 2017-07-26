@@ -204,59 +204,6 @@
     </div>
 
 
-    <!--ul class="four_list hidden" data-type="province" >
-      <li>
-        <span data-value="11" {if $province==11}class="pink"{/if} >北京市</span>
-        <span data-value="12" {if $province==12}class="pink"{/if} >天津市</span>
-        <span data-value="13" {if $province==13}class="pink"{/if} >河北省</span>
-        <span data-value="14" {if $province==14}class="pink"{/if} >山西省</span>
-      </li>
-      <li>
-        <span data-value="15" {if $province==15}class="pink"{/if} >内蒙古</span>
-        <span data-value="21" {if $province==21}class="pink"{/if} >辽宁省</span>
-        <span data-value="22" {if $province==22}class="pink"{/if} >吉林省</span>
-        <span data-value="23" {if $province==23}class="pink"{/if} >黑龙江省</span>
-      </li>
-      <li>
-        <span data-value="31" {if $province==31}class="pink"{/if} >上海市</span>
-        <span data-value="32" {if $province==32}class="pink"{/if} >江苏省</span>
-        <span data-value="33" {if $province==33}class="pink"{/if} >浙江省</span>
-        <span data-value="34" {if $province==34}class="pink"{/if} >安徽省</span>
-      </li>
-      <li>
-        <span data-value="35" {if $province==35}class="pink"{/if} >福建省</span>
-        <span data-value="36" {if $province==36}class="pink"{/if} >江西省</span>
-        <span data-value="37" {if $province==37}class="pink"{/if} >山东省</span>
-        <span data-value="41" {if $province==41}class="pink"{/if} >河南省</span>
-      </li>
-      <li>
-        <span data-value="42" {if $province==42}class="pink"{/if} >湖北省</span>
-        <span data-value="43" {if $province==43}class="pink"{/if} >湖南省</span>
-        <span data-value="44" {if $province==44}class="pink"{/if} >广东省</span>
-        <span data-value="45" {if $province==45}class="pink"{/if} >广西</span>
-      </li>
-      <li>
-        <span data-value="46" {if $province==46}class="pink"{/if} >海南省</span>
-        <span data-value="50" {if $province==50}class="pink"{/if} >重庆市</span>
-        <span data-value="51" {if $province==51}class="pink"{/if} >四川省</span>
-        <span data-value="52" {if $province==52}class="pink"{/if} >贵州省</span>
-      </li>
-      <li>
-        <span data-value="53" {if $province==53}class="pink"{/if} >云南省</span>
-        <span data-value="54" {if $province==54}class="pink"{/if} >西藏</span>
-        <span data-value="61" {if $province==61}class="pink"{/if} >陕西省</span>
-        <span data-value="62" {if $province==62}class="pink"{/if} >甘肃省</span>
-      </li>
-      <li>
-        <span data-value="63" {if $province==63}class="pink"{/if} >青海省</span>
-        <span data-value="64" {if $province==64}class="pink"{/if} >宁夏</span>
-        <span data-value="65" {if $province==65}class="pink"{/if} >新疆</span>
-        <span data-value="71" {if $province==71}class="pink"{/if} >台湾省</span>
-      </li>
-      <li>
-        <span data-value="81" {if $province==81}class="pink"{/if} >香港</span>
-        <span data-value="82" {if $province==82}class="pink"{/if} >澳门</span><span></span><span></span> </li>
-    </ul-->
    </div>
 
 </div>
@@ -268,7 +215,7 @@
   <!--<input type="hidden" id="con_heightmax"  value="{$match['heightmax']}"/>-->
   <input type="hidden" id="con_income" value="{$match['income']},{$match['incomemax']}" />
   <!--<input type="hidden" id="con_incomemax" value="{$match['incomemax']}" />-->
-  <input type="hidden" id="con_province" value="{$province}" />
+  <!--<input type="hidden" id="con_province" value="{$province}" />-->
   <input type="hidden" id="con_edu" value="{$match['education']}" />
   <input type="hidden" id="con_girlCareId" value="" />
 
@@ -353,14 +300,28 @@ $("#save_btn").bind("click",function(){
     var con_heightmaxVal=$("#con_height").val().split(',')[1];
     var con_incomeVal=$("#con_income").val().split(',')[0];
     var con_incomemaxVal=$("#con_income").val().split(',')[1];
-    var con_provinceVal=$("#con_province").val();
+//    var con_provinceVal=$("#con_province").val();
     var con_eduVal=$("#con_edu").val();
     var con_girlCareIdVal=$("#con_girlCareId").val();
+
+    var province=$("#live select").eq(0).val();
+    var city=$("#live select").eq(1).val();
 
     if (con_heightVal > con_heightmaxVal) {
         alert("亲，身高的下拉框范围选择错误");
     }
-    var param = {con_age: con_ageVal, con_agemax: con_agemaxVal, con_height:con_heightVal, con_heightmax:con_heightmaxVal, con_income:con_incomeVal, con_incomemax:con_incomemaxVal, con_province:con_provinceVal, con_edu:con_eduVal, con_girlCareId:con_girlCareIdVal };
+    var param = {
+        con_age: con_ageVal,
+        con_agemax: con_agemaxVal,
+        con_height:con_heightVal,
+        con_heightmax:con_heightmaxVal,
+        con_income:con_incomeVal,
+        con_incomemax:con_incomemaxVal,
+//        con_province:con_provinceVal,
+        con_edu:con_eduVal,
+        con_girlCareId:con_girlCareIdVal
+    };
+
 
     // ajax-----
     $.ajax({url: "{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('match',array('op'=>'add')),2);}", data: param, dataType: 'text', type: 'post', success: function (data) {
