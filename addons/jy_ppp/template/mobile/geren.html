@@ -208,7 +208,7 @@
         </div>
         {/if}
 
-        {if $member['sex']==1 && $member['type']!=3}
+        {if $member['type']!=3}
 
             {if empty($sitem['doubi'])}{php $sitem['doubi']='豆币'}{/if}
             {if empty($sitem['unit'])}{php $sitem['unit']='豆'}{/if}
@@ -418,6 +418,16 @@
 <script type="text/javascript" src="http://libs.baidu.com/jquery/1.9.0/jquery.min.js"></script>
 <script src="../addons/jy_ppp/js/area_id.js"></script>
 <script type="text/javascript">
+
+
+    function chongzhi() {
+        document.getElementById("con_incomemax").value = val;
+        var _html = val + '万';
+        $('.J_selected').html(_html);
+
+        alert("亲，别急，老岳周一就给你充值。。。");
+    }
+
     if ($(".top_mess").length > 0) {
         setTimeout(function () {
             $(".mess_show").addClass('none');

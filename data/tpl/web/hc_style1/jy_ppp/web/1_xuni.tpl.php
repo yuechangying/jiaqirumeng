@@ -146,15 +146,15 @@
 				<div class="form-group">
 					<label class="col-xs-12 col-sm-3 col-md-2 control-label">用户学历</label>
 					<div class="col-sm-7 col-xs-12">
-						<label for="enabled10" class="checkbox-inline"><input type="checkbox" name="education[]" value="初中及以下" id="enabled10"  /> 初中及以下</label>
+						<label for="enabled10" class="checkbox-inline"><input type="checkbox" name="education[]" value="博士" id="enabled10"  /> 博士</label>
 	                    &nbsp;&nbsp;&nbsp;
-	                    <label for="enabled11" class="checkbox-inline"><input type="checkbox" name="education[]" value="高中及中专" id="enabled11"  checked="true" /> 高中及中专</label>
+	                    <label for="enabled11" class="checkbox-inline"><input type="checkbox" name="education[]" value="中专" id="enabled11"  checked="true" /> 中专</label>
 	                    &nbsp;&nbsp;&nbsp;
 	                    <label for="enabled12" class="checkbox-inline"><input type="checkbox" name="education[]" value="大专" id="enabled12"  checked="true" /> 大专</label>
 	                    &nbsp;&nbsp;&nbsp;
 	                    <label for="enabled13" class="checkbox-inline"><input type="checkbox" name="education[]" value="本科" id="enabled13"  checked="true" /> 本科</label>
 	                    &nbsp;&nbsp;&nbsp;
-	                    <label for="enabled14" class="checkbox-inline"><input type="checkbox" name="education[]" value="硕士及以上" id="enabled14"  /> 硕士及以上</label>
+	                    <label for="enabled14" class="checkbox-inline"><input type="checkbox" name="education[]" value="硕士" id="enabled14"  /> 硕士</label>
 					</div>
 				</div>
 
