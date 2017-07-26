@@ -23,7 +23,7 @@
     </div>
 </nav>
 {if !empty($sitem['huafei']) && !empty($sitem['huafei_thumb'])}
-<img src="{php echo tomedia($sitem['huafei_thumb'])}" style="width:100%">
+<!--img src="{php echo tomedia($sitem['huafei_thumb'])}" style="width:100%"-->
 {/if}
 {if empty($sitem['doubi'])}{php $sitem['doubi']=='豆币'}{/if}
 {if empty($sitem['unit'])}{php $sitem['unit']=='豆'}{/if}
@@ -82,7 +82,7 @@
             <i class="bean" style="vertical-align: top;"></i>{$sitem['doubi']}说明<br/>
             <span>
                 1.{$sitem['doubi']}为通用虚拟货币，可购买一切增值服务；<br/>
-                2.20个{$sitem['unit']}就能换取一位异性的永久畅聊权。
+                2.2个{$sitem['unit']}就能换取一位异性的永久畅聊权。
             </span>
         </p>
     </section>
