@@ -6,6 +6,8 @@
  * @author Michael Hu
  * @url http://www.ncwxyx.com/
  */
+include './../debug/chromephp/ChromePhp.php';
+
 defined('IN_IA') or exit('Access Denied');
 
 class Jy_pppModuleSite extends WeModuleSite {
@@ -968,7 +970,7 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 	public function doMobileIndex() {
 
 		global $_W,$_GPC;
-
+        ChromePhp::log($_W);
 		if ( strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') == false ) {
 			$weixin=0;
 
