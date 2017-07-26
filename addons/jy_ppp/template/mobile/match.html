@@ -23,57 +23,57 @@
    </div>
   </nav>
 
-  <div class="content">
-      <div class="option_box" style="margin-top: 10px">
-          <div class="top">
-              <h2>年龄范围</h2>
-              <div class="new_select select_multiple J_selectMultiple">
-                  <div class="J_select select">
-                    <span class="title">
-                        <span class="pink J_selected">
-                        {if empty($match['age'])}
-                            不限
-                        {else}
-                            {$match['age']}岁
-                        {/if}
-                        </span>
-                    <span class="value_select">
-                        <select id="match_age" data-flage="岁"   class="J_selectItem value_select">
-                           <option value="0" style="display:none">不限</option>
-                            <?php for ($ageLoop=20; $ageLoop <= 50 ; $ageLoop++) {
-                            ?> <option value="{$ageLoop}" {if $match['age']==$ageLoop} selected="selected" {/if}>{$ageLoop}岁 </option><?php
-                        } ?>
-                       </select>
+<div class="content">
+    <div class="option_box" style="margin-top: 10px">
+        <div class="top">
+          <h2>年龄范围</h2>
+          <div class="new_select select_multiple J_selectMultiple">
+              <div class="J_select select">
+                <span class="title">
+                    <span class="pink J_selected">
+                    {if empty($match['age'])}
+                        不限
+                    {else}
+                        {$match['age']}岁
+                    {/if}
                     </span>
-                    </span>
-                  </div>
-                  <div class="range_flage">----</div>
+                <span class="value_select">
+                    <select id="match_age" data-flage="岁"   class="J_selectItem value_select">
+                       <option value="0" style="display:none">不限</option>
+                        <?php for ($ageLoop=20; $ageLoop <= 50 ; $ageLoop++) {
+                        ?> <option value="{$ageLoop}" {if $match['age']==$ageLoop} selected="selected" {/if}>{$ageLoop}岁 </option><?php
+                    } ?>
+                   </select>
+                </span>
+                </span>
+              </div>
+              <div class="range_flage">----</div>
 
-                  <div class="J_select select">
-                    <span class="title">
-                        <span class="pink J_selected">
-                        {if empty($match['agemax'])}
-                            不限
-                        {else}
-                            {$match['agemax']}岁
-                        {/if}
-                        </span>
-                    <span class="value_select">
-                        <select id="match_agemax" data-flage="岁" class="J_selectItem value_select">
-                           <option value="0" style="display:none">不限</option>
-                            <?php for ($agemaxLoop=20; $agemaxLoop <=50 ; $agemaxLoop++) {
-                            ?> <option value="{$agemaxLoop}" {if $match['agemax']==$agemaxLoop} selected="selected" {/if}>{$agemaxLoop}岁 </option><?php
-                        } ?>
-                       </select>
+              <div class="J_select select">
+                <span class="title">
+                    <span class="pink J_selected">
+                    {if empty($match['agemax'])}
+                        不限
+                    {else}
+                        {$match['agemax']}岁
+                    {/if}
                     </span>
-                    </span>
-                  </div>
+                <span class="value_select">
+                    <select id="match_agemax" data-flage="岁" class="J_selectItem value_select">
+                       <option value="0" style="display:none">不限</option>
+                        <?php for ($agemaxLoop=20; $agemaxLoop <=50 ; $agemaxLoop++) {
+                        ?> <option value="{$agemaxLoop}" {if $match['agemax']==$agemaxLoop} selected="selected" {/if}>{$agemaxLoop}岁 </option><?php
+                    } ?>
+                   </select>
+                </span>
+                </span>
               </div>
           </div>
       </div>
+    </div>
 
    <div class="option_box" style="margin-top: 10px">
-    <div class="top">
+        <div class="top">
      <h2>身高范围</h2>
      <!--span class="unlimit"><span class="title pink">{if $match['height']==0}不限{/if}{if $match['height']==1}160cm以下{/if}{if $match['height']==2}161-165cm{/if}{if $match['height']==3}166-170cm{/if}{if $match['height']==4}170以上{/if}</span><i class="bot_trg"></i></span-->
         <!--div class="unlimit new_select"-->
@@ -122,86 +122,87 @@
     </div>
    </div>
 
-       <div class="option_box" style="margin-top: 10px">
+   <div class="option_box" style="margin-top: 10px">
         <div class="top">
-         <h2>最低学历</h2>
-         <span class="unlimit"><span class="title pink" style="font-size: 14px;">{if $match['education']==0}不限{/if}{if $match['education']==1}大专及以上{/if}{if $match['education']==2}本科及以上{/if}{if $match['education']==3}硕士及以上{/if}</span><i class="bot_trg"></i></span>
-        </div>
+     <h2>最低学历</h2>
+     <span class="unlimit"><span class="title pink" style="font-size: 14px;">{if $match['education']==0}不限{/if}{if $match['education']==1}大专及以上{/if}{if $match['education']==2}本科及以上{/if}{if $match['education']==3}硕士及以上{/if}</span><i class="bot_trg"></i></span>
+    </div>
         <ul class="hidden" data-type="edu">
-         <li> <span data-value="0" {if $match['education']==0}class="pink"{/if}>不限</span> <span data-value="1" {if $match['education']==1}class="pink"{/if}>中专及以上</span> </li>
-         <li> <span data-value="2" {if $match['education']==2}class="pink"{/if}>大专及以上</span> <span data-value="3" {if $match['education']==3}class="pink"{/if}>本科及以上</span> </li>
-         <li> <span data-value="4" {if $match['education']==4}class="pink"{/if}>硕士及以上</span> <span data-value="5" {if $match['education']==5}class="pink"{/if}>博士</span> </li>
-        </ul>
-       </div>
+     <li> <span data-value="0" {if $match['education']==0}class="pink"{/if}>不限</span> <span data-value="1" {if $match['education']==1}class="pink"{/if}>中专及以上</span> </li>
+     <li> <span data-value="2" {if $match['education']==2}class="pink"{/if}>大专及以上</span> <span data-value="3" {if $match['education']==3}class="pink"{/if}>本科及以上</span> </li>
+     <li> <span data-value="4" {if $match['education']==4}class="pink"{/if}>硕士及以上</span> <span data-value="5" {if $match['education']==5}class="pink"{/if}>博士</span> </li>
+    </ul>
+   </div>
 
-      <div class="option_box" style="margin-top: 10px">
-          <div class="top">
-              <h2>年收入范围</h2>
-              <div class="new_select select_multiple J_selectMultiple">
-                  <div class="J_select select">
-                    <span class="title">
-                        <span class="pink J_selected">
-                            {if empty($match['income'])}
-                                不限
-                            {else}
-                                {$match['income']}万
-                            {/if}
-                        </span>
-                    <span class="value_select">
-                        <select id="match_income"  data-flage="万" class="J_selectItem value_select">
-                           <option value="0" style="display:none">不限</option>
-                            <?php for ($incomeLoop=0; $incomeLoop <= 100 ; $incomeLoop++) {
-                            ?> <option value="{$incomeLoop}" {if $match['income']==$incomeLoop} selected="selected" {/if}>{$incomeLoop}万 </option><?php
-                        } ?>
-                       </select>
+  <div class="option_box" style="margin-top: 10px">
+      <div class="top">
+          <h2>年收入范围</h2>
+          <div class="new_select select_multiple J_selectMultiple">
+              <div class="J_select select">
+                <span class="title">
+                    <span class="pink J_selected">
+                        {if empty($match['income'])}
+                            不限
+                        {else}
+                            {$match['income']}万
+                        {/if}
                     </span>
+                <span class="value_select">
+                    <select id="match_income"  data-flage="万" class="J_selectItem value_select">
+                       <option value="0" style="display:none">不限</option>
+                        <?php for ($incomeLoop=0; $incomeLoop <= 100 ; $incomeLoop++) {
+                        ?> <option value="{$incomeLoop}" {if $match['income']==$incomeLoop} selected="selected" {/if}>{$incomeLoop}万 </option><?php
+                    } ?>
+                   </select>
+                </span>
+                </span>
+              </div>
+              <div class="range_flage">----</div>
+              <div class="J_select select">
+                <span class="title">
+                    <span class="pink J_selected">
+                        {if empty($match['incomemax'])}
+                            不限
+                        {else}
+                            {$match['incomemax']}万
+                        {/if}
                     </span>
-                  </div>
-                  <div class="range_flage">----</div>
-                  <div class="J_select select">
-                    <span class="title">
-                        <span class="pink J_selected">
-                            {if empty($match['incomemax'])}
-                                不限
-                            {else}
-                                {$match['incomemax']}万
-                            {/if}
-                        </span>
-                    <span class="value_select">
-                        <select id="match_incomemax"  data-flage="万" class="J_selectItem value_select">
-                           <option value="0" style="display:none">不限</option>
-                            <?php for ($incomemaxLoop=0; $incomemaxLoop <=100 ; $incomemaxLoop++) {
-                            ?> <option value="{$incomemaxLoop}" {if $match['incomemax']==$incomemaxLoop} selected="selected" {/if}>{$incomemaxLoop}万 </option><?php
-                        } ?>
-                       </select>
-                    </span>
-                    </span>
-                  </div>
+                <span class="value_select">
+                    <select id="match_incomemax"  data-flage="万" class="J_selectItem value_select">
+                       <option value="0" style="display:none">不限</option>
+                        <?php for ($incomemaxLoop=0; $incomemaxLoop <=100 ; $incomemaxLoop++) {
+                        ?> <option value="{$incomemaxLoop}" {if $match['incomemax']==$incomemaxLoop} selected="selected" {/if}>{$incomemaxLoop}万 </option><?php
+                    } ?>
+                   </select>
+                </span>
+                </span>
               </div>
           </div>
       </div>
+  </div>
 
-   <div class="option_box" style="margin-top: 10px">
+  <div class="option_box" style="margin-top: 10px">
     <div class="top">
      <h2>居住地</h2>
      <!--span class="unlimit"><span class="title pink" id="province" style="font-size: 14px;"></span><i class="bot_trg"></i></span-->
-    </div>
-       <!--<div id="live" class="right">
-           <div class="select">
+        <div id="live" class="right" style="display: inline-block;width: 60%;text-align: right;height: 22px;">
+            <div class="select">
                 <span class="value" id="province">
                 </span>
-               <i class="bot_trged"></i>
-               <select id="live_province" class="value_select">
-               </select>
-           </div>
-           <div class="select fixed_width">
+                <i class="bot_trged"></i>
+                <select id="live_province" class="value_select">
+                </select>
+            </div>
+            <div class="select fixed_width">
                 <span class="value" id="city">
                 </span>
-               <i class="bot_trged"></i>
-               <select id="live_city" class="value_select">
-               </select>
-           </div>
-       </div>-->
+                <i class="bot_trged"></i>
+                <select id="live_city" class="value_select">
+                </select>
+            </div>
+        </div>
+    </div>
+
 
     <!--ul class="four_list hidden" data-type="province" >
       <li>
@@ -257,7 +258,8 @@
         <span data-value="82" {if $province==82}class="pink"{/if} >澳门</span><span></span><span></span> </li>
     </ul-->
    </div>
-  </div>
+
+</div>
   <!--<input type="hidden" id="con_age" value="{$match['age']}" />-->
   <!--<input type="hidden" id="con_agemax" value="{$match['agemax']}" />-->
   <input type="hidden" id="con_age" value="{$match['age']},{$match['agemax']}">
@@ -276,9 +278,49 @@
   <script src="../addons/jy_ppp/js/set_match.js"></script>
   <script src="../addons/jy_ppp/js/area_id.js"></script>
 
-  <script>
+  <script type="text/javascript">
+
+$(function () {
+    $("#province").html(area_array[{$member['province']}]);
+    $("#city").html(sub_array[{$member['province']}][{$member['city']}]);
+    $("#live_province").empty();
+    {if empty($member['province'])}
+    for(var i in area_array){
+        $("#live_province").append('<option value="'+ i+'">'+ area_array[i]+'</option>');
+    }
+    {else}
+    for(var i in area_array){
+        if({$member['province']}==i)
+        {
+            $("#live_province").append('<option value="'+ i+'" selected>'+ area_array[i]+'</option>');
+        }
+        else
+        {
+            $("#live_province").append('<option value="'+ i+'">'+ area_array[i]+'</option>');
+        }
+    }
+    {/if}
+
+    $("#live_city").empty();
+    {if empty($member['city'])}
+    for(var i in sub_array[{$member['province']}]){
+        $("#live_city").append('<option value="'+ i+'">'+ sub_array[{$member['province']}][i]+'</option>');
+    }
+    {else}
+    for(var i in sub_array[{$member['province']}]){
+        if({$member['city']}==i)
+        {
+            $("#live_city").append('<option value="'+ i+'" selected>'+ sub_array[{$member['province']}][i]+'</option>');
+        }
+        else
+        {
+            $("#live_city").append('<option value="'+ i+'">'+ sub_array[{$member['province']}][i]+'</option>');
+        }
+    }
+    {/if}
 
 
+});
 
 
 
@@ -371,7 +413,6 @@ $('.J_selectItem').on('change',function (e) {
         _value = '不限';
         _unit = '';
     }
-
 
     J_value.html(_value + _unit);
 })
