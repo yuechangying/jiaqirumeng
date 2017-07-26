@@ -169,15 +169,22 @@
         <div class="inflo" data-id="{$t['id']}">
             <a href="{php echo $this->createMobileUrl('detail',array('id'=>$t['id']))}"><ul class="disbox-hor home-user-list">
                 <li class="foot-icon">
-                  {if !empty($t['avatar'])}
-                      <img src="{php echo tomedia($t['avatar'])}" />
-                  {else}
-                      {if $t['sex']==1}
-                          <img src="../addons/jy_ppp/images/boy.png"/>
+
+                      {if !empty($t['avatar'])}
+                            <div class="avatar" style="background-image: url({php echo tomedia($t['avatar'])});">.</div>
+                          <!--<img src="{php echo tomedia($t['avatar'])}" />-->
                       {else}
-                          <img src="../addons/jy_ppp/images/girl.png"/>
+                          {if $t['sex']==1}
+                              <div class="avatar">
+                                  <img src="../addons/jy_ppp/images/boy.png"/>
+                              </div>
+                          {else}
+                              <div class="avatar">
+                                  <img src="../addons/jy_ppp/images/girl.png"/>
+                              </div>
+                          {/if}
                       {/if}
-                  {/if}
+
                 </li>
                 <li class="disbox-flex user_mession">
                 <b class="tit">{$t['nicheng']} </b>
@@ -221,7 +228,7 @@
         </ul>
     </div>
 </div>
-<div style="height:70px"></div>
+<div style="height:50px"></div>
 </body>
 <script src="../addons/jy_ppp/js/zepto.min.js"></script>
 <script src="../addons/jy_ppp/js/public.js"></script>
