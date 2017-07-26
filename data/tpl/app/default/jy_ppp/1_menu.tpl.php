@@ -29,12 +29,12 @@
         </div>
         </a>
         <?php  if(!empty($weidu_num)) { ?>
-        <span style="min-width:20px;min-height:15px;border-radius:50%;background:red;position:absolute;top:5px;right:25%;color:#fff;z-index:101;padding:1px;font-size:14px;display:block;"><?php  echo $weidu_num;?></span>
+        <span style="min-width:18px;min-height:15px;border-radius:50%;background:red;position:absolute;top:5px;right:15%;color:#fff;z-index:101;padding:1px;font-size:12px;display:block;"><?php  echo $weidu_num;?></span>
         <?php  } ?>
     </div>
     
-    <?php  if($menu==3) { ?>
-    <div class="myy myy3 myy3on" >
+    <!--<?php  if($menu==3) { ?>
+    <div class="myy myy3 myy3on">
     <?php  } else { ?>
     <div class="myy myy3" style="">
     <?php  } ?>
@@ -45,7 +45,8 @@
             附近
         </div>
         </a>
-    </div>
+    </div>-->
+
     <?php  if($menu==4) { ?>
     <div class="myy myy4 myy4on">
     <?php  } else { ?>

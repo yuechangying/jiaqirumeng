@@ -44,7 +44,7 @@
         </div>
     </ul></a>
     {/if}
-    {if $member['sex']==1 && $member['type']!=3}
+    {if 0 /* $member['sex']==1 && $member['type']!=3 */}
     <a href="{php echo $this->createMobileUrl('vip')}"><ul class="p_list">
         <li>
         <label>会员中心</label>
@@ -53,13 +53,13 @@
         </div>
     </ul></a>
     {/if}
-    <a href="{php echo $this->createMobileUrl('myblack')}"><ul class="p_list">
+    <!--a href="{php echo $this->createMobileUrl('myblack')}"><ul class="p_list">
         <li>
         <label>黑名单</label>
         </li>
         <div class="re_trg">
         </div>
-    </ul></a>
+    </ul></a-->
 </div>
 <div class="p_space">
 </div>
@@ -81,7 +81,7 @@
 </div>
 <div class="p_space">
 </div>
-<div class="box-shadow">
+<!--div class="box-shadow">
     <a href="{php echo $this->createMobileUrl('account')}"><ul class="p_list">
         <li>
         <label>账号管理</label>
@@ -89,7 +89,7 @@
         <div class="re_trg">
         </div>
     </ul></a>
-</div>
+</div-->
 </section>
 </body>
 <script src="../addons/jy_ppp/js/zepto.min.js"></script>
