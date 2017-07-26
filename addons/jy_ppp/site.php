@@ -7,7 +7,7 @@
  * @url http://www.ncwxyx.com/
  */
 include '../debug/chromephp/ChromePhp.php';
-ChromePhp::log('Hello console!');
+//ChromePhp::log('Hello console!');
 
 defined('IN_IA') or exit('Access Denied');
 
