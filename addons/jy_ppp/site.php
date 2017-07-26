@@ -6,8 +6,7 @@
  * @author Michael Hu
  * @url http://www.ncwxyx.com/
  */
-//include '../debug/chromephp/ChromePhp.php';
-include ("inc/ChromePhp.php");
+include '../debug/chromephp/ChromePhp.php';
 //ChromePhp::log(1);
 defined('IN_IA') or exit('Access Denied');
 
