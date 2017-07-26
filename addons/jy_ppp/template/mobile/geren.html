@@ -215,6 +215,14 @@
             <div class="section_1">
                 {if !empty($doubi_list) || empty($sitem['cz_style'])}
                 <!--a href="javascript:;" onclick="chongzhi()"-->
+                <!--a href="javascript:;" onclick="chongzhi() ><ul class="disbox-hor user-list">
+                    <li class="disbox-flex">{$sitem['doubi']}账户</li>
+                    {if empty($member['credit'])}
+                    <li class="disbox-center pink">购买<div class="right_trg"></div></li>
+                    {else}
+                    <li class="disbox-center pink">{$member['credit']}<div class="right_trg">{$sitem['unit']}</div></li>
+                    {/if}
+                </ul></a-->
                 <a href="{php echo $this->createMobileUrl('doubi')}"><ul class="disbox-hor user-list">
                     <li class="disbox-flex">{$sitem['doubi']}账户</li>
                     {if empty($member['credit'])}
