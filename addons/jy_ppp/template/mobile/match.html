@@ -320,6 +320,28 @@ $(function () {
     {/if}
 
 
+    $(".select select").bind("change",function(){
+        var self = this;
+        if ($(self).val() != 0) {
+            var str = $(self).find("option:selected").text();
+            $(self).siblings("span").text(str);
+        }
+    });
+
+    $("#live_province").bind("change",function(){
+        var p=$("#live select").eq(0).val();
+        $("#live_city").empty();
+        var temp=1;
+        for(var i in sub_array[p]){
+            if(temp==1)
+            {
+                $("#city").html(sub_array[p][i]);
+                temp++;
+            }
+            $("#live_city").append('<option value="'+ i+'">'+ sub_array[p][i]+'</option>');
+        }
+    });
+
 });
 
 
