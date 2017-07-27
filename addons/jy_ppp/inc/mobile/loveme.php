@@ -282,6 +282,9 @@ global $_W,$_GPC;
 				{
 					$condition.=" AND sex=1 ";
 				}
+
+                printLog(basename(__FILE__) . ",line=" . __LINE__ . " match");
+
 				$match=pdo_fetch("SELECT * FROM ".tablename('jy_ppp_match')." WHERE weid=".$weid." AND mid=".$mid);
 				if(!empty($match))
 				{
@@ -517,6 +520,8 @@ global $_W,$_GPC;
 					{
 						$condition.=" AND sex=1 ";
 					}
+                    printLog(basename(__FILE__) . ",line=" . __LINE__ . " match");
+
 					$match=pdo_fetch("SELECT * FROM ".tablename('jy_ppp_match')." WHERE weid=".$weid." AND mid=".$mid);
 					if(!empty($match))
 					{

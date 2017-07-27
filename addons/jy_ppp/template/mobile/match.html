@@ -188,6 +188,11 @@
         <div id="live" class="live_island" >
             <div class="J_liveSelect select">
                 <span class="value" id="province">
+                    {if empty($match['province'])}
+                            江苏
+                        {else}
+                            {$match['province']}
+                        {/if}
                 </span>
                 <i class="bot_trged"></i>
                 <select id="live_province" class="value_select">
@@ -215,7 +220,7 @@
   <!--<input type="hidden" id="con_heightmax"  value="{$match['heightmax']}"/>-->
   <input type="hidden" id="con_income" value="{$match['income']},{$match['incomemax']}" />
   <!--<input type="hidden" id="con_incomemax" value="{$match['incomemax']}" />-->
-  <!--<input type="hidden" id="con_province" value="{$province}" />-->
+  <input type="hidden" id="con_province" value="{$live_province}" />
   <input type="hidden" id="con_edu" value="{$match['education']}" />
   <input type="hidden" id="con_girlCareId" value="" />
 
@@ -228,16 +233,16 @@
   <script type="text/javascript">
 
 $(function () {
-    $("#province").html(area_array[{$member['province']}]);
-    $("#city").html(sub_array[{$member['province']}][{$member['city']}]);
+    $("#province").html(area_array[{$match['province']}]);
+    $("#city").html(sub_array[{$match['province']}][{$match['city']}]);
     $("#live_province").empty();
-    {if empty($member['province'])}
+    {if empty($match['province'])}
     for(var i in area_array){
         $("#live_province").append('<option value="'+ i+'">'+ area_array[i]+'</option>');
     }
     {else}
     for(var i in area_array){
-        if({$member['province']}==i)
+        if({$match['province']}==i)
         {
             $("#live_province").append('<option value="'+ i+'" selected>'+ area_array[i]+'</option>');
         }
@@ -249,19 +254,19 @@ $(function () {
     {/if}
 
     $("#live_city").empty();
-    {if empty($member['city'])}
-    for(var i in sub_array[{$member['province']}]){
-        $("#live_city").append('<option value="'+ i+'">'+ sub_array[{$member['province']}][i]+'</option>');
+    {if empty($match['city'])}
+    for(var i in sub_array[{$match['province']}]){
+        $("#live_city").append('<option value="'+ i+'">'+ sub_array[{$match['province']}][i]+'</option>');
     }
     {else}
-    for(var i in sub_array[{$member['province']}]){
-        if({$member['city']}==i)
+    for(var i in sub_array[{$match['province']}]){
+        if({$match['city']}==i)
         {
-            $("#live_city").append('<option value="'+ i+'" selected>'+ sub_array[{$member['province']}][i]+'</option>');
+            $("#live_city").append('<option value="'+ i+'" selected>'+ sub_array[{$match['province']}][i]+'</option>');
         }
         else
         {
-            $("#live_city").append('<option value="'+ i+'">'+ sub_array[{$member['province']}][i]+'</option>');
+            $("#live_city").append('<option value="'+ i+'">'+ sub_array[{$match['province']}][i]+'</option>');
         }
     }
     {/if}
@@ -303,12 +308,11 @@ $("#save_btn").bind("click",function(){
 //    var con_provinceVal=$("#con_province").val();
     var con_eduVal=$("#con_edu").val();
     var con_girlCareIdVal=$("#con_girlCareId").val();
-
-    var province=$("#live select").eq(0).val();
-    var city=$("#live select").eq(1).val();
+    var con_provinceVal=$("#live select").eq(0).val();
+    var con_cityVal=$("#live select").eq(1).val();
 
     if (con_heightVal > con_heightmaxVal) {
-        alert("亲，身高的下拉框范围选择错误");
+        alert("亲，身高的范围选择错误");
     }
     var param = {
         con_age: con_ageVal,
@@ -317,7 +321,8 @@ $("#save_btn").bind("click",function(){
         con_heightmax:con_heightmaxVal,
         con_income:con_incomeVal,
         con_incomemax:con_incomemaxVal,
-//        con_province:con_provinceVal,
+        con_province:con_provinceVal,
+        con_city:con_cityVal,
         con_edu:con_eduVal,
         con_girlCareId:con_girlCareIdVal
     };

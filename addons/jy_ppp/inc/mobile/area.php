@@ -351,8 +351,8 @@ $sub_array[45][4514]="崇左市";
 $area_array[46]="海南省";
 $sub_array[46]=array();
 
-$sub_array[46][4601]="海口市";
-$sub_array[46][4602]="三亚市";
+$sub_array[46][4601]="三亚市";
+$sub_array[46][4602]="海口市";
 $sub_array[46][4603]="五指山市";
 $sub_array[46][4604]="琼海市";
 $sub_array[46][4605]="儋州市";

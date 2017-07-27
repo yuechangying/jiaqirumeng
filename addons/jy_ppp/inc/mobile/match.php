@@ -52,8 +52,6 @@ global $_W,$_GPC;
 
 		if(!empty($member))
 		{
-            printLog(basename(__FILE__) . ",line=" . __LINE__);
-
 			$sitem=pdo_fetch("SELECT * FROM ".tablename('jy_ppp_setting')." WHERE weid=".$weid);
 			$match=pdo_fetch("SELECT * FROM ".tablename('jy_ppp_match')." WHERE weid=".$weid." AND mid=".$mid);
 
@@ -110,6 +108,15 @@ global $_W,$_GPC;
 			  	{
 			  		$data['blank']++;
 			  	}
+
+                $data['city']=$_GPC['con_city'];
+                if(empty($data['city']))
+                {
+                    $data['blank']++;
+                }
+
+                printLog(basename(__FILE__) . ",line=" . __LINE__ . " province=" . $data['province'] . " city=" . $data['city']);
+
 			  	$data['createtime']=TIMESTAMP;
 
 				if(empty($match))
@@ -126,17 +133,22 @@ global $_W,$_GPC;
 			}
 			else
 			{
-				if(empty($match['province']))
+                printLog(basename(__FILE__) . ",line=" . __LINE__ . " matchprovince=" . $match['province'] . " matchcity=" . $match['city']);
+
+				if(empty($match['province']) || empty($match['city']))
 				{
-					$province=$member['province'];
+					$province = $member['province'];
+                    $city = $member['city'];
 				}
 				else
 				{
 					$province=$match['province'];
+                    $city = $match['city'];
 				}
 				if(empty($province))
 				{
-					$province=11;
+					$province=32;
+                    $city = 3201;
 				}
 				include $this->template('match');
 			}
