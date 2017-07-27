@@ -1947,10 +1947,12 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 						if(!empty($member['province']))
 						{
 							$temp_province=$member['province'];
+                            $temp_city=$member['city'];
 						}
 						else
 						{
-							$temp_province=11;
+							$temp_province=32;
+                            $temp_city=3201;
 						}
 					}
 					if($member['sex']==2)
