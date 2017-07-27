@@ -1532,11 +1532,13 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
                                 $temp_city = 3201;
 							}
 						}
-						if(!empty($moni_province) AND !empty($moni_city))
+
+						/* 去掉虚拟用户查询
+						 * if(!empty($moni_province) AND !empty($moni_city))
 						{
 							$condition.=" AND ( a.type=3 OR (a.type!=3 AND a.province= ".$temp_province. " AND a.city= " . $temp_city . ")   ) ";
 						}
-						else
+						else*/
 						{
 							$condition.=" AND a.province= ".$temp_province . " AND a.city= " . $temp_city;
 						}
@@ -1608,7 +1610,7 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 
                         printLog(basename(__FILE__) . ",line=" . __LINE__);
 
-						$tuijian=pdo_fetchall("SELECT a.type,a.id,a.avatar,a.sex,a.nicheng,a.province,a.city,a.brith,a.beizhu,b.height,c.age,c.height as height2,c.province as province2, c.city as city2 FROM ".tablename('jy_ppp_member')." as a left join ".tablename('jy_ppp_basic')." as b on a.id=b.mid left join ".tablename('jy_ppp_match')." as c on a.id=c.mid WHERE a.weid=".$weid.$condition." AND a.id >= ".$temp_tjid." LIMIT 20");
+						$tuijian=pdo_fetchall("SELECT a.type,a.id,a.avatar,a.sex,a.nicheng,a.province,a.city,a.brith,a.beizhu,b.height,c.age,c.height as height2,c.province as province2, c.city as city2 FROM ".tablename('jy_ppp_member')." as a left join ".tablename('jy_ppp_basic')." as b on a.id=b.mid left join ".tablename('jy_ppp_match')." as c on a.id=c.mid WHERE a.weid=".$weid.$condition." AND a.id >= ".$temp_tjid." LIMIT 10");
 						if(count($tuijian)>12)
 						{
 							$ttt=array_rand($tuijian,12);
@@ -1676,16 +1678,18 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 								    $month=1;
 								    $nianlin=date('Y', $now)-date('Y', $birthday)+$month;
 									$ziliao.=$nianlin."岁";
+
+                                    printLog(basename(__FILE__) . ",line=" . __LINE__. ",ziliao=" . $ziliao );
 								}
-								if(!empty($moni_province) && $l['type']==3)
+								/*if(!empty($moni_province) && $l['type']==3)
 								{
 									$ziliao.=" | ".$moni_province;
 								}
-								else
+								else*/
 								{
-                                    printLog(basename(__FILE__) . ",line=" . __LINE__);
 
-									if(empty($sitem['user_addr']))
+
+									/*if(empty($sitem['user_addr']))
 									{
 										if(!empty($l['city']))
 										{
@@ -1700,25 +1704,35 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 									{
 										$province[$l['province']]=$province[$l['province']];
 									}
-									else if($sitem['user_addr']==2)
+									else if($sitem['user_addr']==2)*/
 									{
+                                        $address = "";
 										if(!empty($l['city']))
 										{
-											$province[$l['province']]=$sub_array[$l['province']][$l['city']];
+											//$province[$l['province']] = $sub_array[$l['province']][$l['city']];
+                                            $address = $province[$l['province']].$sub_array[$l['province']][$l['city']];
 										}
 										else
 										{
-											$province[$l['province']]=$province[$l['province']];
+											//$province[$l['province']]=$province[$l['province']];
+                                            $address = $province[$l['province']];
 										}
 									}
-									if(!empty($l['province']))
-									{
-										$ziliao.=" | ".$province[$l['province']];
+									//if(!empty($l['province']))
+									if (!empty($address))
+                                    {
+                                        printLog(basename(__FILE__) . ",line=" . __LINE__. ",adress=" .$address);
+                                        printLog(basename(__FILE__) . ",line=" . __LINE__. ",ziliao=" . $ziliao);
+
+										//$ziliao.=" | ".$province[$l['province']];
+                                        $ziliao.=" | ".$address;
+
+                                        printLog(basename(__FILE__) . ",line=" . __LINE__. ",ziliao=" . $ziliao );
 									}
 								}
 
 								$thumb=pdo_fetchcolumn("SELECT count(id) FROM ".tablename('jy_ppp_thumb')." WHERE weid=".$weid." AND mid=".$l['id']." AND ( type=1 OR type=2 ) ");
-								$ziliao.=" | ".$thumb."张照片";
+								///$ziliao.=" | ".$thumb."张照片";
 								$temp_aihao=pdo_fetch("SELECT aihao FROM ".tablename('jy_ppp_aihao')." WHERE weid=".$weid." AND mid=".$l['id']." LIMIT 1 ");
 								$aihao=$temp_aihao['aihao'];
 								$temp_tezheng=pdo_fetch("SELECT tezheng FROM ".tablename('jy_ppp_tezheng')." WHERE weid=".$weid." AND mid=".$l['id']." LIMIT 1 ");
@@ -1986,7 +2000,12 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 
                         printLog(basename(__FILE__) . ",line=" . __LINE__);
 
-						$tuijian=pdo_fetchall("SELECT a.id,a.avatar,a.type,a.sex,a.nicheng,a.province,a.city,a.brith,a.beizhu,a.mobile_auth,a.card_auth,b.height,b.education,b.marriage,c.age,c.height as height2,c.province as province2, c.city as city2 FROM ".tablename('jy_ppp_member')." as a left join ".tablename('jy_ppp_basic')." as b on a.id=b.mid left join ".tablename('jy_ppp_match')." as c on a.id=c.mid WHERE a.weid=".$weid.$condition." AND a.id >= ".$temp_tjid."  LIMIT 20  ");
+						$tuijian=pdo_fetchall("SELECT a.id,a.avatar,a.type,a.sex,a.nicheng,a.province,a.city,a.brith,a.beizhu,a.mobile_auth,a.card_auth,b.height,b.education,b.marriage,c.age,c.height as height2,c.province as province2, c.city as city2 FROM ".tablename('jy_ppp_member')." as a left join ".tablename('jy_ppp_basic')." as b on a.id=b.mid left join ".tablename('jy_ppp_match')." as c on a.id=c.mid WHERE a.weid=".$weid.$condition." AND a.id >= ".$temp_tjid."  LIMIT 10  ");
+
+						foreach ($tuijian as $tmpUser){
+                            printLog(basename(__FILE__) . ",line=" . __LINE__ . " id=" . $tmpUser["id"] . ",province=" . $tmpUser["province"] . ",city=" . $tmpUser["city"]);
+                        }
+
 						if(count($tuijian)>12)
 						{
 							$ttt=array_rand($tuijian,12);
@@ -2031,11 +2050,12 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 						$tuijian[$key]['tezheng']=$temp_tezheng['tezheng'];
 						if(empty($sitem['indexui']))
 						{
-							if(!empty($moni_province) && $value['type']==3)
+                            printLog(basename(__FILE__) . ",line=" . __LINE__ . ", moni_province=" . $moni_province);
+							/*if(!empty($moni_province) && $value['type']==3)
 							{
 								$tuijian[$key]['province']=$moni_province;
 							}
-							else
+							else*/
 							{
 								if(empty($sitem['user_addr']))
 								{
