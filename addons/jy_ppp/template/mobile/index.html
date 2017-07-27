@@ -167,7 +167,8 @@
         <!-- begin -->
         {loop $tuijian $t}
         <div class="inflo" data-id="{$t['id']}">
-            <a href="{php echo $this->createMobileUrl('detail',array('id'=>$t['id']))}"><ul class="disbox-hor home-user-list">
+            <a href="{php echo $this->createMobileUrl('detail',array('id'=>$t['id']))}">
+                <ul class="disbox-hor home-user-list">
                 <li class="foot-icon">
 
                       {if !empty($t['avatar'])}
@@ -194,7 +195,7 @@
                 </p>
                 <p class="feature">
                     {if !empty($t['education'])}{$t['education']} | {/if}{if !empty($t['marriage'])}{$t['marriage']} | {/if}{if !empty($t['card_auth'])}<span>身份认证</span>{/if}{if !empty($t['mobile_auth'])}<span>手机认证</span>{/if}
-                </p-->
+                </p>
                 <!--p class="feature">
                     {if !empty($t['tezheng'])}<span>{$t['tezheng']}</span>{/if}{if !empty($t['aihao'])}<span>{$t['aihao']}</span>{/if}{if !empty($t['mobile_auth']) && !empty($t['card_auth']) && $t['thumb']>2}<span>诚信认证</span>{else}{if !empty($t['card_auth'])}<span>身份认证</span>{else}{if !empty($t['mobile_auth'])}<span>手机认证</span>{/if}{/if}{/if}
                 </p-->
@@ -202,7 +203,8 @@
                     {if !empty($t['beizhu'])}{$t['beizhu']}{else}{if !empty($t['province2'])}寻找{$province[$t['province2']]}{if !empty($t['age'])}{$match_age[$t['age']]}{/if}{if !empty($t['height2'])} {$match_height[$t['height2']]}cm{/if}的{$xz_sex}{else}寻找{if !empty($t['province'])}{$t['province']}{else}北京市{/if}的{$xz_sex}{/if}{/if}
                 </p-->
                 </li>
-            </ul></a>
+            </ul>
+            </a>
             <div class="bot_btn">
                 <a href="{php echo $this->createMobileUrl('detail',array('id'=>$t['id']))}" class="look">看看Ta</a>
                 <a class="hello" onclick="sayHello(this,{$t['id']})">打招呼</a>
