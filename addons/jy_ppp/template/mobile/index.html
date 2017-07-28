@@ -122,11 +122,11 @@
     </div>
 </div> -->
 <div class="content">
-    <div class="amend">
+    <div class="amend" >
         <div class="msg_tit">
             <p class="left" id="province">
                 <span>{$province[$temp_province]}</span>
-                <select id="provinceSel">
+                <select id="provinceSel" style="display: none;">
                   {loop $province $p $k}
                     <option value="{$p}" {if $p==$temp_province}selected{/if}>{$k}</option>
                   {/loop}

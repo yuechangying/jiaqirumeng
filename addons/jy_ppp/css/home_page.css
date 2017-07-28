@@ -57,7 +57,8 @@
     height: 38px;
     font-size: 14px;
     line-height: 38px;
-    background: url(../images/amend.png) 12px center no-repeat #fff;
+    /*background: url(../images/amend.png) 12px center no-repeat #fff;*/
+    background: url(../images/sign.png) 12px center no-repeat #fff;
     padding: 0 0 0 32px;
     border-bottom: 1px solid #EBEBEB;
     color: #747474;
