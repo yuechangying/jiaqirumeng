@@ -125,7 +125,9 @@
     <div class="amend" >
         <div class="msg_tit">
             <p class="left" id="province">
-                <span>{$province[$temp_province]}</span>
+                <a href="{php echo $this->createMobileUrl('match')}">
+                    <span>{$province[$temp_province]}</span>
+                </a>
                 <select id="provinceSel" style="display: none;">
                   {loop $province $p $k}
                     <option value="{$p}" {if $p==$temp_province}selected{/if}>{$k}</option>
