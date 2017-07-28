@@ -126,7 +126,7 @@
         <div class="msg_tit">
             <p class="left" id="province">
                 <a href="{php echo $this->createMobileUrl('match')}">
-                    <span>{$province[$temp_province]}</span>
+                    <span>{$province[$temp_province]}.{$province[$temp_city]}</span>
                 </a>
                 <select id="provinceSel" style="display: none;">
                   {loop $province $p $k}
