@@ -2002,9 +2002,9 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 
 						$tuijian=pdo_fetchall("SELECT a.id,a.avatar,a.type,a.sex,a.nicheng,a.province,a.city,a.brith,a.beizhu,a.mobile_auth,a.card_auth,b.height,b.education,b.marriage,c.age,c.height as height2,c.province as province2, c.city as city2 FROM ".tablename('jy_ppp_member')." as a left join ".tablename('jy_ppp_basic')." as b on a.id=b.mid left join ".tablename('jy_ppp_match')." as c on a.id=c.mid WHERE a.weid=".$weid.$condition." AND a.id >= ".$temp_tjid."  LIMIT 10  ");
 
-						foreach ($tuijian as $tmpUser){
+						/*foreach ($tuijian as $tmpUser){
                             printLog(basename(__FILE__) . ",line=" . __LINE__ . " id=" . $tmpUser["id"] . ",province=" . $tmpUser["province"] . ",city=" . $tmpUser["city"]);
-                        }
+                        }*/
 
 						if(count($tuijian)>12)
 						{
@@ -2050,7 +2050,7 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 						$tuijian[$key]['tezheng']=$temp_tezheng['tezheng'];
 						if(empty($sitem['indexui']))
 						{
-                            printLog(basename(__FILE__) . ",line=" . __LINE__ . ", moni_province=" . $moni_province);
+                           // printLog(basename(__FILE__) . ",line=" . __LINE__ . ", moni_province=" . $moni_province);
 							/*if(!empty($moni_province) && $value['type']==3)
 							{
 								$tuijian[$key]['province']=$moni_province;

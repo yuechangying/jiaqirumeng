@@ -49,7 +49,7 @@
       <dd>
        <b class="name">{$detail['nicheng']}<span class="personIcon"></span></b>
        <p>{php $now=time();}{if !empty($detail['brith'])}{php $birthday=$detail['brith'];$month=0;if(date('m', $now)>date('m', $birthday))$month=1;if(date('m', $now)==date('m', $birthday))if(date('d', $now)>=date('d', $birthday))$month=1;$nianlin=date('Y', $now)-date('Y', $birthday)+$month;}{$nianlin}岁{/if}&middot;
-       {if !empty($moni_province) && $detail['type2']==3}
+       {if 0 /*!empty($moni_province) && $detail['type2']==3 */}
           {$moni_province}
         {else}
           {if empty($sitem['user_addr'])}
