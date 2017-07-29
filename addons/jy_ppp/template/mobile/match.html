@@ -359,7 +359,9 @@ $(".top").bind("click",function(event){
   // }
 });
 $("[data-value]").bind("click",function(){
-  var $this = $(this),type=$this.closest("[data-type]").data("type"),value=$this.data('value');
+  var $this = $(this),
+      type=$this.closest("[data-type]").data("type"),
+      value=$this.data('value');
 
     if(type=='age'){
         Match.changeAge(value);
@@ -367,6 +369,7 @@ $("[data-value]").bind("click",function(){
         Match.changeHeight(value);
     }else if(type=='edu'){
         Match.changeEducation(value);
+        $('#con_edu').val(value);
     }else if(type=='salary'){
         Match.changeSalary(value);
     }else if(type=='province'){
