@@ -218,14 +218,14 @@
 </div>
   <!--<input type="hidden" id="con_age" value="{$match['age']}" />-->
   <!--<input type="hidden" id="con_agemax" value="{$match['agemax']}" />-->
-  <input id="con_age" value="{$match['age']},{$match['agemax']}">
+  <input type="hidden" id="con_age" value="{$match['age']},{$match['agemax']}">
   <input type="hidden" id="con_height"  value="{$match['height']},{$match['heightmax']}"/>
   <!--<input type="hidden" id="con_height"  value="{$match['height']}"/>-->
   <!--<input type="hidden" id="con_heightmax"  value="{$match['heightmax']}"/>-->
   <input type="hidden" id="con_income" value="{$match['income']},{$match['incomemax']}" />
   <!--<input type="hidden" id="con_incomemax" value="{$match['incomemax']}" />-->
   <input type="hidden" id="con_province" value="{$live_province}" />
-  <input id="con_edu" value="{$match['education']}" />
+  <input type="hidden" id="con_edu" value="{$match['education']}" />
   <input type="hidden" id="con_girlCareId" value="" />
 
   <script src="../addons/jy_ppp/js/zepto.min.js"></script>
@@ -313,12 +313,10 @@ $("#save_btn").bind("click",function(){
 //    var con_provinceVal=$("#con_province").val();
     var con_eduVal=$("#con_edu").val();
     var con_girlCareIdVal=$("#con_girlCareId").val();
-
-
     var con_provinceVal=$("#live select").eq(0).val();
     var con_cityVal=$("#live select").eq(1).val();
 
-    alert(con_eduVal);
+   // alert(con_eduVal);
     //alert(city);
 
     if (con_heightVal > con_heightmaxVal) {
