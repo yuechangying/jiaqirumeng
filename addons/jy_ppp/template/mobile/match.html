@@ -130,7 +130,7 @@
    <div class="option_box" style="margin-top: 10px">
         <div class="top">
      <h2>最低学历</h2>
-     <span class="unlimit"><span class="title pink" style="font-size: 14px;">{if $match['education']==0}不限{/if}{if $match['education']==1}大专及以上{/if}{if $match['education']==2}本科及以上{/if}{if $match['education']==3}硕士及以上{/if}</span><i class="bot_trg"></i></span>
+     <span class="unlimit"><span class="title pink" style="font-size: 14px;">{if $match['education']==0}不限{/if}{if $match['education']==1}中专及以上{/if}{if $match['education']==2}大专及以上{/if}{if $match['education']==3}本科及以上{/if}{if $match['education']==4}硕士及以上{/if}{if $match['education']==5}博士{/if}</span><i class="bot_trg"></i></span>
     </div>
         <ul class="hidden" data-type="edu">
      <li> <span data-value="0" {if $match['education']==0}class="pink"{/if}>不限</span> <span data-value="1" {if $match['education']==1}class="pink"{/if}>中专及以上</span> </li>
@@ -188,10 +188,9 @@
       </div>
   </div>
 
-  <div class="option_box" style="margin-top: 10px">
+  <!--div class="option_box" style="margin-top: 10px">
     <div class="top">
      <h2>居住地</h2>
-     <!--span class="unlimit"><span class="title pink" id="province" style="font-size: 14px;"></span><i class="bot_trg"></i></span-->
         <div id="live" class="live_island" >
             <div class="J_liveSelect select">
                 <span class="value" id="province">
@@ -214,21 +213,19 @@
             </div>
         </div>
     </div>
-
-
-   </div>
+   </div-->
 
 </div>
   <!--<input type="hidden" id="con_age" value="{$match['age']}" />-->
   <!--<input type="hidden" id="con_agemax" value="{$match['agemax']}" />-->
-  <input type="hidden" id="con_age" value="{$match['age']},{$match['agemax']}">
+  <input id="con_age" value="{$match['age']},{$match['agemax']}">
   <input type="hidden" id="con_height"  value="{$match['height']},{$match['heightmax']}"/>
   <!--<input type="hidden" id="con_height"  value="{$match['height']}"/>-->
   <!--<input type="hidden" id="con_heightmax"  value="{$match['heightmax']}"/>-->
   <input type="hidden" id="con_income" value="{$match['income']},{$match['incomemax']}" />
   <!--<input type="hidden" id="con_incomemax" value="{$match['incomemax']}" />-->
   <input type="hidden" id="con_province" value="{$live_province}" />
-  <input type="hidden" id="con_edu" value="{$match['education']}" />
+  <input id="con_edu" value="{$match['education']}" />
   <input type="hidden" id="con_girlCareId" value="" />
 
   <script src="../addons/jy_ppp/js/zepto.min.js"></script>
@@ -240,6 +237,7 @@
   <script type="text/javascript">
 
 $(function () {
+    /*
     $("#province").html(area_array[{$match['province']}]);
     $("#city").html(sub_array[{$match['province']}][{$match['city']}]);
     $("#live_province").empty();
@@ -300,7 +298,7 @@ $(function () {
             $("#live_city").append('<option value="'+ i+'">'+ sub_array[p][i]+'</option>');
         }
     });
-
+*/
 });
 
 
@@ -320,7 +318,7 @@ $("#save_btn").bind("click",function(){
     var con_provinceVal=$("#live select").eq(0).val();
     var con_cityVal=$("#live select").eq(1).val();
 
-    //alert(province);
+    alert(con_eduVal);
     //alert(city);
 
     if (con_heightVal > con_heightmaxVal) {

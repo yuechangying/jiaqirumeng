@@ -115,7 +115,7 @@ global $_W,$_GPC;
                     $data['blank']++;
                 }
 
-                printLog(basename(__FILE__) . ",line=" . __LINE__ . " province=" . $data['province'] . " city=" . $data['city']);
+                printLog(basename(__FILE__) . ",line=" . __LINE__ . " education=" . $data['education']);
 
 			  	$data['createtime']=TIMESTAMP;
 
