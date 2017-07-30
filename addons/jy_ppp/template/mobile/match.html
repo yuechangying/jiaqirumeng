@@ -404,14 +404,19 @@ function formatVal(ele){
             _array.push(_value);
         }else{
            $.tips('最小值不能大于最大值','error');
+            $(ele).find('options:selected').removeAttr('selected');
+            $(ele).find('option[value='+ _sibVal +']').attr('selected',true);
         }
     }else{
         if(_value >= _sibVal){
             _array.push(_value);
         }else{
            $.tips('最大值不能小于最小值','error');
+            $(ele).find('options:selected').removeAttr('selected');
         }
     }
+
+
 
 //    _array.push(_value);
 
