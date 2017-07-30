@@ -39,7 +39,7 @@
                     </span>
                     <i class="bot_trged"></i>
                 <span class="value_select">
-                    <select id="match_age" data-flage="岁"   class="J_selectItem value_select">
+                    <select id="match_age" data-flage="岁" data-isLeft="1"  class="J_selectItem value_select">
                        <option value="0" style="display:none">不限</option>
                         <?php for ($ageLoop=20; $ageLoop <= 50 ; $ageLoop++) {
                         ?> <option value="{$ageLoop}" {if $match['age']==$ageLoop} selected="selected" {/if}>{$ageLoop}岁 </option><?php
@@ -61,7 +61,7 @@
                     </span>
                     <i class="bot_trged"></i>
                 <span class="value_select">
-                    <select id="match_agemax" data-flage="岁" class="J_selectItem value_select">
+                    <select id="match_agemax" data-flage="岁" data-isLeft="0" class="J_selectItem value_select">
                        <option value="0" style="display:none">不限</option>
                         <?php for ($agemaxLoop=20; $agemaxLoop <=50 ; $agemaxLoop++) {
                         ?> <option value="{$agemaxLoop}" {if $match['agemax']==$agemaxLoop} selected="selected" {/if}>{$agemaxLoop}岁 </option><?php
@@ -93,7 +93,7 @@
 
                     <span class="value_select">
                         <!--<select id="match_height"  onchange="match_height_change(this.value)" class="J_selectItem value_select">-->
-                        <select id="match_height" data-flage="cm" class="J_selectItem value_select">
+                        <select id="match_height" data-flage="cm" data-isLeft="1" class="J_selectItem value_select">
                            <option value="0" style="display:none">不限</option>
                             <?php for ($i=140; $i <221 ; $i++) {
                             ?> <option value="{$i}" {if $match['height']==$i} selected="selected" {/if}>{$i}cm </option><?php
@@ -114,7 +114,7 @@
                 </span>
                 <i class="bot_trged"></i>
                 <span class="value_select">
-                    <select id="match_heightmax" data-flage="cm"  class="J_selectItem value_select">
+                    <select id="match_heightmax" data-flage="cm"  data-isLeft="0" class="J_selectItem value_select">
                        <option value="0" style="display:none">不限</option>
                         <?php for ($k=140; $k <221 ; $k++) {
                         ?> <option value="{$k}" {if $match['heightmax']==$k} selected="selected" {/if}>{$k}cm </option><?php
@@ -163,7 +163,7 @@
 /*                    } */?>
                    </select>-->
 
-                    <select id="match_income"  data-flage="万" class="J_selectItem value_select">
+                    <select id="match_income"  data-flage="万" data-isLeft="1" class="J_selectItem value_select">
                        <option value="0" style="display:none">不限</option>
 
                         <?php for ($incomeLoop=0; $incomeLoop < $con_income_len ; $incomeLoop++) {
@@ -186,7 +186,7 @@
                     </span>
                     <i class="bot_trged"></i>
                 <span class="value_select">
-                    <select id="match_incomemax"  data-flage="万" class="J_selectItem value_select">
+                    <select id="match_incomemax"  data-flage="万" data-isLeft="0" class="J_selectItem value_select">
                        <option value="0" style="display:none">不限</option>
                         <?php for ($incomemaxLoop=0; $incomemaxLoop < $con_income_len ; $incomemaxLoop++) {
                         ?> <option value="{$con_maxIncome[$incomemaxLoop]}" {if $match['incomemax']==$con_maxIncome[$incomeMaxLoop]} selected="selected" {/if}>{$con_maxIncome[$incomemaxLoop]}万 </option><?php
@@ -394,11 +394,29 @@ $("[data-value]").bind("click",function(){
 function formatVal(ele){
 
     var _value = $(ele).val();
+    var _isLeft = $(ele).attr('data-isLeft');
     var _array = [];
-    _array.push(_value);
     var J_sibling = $(ele).closest('.J_select').siblings('.J_select');
     var _sibVal = J_sibling.find('.J_selectItem').val();
-    _array.push(_sibVal);
+
+    if(_isLeft){
+        if(_value <= _sibVal){
+            _array.push(_value);
+        }else{
+           $.tips('最小值不能大于最大值','error');
+        }
+    }else{
+        if(_value >= _sibVal){
+            _array.push(_value);
+        }else{
+           $.tips('最大值不能小于最小值','error');
+        }
+    }
+
+//    _array.push(_value);
+
+
+//    _array.push(_sibVal);
     var _valStr = Math.min.apply(null,_array) + ',' +  Math.max.apply(null,_array);
     return _valStr;
 }
@@ -406,6 +424,7 @@ function formatVal(ele){
 $('.J_selectItem').on('change',function (e) {
     var _value = $(e.currentTarget).val();
     var _unit  = $(e.currentTarget).attr('data-flage');
+
 
     var J_value = $(e.currentTarget).closest('.J_select').find('.J_selected');
 
