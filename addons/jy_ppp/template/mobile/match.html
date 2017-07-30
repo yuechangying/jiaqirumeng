@@ -188,8 +188,8 @@
                 <span class="value_select">
                     <select id="match_incomemax"  data-flage="万" class="J_selectItem value_select">
                        <option value="0" style="display:none">不限</option>
-                        <?php for ($incomemaxLoop=0; $incomemaxLoop <=100 ; $incomemaxLoop++) {
-                        ?> <option value="{$incomemaxLoop}" {if $match['incomemax']==$incomemaxLoop} selected="selected" {/if}>{$incomemaxLoop}万 </option><?php
+                        <?php for ($incomemaxLoop=0; $incomemaxLoop < $con_income_len ; $incomemaxLoop++) {
+                        ?> <option value="{$incomemaxLoop}" {if $match['incomemax']==$con_maxIncome[$incomeMaxLoop]} selected="selected" {/if}>{$con_maxIncome[$incomeMaxLoop]}万 </option><?php
                     } ?>
                    </select>
                 </span>
