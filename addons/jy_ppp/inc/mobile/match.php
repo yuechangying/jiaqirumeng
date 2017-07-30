@@ -1,5 +1,10 @@
 <?php
+include '../../../debug/chromephp/ChromePhp.php';
+
 global $_W, $_GPC;
+
+ChromePhp::log($_W);
+ChromePhp::log(1);
 if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') == false) {
     $weixin = 0;
 
