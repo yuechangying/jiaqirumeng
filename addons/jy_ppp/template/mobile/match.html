@@ -166,7 +166,7 @@
                     <select id="match_income"  data-flage="万" class="J_selectItem value_select">
                        <option value="0" style="display:none">不限</option>
 
-                        <?php for ($incomeLoop=0; $incomeLoop <= $con_income_len ; $incomeLoop++) {
+                        <?php for ($incomeLoop=0; $incomeLoop < $con_income_len ; $incomeLoop++) {
                             ?> <option value="{$con_income[$incomeLoop]}" {if $match['income']==$con_income[$incomeLoop]} selected="selected" {/if}>{$con_income[$incomeLoop]}万 </option><?php
                         } ?>
                    </select>
