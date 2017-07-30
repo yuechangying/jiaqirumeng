@@ -417,6 +417,11 @@ function formatVal(ele){
 
         }
 
+        if(_flage == '万' && !_array[0]){
+            _value = '不限';
+            _flage = '';
+            $(ele).closest('.J_select').find('.J_selected').html(_value+_flage);
+        }
 
     }else{
         if(_value >= _sibVal){
@@ -432,14 +437,15 @@ function formatVal(ele){
             _array.push(_sibVal);
 
         }
+        if(_flage == '万' && !_array[0] && !_array[1]){
+            _value = '不限';
+            _flage = '';
+            $(ele).closest('.J_select').find('.J_selected').html(_value+_flage);
+        }
 
     }
 
-    if(_flage == '万' && !_array[0] && !_array[1]){
-        _value = '不限';
-        _flage = '';
-        $(ele).closest('.J_select').find('.J_selected').html(_value+_flage);
-    }
+
 
     var _valStr = Math.min.apply(null,_array) + ',' +  Math.max.apply(null,_array);
     return _valStr;
