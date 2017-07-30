@@ -404,6 +404,7 @@ function formatVal(ele){
     if(_isLeft){
         if(_value <= _sibVal){
             _array.push(_value);
+            $(ele).closest('.J_select').find('.J_selected').html(_value+_flage);
         }else{
            $.tips('最小值不能大于最大值','error');
             $(ele).find('option').removeAttr('selected');
@@ -413,11 +414,12 @@ function formatVal(ele){
     }else{
         if(_value >= _sibVal){
             _array.push(_value);
+            $(ele).closest('.J_select').find('.J_selected').html(_value+_flage);
         }else{
            $.tips('最大值不能小于最小值','error');
             $(ele).find('option').removeAttr('selected');
             $(ele).find('option[value='+ _value +']').attr('selected',true);
-            $(ele).closest('.J_select').find('.J_selected').html(_value+_flage);
+            $(ele).closest('.J_select').find('.J_selected').html(_sibVal+_flage);
         }
     }
 
@@ -454,7 +456,7 @@ $('.J_selectItem').on('change',function (e) {
         _unit = '';
     }
 
-    J_value.html(_value + _unit);
+//    J_value.html(_value + _unit);
 })
 
 
