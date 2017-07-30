@@ -418,7 +418,7 @@ function formatVal(ele){
         }else{
            $.tips('最大值不能小于最小值','error');
             $(ele).find('option').removeAttr('selected');
-            $(ele).find('option[value='+ _value +']').attr('selected',true);
+            $(ele).find('option[value='+ _sibVal +']').attr('selected',true);
             $(ele).closest('.J_select').find('.J_selected').html(_sibVal+_flage);
         }
     }
