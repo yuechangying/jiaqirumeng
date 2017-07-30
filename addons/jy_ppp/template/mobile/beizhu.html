@@ -58,15 +58,15 @@ $(function () {
 		var tex = $.trim($('#textBox').html());
 
         if (tex.length == 0) {
-            $.tips("请输入内心独白");
+            $.tips("请输入内心独白",'error');
             return;
         }
         if (tex.length < 10) {
-            $.tips("内心独白最少输入10字");
+            $.tips("内心独白最少输入10字",'error');
             return;
         }
         if (tex.length > 200) {
-            $.tips("内容长度限定在200字内哦！");
+            $.tips("内容长度限定在200字内哦！",'error');
             return;
         }
         // ajax-----
