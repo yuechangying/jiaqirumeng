@@ -1,7 +1,6 @@
 <?php
 
 global $_W, $_GPC;
-printLog(basename(__FILE__) . ",line=" . __LINE__ . " test=" . $_w);
 if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') == false) {
     $weixin = 0;
 
@@ -43,6 +42,11 @@ if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') == false) {
 if (!empty($member)) {
     $sitem = pdo_fetch("SELECT * FROM " . tablename('jy_ppp_setting') . " WHERE weid=" . $weid);
     $match = pdo_fetch("SELECT * FROM " . tablename('jy_ppp_match') . " WHERE weid=" . $weid . " AND mid=" . $mid);
+
+    $con_income = array(0,6,15,30,60,100);
+
+    var_dump($con_income);
+    echo count($con_income);
 
     $op = $_GPC['op'];
     if ($op == 'add') {
