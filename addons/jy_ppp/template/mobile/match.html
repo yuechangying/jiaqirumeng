@@ -414,12 +414,14 @@ function formatVal(ele){
             $(ele).closest('.J_select').find('.J_selected').html(_sibVal+_flage);
             _array.push(_sibVal);
             _array.push(_sibVal);
+
         }
-        if(_flage == '万' && !Number(_value)){
+        if(_flage == '万' && !Number(_value) &&!_sibVal){
             _value = '不限';
             _flage = '';
             $(ele).closest('.J_select').find('.J_selected').html(_value+_flage);
         }
+
     }else{
         if(_value >= _sibVal){
             _array.push(_value);
@@ -434,7 +436,7 @@ function formatVal(ele){
             _array.push(_sibVal);
 
         }
-        if(_flage == '万' && !Number(_value)){
+        if(_flage == '万' && !Number(_value) && !_sibVal){
             _value = '不限';
             _flage = '';
             $(ele).closest('.J_select').find('.J_selected').html(_value+_flage);
