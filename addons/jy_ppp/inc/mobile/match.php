@@ -1,7 +1,6 @@
 <?php
 
 global $_W, $_GPC;
-printLog(basename(__FILE__) . ",line=" . __LINE__ . " test=" . $_w);
 if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') == false) {
     $weixin = 0;
 
