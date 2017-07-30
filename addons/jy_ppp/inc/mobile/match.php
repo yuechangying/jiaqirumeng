@@ -39,15 +39,15 @@ if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') == false) {
     }
 }
 
+//年收入范围
+$con_income = array(0,6,15,30,60,100);
+$con_maxIncome = array_reverse($con_income);
+$con_income_len = count($con_income);
+
 if (!empty($member)) {
     $sitem = pdo_fetch("SELECT * FROM " . tablename('jy_ppp_setting') . " WHERE weid=" . $weid);
     $match = pdo_fetch("SELECT * FROM " . tablename('jy_ppp_match') . " WHERE weid=" . $weid . " AND mid=" . $mid);
 
-    $con_income = array(0,6,15,30,60,100);
-    $con_maxIncome = array_reverse($con_income);
-    $con_income_len = count($con_income);
-     var_dump($con_income);
-     var_dump($con_maxIncome);
 
     $op = $_GPC['op'];
     if ($op == 'add') {
