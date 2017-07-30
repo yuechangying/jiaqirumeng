@@ -45,7 +45,7 @@ if (!empty($member)) {
 
     $con_income = array(0,6,15,30,60,100);
     $con_income_len = count($con_income);
-    var_dump($con_income);
+    echo '<div style="display:none">'.var_dump($con_income).'</div>';
 
     $op = $_GPC['op'];
     if ($op == 'add') {
