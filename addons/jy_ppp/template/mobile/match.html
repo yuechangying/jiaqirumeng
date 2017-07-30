@@ -41,7 +41,7 @@
                 <span class="value_select">
                     <select id="match_age" data-flage="岁" data-isLeft="1"  class="J_selectItem value_select">
                        <option value="0" style="display:none">不限</option>
-                        <?php for ($ageLoop=20; $ageLoop <= 50 ; $ageLoop++) {
+                        <?php for ($ageLoop=20; $ageLoop <= 47 ; $ageLoop++) {
                         ?> <option value="{$ageLoop}" {if $match['age']==$ageLoop} selected="selected" {/if}>{$ageLoop}岁 </option><?php
                     } ?>
                    </select>
@@ -63,7 +63,7 @@
                 <span class="value_select">
                     <select id="match_agemax" data-flage="岁" data-isLeft="0" class="J_selectItem value_select">
                        <option value="0" style="display:none">不限</option>
-                        <?php for ($agemaxLoop=20; $agemaxLoop <=50 ; $agemaxLoop++) {
+                        <?php for ($agemaxLoop=20; $agemaxLoop <=47 ; $agemaxLoop++) {
                         ?> <option value="{$agemaxLoop}" {if $match['agemax']==$agemaxLoop} selected="selected" {/if}>{$agemaxLoop}岁 </option><?php
                     } ?>
                    </select>
@@ -164,7 +164,7 @@
                    </select>-->
 
                     <select id="match_income"  data-flage="万" data-isLeft="1" class="J_selectItem value_select">
-                       <option value="0" style="display:none">不限</option>
+                       <!--option value="0" style="display:none">不限</option-->
 
                         <?php for ($incomeLoop=0; $incomeLoop < $con_income_len ; $incomeLoop++) {
                             ?> <option value="{$con_income[$incomeLoop]}" {if $match['income']==$con_income[$incomeLoop]} selected="selected" {/if}>{$con_income[$incomeLoop]}万 </option><?php
@@ -187,7 +187,7 @@
                     <i class="bot_trged"></i>
                 <span class="value_select">
                     <select id="match_incomemax"  data-flage="万" data-isLeft="0" class="J_selectItem value_select">
-                       <option value="0" style="display:none">不限</option>
+                       <!--option value="0" style="display:none">不限</option-->
                         <?php for ($incomemaxLoop=0; $incomemaxLoop < $con_income_len ; $incomemaxLoop++) {
                         ?> <option value="{$con_maxIncome[$incomemaxLoop]}" {if $match['incomemax']==$con_maxIncome[$incomemaxLoop]} selected="selected" {/if}>{$con_maxIncome[$incomemaxLoop]}万 </option><?php
                     } ?>

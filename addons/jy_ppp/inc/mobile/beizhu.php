@@ -145,14 +145,13 @@ global $_W,$_GPC;
 			{
 				//$beizhu=$_GPC['content'];
 
-                // 修改内心时， 金币设置成 10
+                // 修改内心独白
                 $datamember=array(
                     'beizhu'=>$_GPC['content'],
-                    'credit'=>10,
                 );
                 pdo_update("jy_ppp_member",$datamember,array('id'=>$mid));
 
-                printLog(basename(__FILE__) . ",line=" . __LINE__ . " set user credit, mid=" . $mid);
+                //printLog(basename(__FILE__) . ",line=" . __LINE__ . " set user credit, mid=" . $mid);
 
 				//pdo_update("jy_ppp_member",array('beizhu'=>$beizhu),array('id'=>$mid));
 				echo 1;

@@ -41,7 +41,8 @@ if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') == false) {
 
 //年收入范围
 $con_income = array(0,6,15,30,60,100);
-$con_maxIncome = array_reverse($con_income);
+//$con_maxIncome = array_reverse($con_income);
+$con_maxIncome = $con_income;
 $con_income_len = count($con_income);
 
 if (!empty($member)) {

@@ -859,6 +859,7 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 					'nicheng'=>$nicheng,
 					'province'=>$province,
 					'city'=>$city,
+					'credit'=>10,
 					'brith'=>662659200,
 					'status'=>1,
 					'type'=>1,
@@ -878,6 +879,8 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 						$data['parentid']=preg_replace('/([\x80-\xff]*)/i','',$reply['rulename']);
 					}
 				}
+
+               // printLog(basename(__FILE__) . ",line=" . __LINE__. ",insert user, member.nicheng=" . $data['nicheng']);
 
 				pdo_insert('jy_ppp_member',$data);
 				$mid=pdo_insertid();
@@ -1548,9 +1551,27 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
                             $condition.=" AND b.height>= " . $match['height'] . " AND b.height<=" . $match['heightmax'] . " ";
                         }
 
-                        if(!empty($match['income']) and !empty($match['incomemax']))
+                        if(!empty($match['income'])  AND empty($match['incomemax']))
+                        {
+                            $condition.=" AND b.income>= " . $match['income'] . " AND b.income<=" . 100 . " ";
+
+                            printLog(basename(__FILE__) . ",line=" . __LINE__. ", condition=" . $condition);
+                        }
+                        else if (empty($match['income'])  AND !empty($match['incomemax']))
+                        {
+                            $condition.=" AND b.income>= " . 0 . " AND b.income<=" . $match['incomemax'] . " ";
+
+                            printLog(basename(__FILE__) . ",line=" . __LINE__. ", condition=" . $condition);
+                        }
+                        elseif (!empty($match['income'])  AND !empty($match['incomemax']))
                         {
                             $condition.=" AND b.income>= " . $match['income'] . " AND b.income<=" . $match['incomemax'] . " ";
+
+                            printLog(basename(__FILE__) . ",line=" . __LINE__. ", condition=" . $condition);
+                        }
+                        // [0, 100] 不需要
+                        else{
+
                         }
 
                         if(!empty($match['education']))
@@ -1845,7 +1866,7 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 						$condition.=" AND sex=1 ";
 					}
 
-                    printLog(basename(__FILE__) . ",line=" . __LINE__. ",member.id=" . $member['id'] . "query user.");
+                    printLog(basename(__FILE__) . ",line=" . __LINE__. ",member.id=" . $member['id'] . " query user.");
 
 					$match=pdo_fetch("SELECT * FROM ".tablename('jy_ppp_match')." WHERE weid=".$weid." AND mid=".$mid);
 					if(!empty($match))
@@ -1886,10 +1907,31 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
                             $condition.=" AND b.height>= " . $match['height'] . " AND b.height<=" . $match['heightmax'] . " ";
 						}
 
-						if(!empty($match['income']) and !empty($match['incomemax']))
+                        ///printLog(basename(__FILE__) . ",line=" . __LINE__. ", income=" . $match['income']);
+                        //printLog(basename(__FILE__) . ",line=" . __LINE__. ", incomemax=" . $match['incomemax']);
+                        // [6,100]
+						if(!empty($match['income'])  AND empty($match['incomemax']))
 						{
-                            $condition.=" AND b.income>= " . $match['income'] . " AND b.income<=" . $match['incomemax'] . " ";
+                            $condition.=" AND b.income>= " . $match['income'] . " AND b.income<=" . 100 . " ";
+
+                           // printLog(basename(__FILE__) . ",line=" . __LINE__. ", condition=" . $condition);
 						}
+						else if (empty($match['income'])  AND !empty($match['incomemax']))
+                        {
+                            $condition.=" AND b.income>= " . 0 . " AND b.income<=" . $match['incomemax'] . " ";
+
+                            //printLog(basename(__FILE__) . ",line=" . __LINE__. ", condition=" . $condition);
+                        }
+                        elseif (!empty($match['income'])  AND !empty($match['incomemax']))
+                        {
+                            $condition.=" AND b.income>= " . $match['income'] . " AND b.income<=" . $match['incomemax'] . " ";
+
+                          //  printLog(basename(__FILE__) . ",line=" . __LINE__. ", condition=" . $condition);
+                        }
+                        // [0, 100] 不需要
+                        else{
+
+                        }
 
 						if(!empty($match['education']))
 						{
@@ -1924,12 +1966,15 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 							/*if($match['age']==1)
 							{
 							*/
+
 								$temp_y=$y-$match['age'];
 								$temp_y2=$y-$match['agemax'];
 								$temp_y=''.$temp_y.$m.$d;
 								$temp_y2=''.$temp_y2.$m.$d;
-								$temp_brith=strtotime($temp_y);
+
+                                $temp_brith=strtotime($temp_y);
 								$temp_brith2=strtotime($temp_y2);
+
 								$condition.=" AND ( a.brith> ".$temp_brith2." && a.brith< ".$temp_brith." ) ";
                                 /*}
                                 elseif ($match['age']==2) {
@@ -1967,6 +2012,8 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
                                 }*/
 
 						}
+
+                        //printLog(basename(__FILE__) . ",line=" . __LINE__. ", condition=" . $condition);
 					}
 					else
 					{
@@ -1980,6 +2027,8 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 							$temp_province=32;
                             $temp_city=3201;
 						}
+
+                        //printLog(basename(__FILE__) . ",line=" . __LINE__. ", condition=" . $condition);
 					}
 					if($member['sex']==2)
 					{
@@ -1998,12 +2047,15 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 						$temp_tjid_rand=$temp_tjid_rand/10000.0;
 						$temp_tjid=floor($temp_tjid*$temp_tjid_rand);
 
-                        printLog(basename(__FILE__) . ",line=" . __LINE__);
+                        //printLog(basename(__FILE__) . ",line=" . __LINE__, ",condition=" . $condition);
 
-						$tuijian=pdo_fetchall("SELECT a.id,a.avatar,a.type,a.sex,a.nicheng,a.province,a.city,a.brith,a.beizhu,a.mobile_auth,a.card_auth,b.height,b.education,b.marriage,c.age,c.height as height2,c.province as province2, c.city as city2 FROM ".tablename('jy_ppp_member')." as a left join ".tablename('jy_ppp_basic')." as b on a.id=b.mid left join ".tablename('jy_ppp_match')." as c on a.id=c.mid WHERE a.weid=".$weid.$condition." AND a.id >= ".$temp_tjid."  LIMIT 10  ");
+                        $sql = "SELECT a.id,a.avatar,a.type,a.sex,a.nicheng,a.province,a.city,a.brith,a.beizhu,a.mobile_auth,a.card_auth,b.height,b.education,b.marriage,c.age,c.height as height2,c.province as province2, c.city as city2 FROM ".tablename('jy_ppp_member')." as a left join ".tablename('jy_ppp_basic')." as b on a.id=b.mid left join ".tablename('jy_ppp_match')." as c on a.id=c.mid WHERE a.weid=".$weid.$condition." AND a.id >= ".$temp_tjid."  LIMIT 10  ";
+						$tuijian=pdo_fetchall($sql);
+
+                       // printLog(basename(__FILE__) . ",line=" . __LINE__ . ", sql=" . $sql);
 
 						/*foreach ($tuijian as $tmpUser){
-                            printLog(basename(__FILE__) . ",line=" . __LINE__ . " id=" . $tmpUser["id"] . ",province=" . $tmpUser["province"] . ",city=" . $tmpUser["city"]);
+                            printLog(basename(__FILE__) . ",line=" . __LINE__ . " id=" . $tmpUser["id"]);
                         }*/
 
 						if(count($tuijian)>12)
@@ -2018,7 +2070,7 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 					}
 					else
 					{
-                        printLog(basename(__FILE__) . ",line=" . __LINE__);
+                        printLog(basename(__FILE__) . ",line=" . __LINE__, ",condition=" . $condition);
 
 						$tuijian=pdo_fetchall("SELECT a.id,a.avatar,a.type,a.sex,a.nicheng,a.province,a.city,a.brith,a.beizhu,a.mobile_auth,a.card_auth,b.height,b.education,b.marriage,c.age,c.height as height2,c.province as province2 , c.city as city2 FROM ".tablename('jy_ppp_member')." as a left join ".tablename('jy_ppp_basic')." as b on a.id=b.mid left join ".tablename('jy_ppp_match')." as c on a.id=c.mid WHERE a.weid=".$weid.$condition."  LIMIT 100  ");
 						if(count($tuijian)>12)
@@ -4393,6 +4445,8 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
                             $lastLogTime = date("Y-m-d H:i",$detail['createtime']);
                             $detail['createtime'] = $lastLogTime;
                         }
+
+                        ///printLog(basename(__FILE__) . ",line=" . __LINE__. ",doMobileDetail() query user details.");
 
                       	if(!empty($aihao))
 						{
