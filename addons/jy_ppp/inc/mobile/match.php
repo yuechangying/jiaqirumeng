@@ -43,6 +43,8 @@ if (!empty($member)) {
     $sitem = pdo_fetch("SELECT * FROM " . tablename('jy_ppp_setting') . " WHERE weid=" . $weid);
     $match = pdo_fetch("SELECT * FROM " . tablename('jy_ppp_match') . " WHERE weid=" . $weid . " AND mid=" . $mid);
 
+    $con_income = array(0,6,15,30,60,100);
+
     $op = $_GPC['op'];
     if ($op == 'add') {
         $data = array();
