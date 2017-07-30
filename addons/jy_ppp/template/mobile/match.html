@@ -404,30 +404,34 @@ function formatVal(ele){
     if(_isLeft){
         if(_value <= _sibVal){
             _array.push(_value);
+            _array.push(_sibVal);
+
             $(ele).closest('.J_select').find('.J_selected').html(_value+_flage);
         }else{
            $.tips('最小值不能大于最大值','error');
             $(ele).find('option').removeAttr('selected');
             $(ele).find('option[value='+ _sibVal +']').attr('selected',true);
             $(ele).closest('.J_select').find('.J_selected').html(_sibVal+_flage);
+            _array.push(_sibVal);
+            _array.push(_sibVal);
         }
     }else{
         if(_value >= _sibVal){
             _array.push(_value);
+            _array.push(_sibVal);
             $(ele).closest('.J_select').find('.J_selected').html(_value+_flage);
         }else{
            $.tips('最大值不能小于最小值','error');
             $(ele).find('option').removeAttr('selected');
             $(ele).find('option[value='+ _sibVal +']').attr('selected',true);
             $(ele).closest('.J_select').find('.J_selected').html(_sibVal+_flage);
+            _array.push(_sibVal);
+            _array.push(_sibVal);
+
         }
     }
 
 
-
-    _array.push(_value);
-
-    _array.push(_sibVal);
     var _valStr = Math.min.apply(null,_array) + ',' +  Math.max.apply(null,_array);
     return _valStr;
 }
