@@ -394,7 +394,7 @@ $("[data-value]").bind("click",function(){
 function formatVal(ele){
 
     var _value = $(ele).val();
-    var _isLeft = $(ele).attr('data-isLeft');
+    var _isLeft = Number($(ele).attr('data-isLeft'));
     var _array = [];
     var J_sibling = $(ele).closest('.J_select').siblings('.J_select');
     var _sibVal = J_sibling.find('.J_selectItem').val();
