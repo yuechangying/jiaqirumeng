@@ -415,6 +415,11 @@ function formatVal(ele){
             _array.push(_sibVal);
             _array.push(_sibVal);
         }
+        if(_flage == '万' && !Number(_value)){
+            _value = '不限';
+            _flage = '';
+            $(ele).closest('.J_select').find('.J_selected').html(_value+_flage);
+        }
     }else{
         if(_value >= _sibVal){
             _array.push(_value);
@@ -428,6 +433,11 @@ function formatVal(ele){
             _array.push(_sibVal);
             _array.push(_sibVal);
 
+        }
+        if(_flage == '万' && !Number(_value)){
+            _value = '不限';
+            _flage = '';
+            $(ele).closest('.J_select').find('.J_selected').html(_value+_flage);
         }
     }
 
@@ -455,10 +465,10 @@ $('.J_selectItem').on('change',function (e) {
             break;
     }
 
-    if(_unit == '万' && !Number(_value)){
-        _value = '不限';
-        _unit = '';
-    }
+//    if(_unit == '万' && !Number(_value)){
+//        _value = '不限';
+//        _unit = '';
+//    }
 
 //    J_value.html(_value + _unit);
 })
