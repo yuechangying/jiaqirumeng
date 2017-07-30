@@ -198,7 +198,7 @@
 <body>
 <div class="top_blank">
 </div>
-<div id="chat_nav" class="nav" style="position: absolute;">
+<div id="chat_nav" class="nav" >
 	<h2 class="title" id="title_nav"><?php  if(empty($id)) { ?>管理员<?php  } else { ?><?php  echo $detail['nicheng'];?><?php  } ?></h2>
 	<a class="left" href="<?php  echo $this->createMobileUrl('mail')?>">
 		<i class="le_trg"></i>返回
