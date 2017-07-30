@@ -406,7 +406,7 @@ function formatVal(ele){
             _array.push(_value);
         }else{
            $.tips('最小值不能大于最大值','error');
-            $(ele).find('options:selected').removeAttr('selected');
+            $(ele).find('options').removeAttr('selected');
             $(ele).find('option[value='+ _sibVal +']').attr('selected',true);
             $(ele).closest('.J_select').find('.J_selected').html(_sibVal+_flage);
         }
@@ -415,7 +415,7 @@ function formatVal(ele){
             _array.push(_value);
         }else{
            $.tips('最大值不能小于最小值','error');
-            $(ele).find('options:selected').removeAttr('selected');
+            $(ele).find('options').removeAttr('selected');
             $(ele).find('option[value='+ _value +']').attr('selected',true);
             $(ele).closest('.J_select').find('.J_selected').html(_value+_flage);
         }
