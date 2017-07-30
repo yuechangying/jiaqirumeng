@@ -154,8 +154,12 @@
                     </span>
                     <i class="bot_trged"></i>
                 <span class="value_select">
+                    <?php
+                        var_dump($con_income);
+                    ?>
                     <select id="match_income"  data-flage="万" class="J_selectItem value_select">
                        <option value="0" style="display:none">不限</option>
+
                         <?php for ($incomeLoop=0; $incomeLoop <= 100 ; $incomeLoop++) {
                         ?> <option value="{$incomeLoop}" {if $match['income']==$incomeLoop} selected="selected" {/if}>{$incomeLoop}万 </option><?php
                     } ?>
@@ -215,7 +219,6 @@
     </div>
    </div-->
 
-    {$con_income};
 
 </div>
   <!--<input type="hidden" id="con_age" value="{$match['age']}" />-->

@@ -44,7 +44,7 @@ if (!empty($member)) {
     $match = pdo_fetch("SELECT * FROM " . tablename('jy_ppp_match') . " WHERE weid=" . $weid . " AND mid=" . $mid);
 
     $con_income = array(0,6,15,30,60,100);
-    var_dump($con_income);
+
     $op = $_GPC['op'];
     if ($op == 'add') {
         $data = array();
