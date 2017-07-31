@@ -287,9 +287,9 @@
             </div>
         </div>
         </li>
-        <li class="user_mession">
+        <li class="user_mession agree_box">
             <label class="left">
-                <input type="checkbox" class="J_agree">
+                <input type="checkbox" class="J_agree agree">
                 <span>
                     同意<a href="{php echo $this->createMobileUrl('rule')}" >使用协议</a>
                 </span>
@@ -360,6 +360,14 @@ $(function () {
         var basic_income=$("#income").val();
         var basic_marry=$("#marry").val();
         var basic_have=$("#haveHouse").val();
+        var isAgree = $('.J_agree').get(0).checked;
+
+
+        if(!isAgree){
+            $.tips('请同意使用协议!','error');
+            return false;
+        }
+
         // ajax-----
 
         var param={nicheng: nickname, year:year, month:month, day:day, province:province, city:city, height:basic_height, car:basic_car, constellation:basic_constellation, education:basic_edu, job:basic_work, income:basic_income, marriage:basic_marry, house:basic_have };
