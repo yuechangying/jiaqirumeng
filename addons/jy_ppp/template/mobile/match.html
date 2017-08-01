@@ -354,7 +354,7 @@ $("#save_btn").bind("click",function(){
     $.ajax({url: "{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('match',array('op'=>'add')),2);}", data: param, dataType: 'text', type: 'post', success: function (data) {
         if (data==1) {
             $.tips("保存成功");
-            location.href="{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('geren'),2)}"
+            location.href="{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('index'),2)}"
         }
         else
         {
