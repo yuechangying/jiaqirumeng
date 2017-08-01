@@ -1630,7 +1630,7 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 
                         printLog(basename(__FILE__) . ",line=" . __LINE__);
 
-						$tuijian=pdo_fetchall("SELECT a.type,a.id,a.avatar,a.sex,a.nicheng,a.province,a.city,a.brith,a.beizhu,b.height,c.age,c.height as height2,c.province as province2, c.city as city2 FROM ".tablename('jy_ppp_member')." as a left join ".tablename('jy_ppp_basic')." as b on a.id=b.mid left join ".tablename('jy_ppp_match')." as c on a.id=c.mid WHERE a.weid=".$weid.$condition." AND a.id >= ".$temp_tjid." LIMIT 10");
+						$tuijian=pdo_fetchall("SELECT a.type,a.id,a.avatar,a.sex,a.nicheng,a.province,a.city,a.brith,a.beizhu,b.height,c.age,c.height as height2,c.province as province2, c.city as city2 FROM ".tablename('jy_ppp_member')." as a left join ".tablename('jy_ppp_basic')." as b on a.id=b.mid left join ".tablename('jy_ppp_match')." as c on a.id=c.mid WHERE a.weid=".$weid.$condition." AND a.id >= ".$temp_tjid."  ORDER BY b.createtime desc LIMIT 10");
 						if(count($tuijian)>12)
 						{
 							$ttt=array_rand($tuijian,12);
@@ -1645,7 +1645,7 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 					{
                         printLog(basename(__FILE__) . ",line=" . __LINE__);
 
-						$tuijian=pdo_fetchall("SELECT a.type,a.id,a.avatar,a.sex,a.nicheng,a.province,a.city,a.brith,a.beizhu,b.height,c.age,c.height as height2,c.province as province2, c.city as city2 FROM ".tablename('jy_ppp_member')." as a left join ".tablename('jy_ppp_basic')." as b on a.id=b.mid left join ".tablename('jy_ppp_match')." as c on a.id=c.mid WHERE a.weid=".$weid.$condition." LIMIT 200");
+						$tuijian=pdo_fetchall("SELECT a.type,a.id,a.avatar,a.sex,a.nicheng,a.province,a.city,a.brith,a.beizhu,b.height,c.age,c.height as height2,c.province as province2, c.city as city2 FROM ".tablename('jy_ppp_member')." as a left join ".tablename('jy_ppp_basic')." as b on a.id=b.mid left join ".tablename('jy_ppp_match')." as c on a.id=c.mid WHERE a.weid=".$weid.$condition." ORDER BY b.createtime desc LIMIT 200");
 						if(count($tuijian)>12)
 						{
 							$ttt=array_rand($tuijian,12);
@@ -2006,14 +2006,14 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
                         $sql2 = "SELECT a.id,a.avatar,a.type,a.sex,a.nicheng,a.province,a.city,a.brith,a.beizhu,a.mobile_auth,a.card_auth,b.height,b.education,b.marriage,c.age,c.height as height2,c.province as province2, c.city as city2 FROM ".tablename('jy_ppp_member')." as a left join ".tablename('jy_ppp_basic')." as b on a.id=b.mid left join ".tablename('jy_ppp_match')." as c on a.id=c.mid WHERE a.weid=".$weid.$condition." AND a.id >= ".$temp_tjid."  LIMIT 10  ";
 					    按照ID先后排序返回 
 						*/
-                        $sql2 = "SELECT a.id,a.avatar,a.type,a.sex,a.nicheng,a.province,a.city,a.brith,a.beizhu,a.mobile_auth,a.card_auth,b.height,b.education,b.marriage,c.age,c.height as height2,c.province as province2, c.city as city2 FROM ".tablename('jy_ppp_member')." as a left join ".tablename('jy_ppp_basic')." as b on a.id=b.mid left join ".tablename('jy_ppp_match')." as c on a.id=c.mid WHERE a.weid=".$weid.$condition . "  LIMIT 10  ";
+                        $sql2 = "SELECT a.id,a.avatar,a.type,a.sex,a.nicheng,a.province,a.city,a.brith,a.beizhu,a.mobile_auth,a.card_auth,b.height,b.education,b.marriage,c.age,c.height as height2,c.province as province2, c.city as city2 FROM ".tablename('jy_ppp_member')." as a left join ".tablename('jy_ppp_basic')." as b on a.id=b.mid left join ".tablename('jy_ppp_match')." as c on a.id=c.mid WHERE a.weid=".$weid.$condition . " ORDER BY b.createtime desc LIMIT 10  ";
                         $tuijian=pdo_fetchall($sql2);
 
-                       /* printLog(basename(__FILE__) . ",line=" . __LINE__ . ", sql2=" . $sql2);
+                        printLog(basename(__FILE__) . ",line=" . __LINE__ . ", sql2=" . $sql2);
 
 						foreach ($tuijian as $tmpUser){
                             printLog(basename(__FILE__) . ",line=" . __LINE__ . " id=" . $tmpUser["id"]);
-                        }*/
+                        }
 
 						if(count($tuijian)>12)
 						{
