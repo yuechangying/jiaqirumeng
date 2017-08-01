@@ -289,7 +289,7 @@
         </li>
         <li class="user_mession agree_box">
             <label class="left">
-                <input type="checkbox" class="J_agree agree">
+                <input type="checkbox" class="J_agree agree" {if $basic['agree'] == 1}checked="true"{else}checked="false"{/if}>
                 <span>
                     同意<a href="{php echo $this->createMobileUrl('rule')}" >使用协议</a>
                 </span>
@@ -361,16 +361,21 @@ $(function () {
         var basic_marry=$("#marry").val();
         var basic_have=$("#haveHouse").val();
         var isAgree = $('.J_agree').get(0).checked;
-
+        var basic_agree = 0;
+        alert(isAgree);
 
         if(!isAgree){
             $.tips('请同意使用协议!','error');
             return false;
         }
+        else{
+            basic_agree = 1;
+        }
+
 
         // ajax-----
 
-        var param={nicheng: nickname, year:year, month:month, day:day, province:province, city:city, height:basic_height, car:basic_car, constellation:basic_constellation, education:basic_edu, job:basic_work, income:basic_income, marriage:basic_marry, house:basic_have };
+        var param={nicheng: nickname, year:year, month:month, day:day, province:province, city:city, height:basic_height, car:basic_car, constellation:basic_constellation, education:basic_edu, job:basic_work, income:basic_income, marriage:basic_marry, house:basic_have, agree:basic_agree };
         {if empty($_GPC['xuniid']) || $member['type']!=3}
             $.ajax({url: "{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('basic',array('op'=>'add')),2);}", data: param, dataType: 'text', type: 'post', success: function (text) {
                 if(text==1){

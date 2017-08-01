@@ -47,6 +47,7 @@ CREATE TABLE IF NOT EXISTS `ims_jy_ppp_basic` (
   `income` varchar(1) NOT NULL,
   `marriage` varchar(5) NOT NULL,
   `house` varchar(7) NOT NULL,
+  `agree` varchar(1) NOT NULL,
   `blank` int(1) NOT NULL COMMENT '未填写的字段个数',
   `createtime` int(10) NOT NULL,
   PRIMARY KEY (`id`),

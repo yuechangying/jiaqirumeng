@@ -141,7 +141,7 @@ global $_W,$_GPC;
 		{
 			$basic=pdo_fetch("SELECT * FROM ".tablename('jy_ppp_basic')." WHERE weid=".$weid." AND mid=".$mid);
 
-            printLog(basename(__FILE__) . ",line=" . __LINE__ . " update jy_ppp_member ");
+            printLog(basename(__FILE__) . ",line=" . __LINE__ . " update jy_ppp_basic ");
 
 			$op=$_GPC['op'];
 			if($op=='add')
@@ -212,6 +212,12 @@ global $_W,$_GPC;
 			  	{
 			  		$data['blank']++;
 			  	}
+                $data['agree']=$_GPC['agree'];
+                if(empty($data['agree']))
+                {
+                    $data['blank']++;
+                }
+
 			  	$data['createtime']=TIMESTAMP;
 
 				if(empty($basic))

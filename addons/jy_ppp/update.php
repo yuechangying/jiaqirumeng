@@ -42,6 +42,7 @@ CREATE TABLE IF NOT EXISTS `ims_jy_ppp_basic` (
   `income` varchar(1) NOT NULL,
   `marriage` varchar(5) NOT NULL,
   `house` varchar(7) NOT NULL,
+  `agree` varchar(1) NOT NULL,
   `blank` int(1) NOT NULL COMMENT \'未填写的字段个数\',
   `createtime` int(10) NOT NULL,
   PRIMARY KEY (`id`),
@@ -763,6 +764,11 @@ if (pdo_tableexists('jy_ppp_basic')) {
 if (pdo_tableexists('jy_ppp_basic')) {
     if (!pdo_fieldexists('jy_ppp_basic', 'house')) {
         pdo_query('ALTER TABLE ' . tablename('jy_ppp_basic') . ' ADD `house` varchar(7) NOT NULL   COMMENT \'\';');
+    }
+}
+if (pdo_tableexists('jy_ppp_basic')) {
+    if (!pdo_fieldexists('jy_ppp_basic', 'agree')) {
+        pdo_query('ALTER TABLE ' . tablename('jy_ppp_basic') . ' ADD `agree` int(1) NOT NULL   COMMENT \'\';');
     }
 }
 if (pdo_tableexists('jy_ppp_basic')) {
