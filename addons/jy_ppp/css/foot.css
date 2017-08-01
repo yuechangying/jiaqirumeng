@@ -12,13 +12,15 @@
 }
 
 .foot > ul > li {
-    float: left;
+    /*float: left;*/
     text-align: center;
     color: #555;
-    width: 25%;
+    width: auto;
     height: 20px;
     font-size: 18px;
     line-height: 20px;
+    display: inline-block;
+    padding:0 10px;
 }
 
 .foot > ul > li:last-child {
