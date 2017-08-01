@@ -30,7 +30,9 @@
     font-size: 14px;
     display: block;
     font-weight: bold;
-    margin-bottom: 8px
+    margin-bottom: 8px;
+    height: 20px;
+    overflow: hidden;
 }
 
 .user_box .user dd p {
