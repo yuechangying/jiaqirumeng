@@ -156,23 +156,28 @@
         <section class="my_space">
         <div class="user_box">
             <dl class="user">
-                {if empty($_GPC['xuniid']) || $member['type']!=3}
-                <a href="{php echo $this->createMobileUrl('upload')}">
-                {else}
-                <a href="{php echo $this->createMobileUrl('upload',array('xuniid'=>$_GPC['xuniid']))}">
-                {/if}
+
                 <dt id="change_icon">
+                    {if empty($_GPC['xuniid']) || $member['type']!=3}
+                    <a href="{php echo $this->createMobileUrl('upload')}">
+                    {else}
+                    <a href="{php echo $this->createMobileUrl('upload',array('xuniid'=>$_GPC['xuniid']))}">
+                    {/if}
+
                     {if !empty($member['avatar'])}
-                        <img src="{php echo tomedia($member['avatar'])}"/>
+                        <div style="background-image:url({php echo tomedia($member['avatar'])})" class="pic">.</div>
                     {else}
                         {if $member['sex']==1}
-                        <img src="../addons/jy_ppp/images/boy.png"/>
+                        <div class="pic" style="background-image: url('../addons/jy_ppp/images/boy.png')">.</div>
+<!--                        <img src="../addons/jy_ppp/images/boy.png"/>-->
                         {else}
-                        <img src="../addons/jy_ppp/images/girl.png"/>
+<!--                        <img src=""/>-->
+                        <div class="pic" style="background-image: url('../addons/jy_ppp/images/girl.png')">.</div>
                         {/if}
                         <div class="checking">点击上传</div>
                     {/if}
-                </dt></a>
+                    </a>
+                </dt>
                 <dd><b class="name">{$member['nicheng']}   ID: {$member['id']}</b>
                 <p id="desc"></p>
                 <p>
