@@ -75,9 +75,9 @@
 .user_box .user dt .pic{
     font-size: 0;
     width: 68px;
-    line-height: 68px;
+    line-height: 74px;
     overflow: hidden;
-    height: 68px;
+    height: 74px;
     background-repeat: no-repeat;
     -webkit-background-size: cover;
     background-size: cover;
