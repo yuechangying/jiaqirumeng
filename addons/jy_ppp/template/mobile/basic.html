@@ -289,7 +289,7 @@
         </li>
         <li class="user_mession agree_box">
             <label class="left">
-                <input type="checkbox" class="J_agree agree" {if $basic['agree'] == 1}checked="true"{else}checked="false"{/if}>
+                <input type="checkbox" class="J_agree agree" {if $basic['agree'] == 1}checked="checked"{/if}>
                 <span>
                     同意<a href="{php echo $this->createMobileUrl('rule')}" >使用协议</a>
                 </span>
@@ -361,16 +361,14 @@ $(function () {
         var basic_marry=$("#marry").val();
         var basic_have=$("#haveHouse").val();
         var isAgree = $('.J_agree').get(0).checked;
-        var basic_agree = 0;
-        alert(isAgree);
+        var basic_agree = isAgree ? 1 : 0;
+//        alert(isAgree);
 
         if(!isAgree){
             $.tips('请同意使用协议!','error');
             return false;
         }
-        else{
-            basic_agree = 1;
-        }
+
 
 
         // ajax-----
