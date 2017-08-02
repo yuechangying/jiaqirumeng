@@ -288,11 +288,17 @@
         <h3>择偶条件</h3>
         <ul>
             <li><span>{if $detail['age2']==0}不限{/if}{if $detail['age2']!=0}{$detail['age2']}{/if} -- {if $detail['agemax']==0}不限{/if}{if $detail['agemax']!=0}{$detail['agemax']}岁{/if}</span>年龄</li>
+            <li><span>{if $detail['marriage2']==0}不限{/if}{if $detail['marriage2']==1}未婚{/if}{if $detail['marriage2']==2}离异无孩{/if}{if $detail['marriage2']==3}离异有孩{/if}{if $detail['marriage2']==4}丧偶{/if}{if $detail['marriage2']==5}未婚，离异无孩{/if}</span>婚姻状况</li>
             <!--li><span>{$province[$detail['province2']]}</span>居住地</li-->
-            <li><span>{if $detail['height2']==0}不限{/if}{if $detail['height2']!=0}{$detail['height2']}{/if} -- {if $detail['heightmax']==0}不限{/if}{if $detail['heightmax']!=0}{$detail['heightmax']}CM{/if}</span>身高</li>
+            <li><span>{if $detail['height2']==0}140{/if}{if $detail['height2']!=0}{$detail['height2']}{/if} -- {if $detail['heightmax']==0}不限{/if}{if $detail['heightmax']!=0}{$detail['heightmax']}CM{/if}</span>身高</li>
             <li><span>{if $detail['education2']==0}不限{/if}{if $detail['education2']==1}高中,中专及以上{/if}{if $detail['education2']==2}大专及以上{/if}{if $detail['education2']==3}本科及以上{/if}</span>学历</li>
-            <li><span>{if $detail['income2']==0}不限{/if}{if $detail['income2']!=0}{$detail['income2']}{/if} -- {if $detail['incomemax']==0}不限{/if}{if $detail['incomemax']!=0}{$detail['incomemax']}万{/if}</span>年收入</li>
+            <li><span>{if $detail['income2']==0}0{/if}{if $detail['income2']!=0}{$detail['income2']}{/if} -- {if $detail['incomemax']==0}不限{/if}{if $detail['incomemax']!=0}{$detail['incomemax']}万{/if}</span>年收入</li>
         </ul>
+    </div>
+
+    <div class="ziliao_box">
+        <h3>身份认证</h3>
+
     </div>
 
     <div class="footer">

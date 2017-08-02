@@ -66,6 +66,11 @@ if (!empty($member)) {
             $data['blank']++;
         }
 
+        $data['marriage'] = $_GPC['con_marriage'];
+        if (empty($data['marriage'])) {
+            $data['blank']++;
+        }
+
         $data['height'] = $_GPC['con_height'];
         if (empty($data['height'])) {
             $data['blank']++;
@@ -100,7 +105,7 @@ if (!empty($member)) {
             $data['blank']++;
         }
 
-        printLog(basename(__FILE__) . ",line=" . __LINE__ . " education=" . $data['education']);
+        printLog(basename(__FILE__) . ",line=" . __LINE__ . " marriage=" . $data['marriage']);
 
         $data['createtime'] = TIMESTAMP;
 

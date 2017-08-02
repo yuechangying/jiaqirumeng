@@ -1574,6 +1574,26 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 
                         }
 
+                        if(!empty($match['marriage']))
+                        {
+                            if($match['marriage']==1)
+                            {
+                                $condition.=" AND ( b.marriage = '未婚') ";
+                            }
+                            elseif ($match['marriage']==2) {
+                                $condition.=" AND ( b.marriage = '离异无孩') ";
+                            }
+                            elseif ($match['marriage']==3) {
+                                $condition.=" AND ( b.marriage = '离异有孩') ";
+                            }
+                            elseif ($match['marriage']==4) {
+                                $condition.=" AND ( b.marriage = '丧偶') ";
+                            }
+                            elseif ($match['marriage']==5) {
+                                $condition.=" AND ( b.marriage = '未婚' OR b.marriage = '离异无孩') ";
+                            }
+                        }
+
                         if(!empty($match['education']))
                         {
                             if($match['education']==1)
@@ -1922,6 +1942,26 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
                         // [0, 100] 不需要
                         else{
 
+                        }
+
+                        if(!empty($match['marriage']))
+                        {
+                            if($match['marriage']==1)
+                            {
+                                $condition.=" AND ( b.marriage = '未婚') ";
+                            }
+                            elseif ($match['marriage']==2) {
+                                $condition.=" AND ( b.marriage = '离异无孩') ";
+                            }
+                            elseif ($match['marriage']==3) {
+                                $condition.=" AND ( b.marriage = '离异有孩') ";
+                            }
+                            elseif ($match['marriage']==4) {
+                                $condition.=" AND ( b.marriage = '丧偶') ";
+                            }
+                            elseif ($match['marriage']==5) {
+                                $condition.=" AND ( b.marriage = '未婚' OR b.marriage = '离异无孩') ";
+                            }
                         }
 
 						if(!empty($match['education']))
@@ -4394,7 +4434,7 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 					}
 					else
 					{
-                      	$detail=pdo_fetch("SELECT a.id,a.nicheng,a.avatar,a.beizhu,a.sex,a.brith,a.province,a.city,a.type as type2,a.baoyue,a.mobile,a.mobile_auth,a.card_auth,b.height,b.car,b.constellation,b.education,b.job,b.income,b.marriage,b.house,b.agree,b.createtime, c.lifestatus,c.jobstatus,c.companytype,c.smoke,c.parentstatus,c.chuyi,d.age as age2, d.agemax as agemax, d.height as height2, d.heightmax as heightmax, d.education as education2,d.income as income2, d.incomemax as incomemax, d.province as province2, d.city as city2 FROM ".tablename('jy_ppp_member')." as a left join ".tablename('jy_ppp_basic')." as b on a.id=b.mid left join ".tablename('jy_ppp_desc')." as c on a.id=c.mid left join ".tablename('jy_ppp_match')." as d on a.id=d.mid WHERE a.weid=".$weid." AND a.id= ".$id);
+                      	$detail=pdo_fetch("SELECT a.id,a.nicheng,a.avatar,a.beizhu,a.sex,a.brith,a.province,a.city,a.type as type2,a.baoyue,a.mobile,a.mobile_auth,a.card_auth,b.height,b.car,b.constellation,b.education,b.job,b.income,b.marriage,b.house,b.agree,b.createtime, c.lifestatus,c.jobstatus,c.companytype,c.smoke,c.parentstatus,c.chuyi,d.age as age2, d.agemax as agemax, d.marriage as marriage2, d.height as height2, d.heightmax as heightmax, d.education as education2,d.income as income2, d.incomemax as incomemax, d.province as province2, d.city as city2 FROM ".tablename('jy_ppp_member')." as a left join ".tablename('jy_ppp_basic')." as b on a.id=b.mid left join ".tablename('jy_ppp_desc')." as c on a.id=c.mid left join ".tablename('jy_ppp_match')." as d on a.id=d.mid WHERE a.weid=".$weid." AND a.id= ".$id);
 						$thumb=pdo_fetchall("SELECT * FROM ".tablename('jy_ppp_thumb')." WHERE weid=".$weid." AND mid=".$id." AND ( type=1 OR type=2 )");
 						$aihao=pdo_fetchall("SELECT * FROM ".tablename('jy_ppp_aihao')." WHERE weid=".$weid." AND mid=".$id." LIMIT 3");
 						$tezheng=pdo_fetchall("SELECT * FROM ".tablename('jy_ppp_tezheng')." WHERE weid=".$weid." AND mid=".$id." LIMIT 3");
