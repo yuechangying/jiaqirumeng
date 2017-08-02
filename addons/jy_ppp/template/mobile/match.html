@@ -86,7 +86,7 @@
                     {if $match['marriage']==5}未婚或离异无孩{/if}
                 </span><i class="bot_trg"></i></span>
         </div>
-        <ul class="hidden" >
+        <ul class="hidden" data-type="marriage">
             <li>
                 <span data-value="0" {if $match['marriage']==0}class="pink"{/if}>不限</span>
                 <span data-value="1" {if $match['marriage']==1}class="pink"{/if}>未婚</span>
@@ -420,6 +420,10 @@ $("[data-value]").bind("click",function(){
         Match.changeProvince(value);
     }else if(type=='girlCare'){
         Match.changeInterest(value)
+    }else if(type == 'marriage'){
+        Match.changeInterest(value);
+        $('#con_marriage').val(value);
+
     }
     Match.changeEvent($this);
 });
