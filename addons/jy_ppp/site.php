@@ -1647,13 +1647,13 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 						$tuijian=pdo_fetchall($sqlmore);
                         $realUserNum = count($tuijian);
 
-                        printLog(basename(__FILE__) . ",line=" . __LINE__ . " sqlmore=" . $sqlmore);
+                       /* printLog(basename(__FILE__) . ",line=" . __LINE__ . " sqlmore=" . $sqlmore);
 
                         foreach ($tuijian as $tmpUser){
                             $tmptime = date("Y-m-d H:i:s",$tmpUser['createtime']);
                             printLog(basename(__FILE__) . ",line=" . __LINE__ . " id=" . $tmpUser["id"] . ", nicheng=" .  $tmpUser["nicheng"] . ", createtime=" .  $tmptime);
                         }
-
+                        */
 						/*if(count($tuijian)>10)
 						{
 							$ttt=array_rand($tuijian,10);
