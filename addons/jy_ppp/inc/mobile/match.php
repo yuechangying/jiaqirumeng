@@ -105,7 +105,7 @@ if (!empty($member)) {
             $data['blank']++;
         }
 
-        printLog(basename(__FILE__) . ",line=" . __LINE__ . " marriage=" . $data['marriage']);
+       // printLog(basename(__FILE__) . ",line=" . __LINE__ . " marriage=" . $data['marriage']);
 
         $data['createtime'] = TIMESTAMP;
 
@@ -118,7 +118,7 @@ if (!empty($member)) {
         echo 1;
         exit;
     } else {
-        printLog(basename(__FILE__) . ",line=" . __LINE__ . " matchprovince=" . $match['province'] . " matchcity=" . $match['city']);
+      //  printLog(basename(__FILE__) . ",line=" . __LINE__ . " matchprovince=" . $match['province'] . " matchcity=" . $match['city']);
 
         if (empty($match['province']) || empty($match['city'])) {
             $province = $member['province'];
