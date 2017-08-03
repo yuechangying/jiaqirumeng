@@ -104,34 +104,6 @@
 
    <div class="option_box" style="margin-top: 10px">
         <div class="top">
-            <h2>婚姻状况</h2>
-            <span class="unlimit"><span class="title pink" style="font-size: 14px;">
-                    {if $match['marriage']==0}不限{/if}
-                    {if $match['marriage']==1}未婚{/if}
-                    {if $match['marriage']==2}离异无孩{/if}
-                    {if $match['marriage']==3}离异有孩{/if}
-                    {if $match['marriage']==4}丧偶{/if}
-                    {if $match['marriage']==5}未婚或离异无孩{/if}
-                </span><i class="bot_trg"></i></span>
-        </div>
-        <ul class="hidden" data-type="marriage">
-            <li>
-                <span data-value="0" {if $match['marriage']==0}class="pink"{/if}>不限</span>
-                <span data-value="1" {if $match['marriage']==1}class="pink"{/if}>未婚</span>
-            </li>
-            <li>
-                <span data-value="2" {if $match['marriage']==2}class="pink"{/if}>离异无孩</span>
-                <span data-value="3" {if $match['marriage']==3}class="pink"{/if}>离异有孩</span>
-            </li>
-            <li>
-                <span data-value="4" {if $match['marriage']==4}class="pink"{/if}>丧偶</span>
-                <span data-value="5" {if $match['marriage']==5}class="pink"{/if}>未婚或离异无孩</span>
-            </li>
-        </ul>
-    </div>
-
-   <div class="option_box" style="margin-top: 10px">
-        <div class="top">
      <h2>身高范围</h2>
      <!--span class="unlimit"><span class="title pink">{if $match['height']==0}不限{/if}{if $match['height']==1}160cm以下{/if}{if $match['height']==2}161-165cm{/if}{if $match['height']==3}166-170cm{/if}{if $match['height']==4}170以上{/if}</span><i class="bot_trg"></i></span-->
         <!--div class="unlimit new_select"-->
