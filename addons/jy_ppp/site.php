@@ -1554,20 +1554,14 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
                         if(!empty($match['income'])  AND empty($match['incomemax']))
                         {
                             $condition.=" AND b.income>= " . $match['income'] . " AND b.income<=" . 100 . " ";
-
-                            printLog(basename(__FILE__) . ",line=" . __LINE__. ", condition=" . $condition);
                         }
                         else if (empty($match['income'])  AND !empty($match['incomemax']))
                         {
                             $condition.=" AND b.income>= " . 0 . " AND b.income<=" . $match['incomemax'] . " ";
-
-                            printLog(basename(__FILE__) . ",line=" . __LINE__. ", condition=" . $condition);
                         }
                         elseif (!empty($match['income'])  AND !empty($match['incomemax']))
                         {
                             $condition.=" AND b.income>= " . $match['income'] . " AND b.income<=" . $match['incomemax'] . " ";
-
-                            printLog(basename(__FILE__) . ",line=" . __LINE__. ", condition=" . $condition);
                         }
                         // [0, 100] 不需要
                         else{
@@ -1650,7 +1644,7 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 
                         printLog(basename(__FILE__) . ",line=" . __LINE__);
 
-						$tuijian=pdo_fetchall("SELECT a.type,a.id,a.avatar,a.sex,a.nicheng,a.province,a.city,a.brith,a.beizhu,b.height,c.age,c.height as height2,c.province as province2, c.city as city2 FROM ".tablename('jy_ppp_member')." as a left join ".tablename('jy_ppp_basic')." as b on a.id=b.mid left join ".tablename('jy_ppp_match')." as c on a.id=c.mid WHERE a.weid=".$weid.$condition." AND a.id >= ".$temp_tjid."  ORDER BY b.createtime desc LIMIT 10");
+						$tuijian=pdo_fetchall("SELECT a.type,a.id,a.avatar,a.sex,a.nicheng,a.province,a.city,a.brith,a.beizhu,a.card_auth,b.height,b.education,b.marriage,c.age,c.height as height2,c.province as province2, c.city as city2 FROM ".tablename('jy_ppp_member')." as a left join ".tablename('jy_ppp_basic')." as b on a.id=b.mid left join ".tablename('jy_ppp_match')." as c on a.id=c.mid WHERE a.weid=".$weid.$condition." AND a.id >= ".$temp_tjid."  ORDER BY b.createtime desc LIMIT 10");
 						if(count($tuijian)>12)
 						{
 							$ttt=array_rand($tuijian,12);
@@ -1665,7 +1659,7 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 					{
                         printLog(basename(__FILE__) . ",line=" . __LINE__);
 
-						$tuijian=pdo_fetchall("SELECT a.type,a.id,a.avatar,a.sex,a.nicheng,a.province,a.city,a.brith,a.beizhu,b.height,c.age,c.height as height2,c.province as province2, c.city as city2 FROM ".tablename('jy_ppp_member')." as a left join ".tablename('jy_ppp_basic')." as b on a.id=b.mid left join ".tablename('jy_ppp_match')." as c on a.id=c.mid WHERE a.weid=".$weid.$condition." ORDER BY b.createtime desc LIMIT 200");
+						$tuijian=pdo_fetchall("SELECT a.type,a.id,a.avatar,a.sex,a.nicheng,a.province,a.city,a.brith,a.beizhu,,a.card_auth,b.height,b.education,b.marriage,c.age,c.height as height2,c.province as province2, c.city as city2 FROM ".tablename('jy_ppp_member')." as a left join ".tablename('jy_ppp_basic')." as b on a.id=b.mid left join ".tablename('jy_ppp_match')." as c on a.id=c.mid WHERE a.weid=".$weid.$condition." ORDER BY b.createtime desc LIMIT 200");
 						if(count($tuijian)>12)
 						{
 							$ttt=array_rand($tuijian,12);
@@ -1761,13 +1755,13 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 									//if(!empty($l['province']))
 									if (!empty($address))
                                     {
-                                        printLog(basename(__FILE__) . ",line=" . __LINE__. ",adress=" .$address);
-                                        printLog(basename(__FILE__) . ",line=" . __LINE__. ",ziliao=" . $ziliao);
+                                      //  printLog(basename(__FILE__) . ",line=" . __LINE__. ",adress=" .$address);
+                                      //  printLog(basename(__FILE__) . ",line=" . __LINE__. ",ziliao=" . $ziliao);
 
 										//$ziliao.=" | ".$province[$l['province']];
                                         $ziliao.=" | ".$address;
 
-                                        printLog(basename(__FILE__) . ",line=" . __LINE__. ",ziliao=" . $ziliao );
+                                     //   printLog(basename(__FILE__) . ",line=" . __LINE__. ",ziliao=" . $ziliao );
 									}
 								}
 
@@ -1778,7 +1772,9 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 								$temp_tezheng=pdo_fetch("SELECT tezheng FROM ".tablename('jy_ppp_tezheng')." WHERE weid=".$weid." AND mid=".$l['id']." LIMIT 1 ");
 								$tezheng=$temp_tezheng['tezheng'];
 
-								if(!empty($l['beizhu']))
+								/*
+								 *
+								 if(!empty($l['beizhu']))
 								{
 									$match=$l['beizhu'];
 								}
@@ -1818,9 +1814,33 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 										}
 									}
 								}
+								*/
 								$a_zh='<a class="hello" onclick="sayHello(this,'.$l['id'].')" >打招呼</a>';
-								$html.='<div class="inflo" data-id="'.$l['id'].'"><a href="'.$this->createMobileUrl('detail',array('id'=>$l['id'])).'"><ul class="disbox-hor home-user-list"><li class="foot-icon"><div class="avatar" style="background-image:url('.$avatar.')">\.</div> </li><li class="disbox-flex user_mession"><b class="tit">'.$l['nicheng'].'</b><p>'.$ziliao.'</p><p class="feature">'.$biaoqian.'</p><p class="recite">'.$match.'</p></ul></a><div class="bot_btn"><a href="'.$this->createMobileUrl('detail',array('id'=>$l['id'])).'" class="look">看看Ta</a><a class="hello" onclick="sayHello(this,'.$l['id'].')">打招呼</a></div></div>';
-							}
+//								$html.='<div class="inflo" data-id="'.$l['id'].'"><a href="'.$this->createMobileUrl('detail',array('id'=>$l['id'])).'"><ul class="disbox-hor home-user-list"><li class="foot-icon"><div class="avatar" style="background-image:url('.$avatar.')">\.</div> </li><li class="disbox-flex user_mession"><b class="tit">'.$l['nicheng'].'</b><p>'.$ziliao.'</p><p class="feature">'.$biaoqian.'</p><p class="recite">'.$match.'</p></ul></a><div class="bot_btn"><a href="'.$this->createMobileUrl('detail',array('id'=>$l['id'])).'" class="look">看看Ta</a><a class="hello" onclick="sayHello(this,'.$l['id'].')">打招呼</a></div></div>';
+                                $_userCA = '';//用户认证
+
+                                if(!empty($l['education'])){
+                                    $_userCA .= $l['education'] . ' | ';
+                                }
+
+                                if(!empty($l['marriage'])){
+                                    $_userCA .= $l['marriage'] . ' | ';
+                                }
+                                if(!empty($l['card_auth'])){
+                                    $_userCA .= '<span class="identity Check" style="border:1px solid transparent; color: #fff;">身份认证</span>';
+                                }else{
+                                    $_userCA .= '<span class="identity noCheck" style="border:1px solid transparent; color: #fff;">身份认证</span>';
+                                }
+
+                                if(!empty($l['mobile_auth'])){
+                                    $_userCA .= '<span>手机认证</span>';
+                                }
+
+
+                                $html.='<div class="inflo" data-id="'.$l['id'].'"><a href="'.$this->createMobileUrl('detail',array('id'=>$l['id'])).'"><ul class="disbox-hor home-user-list"><li class="foot-icon"><div class="avatar" style="background-image:url('.$avatar.')">\.</div> </li><li class="disbox-flex user_mession"><b class="tit">'.$l['nicheng'].'</b><p>'.$ziliao.'</p><p class="feature">'.$_userCA.'</p></li></ul></a></div>';
+
+
+                            }
 						}
 						else
 						{
@@ -1871,7 +1891,7 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 						echo json_encode(array('status'=>1,'log'=>$html));
 						exit;
 					}
-				}
+				} // end more
 				else
 				{
 					$menu=1;
@@ -2049,7 +2069,7 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
                         $sql2 = "SELECT a.id,a.avatar,a.type,a.sex,a.nicheng,a.province,a.city,a.brith,a.beizhu,a.mobile_auth,a.card_auth,b.height,b.education,b.marriage,c.age,c.height as height2,c.province as province2, c.city as city2 FROM ".tablename('jy_ppp_member')." as a left join ".tablename('jy_ppp_basic')." as b on a.id=b.mid left join ".tablename('jy_ppp_match')." as c on a.id=c.mid WHERE a.weid=".$weid.$condition . " ORDER BY b.createtime desc LIMIT 10  ";
                         $tuijian=pdo_fetchall($sql2);
 
-                        printLog(basename(__FILE__) . ",line=" . __LINE__ . ", sql2=" . $sql2);
+                       /* printLog(basename(__FILE__) . ",line=" . __LINE__ . ", sql2=" . $sql2);
 
 						foreach ($tuijian as $tmpUser){
                             printLog(basename(__FILE__) . ",line=" . __LINE__ . " id=" . $tmpUser["id"]);
@@ -2063,7 +2083,7 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 								$tuijian_temp[]=$tuijian[$value];
 							}
 							$tuijian=$tuijian_temp;
-						}
+						}*/
 					}
 					else
 					{

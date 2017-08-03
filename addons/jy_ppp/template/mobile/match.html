@@ -75,6 +75,7 @@
     </div>
 
     <!--div class="option_box" style="margin-top: 10px">
+
         <div class="top">
             <h2>婚姻状况</h2>
             <span class="unlimit"><span class="title pink" style="font-size: 14px;">{if $match['marriage']==0}不限{/if}{if $match['marriage']==1}未婚{/if}{if $match['marriage']==2}离异无孩{/if}{if $match['marriage']==3}离异有孩{/if}{if $match['marriage']==4}丧偶{/if}{if $match['marriage']==5}未婚或离异无孩{/if}</span><i class="bot_trg"></i></span>
@@ -85,6 +86,34 @@
             <li> <span data-value="4" {if $match['marriage']==4}class="pink"{/if}>丧偶</span> <span data-value="5" {if $match['marriage']==5}class="pink"{/if}>未婚或离异无孩</span> </li>
         </ul>
     </div-->
+
+   <div class="option_box" style="margin-top: 10px">
+        <div class="top">
+            <h2>婚姻状况</h2>
+            <span class="unlimit"><span class="title pink" style="font-size: 14px;">
+                    {if $match['marriage']==0}不限{/if}
+                    {if $match['marriage']==1}未婚{/if}
+                    {if $match['marriage']==2}离异无孩{/if}
+                    {if $match['marriage']==3}离异有孩{/if}
+                    {if $match['marriage']==4}丧偶{/if}
+                    {if $match['marriage']==5}未婚或离异无孩{/if}
+                </span><i class="bot_trg"></i></span>
+        </div>
+        <ul class="hidden" data-type="marriage">
+            <li>
+                <span data-value="0" {if $match['marriage']==0}class="pink"{/if}>不限</span>
+                <span data-value="1" {if $match['marriage']==1}class="pink"{/if}>未婚</span>
+            </li>
+            <li>
+                <span data-value="2" {if $match['marriage']==2}class="pink"{/if}>离异无孩</span>
+                <span data-value="3" {if $match['marriage']==3}class="pink"{/if}>离异有孩</span>
+            </li>
+            <li>
+                <span data-value="4" {if $match['marriage']==4}class="pink"{/if}>丧偶</span>
+                <span data-value="5" {if $match['marriage']==5}class="pink"{/if}>未婚或离异无孩</span>
+            </li>
+        </ul>
+    </div>
 
    <div class="option_box" style="margin-top: 10px">
         <div class="top">
@@ -333,8 +362,8 @@ $(function () {
 $("#save_btn").bind("click",function(){
     var con_ageVal=$("#con_age").val().split(',')[0];
     var con_agemaxVal=$("#con_age").val().split(',')[1];
-   // var con_marriageVal = $("#con_marriage").val();
-    var con_marriageVal = 0;
+    var con_marriageVal = $("#con_marriage").val() || 0;
+//    var con_marriageVal = 0;
     var con_heightVal=$("#con_height").val().split(',')[0];
     var con_heightmaxVal=$("#con_height").val().split(',')[1];
     var con_incomeVal=$("#con_income").val().split(',')[0];
@@ -404,6 +433,10 @@ $("[data-value]").bind("click",function(){
         Match.changeProvince(value);
     }else if(type=='girlCare'){
         Match.changeInterest(value)
+    }else if(type == 'marriage'){
+        Match.changeInterest(value);
+        $('#con_marriage').val(value);
+
     }
     Match.changeEvent($this);
 });
