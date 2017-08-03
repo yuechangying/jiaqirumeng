@@ -1819,8 +1819,12 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 									}
 								}
 								$a_zh='<a class="hello" onclick="sayHello(this,'.$l['id'].')" >打招呼</a>';
-								$html.='<div class="inflo" data-id="'.$l['id'].'"><a href="'.$this->createMobileUrl('detail',array('id'=>$l['id'])).'"><ul class="disbox-hor home-user-list"><li class="foot-icon"><div class="avatar" style="background-image:url('.$avatar.')">\.</div> </li><li class="disbox-flex user_mession"><b class="tit">'.$l['nicheng'].'</b><p>'.$ziliao.'</p><p class="feature">'.$biaoqian.'</p><p class="recite">'.$match.'</p></ul></a><div class="bot_btn"><a href="'.$this->createMobileUrl('detail',array('id'=>$l['id'])).'" class="look">看看Ta</a><a class="hello" onclick="sayHello(this,'.$l['id'].')">打招呼</a></div></div>';
-							}
+//								$html.='<div class="inflo" data-id="'.$l['id'].'"><a href="'.$this->createMobileUrl('detail',array('id'=>$l['id'])).'"><ul class="disbox-hor home-user-list"><li class="foot-icon"><div class="avatar" style="background-image:url('.$avatar.')">\.</div> </li><li class="disbox-flex user_mession"><b class="tit">'.$l['nicheng'].'</b><p>'.$ziliao.'</p><p class="feature">'.$biaoqian.'</p><p class="recite">'.$match.'</p></ul></a><div class="bot_btn"><a href="'.$this->createMobileUrl('detail',array('id'=>$l['id'])).'" class="look">看看Ta</a><a class="hello" onclick="sayHello(this,'.$l['id'].')">打招呼</a></div></div>';
+                                var_dump($l);
+                                $html.='<div class="inflo" data-id="'.$l['id'].'"><a href="'.$this->createMobileUrl('detail',array('id'=>$l['id'])).'"><ul class="disbox-hor home-user-list"><li class="foot-icon"><div class="avatar" style="background-image:url('.$avatar.')">\.</div> </li><li class="disbox-flex user_mession"><b class="tit">'.$l['nicheng'].'</b><p>'.$ziliao.'</p><p class="feature">'.$biaoqian.'</p><p class="recite">'.$match.'</p></ul></a><div class="bot_btn"><a href="'.$this->createMobileUrl('detail',array('id'=>$l['id'])).'" class="look">看看Ta</a><a class="hello" onclick="sayHello(this,'.$l['id'].')">打招呼</a></div></div>';
+
+
+                            }
 						}
 						else
 						{
