@@ -1912,7 +1912,7 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 						$condition.=" AND sex=1 ";
 					}
 
-                    printLog(basename(__FILE__) . ",line=" . __LINE__. ",member.id=" . $member['id'] . " query user.");
+                    printLog(basename(__FILE__) . ",line=" . __LINE__. ", id=" . $member['id'] . ",nicheng=" . $member['nicheng'] . " query user.");
 
 					$match=pdo_fetch("SELECT * FROM ".tablename('jy_ppp_match')." WHERE weid=".$weid." AND mid=".$mid);
 					if(!empty($match))

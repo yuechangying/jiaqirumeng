@@ -293,12 +293,17 @@
             <li><span>{if $detail['height2']==0}140{/if}{if $detail['height2']!=0}{$detail['height2']}{/if} -- {if $detail['heightmax']==0}不限{/if}{if $detail['heightmax']!=0}{$detail['heightmax']}CM{/if}</span>身高</li>
             <li><span>{if $detail['education2']==0}不限{/if}{if $detail['education2']==1}高中,中专及以上{/if}{if $detail['education2']==2}大专及以上{/if}{if $detail['education2']==3}本科及以上{/if}</span>学历</li>
             <li><span>{if $detail['income2']==0}0{/if}{if $detail['income2']!=0}{$detail['income2']}{/if} -- {if $detail['incomemax']==0}不限{/if}{if $detail['incomemax']!=0}{$detail['incomemax']}万{/if}</span>年收入</li>
+            {if $member['type'] == 4}
+            <li>
+                <span><input id="id_card_auth" value="{$detail['card_auth']}" /></span>
+                <a href="javascript:;" onclick="versifycard_auth({$detail['id']})">身份认证</a>
+
+                <!--a href="javascript:;" onclick="huifu({$l['mid']})"-->
+
+                <!--span><input onclick="return confirm('此操作不可恢复，确认吗？'); return false;" name="submit4" type="submit" value="提交身份认证" class="btn btn-primary span3"></span-->
+            </li>
+            {/if}
         </ul>
-    </div>
-
-    <div class="ziliao_box">
-        <h3>身份认证</h3>
-
     </div>
 
     <div class="footer">
@@ -329,7 +334,7 @@
             <i><img src="../addons/jy_ppp/images/chat_ico2.png"></i>索要联系方式
         </a-->
         {/if}
-        
+
         <a href="javascript:;" onclick="huifu(this)">
             <i><img src="../addons/jy_ppp/images/chat_ico2.png"></i>写信
         </a>
@@ -549,6 +554,32 @@
                 time()
             }, 1000)
         }
+    }
+
+    // 身份验证
+    function versifycard_auth(tmpmid){
+        var id = tmpmid;
+        var card_auth = tmpcard_auth;
+        var tmpcard_auth = $("#id_card_auth").val();
+        var card_auth = tmpcard_auth;
+
+        var setcard_auth_url = "{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('userthumb',array('op'=>'setcard_auth','id'=>tmpmid, 'card_auth_val'=>tmpcard_auth)),2);}";
+
+        if(id){
+            setcard_auth_url = setcard_auth_url.replace('tmpmid',id);
+            setcard_auth_url = setcard_auth_url.replace('tmpcard_auth',card_auth);
+        }
+
+        // 发消息到 userthumb.php
+        $.ajax({url: setcard_auth_url, data: {}, dataType: 'text', type: 'post', success: function (re) {
+
+            if (re == 1) {
+                alert("用户的身份认证设置成功");
+            }
+        }, error: function () {
+            alert("用户认证失败");
+        }
+        });
     }
 </script>
 

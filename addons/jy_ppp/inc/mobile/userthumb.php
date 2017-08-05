@@ -154,6 +154,18 @@ global $_W,$_GPC;
                     }
                 }
 			}
+			// 设置身份验证
+			else if ($op == "setcard_auth") {
+                $id=$_GPC['id'];
+                $card_auth_val  = $_GPC['card_auth_val'];
+
+                pdo_update("jy_ppp_member",array('card_auth'=>$card_auth_val),array('id'=>$id));
+
+               // printLog(basename(__FILE__) . ",line=" . __LINE__ . ", set card_auth success id=" . $id . ", card_auth_val=". $card_auth_val);
+
+                echo 1;
+                exit;
+            }
 			else
 			{
 				$id=$_GPC['id'];
