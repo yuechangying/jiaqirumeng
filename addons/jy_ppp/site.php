@@ -1503,14 +1503,18 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 						$str=substr($str, 0,-1);
 					}
 					$condition=$condition.=" AND a.id NOT IN ( ".$str." ) ";
-					if($member['sex']==1)
-					{
-						$condition.=" AND sex=2 ";
-					}
-					else
-					{
-						$condition.=" AND sex=1 ";
-					}
+
+                    if ($member['type'] != 4)
+                    {
+                        if($member['sex']==1)
+                        {
+                            $condition.=" AND sex=2 ";
+                        }
+                        else
+                        {
+                            $condition.=" AND sex=1 ";
+                        }
+                    }
 
 					$realUserNum = 0;
                     printLog(basename(__FILE__) . ",line=" . __LINE__ . " more user");
@@ -1518,6 +1522,15 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 					$match=pdo_fetch("SELECT * FROM ".tablename('jy_ppp_match')." WHERE weid=".$weid." AND mid=".$mid);
 					if(!empty($match))
 					{
+					    // 管理员用户，可以查看男性和女性
+                        if ($member['type'] == 4)
+                        {
+                            if ($match['matchsex'] != 0)
+                            {
+                                $condition.=" AND a.sex=" . $match['matchsex'] . " ";
+                            }
+                        }
+
 						if($match['province']>0 AND $match['city']>0)
 						{
 							$temp_province=$match['province'];
@@ -1903,20 +1916,32 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 				{
 					$menu=1;
 
-					if($member['sex']==1)
-					{
-						$condition.=" AND sex=2 ";
-					}
-					else
-					{
-						$condition.=" AND sex=1 ";
-					}
+					// 4表示管理员身份
+                    if ($member['type'] != 4)
+                    {
+                        if($member['sex']==1)
+                        {
+                            $condition.=" AND sex=2 ";
+                        }
+                        else
+                        {
+                            $condition.=" AND sex=1 ";
+                        }
+                    }
 
                     printLog(basename(__FILE__) . ",line=" . __LINE__. ", id=" . $member['id'] . ",nicheng=" . $member['nicheng'] . " query user.");
 
 					$match=pdo_fetch("SELECT * FROM ".tablename('jy_ppp_match')." WHERE weid=".$weid." AND mid=".$mid);
 					if(!empty($match))
 					{
+                        if ($member['type'] == 4)
+                        {
+                            if ($match['matchsex'] != 0)
+                            {
+                                $condition.=" AND a.sex=" . $match['matchsex'] . " ";
+                            }
+                        }
+
 						if($match['province']>0 AND $match['city'] >0 )
 						{
 							$temp_province=$match['province'];
@@ -2033,7 +2058,8 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 
                             $condition.=" AND ( a.brith> ".$temp_brith2." && a.brith< ".$temp_brith." ) ";
 						}
-                        //printLog(basename(__FILE__) . ",line=" . __LINE__. ", condition=" . $condition);
+
+                        printLog(basename(__FILE__) . ",line=" . __LINE__. ", condition=" . $condition);
 					}
 					else
 					{

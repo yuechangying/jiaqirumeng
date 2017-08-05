@@ -61,6 +61,11 @@ if (!empty($member)) {
             $data['blank']++;
         }
 
+        $data['matchsex'] = $_GPC['con_matchsex'];
+        if (empty($data['matchsex'])) {
+            $data['blank']++;
+        }
+
         $data['age'] = $_GPC['con_age'];
         if (empty($data['age'])) {
             $data['blank']++;

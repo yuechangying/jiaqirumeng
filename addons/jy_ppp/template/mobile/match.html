@@ -32,6 +32,17 @@
             <input id="con_matchid" value="{$match['matchid']}"/>
         </div>
     </div>
+
+    <div class="option_box" style="margin-top: 10px">
+        <div class="top">
+            <h2>性别</h2>
+            <span class="unlimit"><span class="title pink" style="font-size: 14px;">{if $match['matchsex']==0}不限{/if}{if $match['matchsex']==1}男{/if}{if $match['matchsex']==2}女{/if}</span><i class="bot_trg"></i></span>
+        </div>
+        <ul class="hidden" data-type="matchsex">
+            <li> <span data-value="0" {if $match['matchsex']==0}class="pink"{/if}>不限</span> <span data-value="1" {if $match['matchsex']==1}class="pink"{/if}>男</span> </li>
+            <li> <span data-value="2" {if $match['matchsex']==2}class="pink"{/if}>女</span> <span></span> </li>
+        </ul>
+    </div>
     {/if}
 
     <div class="option_box" style="margin-top: 10px">
@@ -269,6 +280,7 @@
 </div>
   <!--<input type="hidden" id="con_age" value="{$match['age']}" />-->
   <!--<input type="hidden" id="con_agemax" value="{$match['agemax']}" />-->
+  <input type="hidden" id="con_matchsex" value="{$match['matchsex']}">
   <input type="hidden" id="con_age" value="{$match['age']},{$match['agemax']}">
   <input type="hidden" id="con_marriage" value="{$match['marriage']}" />
   <input type="hidden" id="con_height"  value="{$match['height']},{$match['heightmax']}"/>
@@ -357,6 +369,8 @@ $(function () {
 
 
 $("#save_btn").bind("click",function(){
+
+    var con_matchsexVal=$("#con_matchsex").val();
     var con_matchidVal=$("#con_matchid").val();
     var con_ageVal=$("#con_age").val().split(',')[0];
     var con_agemaxVal=$("#con_age").val().split(',')[1];
@@ -379,6 +393,7 @@ $("#save_btn").bind("click",function(){
         alert("亲，身高的范围选择错误");
     }
     var param = {
+        con_matchsex:con_matchsexVal,
         con_matchid: con_matchidVal,
         con_age: con_ageVal,
         con_agemax: con_agemaxVal,
@@ -419,7 +434,11 @@ $("[data-value]").bind("click",function(){
       type=$this.closest("[data-type]").data("type"),
       value=$this.data('value');
 
-    if(type=='age'){
+    if (type == 'matchsex'){
+        //Match.changeInterest(value);
+        $('#con_matchsex').val(value);
+    }
+    else if(type=='age'){
         Match.changeAge(value);
     }else if(type=='height'){
         Match.changeHeight(value);
@@ -435,8 +454,8 @@ $("[data-value]").bind("click",function(){
     }else if(type == 'marriage'){
         Match.changeInterest(value);
         $('#con_marriage').val(value);
-
     }
+
     Match.changeEvent($this);
 });
 
