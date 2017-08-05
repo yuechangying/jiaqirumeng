@@ -1948,6 +1948,11 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 							$condition.=" AND a.province= ".$temp_province . " AND a.city=" . $temp_city;
 						}
 
+                        if($match['matchid'] != 0 )
+                        {
+                            $condition .= " AND a.id = " . $match['matchid'] . " ";
+                        }
+
 						if(!empty($match['height']) and !empty($match['heightmax']))
 						{
                             $condition.=" AND b.height>= " . $match['height'] . " AND b.height<=" . $match['heightmax'] . " ";

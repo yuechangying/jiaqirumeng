@@ -24,6 +24,16 @@
   </nav>
 
 <div class="content">
+
+    {if $member['type'] == 4}
+    <div class="option_box" style="margin-top: 10px">
+        <div class="top">
+            <h2>ID</h2>
+            <input id="con_matchid" value="{$match['matchid']}"/>
+        </div>
+    </div>
+    {/if}
+
     <div class="option_box" style="margin-top: 10px">
         <div class="top">
           <h2>年龄范围</h2>
@@ -347,6 +357,7 @@ $(function () {
 
 
 $("#save_btn").bind("click",function(){
+    var con_matchidVal=$("#con_matchid").val();
     var con_ageVal=$("#con_age").val().split(',')[0];
     var con_agemaxVal=$("#con_age").val().split(',')[1];
     var con_marriageVal = $("#con_marriage").val() || 0;
@@ -368,6 +379,7 @@ $("#save_btn").bind("click",function(){
         alert("亲，身高的范围选择错误");
     }
     var param = {
+        con_matchid: con_matchidVal,
         con_age: con_ageVal,
         con_agemax: con_agemaxVal,
         con_marriage:con_marriageVal,

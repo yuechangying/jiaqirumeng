@@ -249,6 +249,7 @@ CREATE TABLE IF NOT EXISTS `ims_jy_ppp_match` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `weid` int(10) NOT NULL,
   `mid` int(10) NOT NULL,
+  `matchid` int(11) NOT NULL,
   `age` int(1) DEFAULT '0' COMMENT '0为不限,1为18-25,2为26-35,3为36-45,4为46-55,5为55以上',
   `agemax` int(1) DEFAULT '0',
   `marriage` int(1) DEFAULT '0',

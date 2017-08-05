@@ -49,13 +49,17 @@ if (!empty($member)) {
     $sitem = pdo_fetch("SELECT * FROM " . tablename('jy_ppp_setting') . " WHERE weid=" . $weid);
     $match = pdo_fetch("SELECT * FROM " . tablename('jy_ppp_match') . " WHERE weid=" . $weid . " AND mid=" . $mid);
 
-
     $op = $_GPC['op'];
     if ($op == 'add') {
         $data = array();
         $data['weid'] = $weid;
         $data['mid'] = $mid;
         $data['blank'] = 0;
+
+        $data['matchid'] = $_GPC['con_matchid'];
+        if (empty($data['matchid'])) {
+            $data['blank']++;
+        }
 
         $data['age'] = $_GPC['con_age'];
         if (empty($data['age'])) {
