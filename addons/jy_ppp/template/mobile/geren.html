@@ -219,7 +219,7 @@
             {if empty($sitem['unit'])}{php $sitem['unit']='豆'}{/if}
             <div class="section_1">
                 {if !empty($doubi_list) || empty($sitem['cz_style'])}
-                <!--a href="javascript:;" onclick="chongzhi()"-->
+
                 <!--a href="javascript:;" onclick="chongzhi() ><ul class="disbox-hor user-list">
                     <li class="disbox-flex">{$sitem['doubi']}账户</li>
                     {if empty($member['credit'])}
@@ -436,7 +436,7 @@
 
     function chongzhi() {
 
-        alert("亲，别急，老岳周一就给您充值。。。");
+        alert("亲，这是一个公益婚恋平台，不收取费用，如果您的红豆用完，系统会在周一给您充值，请耐心等候。谢谢！");
     }
 
     if ($(".top_mess").length > 0) {
