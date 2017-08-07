@@ -228,14 +228,16 @@
                     <li class="disbox-center pink">{$member['credit']}<div class="right_trg">{$sitem['unit']}</div></li>
                     {/if}
                 </ul></a-->
-                <a href="{php echo $this->createMobileUrl('doubi')}"><ul class="disbox-hor user-list">
-                    <li class="disbox-flex">{$sitem['doubi']}账户</li>
-                    {if empty($member['credit'])}
-                    <li class="disbox-center pink">购买<div class="right_trg"></div></li>
-                    {else}
-                    <li class="disbox-center pink">{$member['credit']}<div class="right_trg">{$sitem['unit']}</div></li>
-                    {/if}
-                </ul></a>
+                <a class="J_doubi" href="{php echo $this->createMobileUrl('doubi')}">
+                    <ul class="disbox-hor user-list">
+                        <li class="disbox-flex">{$sitem['doubi']}账户</li>
+                        {if empty($member['credit'])}
+                        <li class="disbox-center pink">购买<div class="right_trg"></div></li>
+                        {else}
+                        <li class="disbox-center pink">{$member['credit']}<div class="right_trg">{$sitem['unit']}</div></li>
+                        {/if}
+                    </ul>
+                </a>
                 {/if}
                 {if !empty($baoyue_list) || empty($sitem['cz_style'])}
                 <a href="{php echo $this->createMobileUrl('baoyue')}" style="margin-top:1px"><ul class="disbox-hor user-list">
@@ -431,13 +433,22 @@
 <!-- h5menu end -->
 <script type="text/javascript" src="http://libs.baidu.com/jquery/1.9.0/jquery.min.js"></script>
 <script src="../addons/jy_ppp/js/area_id.js"></script>
+<script src="../addons/jy_ppp/js/waiting.js"></script>
 <script type="text/javascript">
 
 
     function chongzhi() {
-
-        alert("亲，这是一个公益婚恋平台，不收取费用，如果您的红豆用完，系统会在周一给您充值，请耐心等候。谢谢！");
+        $.tips("亲，这是一个公益婚恋平台，不收取费用，如果您的红豆用完，系统会在周一给您充值，请耐心等候。谢谢！",'tui');
     }
+
+    $(function(){
+        $(document).on('click','.J_doubi',function(e){
+            e.defaultPrevented();
+            e.stopPropagation();
+            chongzhi();
+        });
+
+    });
 
     if ($(".top_mess").length > 0) {
         setTimeout(function () {

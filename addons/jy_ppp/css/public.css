@@ -17,6 +17,10 @@ img{background:#f0f0f0 url(../images/loading.gif) center center no-repeat;backgr
     background: rgba(2, 167, 15, 0.99);
     color: #fff;
 }
+.tips.tui{
+    background: #F78AA9;
+    color: #fff;
+}
 .loading{display:none; width:100%; line-height:50px;text-align: center;font-size:14px;overflow:hidden;}
 .loading i{display: inline-block; height: 20px;width: 30px;margin-bottom: -4px;background:url(../images/loading.gif)  10% center no-repeat; background-size: 20px;}
 /**/
