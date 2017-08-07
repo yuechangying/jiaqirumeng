@@ -443,7 +443,7 @@
 
     $(function(){
         $(document).on('click','.J_doubi',function(e){
-            e.defaultPrevented();
+            e.preventDefault();
             e.stopPropagation();
             chongzhi();
         });
