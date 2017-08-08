@@ -438,6 +438,10 @@
 
     var basic = "{php echo json_decode($basic,JSON_UNESCAPED_UNICODE)}";
 
+    if(!basic){
+        $.tips('亲，您的基本资料没有填写完毕，异性是无法看到您的哦，请尽快完善。','tui',3000);
+    }
+
     function chongzhi() {
         $.tips("亲，这是一个公益婚恋平台，不收取费用，如果您的红豆用完，系统会在周一给您充值，请耐心等候。谢谢！",'tui');
     }

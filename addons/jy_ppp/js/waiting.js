@@ -33,11 +33,12 @@ $.tips = (function () {//等待提示
             $('<div class="tipsDiv"><div class="tips"></div></div>').prependTo('body');
         }
         $('.tips').empty().hide();
-        return function (msg,type) {
+        return function (msg,type,time) {
             $('.tips').addClass(type).html(msg).show();
+            time = time || 2000;
             setTimeout(function () {
                 $('.tips').removeClass(type).empty().hide();
-            }, 2000);
+            }, time);
         }
     }
 })();
