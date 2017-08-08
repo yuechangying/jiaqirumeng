@@ -4104,7 +4104,8 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 
 				$moni_province=$_SESSION['moni_province'];
 				$moni_city=$_SESSION['moni_city'];
-                var_dump($basic);
+                var_dump(json_decode($basic,JSON_UNESCAPED_UNICODE));
+
 				include $this->template('geren');
 			}
 		}
