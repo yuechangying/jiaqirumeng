@@ -436,7 +436,7 @@
 <script src="../addons/jy_ppp/js/waiting.js"></script>
 <script type="text/javascript">
 
-    var basic = {echo json_decode($basic,JSON_UNESCAPED_UNICODE)};
+    var basic = "{php json_decode($basic,JSON_UNESCAPED_UNICODE)}";
 
     function chongzhi() {
         $.tips("亲，这是一个公益婚恋平台，不收取费用，如果您的红豆用完，系统会在周一给您充值，请耐心等候。谢谢！",'tui');
