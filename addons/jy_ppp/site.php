@@ -1787,6 +1787,12 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 									}
 								}
 
+
+                                if(!empty($l['height']))
+                                {
+                                    $ziliao .= " | " . $l['height'];
+                                }
+
 								$thumb=pdo_fetchcolumn("SELECT count(id) FROM ".tablename('jy_ppp_thumb')." WHERE weid=".$weid." AND mid=".$l['id']." AND ( type=1 OR type=2 ) ");
 								///$ziliao.=" | ".$thumb."张照片";
 								$temp_aihao=pdo_fetch("SELECT aihao FROM ".tablename('jy_ppp_aihao')." WHERE weid=".$weid." AND mid=".$l['id']." LIMIT 1 ");
