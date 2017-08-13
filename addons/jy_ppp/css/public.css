@@ -67,6 +67,11 @@ img{background:#f0f0f0 url(../images/loading.gif) center center no-repeat;backgr
     font-size: 12px;
 }
 
+.alertDiv.yuanfeng .btn_box .ok{
+    background: #EF678F;
+    color: #fff;
+}
+
 .loading{display:none; width:100%; line-height:50px;text-align: center;font-size:14px;overflow:hidden;}
 .loading i{display: inline-block; height: 20px;width: 30px;margin-bottom: -4px;background:url(../images/loading.gif)  10% center no-repeat; background-size: 20px;}
 /**/
