@@ -31,7 +31,6 @@ $.alert = (function(){
         J_alertDiv.hide();
         J_alertDiv.find('.tip').empty();
     }
-
     return function(msg,type){
 
         $(document).find('.alertDiv').addClass(type).find('.tip').html(msg);
