@@ -29,20 +29,23 @@ img{background:#f0f0f0 url(../images/loading.gif) center center no-repeat;backgr
     z-index: 999
 }
 .alertDiv .alert_box{
-    width: 80%;
+    width: 60%;
     min-height: 25px;
     word-wrap: break-word;
     word-break: break-all;
-    padding:10px 0;
+    padding:15px;
     overflow: hidden;
     background: #fff;
+    text-align: left;
     /*border-radius: 10px;*/
     color: #000;
     text-align: center;
     margin:20% auto 0 auto;
     z-index: 1000;
     border:1px solid #fff;
-    max-width: 480px
+    max-width: 480px;
+    border-radius: 5px;
+    box-shadow: 1px 2px 15px 0px rgba(0,0,0,0.3);
 }
 .alertDiv .alert_box .tip{
     font-size: 12px;
@@ -50,10 +53,11 @@ img{background:#f0f0f0 url(../images/loading.gif) center center no-repeat;backgr
 }
 .alertDiv .btn_box{
     text-align: right;
+    padding-top:4%;
 }
 .alertDiv .btn_box .ok{
     display: inline-block;
-    padding: 2px 4px;
+    padding: 2px 15px;
     height: 22px;
     line-height: 22px;
     font-size: 12px;
