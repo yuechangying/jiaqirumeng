@@ -34,7 +34,7 @@ $.alert = (function(){
 
     return function(msg,type){
 
-        $(document).find('.alertDiv').addClass(type).find('.tips').html(msg);
+        $(document).find('.alertDiv').addClass(type).find('.tip').html(msg);
         $(document).find('.alertDiv').on('click','.ok',function (e) {
             e.preventDefault();
             e.stopPropagation();
