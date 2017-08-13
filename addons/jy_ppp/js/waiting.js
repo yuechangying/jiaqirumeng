@@ -26,7 +26,7 @@ $.waiting = (function () {//等待提示
 $.alert = (function(){
     if($('.alert').length == 0){
 
-        $('<div class="alertDiv"><div class="tip"></div><div class="btn_box"><span class="ok">确定</span></div></div>').prependTo('body');
+        $('<div class="alertDiv"><div class="alert_box"><div class="tip"></div><div class="btn_box"><span class="ok">确定</span></div></div></div>').prependTo('body');
         var J_alertDiv = $(document).find('.alertDiv');
         J_alertDiv.hide();
         J_alertDiv.find('.tip').empty();
