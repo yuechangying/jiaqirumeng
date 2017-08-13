@@ -243,8 +243,7 @@
 <script src="../addons/jy_ppp/js/waiting.js"></script>
 <script>
     console.log(1)
-    console.log({$basic});
-    {if empty($basic) || !empty($basic['blank'])}
+    {if ($member['card_auth']==0)}
         $.tips('亲，您还没有完成身份认证，无法查看ta的详细信息哦，请到\'设置中心->诚信认证->身份认证\'完成身份认证，谢谢！','',3500);
     {/if}
 
@@ -309,7 +308,7 @@ function querydetail(tmpmid){
     if (0 == {$member['card_auth']})
     {
         //$.tips("亲，您还没有完成身份认证，无法查看ta的详细信息哦，请到'设置中心->诚信认证->身份认证'完成身份认证，谢谢！",'tui');
-        alert("亲，您还没有完成身份认证，无法查看ta的详细信息哦，请到'设置中心->诚信认证->身份认证'完成身份认证，谢谢！");
+        $.tips('亲，您还没有完成身份认证，无法查看ta的详细信息哦，请到\'设置中心->诚信认证->身份认证\'完成身份认证，谢谢！','',3500);
         return;
     }
 
