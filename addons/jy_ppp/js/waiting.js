@@ -23,6 +23,31 @@ $.waiting = (function () {//等待提示
         }
     }
 })();
+$.alert = (function(){
+    if($('.alert').length == 0){
+
+        $('<div class="alertDiv"><div class="tips"></div><div class="btn_box"><span class="ok">确定</span></div></div>').prependTo('body');
+        var J_alertDiv = $(document).find('.alertDiv');
+        J_alertDiv.hide();
+        J_alertDiv.find('.tips').empty();
+    }
+
+    return function(msg,type){
+
+        $(document).find('.alertDiv').addClass(type).find('.tips').html(msg);
+        $(document).find('.alertDiv').on('click','.ok',function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            $(e.currentTarget).closest('.alertDiv').hide();
+            $(e.currentTarget).closest('.alertDiv').find('.tips').empty();
+        });
+
+
+    }
+
+
+
+})();
 $.tips = (function () {//等待提示
     if (window.youyuan && window.youyuan.toast) {
         return function (msg) {
