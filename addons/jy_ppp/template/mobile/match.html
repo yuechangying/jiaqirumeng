@@ -300,19 +300,9 @@
   <script src="../addons/jy_ppp/js/area_id.js"></script>
 
   <script type="text/javascript">
-
+console.log(area_array);
 $(function () {
-
-
-    {if empty($match['province'])}
-
-    var pro_id = empty($match['province']) ;
-    {else}
-    var pro_id = 32;
-    {/if}
-    console.log(area_array);
-
-//    $("#province").html(area_array[{$match['province']}]);
+console.log(area_array);
     $("#province").html(area_array[{$match['province']}]);
     $("#city").html(sub_array[{$match['province']}][{$match['city']}]);
     $("#live_province").empty();
