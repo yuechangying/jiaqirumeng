@@ -130,7 +130,7 @@ if (!empty($member)) {
         exit;
     } else {
       //  printLog(basename(__FILE__) . ",line=" . __LINE__ . " matchprovince=" . $match['province'] . " matchcity=" . $match['city']);
-        var_dump($match);
+//        var_dump($match);
         if (empty($match['province']) || empty($match['city'])) {
             $province = $member['province'];
             $city = $member['city'];
@@ -146,7 +146,7 @@ if (!empty($member)) {
 
         }
 
-        var_dump($match);
+//        var_dump($match);
         include $this->template('match');
     }
 
