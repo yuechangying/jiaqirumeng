@@ -303,7 +303,7 @@
 console.log(area_array);
 $(function () {
 console.log(area_array);
-    $("#province").html(area_array[{$match['province']}]);
+    $("#province").html(area_array[{$match['province']}?32:32]);
     $("#city").html(sub_array[{$match['province']}][{$match['city']}]);
     $("#live_province").empty();
     {if empty($match['province'])}
