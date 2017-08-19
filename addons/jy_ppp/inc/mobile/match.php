@@ -141,6 +141,9 @@ var_dump(empty($match['province']));
         if (empty($province)) {
             $province = 32;
             $city = 3201;
+            $member['province'] = 32;
+            $member['city'] = 3231;
+
         }
         include $this->template('match');
     }
