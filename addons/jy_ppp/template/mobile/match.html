@@ -303,8 +303,14 @@
 $(function () {
 console.log(area_array);
 
-    $("#province").html({if empty($match['province'])}area_array[32]{else} area_array[{$match['province']}] {/if});
+    var _pro = {if empty($match['province'])} 32 {else} {$match['province']}{/if};
+
+        var _city = {if empty($match['province'] && empty($match['city']) } 01 {else} $match['city'] {/if};
+
+    $("#province").html(area_array[_pro]);
 //    $("#city").html(sub_array[{$match['province']}][{$match['city']}]);
+            $('#city').html(sub_array[_pro][_city]);
+    $("#city").html(sub_array[_pro][_city]);
     $("#live_province").empty();
     {if empty($match['province'])}
     for(var i in area_array){
