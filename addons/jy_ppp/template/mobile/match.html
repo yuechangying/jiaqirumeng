@@ -302,7 +302,8 @@
   <script type="text/javascript">
 $(function () {
 console.log(area_array);
-//    $("#province").html(area_array[{$match['province']}?32:32]);
+
+    $("#province").html({if empty($match['province'])}}area_array[32]{else} area_array[{$match['province']}] {/if});
 //    $("#city").html(sub_array[{$match['province']}][{$match['city']}]);
     $("#live_province").empty();
     {if empty($match['province'])}
@@ -323,22 +324,22 @@ console.log(area_array);
     {/if}
 
     $("#live_city").empty();
-    /*{if empty($match['city'])}
-    for(var i in sub_array[{$match['province']}]){
-        $("#live_city").append('<option value="'+ i+'">'+ sub_array[{$match['province']}][i]+'</option>');
-    }
-    {else}
-    for(var i in sub_array[{$match['province']}]){
-        if({$match['city']}==i)
-        {
-            $("#live_city").append('<option value="'+ i+'" selected>'+ sub_array[{$match['province']}][i]+'</option>');
-        }
-        else
-        {
+    {if empty($match['city'])}
+        for(var i in sub_array[{$match['province']}]){
             $("#live_city").append('<option value="'+ i+'">'+ sub_array[{$match['province']}][i]+'</option>');
         }
-    }
-    {/if}*/
+    {else}
+        for(var i in sub_array[{$match['province']}]){
+            if({$match['city']}==i)
+            {
+                $("#live_city").append('<option value="'+ i+'" selected>'+ sub_array[{$match['province']}][i]+'</option>');
+            }
+            else
+            {
+                $("#live_city").append('<option value="'+ i+'">'+ sub_array[{$match['province']}][i]+'</option>');
+            }
+        }
+    {/if}
 
 
     $(".J_liveSelect select").bind("change",function(){
