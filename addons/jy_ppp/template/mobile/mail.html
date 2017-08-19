@@ -73,7 +73,7 @@ a>.user-list>li.foot-icon>img{width: 50px;max-height: 61px;border-radius: 3px;}
             {/if}
             {php $now=time();}
             {loop $list $l}
-            <!--a href="{php echo $this->createMobileUrl('chat',array('id'=>$l['mid']))}"--><a href="javascript:;" onclick="huifu({$l['mid']})"> <ul class="disbox-hor user-list mailid" data-id="{$l['mid']}">
+            <!--a href="{php echo $this->createMobileUrl('chat',array('id'=>$l['mid']))}"--><a href="javascript:;" onclick="huifu({$l['mid']}, {$l['type2']})"> <ul class="disbox-hor user-list mailid" data-id="{$l['mid']}">
                 <li class="foot-icon disbox-center">
                     {if $l['type']!=3}
                         {if !empty($l['avatar'])}
@@ -215,9 +215,22 @@ a>.user-list>li.foot-icon>img{width: 50px;max-height: 61px;border-radius: 3px;}
         },'json');
     }
 
-    function huifu(tmpmid){
-
+    function huifu(tmpmid, type2){
         var id = tmpmid;
+
+        // 如果是管理员身份发的消息，则可以直接读取邮件 site.php -> doMobileMail()
+        if (4 == type2)
+        {
+            var id4 = tmpmid;
+            var url4 = "{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('chat',array('id'=>tmpmid)),2)}";;
+            if(id4){
+                url4 = url4.replace('tmpmid',id4);
+            }
+            window.location.href = url4;
+
+            return;
+        }
+
         var url = "{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('userthumb',array('op'=>'huifu','id'=>tmpmid)),2);}";
         if(id){
             url = url.replace('tmpmid',id);

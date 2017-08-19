@@ -32,7 +32,7 @@
         {loop $lianxi $l}                                                                     
             <!--a href="{php echo $this->createMobileUrl('chat',array('id'=>$l['mid']))}"-->
 
-        <a href="javascript:;" onclick="huifu({$l['mid']})">
+        <a href="javascript:;" onclick="huifu({$l['mid']}, {$l['type']})">
 
             <ul class="disbox-hor user-list"  data-id="{$l['id']}">
                 <li class="foot-icon disbox-center">
@@ -88,8 +88,24 @@
             },'json');
         }
 
-		function huifu(tmpmid){
-		    var id = tmpmid;
+		function huifu(tmpmid, type){
+            var id = tmpmid;
+
+            // 如果是管理员身份发的消息，则可以直接读取邮件
+            if (4 == type)
+            {
+                var id4 = tmpmid;
+
+                var url4 = "{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('chat',array('id'=>tmpmid)),2)}";;
+                if(id4){
+                    url4 = url4.replace('tmpmid',id4);
+                }
+                window.location.href = url4;
+
+                return;
+            }
+
+
             var url = "{php echo $_W['siteroot'].'app/'.substr($this->createMobileUrl('userthumb',array('op'=>'huifu','id'=>tmpmid)),2);}";
 
             if(id){
