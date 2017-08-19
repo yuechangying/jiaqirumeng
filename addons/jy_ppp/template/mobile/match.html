@@ -300,19 +300,21 @@
   <script src="../addons/jy_ppp/js/area_id.js"></script>
 
   <script type="text/javascript">
+      var _pro = {if empty($match['province'])} 32 {else} {$match['province']}{/if};
+
+      var _city = {if empty($match['province'] && empty($match['city']) } 01 {else} $match['city'] {/if};
+
 $(function () {
 console.log(area_array);
 
-    var _pro = {if empty($match['province'])} 32 {else} {$match['province']}{/if};
 
-        var _city = {if empty($match['province'] && empty($match['city']) } 01 {else} $match['city'] {/if};
 
     $("#province").html(area_array[_pro]);
 //    $("#city").html(sub_array[{$match['province']}][{$match['city']}]);
-            $('#city').html(sub_array[_pro][_city]);
-    $("#city").html(sub_array[_pro][_city]);
+//            $('#city').html(sub_array[_pro][_city]);
+//    $("#city").html(sub_array[_pro][_city]);
     $("#live_province").empty();
-    {if empty($match['province'])}
+    /*{if empty($match['province'])}
     for(var i in area_array){
         $("#live_province").append('<option value="'+ i+'">'+ area_array[i]+'</option>');
     }
@@ -327,10 +329,10 @@ console.log(area_array);
             $("#live_province").append('<option value="'+ i+'">'+ area_array[i]+'</option>');
         }
     }
-    {/if}
+    {/if}*/
 
     $("#live_city").empty();
-    {if empty($match['city'])}
+    /*{if empty($match['city'])}
         for(var i in sub_array[{$match['province']}]){
             $("#live_city").append('<option value="'+ i+'">'+ sub_array[{$match['province']}][i]+'</option>');
         }
@@ -345,7 +347,7 @@ console.log(area_array);
                 $("#live_city").append('<option value="'+ i+'">'+ sub_array[{$match['province']}][i]+'</option>');
             }
         }
-    {/if}
+    {/if}*/
 
 
     $(".J_liveSelect select").bind("change",function(){
