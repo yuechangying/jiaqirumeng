@@ -50,8 +50,7 @@ if (!empty($member)) {
     $match = pdo_fetch("SELECT * FROM " . tablename('jy_ppp_match') . " WHERE weid=" . $weid . " AND mid=" . $mid);
 
     $op = $_GPC['op'];
-    var_dump($op);
-    var_dump($match);
+
     if ($op == 'add') {
         $data = array();
         $data['weid'] = $weid;
@@ -130,7 +129,7 @@ if (!empty($member)) {
         exit;
     } else {
       //  printLog(basename(__FILE__) . ",line=" . __LINE__ . " matchprovince=" . $match['province'] . " matchcity=" . $match['city']);
-
+var_dump($match);
         if (empty($match['province']) || empty($match['city'])) {
             $province = $member['province'];
             $city = $member['city'];
