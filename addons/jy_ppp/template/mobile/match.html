@@ -309,12 +309,15 @@ $(function () {
 
     console.log(typeof({$match['province']}));
     {if $match['province'] == 0}
-        var _pro = 32
-
+        var _pro = 32;
+    {else}
+        var _pro = {$match['province']};
     {/if}
 
         {if $match['city'] == 0}
-            var _city = 3201
+            var _city = 3201;
+        {else}
+            var _city = {$match['city']};
         {/if}
 
 //    $("#province").html(area_array[{$match['province']}]);
