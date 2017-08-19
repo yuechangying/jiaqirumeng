@@ -33,12 +33,13 @@
     <p>还没有账号<a href="{php echo $this->createMobileUrl('zhuce')}">立即注册</a></p>
 </footer>
 <script src="../addons/jy_ppp/js/zepto.min.js"></script>
+<script src="../addons/jy_ppp/js/zepto.md5.js"></script>
 <script src="../addons/jy_ppp/js/waiting.js"></script>
 <script>
 $(function () {
     $("#login_btn").bind("click",function(){
         var username=$('input[name="username"]').val();
-        var password=$('input[name="password"]').val();
+        var password=$.md5($('input[name="password"]').val());
 
         if(username == ''){
             $.tips("请输入账号");
