@@ -303,7 +303,7 @@
 $(function () {
 console.log(area_array);
 
-    $("#province").html({if empty($match['province'])}}area_array[32]{else} area_array[{$match['province']}] {/if});
+    $("#province").html({if empty($match['province'])}area_array[32]{else} area_array[{$match['province']}] {/if});
 //    $("#city").html(sub_array[{$match['province']}][{$match['city']}]);
     $("#live_province").empty();
     {if empty($match['province'])}
