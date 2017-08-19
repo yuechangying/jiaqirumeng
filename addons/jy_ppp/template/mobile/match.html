@@ -303,6 +303,11 @@
 
 $(function () {
 
+
+    var pro_id = {$match['province']} ? {$match['province']} : 32;
+    console.log(area_array);
+
+//    $("#province").html(area_array[{$match['province']}]);
     $("#province").html(area_array[{$match['province']}]);
     $("#city").html(sub_array[{$match['province']}][{$match['city']}]);
     $("#live_province").empty();
