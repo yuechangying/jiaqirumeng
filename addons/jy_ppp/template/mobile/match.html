@@ -323,7 +323,7 @@ console.log(area_array);
     {/if}
 
     $("#live_city").empty();
-    {if empty($match['city'])}
+    /*{if empty($match['city'])}
     for(var i in sub_array[{$match['province']}]){
         $("#live_city").append('<option value="'+ i+'">'+ sub_array[{$match['province']}][i]+'</option>');
     }
@@ -338,7 +338,7 @@ console.log(area_array);
             $("#live_city").append('<option value="'+ i+'">'+ sub_array[{$match['province']}][i]+'</option>');
         }
     }
-    {/if}
+    {/if}*/
 
 
     $(".J_liveSelect select").bind("change",function(){
