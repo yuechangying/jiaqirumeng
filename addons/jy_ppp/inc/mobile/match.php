@@ -44,7 +44,7 @@ $con_income = array(0,5,10,20,30,50,70,100);
 //$con_maxIncome = array_reverse($con_income);
 $con_maxIncome = $con_income;
 $con_income_len = count($con_income);
-
+var_dump($member);
 if (!empty($member)) {
     $sitem = pdo_fetch("SELECT * FROM " . tablename('jy_ppp_setting') . " WHERE weid=" . $weid);
     $match = pdo_fetch("SELECT * FROM " . tablename('jy_ppp_match') . " WHERE weid=" . $weid . " AND mid=" . $mid);
