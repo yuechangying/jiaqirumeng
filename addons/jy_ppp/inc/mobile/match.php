@@ -50,7 +50,7 @@ if (!empty($member)) {
     $match = pdo_fetch("SELECT * FROM " . tablename('jy_ppp_match') . " WHERE weid=" . $weid . " AND mid=" . $mid);
 
     $op = $_GPC['op'];
-    var_dump('<div style="display:none">'.$op.'</div>');
+    var_dump($op);
     var_dump($match);
     if ($op == 'add') {
         $data = array();
