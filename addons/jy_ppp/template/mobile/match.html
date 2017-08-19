@@ -304,7 +304,12 @@
 $(function () {
 
 
-    var pro_id = empty($match['province']) ?32: {$match['province']};
+    {if empty($match['province'])}
+
+    var pro_id = empty($match['province']) ;
+    {else}
+    var pro_id = 32;
+    {/if}
     console.log(area_array);
 
 //    $("#province").html(area_array[{$match['province']}]);
