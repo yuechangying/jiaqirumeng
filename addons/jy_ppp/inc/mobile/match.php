@@ -124,8 +124,8 @@ if (!empty($member)) {
         } else {
             pdo_update("jy_ppp_match", $data, array('id' => $match['id']));
         }
-        var_dump(111);
-       var_dump($match);
+//        var_dump(111);
+//       var_dump($match);
         echo 1;
         exit;
     } else {
