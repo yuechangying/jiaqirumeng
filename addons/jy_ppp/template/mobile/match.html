@@ -344,8 +344,9 @@ $(function () {
 
     $("#live_city").empty();
     {if empty($match['city'])}
-    for(var i in sub_array[{$match['province']}]){
-        $("#live_city").append('<option value="'+ i+'">'+ sub_array[{$match['province']}][i]+'</option>');
+//    for(var i in sub_array[{$match['province']}]){
+    for(var i in sub_array[_pro]){
+        $("#live_city").append('<option value="'+ i+'">'+ sub_array[_pro][i]+'</option>');
     }
     {else}
     for(var i in sub_array[{$match['province']}]){
