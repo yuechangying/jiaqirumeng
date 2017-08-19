@@ -45,6 +45,34 @@
     </div>
     {/if}
 
+
+    <div class="option_box" style="margin-top: 10px">
+        <div class="top">
+            <h2>居住地</h2>
+            <div id="live" class="live_island" >
+                <div class="J_liveSelect select">
+                <span class="value" id="province">
+                    {if empty($match['province'])}
+                            江苏
+                        {else}
+                            {$match['province']}
+                        {/if}
+                </span>
+                    <i class="bot_trged"></i>
+                    <select id="live_province" class="value_select">
+                    </select>
+                </div>
+                <div class="J_liveSelect select fixed_width">
+                <span class="value" id="city">
+                </span>
+                    <i class="bot_trged"></i>
+                    <select id="live_city" class="value_select">
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="option_box" style="margin-top: 10px">
         <div class="top">
           <h2>年龄范围</h2>
@@ -249,32 +277,7 @@
   </div>
 
 
-  <div class="option_box" style="margin-top: 10px">
-    <div class="top">
-     <h2>居住地</h2>
-        <div id="live" class="live_island" >
-            <div class="J_liveSelect select">
-                <span class="value" id="province">
-                    {if empty($match['province'])}
-                            江苏
-                        {else}
-                            {$match['province']}
-                        {/if}
-                </span>
-                <i class="bot_trged"></i>
-                <select id="live_province" class="value_select">
-                </select>
-            </div>
-            <div class="J_liveSelect select fixed_width">
-                <span class="value" id="city">
-                </span>
-                <i class="bot_trged"></i>
-                <select id="live_city" class="value_select">
-                </select>
-            </div>
-        </div>
-    </div>
-   </div>
+
 
 
 </div>
@@ -304,8 +307,6 @@ console.log(area_array);
 console.log(sub_array);
 $(function () {
 
-//    var _pro = {empty($match['province'])} ? 32 : {$match['province']} ;
-//    var _city = {empty($match['city'])} ? 3201 : {$match['city']};
 
 //    console.log(typeof({$match['province']}));
     {if $match['province'] == 0}
@@ -320,9 +321,7 @@ $(function () {
         var _city = {$match['city']};
     {/if}
 
-//    $("#province").html(area_array[{$match['province']}]);
     $("#province").html(area_array[_pro]);
-//    $("#city").html(sub_array[{$match['province']}][{$match['city']}]);
     $("#city").html(sub_array[_pro][_city]);
     $("#live_province").empty();
     {if empty($match['province'])}
