@@ -49,6 +49,7 @@ global $_W,$_GPC;
 		}
 		else if($op=='mingxi')
 		{
+
 			$id=$_GPC['id'];
 			load()->func('tpl');
 			$sitem=pdo_fetch("SELECT * FROM ".tablename('jy_ppp_setting')." WHERE weid=".$weid);
@@ -251,6 +252,9 @@ global $_W,$_GPC;
 				$condition.=" AND a.createtime>=$starttime AND a.createtime<=$endtime ";
 			}
 
+			if (!empty($_GPC['keyID'])) {
+                $condition .= " AND a.id = " . $_GPC['keyID'];
+            }
 			if (!empty($_GPC['keyword'])) {
 				$condition .= " AND ( a.nicheng LIKE '%{$_GPC['keyword']}%' OR a.mobile LIKE '%{$_GPC['keyword']}%'";
 				$condition .=")";
