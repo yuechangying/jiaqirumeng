@@ -923,13 +923,18 @@ include IA_ROOT."/addons/jy_ppp/upgrade.php";
 			}
 			else
 			{
+
+               // printLog(basename(__FILE__) . ",line=" . __LINE__ . "wechat_member_temp=" . $wechat_member_temp['sex'] . ", doMobileDetail(), $sex=" . $sex );
+
 				if($wechat_member_temp['sex']!=$sex)
 				{
 					pdo_update("jy_ppp_member",array('nicheng'=>$nicheng,'from_user'=>$from_user,'uid'=>$uid,'status'=>1),array('id'=>$wechat_member_temp['id']));
 				}
 				else
 				{
-					pdo_update("jy_ppp_member",array('sex'=>$sex,'nicheng'=>$nicheng,'from_user'=>$from_user,'uid'=>$uid,'status'=>1),array('id'=>$wechat_member_temp['id']));
+                    pdo_update("jy_ppp_member",array('nicheng'=>$nicheng,'from_user'=>$from_user,'uid'=>$uid,'status'=>1),array('id'=>$wechat_member_temp['id']));
+
+					//pdo_update("jy_ppp_member",array('sex'=>$sex,'nicheng'=>$nicheng,'from_user'=>$from_user,'uid'=>$uid,'status'=>1),array('id'=>$wechat_member_temp['id']));
 				}
 				$mid=$wechat_member_temp['id'];
 			}
