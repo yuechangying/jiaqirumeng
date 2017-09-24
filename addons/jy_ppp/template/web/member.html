@@ -615,11 +615,9 @@
 				</div>
 			</form>
 			{/if}
-
 		<!--end -->
 
 		<!--详细资料 -->
-
 			{if count($desc)>0}
 			<form action="" method="post" class="form-horizontal form"
 			enctype="multipart/form-data">
@@ -701,7 +699,6 @@
 		<!--end -->
 
 		<!--择偶条件 -->
-
 			{if !empty($match)}
 			<form action="" method="post" class="form-horizontal form"
 			enctype="multipart/form-data">
@@ -714,28 +711,28 @@
 						<div class="form-group">
 							<label class="col-xs-12 col-sm-3 col-md-2 control-label">年龄范围</label>
 							<div class="col-sm-7 col-xs-12">
-								<label>{if empty($match['age'])}未填写{else}{if $match['age']==0}不限{/if}{if $match['age']==1}18-25岁{/if}{if $match['age']==2}26-35岁{/if}{if $match['age']==3}36-45岁{/if}{if $match['age']==4}46-55岁{/if}{if $match['age']==5}55岁以上{/if}{/if}</label>
+								<label>{if $match['age']==0}不限{/if}{if $match['age']!=0}{$match['age']}{/if} -- {if $match['agemax']==0}不限{/if}{if $match['agemax']!=0}{$match['agemax']}岁{/if}</label>
 							</div>
 						</div>
 
 						<div class="form-group">
 							<label class="col-xs-12 col-sm-3 col-md-2 control-label">身高范围</label>
 							<div class="col-sm-7 col-xs-12">
-								<label>{if empty($match['height'])}未填写{else}{if $match['height']==0}不限{/if}{if $match['height']==1}160cm以下{/if}{if $match['height']==2}161-165cm{/if}{if $match['height']==3}166-170cm{/if}{if $match['height']==4}170以上{/if}{/if}</label>
+								<label>{$match['height']} -- {$match['heightmax']}CM </label>
 							</div>
 						</div>
 
 						<div class="form-group">
 							<label class="col-xs-12 col-sm-3 col-md-2 control-label">最低学历</label>
 							<div class="col-sm-7 col-xs-12">
-								<label>{if empty($match['education'])}未填写{else}{if $match['education']==0}不限{/if}{if $match['education']==1}高中,中专及以上{/if}{if $match['education']==2}大专及以上{/if}{if $match['education']==3}本科及以上{/if}{/if}</label>
+								<label>{if $match['education']==0}不限{/if}{if $match['education']==1}中专及以上{/if}{if $match['education']==2}大专及以上{/if}{if $match['education']==3}本科及以上{/if}{if $match['education']==4}硕士及以上{/if}</label>
 							</div>
 						</div>
 
 						<div class="form-group">
-							<label class="col-xs-12 col-sm-3 col-md-2 control-label">收入范围</label>
+							<label class="col-xs-12 col-sm-3 col-md-2 control-label">年收入范围</label>
 							<div class="col-sm-7 col-xs-12">
-								<label>{if empty($match['income'])}未填写{else}{if $match['income']==0}不限{/if}{if $match['income']==1}2000元以上{/if}{if $match['income']==2}5000元以上{/if}{if $match['income']==3}10000元以上{/if}{/if}</label>
+								<label>{$match['income']} -- {$match['incomemax']}万</label>
 							</div>
 						</div>
 

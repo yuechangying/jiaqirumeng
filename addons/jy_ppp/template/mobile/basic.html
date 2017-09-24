@@ -167,8 +167,9 @@
                 <i class="bot_trged"></i>
                 <select id="vocation" class="value_select">
                     <option value="0" style="display:none">请选择</option>
-                    <option value="程序员" {if $basic['job']=='程序员'} selected="selected" {/if}>程序员</option>
+                    <option value="程序员"{if $basic['job']=='程序员'} selected="selected" {/if}>程序员</option>
                     <option value="教师"{if $basic['job']=='教师'} selected="selected" {/if}>教师</option>
+                    <option value="医生护士"{if $basic['job']=='医生护士'} selected="selected" {/if}>医生护士</option>
                     <option value="金融"{if $basic['job']=='金融'} selected="selected" {/if}>金融</option>
                     <option value="公务员"{if $basic['job']=='公务员'} selected="selected" {/if}>公务员</option>
                     <option value="销售"{if $basic['job']=='销售'} selected="selected" {/if}>销售</option>

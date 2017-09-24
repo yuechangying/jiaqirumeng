@@ -190,9 +190,6 @@ global $_W,$_GPC;
 			$desc['aihao']=pdo_fetchall("SELECT * FROM ".tablename('jy_ppp_aihao')." WHERE weid=".$weid." AND mid=".$id);
 			$desc['tezheng']=pdo_fetchall("SELECT * FROM ".tablename('jy_ppp_tezheng')." WHERE weid=".$weid." AND mid=".$id);
 			$match=pdo_fetch("SELECT * FROM ".tablename("jy_ppp_match")." WHERE weid=".$weid." AND mid=".$id);
-
-			printLog(basename(__FILE__) . ",line=" . __LINE__);
-			
 			if($row['type']!=3)
 			{
 				$item['pay']=pdo_fetchall("SELECT * FROM ".tablename('jy_ppp_pay_log')." WHERE weid=".$weid." AND mid=".$id);
